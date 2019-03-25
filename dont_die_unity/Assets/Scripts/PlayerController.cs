@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
 
 	private RagdollCharacterDriver driver;
 
+
+	[SerializeField] private float speed = 3.0f;
+
+
 	private void Awake()
 	{
 		driver = GetComponent<RagdollCharacterDriver>();
@@ -26,6 +30,6 @@ public class PlayerController : MonoBehaviour
 
 		float amount = Vector3.Magnitude(movement);
 
-		driver.Drive(movement / amount, amount * Time.deltaTime);
+		driver.Drive(movement / amount, speed * amount * Time.deltaTime);
 	}
 }
