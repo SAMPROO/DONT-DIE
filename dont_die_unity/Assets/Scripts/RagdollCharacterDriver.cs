@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class RagdollCharacterDriver : MonoBehaviour
 {
+	[SerializeField] private float jumpPower;
+
 	private new Rigidbody rigidbody;
 
 	private void Awake()
@@ -24,5 +26,12 @@ public class RagdollCharacterDriver : MonoBehaviour
 			rigidbody.MovePosition(transform.position + direction * amount);
 			rigidbody.MoveRotation(Quaternion.LookRotation (direction, Vector3.up));
 		}
+	}
+
+	public void Jump()
+	{
+		// Todo: test if touching walkable perimeter, and only jump if do
+		rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+		Debug.Log("Ragdoll do jump");
 	}
 }
