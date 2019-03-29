@@ -25,4 +25,3 @@ public class InputController
 			Fire?.Invoke();
 	}
 }
-

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 	private new Camera3rdPerson camera;
 
 	// this also needs to be set outside
-	private InputController input = new InputController(); 
+	private InputController inputController = new InputController(); 
 
 	private RagdollCharacterDriver driver;
 
@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Start()
 	{
-		input.Fire += Fire;
-		input.Jump += driver.Jump;
+		inputController.Fire += Fire;
+		inputController.Jump += driver.Jump;
 
 
 		StartCarryingGun(gun);
@@ -35,14 +35,14 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		input.UpdateController();
+		inputController.UpdateController();
 	}
 
 	public void FixedUpdate()
 	{
 		Vector3 movement = 
-			camera.baseRotation * Vector3.right * input.Horizontal()
-			+ camera.baseRotation * Vector3.forward * input.Vertical();
+			camera.baseRotation * Vector3.right * inputController.Horizontal()
+			+ camera.baseRotation * Vector3.forward * inputController.Vertical();
 
 		float amount = Vector3.Magnitude(movement);
 

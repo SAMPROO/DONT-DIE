@@ -1,0 +1,127 @@
+!Don't Die GDD Final
+
+1. Primary Design Pillars
+	1. Fun idiotic gameplay
+	4. Strategic gameplay
+
+2. Features:
+	2. 1 Player Character 
+		
+		2.1.1 Player Ragdoll Movement Thing
+
+			Ragdoll modes:
+				- Semicontrolled: normal movement, only keybones animated/controlled
+				- Nocontrolled / full: no bones controlled, stifness only
+
+			Normally stand.
+			Can be forced no-control
+			Can voluntarily go to no-control
+			Can get up from no-control if no forcing
+
+			If feet do not touch ground, no movement happens.
+
+			Speed change is not is not instant, but gradually increases as player.
+
+		Player Damage
+			From Environment
+			Not from player weapons, salting okay
+
+		Player controls
+			joystick / wasd to move
+			joystick / mouse to look
+			two - button shooting
+			interact - pick / drop / interact
+			jump / ragdoll to ground
+
+		No Player vs Player Combat
+			- Simple melee bump "attack", no damage (eg. bodyslam, fist pickup)
+
+		Status effects:
+			- Concrete damage effects, eg. fire, poison
+			- Forced full-ragdoll-state, eg concussion
+			- Negative and positive
+			- etc.
+
+		View/Perspective:
+			- 3rd person
+			- Normal mode and zoomed in aim mode
+
+	2.2 Player non-lethal weaponry
+		- "Physical" objects that can be picked and dropped, one (in each hand) at a time.
+		- Limited ammunition capacity. Gun keeps track of this itself.
+		- When out of ammo AND not carried by player will disappear shortly, when at rest
+		- No reload (as of now)
+		- Recoil will apply force to character
+
+		Projectiles:
+		- Gun shoots projectiles that take care of being shooted
+		- Projectile knows speed, range, etc.
+
+		Pickup Getting points (and other things)
+		Weapon dispenser, airdrops etc
+
+		Ghost harpoon
+		Punch gun
+
+	2.3 Core loop
+		1. Match starts
+		2. Players do their thing
+		3. Match ends
+
+		Win condition:
+			One player dies.
+
+	2.4 Game World
+
+		Interactable Switches, levers etc.
+			eg. Fill pool with lava
+
+		Environmental Opportunities
+			Really just hazards in disguise
+			These deal damage
+
+		Levels or Maps or Arenas
+			Pool level is first
+
+	2.5 GUI
+		Startmenu
+			Player select
+			Controller assignement
+			Level select
+
+		Endscreen
+
+
+Wishlist:
+	Race mode
+	NPC
+	Powerups
+	Player parkour
+	Input customization
+	Character Customization
+
+
+Terminology:
+	Player - user, real person behind controller
+	Character - avatar for player
+	NPC - non avatar character
+
+	Manager - connects low-level stuff to controller
+	Controller - input handler
+	Driver -
+	Motor -  
+
+		Gets input from somewhere
+
+	Input example:
+		InputControllerManager
+		InputController
+		RagdollMotor -  Actually moves UnityEngine rigidbodies or transforms
+
+
+
+	Gun, Weapon - thing that shoots things
+	Projectile - thing that comes out from gun
+	
+	Carry things:
+		weapons, boxes, people?
