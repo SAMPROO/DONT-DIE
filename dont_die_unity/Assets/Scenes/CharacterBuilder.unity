@@ -1511,6 +1511,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &733122965 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1940505290495959984, guid: 4b3b6691c96e91e4ebeab7b74b8aad07,
+    type: 3}
+  m_PrefabInstance: {fileID: 5374742699566862453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &863938120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,6 +3141,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: MockGun
       objectReference: {fileID: 0}
+    - target: {fileID: 1747447971221620281, guid: 600d842e55e5adc439b96d99b5b9d207,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 5389533523361623170, guid: df0ac88ff0a1ee64dbbb9db02bd7fe26,
+        type: 3}
+    - target: {fileID: 1747447971221620281, guid: 600d842e55e5adc439b96d99b5b9d207,
+        type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1747447971221620277, guid: 600d842e55e5adc439b96d99b5b9d207,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3264,5 +3281,10 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 955618470}
+    - target: {fileID: 5374742700604096976, guid: 4b3b6691c96e91e4ebeab7b74b8aad07,
+        type: 3}
+      propertyPath: gunHandle
+      value: 
+      objectReference: {fileID: 733122965}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3b6691c96e91e4ebeab7b74b8aad07, type: 3}

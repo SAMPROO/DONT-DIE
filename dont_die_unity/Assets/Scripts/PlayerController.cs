@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (gun != null)
 		{
-			bool didShoot = gun.Shoot();
+			/*bool didShoot = */gun.Shoot();
 			// todo: do recoil stuff
 		}
 		else

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9046003567612411877}
   - component: {fileID: 5389533523361623173}
   - component: {fileID: 2972566263924219647}
+  - component: {fileID: 6593479879291984844}
   m_Layer: 9
   m_Name: RubberBullet
   m_TagString: Untagged
@@ -217,3 +218,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8abfb7f125be74e9cdee39d9750384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6593479879291984844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5389533523361623170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df9fe3486dc85a94fa1b02059bb9354a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 0
+  type: 0
