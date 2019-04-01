@@ -170,6 +170,8 @@ GameObject:
   - component: {fileID: 5374742700604096979}
   - component: {fileID: 5374742700604096976}
   - component: {fileID: 5374742700604096988}
+  - component: {fileID: 461291251}
+  - component: {fileID: 461291252}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -239,6 +241,8 @@ MonoBehaviour:
   speed: 3
   gun: {fileID: 0}
   gunHandle: {fileID: 1940505290495959984}
+  maxHitpoints: 100
+  mockHpField: {fileID: 0}
 --- !u!136 &5374742700604096988
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -253,6 +257,49 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &461291251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374742700604096977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94aadf62b965c5e4e8391ec349e1d2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: 1
+  damageController: {fileID: 0}
+--- !u!114 &461291252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374742700604096977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279b13d50a2a6cd40b1c28cc71cdb0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minVelocity: 5
+  touchDamageRepeatDelay: 1
+  TakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5374742700604096976}
+        m_MethodName: Hurt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1001 &5374742700308260210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,10 +307,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5374742700604096989}
     m_Modifications:
-    - target: {fileID: 100000, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
-      propertyPath: m_Name
-      value: dummyGuy_proto
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -307,6 +350,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
+      propertyPath: m_Name
+      value: dummyGuy_proto
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddaa78e12776acc49b1740009240b63a, type: 3}

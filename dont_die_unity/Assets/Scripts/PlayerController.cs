@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 	private void Start ()
 	{
 		// Not like this ofcourse
-		Initialize(new PlayerHandle(0));
+		//Initialize(new PlayerHandle(0));
 	}
 
 	public void Initialize(PlayerHandle handle)
@@ -51,9 +51,7 @@ public class PlayerController : MonoBehaviour
 
 		// Initialize health systems
 		hitpoints = maxHitpoints;
-		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage));
-
-		StartCarryingGun(gun);
+		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
 	private void Update()
@@ -87,7 +85,7 @@ public class PlayerController : MonoBehaviour
 	public void Hurt(float damage)
 	{
 		hitpoints -= Mathf.RoundToInt(damage);
-		mockHpField.text = $"HP: {hitpoints}";
+		//mockHpField.text = $"HP: {hitpoints}";
 
 		if (hitpoints <= 0)
 		{

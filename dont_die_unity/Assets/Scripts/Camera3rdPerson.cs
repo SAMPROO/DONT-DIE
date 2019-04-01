@@ -14,6 +14,13 @@ public class Camera3rdPerson : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		transform.position = target.position;
+        if (target)
+        {
+		    transform.position = target.position;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 }
