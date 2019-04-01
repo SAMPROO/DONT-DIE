@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(RagdollCharacterDriver))]
@@ -75,4 +76,12 @@ public class PlayerController : MonoBehaviour
 		gun = null;
 	}
 
+	private PlayerHandle handle;
+
+	public void Initialize(PlayerHandle handle)
+	{
+		this.handle = handle;
+	}
+
+	public event Action<PlayerHandle> OnDie;
 }
