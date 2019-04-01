@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(RagdollCharacterDriver))]
@@ -27,7 +28,6 @@ public class PlayerController : MonoBehaviour
 	{
 		inputController.Fire += Fire;
 		inputController.Jump += driver.Jump;
-
 
 		StartCarryingGun(gun);
 	}
@@ -75,4 +75,20 @@ public class PlayerController : MonoBehaviour
 		gun = null;
 	}
 
+
+	public event Action<PlayerHandle> OnDie;
+
+	private void OnHitpointsOver()
+	{
+		OnDie(playerIndex);
+	}
+
+	public void Initialize (PlayerHandle playerIndex)
+	{
+		this.playerIndex = playerIndex;
+	}
+
+	PlayerHandle playerIndex;
+
 }
+
