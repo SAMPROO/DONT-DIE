@@ -1,49 +1,93 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	PlayerController playerPrefab;
+    [SerializeField]
+    private GameObject playerPrefab;
 
-	const int maxPlayers = 4;
+    private const int maxPlayers = 4;
 
-	PlayerController [] players = new PlayerController [maxPlayers];
+    private PlayerController[] players = new PlayerController[maxPlayers];
+    private readonly string[] sceneNames = {"Start", "Level", "End"};
+    private int sceneIndex = 0;
 
-	private void LoadNextLevel()
+    private int numberOfPlayers = 2;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+        	// Default LoadSceneMode is Single, but lets be explicit
+			SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);			        	
+
+            if (sceneIndex == 1)
+            {
+				// Scene loading completes next frame, so we need to subscribe event.
+				// Also we need to unsubscribe, so let's use proper function.            	
+            	SceneManager.sceneLoaded += OnLevelSceneLoaded;
+            }
+
+            sceneIndex++;
+            sceneIndex %= sceneNames.Length;
+        }
+
+        
+    }
+
+
+    // Kinda hacky feeling function, but whatever
+    private void OnLevelSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+    	InitializeLevel();
+
+    	// Unsubscribe itself, so we don't keep initializing level, when not supposed to
+    	SceneManager.sceneLoaded -= OnLevelSceneLoaded;
+    }
+
+    private void InitializeLevel()
 	{
-		// Load Level
-		// Get number of players
-		// get spawnpoints from level
-		// instantiate players to spawn points
-		// 5 .reset/initialize players
-		// profit
+        // Get number of players
+        // get spawnpoints from level
 
-		// 5.
-		int numberOfPlayers = 2;
+		// For number od players:
+        // 		Instantiate players to spawn points
+        // 		Reset/initialize players
+        players = new PlayerController[maxPlayers];
+
+        Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0) };
 
 		for (int i = 0; i < numberOfPlayers; i++)
 		{
-			players[i] = Instantiate (playerPrefab);//, spawnPointPosition);
+			players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
 
-			// Get random color
-			// Get controller
-			// get etc..
+			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(new PlayerHandle (i));//, color, controller, etc....);
 
 			players[i].OnDie += OnPlayerDie;
 		}
-
-		// Dependency injection
-
 	}
 
 
 	private void OnPlayerDie(PlayerHandle handle)
 	{
-		// unspawn player
-		// if enough players (1) is died, end match, and someone wins
+        // unspawn player
+        // if enough players (1) is died, end match, and someone wins
 
-		// Do not really destroy
-		Destroy(players[handle]);
-		players[handle] = null;
-	}
+        // Do not really destroy
+        //Destroy(players[handle]);
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            Destroy(players[i].gameObject);
+        }
+
+		players = null;
+        SceneManager.LoadScene("End");
+
+    }
 }

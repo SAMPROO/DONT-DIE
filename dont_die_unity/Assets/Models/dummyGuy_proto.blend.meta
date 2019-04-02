@@ -25,6 +25,7 @@ ModelImporter:
     100038: Roundcube_018
     100040: Roundcube_019
     100042: Roundcube_020
+    100044: Cylinder
     400000: //RootNode
     400002: Roundcube
     400004: Roundcube_001
@@ -47,6 +48,7 @@ ModelImporter:
     400038: Roundcube_018
     400040: Roundcube_019
     400042: Roundcube_020
+    400044: Cylinder
     2100000: unnamed
     2300000: Roundcube
     2300002: Roundcube_001
@@ -69,6 +71,7 @@ ModelImporter:
     2300036: Roundcube_018
     2300038: Roundcube_019
     2300040: Roundcube_020
+    2300042: Cylinder
     3300000: Roundcube
     3300002: Roundcube_001
     3300004: Roundcube_002
@@ -90,6 +93,7 @@ ModelImporter:
     3300036: Roundcube_018
     3300038: Roundcube_019
     3300040: Roundcube_020
+    3300042: Cylinder
     4300000: Roundcube_019
     4300002: Roundcube_018
     4300004: Roundcube_017
@@ -111,8 +115,10 @@ ModelImporter:
     4300036: Roundcube
     4300038: Roundcube_020
     4300040: Roundcube_004
+    4300042: Cylinder
     7400000: Default Take
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 0
