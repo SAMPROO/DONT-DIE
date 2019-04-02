@@ -43,7 +43,7 @@ public class SingletonGameManager : MonoBehaviour
         }
     }
 
-    private void LoadNextLevel()
+    public void LoadNextLevel()
     {
         // Default LoadSceneMode is Single, but lets be explicit
         SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);
