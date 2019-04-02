@@ -4,11 +4,7 @@ using UnityEngine.SceneManagement;
 public class SingletonGameManager : MonoBehaviour
 {
     private static SingletonGameManager instance;
-    public static SingletonGameManager Instance
-    {
-        get { return instance; }
-        set { instance = value; }
-    }
+    public static SingletonGameManager Instance { get; private set; }
 
     [SerializeField]
     private GameObject playerPrefab;
