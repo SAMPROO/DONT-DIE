@@ -6,12 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     // this should instead be set from game manager etc. when creating screen
     // use this to align movement with camera
-    [SerializeField]
-    private new OrbitCameraTP camera;
-	//private new Camera3rdPerson camera;
+    [SerializeField] private OrbitCameraTP orbitCamera;
+    [SerializeField] private Transform orbitAnchor;
 
-	// this also needs to be set outside
-	private InputController input = new InputController(); 
+    // this also needs to be set outside
+    private InputController input = new InputController(); 
 	
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
@@ -38,21 +37,24 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
-	private void Start ()
-	{
-		// Initialize in builder scene only
-		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterBuilder")
-		{
-			Initialize(new PlayerHandle(0));
-		}
-	}
+	//private void Start ()
+	//{
+	//	// Initialize in builder scene only
+	//	if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterBuilder")
+	//	{
+	//		Initialize(new PlayerHandle(0), "No idea");
+	//	}
+	//}
 
-	public void Initialize(PlayerHandle handle)
+	public void Initialize(PlayerHandle handle, Camera camera)
 	{
 		this.handle = handle;
 
-		// Subscribe input events
-		input.Fire += Fire;
+        orbitCamera = camera.GetComponent<OrbitCameraTP>();
+        orbitCamera.anchor = orbitAnchor;
+
+        // Subscribe input events
+        input.Fire += Fire;
 		input.Jump += driver.Jump;
 
 		// Initialize health systems
@@ -68,8 +70,8 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 movement = 
-			camera.baseRotation * Vector3.right * input.Horizontal
-			+ camera.baseRotation * Vector3.forward * input.Vertical;
+			orbitCamera.baseRotation * Vector3.right * input.Horizontal
+			+ orbitCamera.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
 

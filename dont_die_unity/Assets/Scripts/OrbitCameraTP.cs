@@ -7,9 +7,8 @@ public class OrbitCameraTP : MonoBehaviour
     private const float Y_ANGLE_MIN = -80;
     private const float Y_ANGLE_MAX = 80;
 
+    [HideInInspector]
     public Transform anchor;
-    public Transform cameraPosition;
-    public Camera cam;
 
     public float sensitivity;
     public float cameraDistanceMax;
@@ -30,9 +29,6 @@ public class OrbitCameraTP : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        cameraPosition = transform;
-        cam = GetComponent<Camera>();
     }
 
     private void Update()
@@ -77,7 +73,7 @@ public class OrbitCameraTP : MonoBehaviour
     {
         Vector3 dir = new Vector3(0, 0, -cameraDistanceCurrent);
         Quaternion rotation = Quaternion.Euler(_yRot, _xRot, 0);
-        cameraPosition.position = anchor.position + rotation * dir;
-        cameraPosition.LookAt(anchor.position);
+        transform.position = anchor.position + rotation * dir;
+        transform.LookAt(anchor.position);
     }
 }

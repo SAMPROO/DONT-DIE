@@ -11,11 +11,13 @@ public class SingletonGameManager : MonoBehaviour
     }
 
     [SerializeField]
-    private GameObject playerPrefab;
+    private GameObject playerPrefab, orbitCameraPrefab;
 
     private const int maxPlayers = 4;
 
     private PlayerController[] players = new PlayerController[maxPlayers];
+    private Camera[] playerCameras = new Camera[maxPlayers];
+
     private readonly string[] sceneNames = {"Start", "Level", "End"};
     private int sceneIndex = 0;
 
@@ -33,15 +35,18 @@ public class SingletonGameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
+
+        // load start scene
+        LoadNextLevel();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            LoadNextLevel();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        LoadNextLevel();
+    //    }
+    //}
 
     public void LoadNextLevel()
     {
@@ -78,20 +83,24 @@ public class SingletonGameManager : MonoBehaviour
         // 		Instantiate players to spawn points
         // 		Reset/initialize players
         players = new PlayerController[maxPlayers];
+        playerCameras = new Camera[maxPlayers];
 
         Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(4, 0, 0) };
 
 		for (int i = 0; i < numberOfPlayers; i++)
 		{
-			players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
+            playerCameras[i] = Instantiate (orbitCameraPrefab, spawnPoints[i], Quaternion.identity).GetComponent<Camera>();
+
+            players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
 
 			// Get controller, camera, hud, random color, etc
-			players[i].Initialize(new PlayerHandle (i));//, color, controller, etc....);
+			players[i].Initialize(new PlayerHandle (i), playerCameras[i]);//, color, controller, etc....);
 
 			players[i].OnDie += OnPlayerDie;
 		}
-	}
 
+        SetViewports(playerCameras);
+	}
 
 	private void OnPlayerDie(PlayerHandle handle)
 	{
@@ -115,5 +124,21 @@ public class SingletonGameManager : MonoBehaviour
         numberOfPlayers = playerCount;
         Debug.Log("Number of players: " + numberOfPlayers);
         LoadNextLevel();
+    }
+
+    public void SetViewports(Camera[] cameraArray)
+    {
+        float sizeX = numberOfPlayers == 1 ? 1 : 0.5f;
+        float sizeY = numberOfPlayers <= 2 ? 1 : 0.5f;
+
+        int i = 0;
+        for (int y = 0; y < 2; y++)
+        {
+            for (int x = 0; x < 2; x++)
+            {
+                cameraArray[i++].rect = new Rect(0.5f * x, 0.5f * y, sizeX, sizeY);
+                if (i == numberOfPlayers) return;
+            }
+        }
     }
 }
