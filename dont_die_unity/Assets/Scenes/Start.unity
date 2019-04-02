@@ -1355,10 +1355,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60af2309eb83044dbe4b079a11c6811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1: {fileID: 180978099}
-  button2: {fileID: 1066485410}
-  button3: {fileID: 1271183302}
-  button4: {fileID: 1776385783}
+  onePlayer: {fileID: 180978099}
+  twoPlayers: {fileID: 1066485410}
+  threePlayers: {fileID: 1271183302}
+  fourPlayers: {fileID: 1776385783}
 --- !u!1 &2059965909
 GameObject:
   m_ObjectHideFlags: 0

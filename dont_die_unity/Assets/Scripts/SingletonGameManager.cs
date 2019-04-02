@@ -36,13 +36,13 @@ public class SingletonGameManager : MonoBehaviour
         LoadNextLevel();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        LoadNextLevel();
-    //    }
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightAlt))
+        {
+            LoadNextLevel();
+        }
+    }
 
     public void LoadNextLevel()
     {

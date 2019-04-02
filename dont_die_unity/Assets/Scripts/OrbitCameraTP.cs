@@ -25,11 +25,11 @@ public class OrbitCameraTP : MonoBehaviour
     //for player
     public Quaternion baseRotation => Quaternion.Euler(0, inputX, 0);
 
-    private void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+    //private void Start()
+    //{
+    //    Cursor.visible = false;
+    //    Cursor.lockState = CursorLockMode.Locked;
+    //}
 
     private void Update()
     {
