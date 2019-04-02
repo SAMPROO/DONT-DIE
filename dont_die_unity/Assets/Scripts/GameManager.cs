@@ -90,4 +90,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("End");
 
     }
+
+    public void SetPlayerCount(int playerCount)
+    {
+        numberOfPlayers = playerCount;
+    }
 }
