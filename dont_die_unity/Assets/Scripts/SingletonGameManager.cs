@@ -1,8 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class SingletonGameManager : MonoBehaviour
 {
+    private static SingletonGameManager instance;
+    public static SingletonGameManager Instance
+    {
+        get { return instance; }
+        set { instance = value; }
+    }
+
     [SerializeField]
     private GameObject playerPrefab;
 
@@ -16,6 +23,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (SingletonGameManager.Instance == null)
+        {
+            Instance = this;
+        }
+        else if (SingletonGameManager.Instance != this)
+        {
+            Destroy(this);
+        }
+
         DontDestroyOnLoad(this);
     }
 
@@ -23,21 +39,24 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-        	// Default LoadSceneMode is Single, but lets be explicit
-			SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);			        	
+            LoadNextLevel();
+        }
+    }
 
-            if (sceneIndex == 1)
-            {
-				// Scene loading completes next frame, so we need to subscribe event.
-				// Also we need to unsubscribe, so let's use proper function.            	
-            	SceneManager.sceneLoaded += OnLevelSceneLoaded;
-            }
+    public void LoadNextLevel()
+    {
+        // Default LoadSceneMode is Single, but lets be explicit
+        SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);
 
-            sceneIndex++;
-            sceneIndex %= sceneNames.Length;
+        if (sceneIndex == 1)
+        {
+            // Scene loading completes next frame, so we need to subscribe event.
+            // Also we need to unsubscribe, so let's use proper function.            	
+            SceneManager.sceneLoaded += OnLevelSceneLoaded;
         }
 
-        
+        sceneIndex++;
+        sceneIndex %= sceneNames.Length;
     }
 
 
@@ -60,7 +79,7 @@ public class GameManager : MonoBehaviour
         // 		Reset/initialize players
         players = new PlayerController[maxPlayers];
 
-        Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0) };
+        Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(4, 0, 0) };
 
 		for (int i = 0; i < numberOfPlayers; i++)
 		{
@@ -89,5 +108,12 @@ public class GameManager : MonoBehaviour
 		players = null;
         SceneManager.LoadScene("End");
 
+    }
+
+    public void SetPlayerCount(int playerCount)
+    {
+        numberOfPlayers = playerCount;
+        Debug.Log("Number of players: " + numberOfPlayers);
+        LoadNextLevel();
     }
 }

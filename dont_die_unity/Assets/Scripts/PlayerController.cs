@@ -22,13 +22,15 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private float speed = 3.0f;
 	[SerializeField] private Gun gun;
-	[SerializeField] private Transform gunHandle;
+	[SerializeField] private Transform gunParent;
 
+	// This is really not serializable thing, but it is injected from hudmanager or similar
+	[SerializeField] private PlayerHUD hud;
  
 	[Header("Health")]
 	[SerializeField] private int maxHitpoints = 100;
 	private int hitpoints;
-	[SerializeField] private UnityEngine.UI.Text mockHpField;
+
 
 	private void Awake()
 	{
@@ -38,8 +40,11 @@ public class PlayerController : MonoBehaviour
 
 	private void Start ()
 	{
-		// Not like this ofcourse
-		//Initialize(new PlayerHandle(0));
+		// Initialize in builder scene only
+		if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterBuilder")
+		{
+			Initialize(new PlayerHandle(0));
+		}
 	}
 
 	public void Initialize(PlayerHandle handle)
@@ -63,12 +68,12 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 movement = 
-			camera.baseRotation * Vector3.right * input.Horizontal()
-			+ camera.baseRotation * Vector3.forward * input.Vertical();
+			camera.baseRotation * Vector3.right * input.Horizontal
+			+ camera.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
 
-		driver.Drive(movement / amount, speed * amount * Time.deltaTime);
+		driver.Drive(movement / amount, amount * Time.deltaTime);
 	}
 
 	private void Fire()
@@ -85,8 +90,11 @@ public class PlayerController : MonoBehaviour
 
 	public void Hurt(float damage)
 	{
+		Debug.Log($"[{name}]: Hurt ({damage})");
+
+
 		hitpoints -= Mathf.RoundToInt(damage);
-		//mockHpField.text = $"HP: {hitpoints}";
+		hud.Hp = hitpoints;
 
 		if (hitpoints <= 0)
 		{
@@ -99,7 +107,7 @@ public class PlayerController : MonoBehaviour
 	private void StartCarryingGun(Gun gun)
 	{
 		this.gun = gun;
-		gun.StartCarrying(gunHandle);
+		gun.StartCarrying(gunParent);
 	}
 
 	private void StopCarryingGun()
