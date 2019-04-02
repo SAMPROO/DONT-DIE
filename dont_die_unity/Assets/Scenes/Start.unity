@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 1945333710}
   - component: {fileID: 1945333713}
   - component: {fileID: 1945333712}
+  - component: {fileID: 1945333714}
   m_Layer: 5
   m_Name: ButtonPanel
   m_TagString: Untagged
@@ -1342,6 +1343,22 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 1
   m_ConstraintCount: 2
+--- !u!114 &1945333714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945333708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60af2309eb83044dbe4b079a11c6811, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button1: {fileID: 180978099}
+  button2: {fileID: 1066485410}
+  button3: {fileID: 1271183302}
+  button4: {fileID: 1776385783}
 --- !u!1 &2059965909
 GameObject:
   m_ObjectHideFlags: 0
