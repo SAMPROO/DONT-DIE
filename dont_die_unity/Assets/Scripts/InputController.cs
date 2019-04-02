@@ -5,8 +5,8 @@ public delegate void OneOffAction();
 
 public class InputController
 {
-	public float Horizontal() => Input.GetAxis("Horizontal");
-	public float Vertical() => Input.GetAxis("Vertical");
+	public float Horizontal => Input.GetAxis("Horizontal");
+	public float Vertical => Input.GetAxis("Vertical");
 
 	public event OneOffAction Jump;
 	public event OneOffAction Fire;
