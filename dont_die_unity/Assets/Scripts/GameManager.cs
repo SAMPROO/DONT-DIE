@@ -23,11 +23,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(sceneNames[sceneIndex]);
+        	// Default LoadSceneMode is Single, but lets be explicit
+			SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);			        	
 
             if (sceneIndex == 1)
             {
-                InitializeLevel();
+				// Scene loading completes next frame, so we need to subscribe event.
+				// Also we need to unsubscribe, so let's use proper function.            	
+            	SceneManager.sceneLoaded += OnLevelSceneLoaded;
             }
 
             sceneIndex++;
@@ -37,34 +40,37 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+    // Kinda hacky feeling function, but whatever
+    private void OnLevelSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+    	InitializeLevel();
+
+    	// Unsubscribe itself, so we don't keep initializing level, when not supposed to
+    	SceneManager.sceneLoaded -= OnLevelSceneLoaded;
+    }
+
     private void InitializeLevel()
 	{
-        // Load Level
         // Get number of players
         // get spawnpoints from level
-        // instantiate players to spawn points
-        // 5 .reset/initialize players
-        // profit
 
-
-		// 5.
+		// For number od players:
+        // 		Instantiate players to spawn points
+        // 		Reset/initialize players
         players = new PlayerController[maxPlayers];
 
         Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0) };
 
 		for (int i = 0; i < numberOfPlayers; i++)
 		{
-			players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity, transform).GetComponent<PlayerController>();
-			// Get random color
-			// Get controller
-			// get etc..
+			players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
+
+			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(new PlayerHandle (i));//, color, controller, etc....);
 
 			players[i].OnDie += OnPlayerDie;
 		}
-
-		// Dependency injection
-
 	}
 
 
