@@ -4,10 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(RagdollCharacterDriver), typeof(DamageController))]
 public class PlayerController : MonoBehaviour
 {
-	// this should instead be set from game manager etc. when creating screen
-	// use this to align movement with camera
-	[SerializeField]
-	private new Camera3rdPerson camera;
+    // this should instead be set from game manager etc. when creating screen
+    // use this to align movement with camera
+    [SerializeField]
+    private new OrbitCameraTP camera;
+	//private new Camera3rdPerson camera;
 
 	// this also needs to be set outside
 	private InputController input = new InputController(); 
