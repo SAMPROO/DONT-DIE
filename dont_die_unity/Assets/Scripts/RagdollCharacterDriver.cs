@@ -3,7 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class RagdollCharacterDriver : MonoBehaviour
 {
-	[SerializeField] private float jumpPower;
+	[SerializeField] private float jumpPower = 5f;
+	[SerializeField] private float speed = 3f;
 
 	private new Rigidbody rigidbody;
 
@@ -23,6 +24,8 @@ public class RagdollCharacterDriver : MonoBehaviour
 
 		if (amount > 0)
 		{
+			amount *= speed;
+
 			rigidbody.MovePosition(transform.position + direction * amount);
 			rigidbody.MoveRotation(Quaternion.LookRotation (direction, Vector3.up));
 		}
