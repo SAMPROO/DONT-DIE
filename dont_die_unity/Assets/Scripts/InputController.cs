@@ -102,6 +102,9 @@ public class InputController
         if (Input.GetButtonDown(interactKeyName))
             PickUp?.Invoke();
 
-	}
+        //// added because fire button doesnt work on ps4 controller (currently)
+        //if (Input.GetKeyDown(KeyCode.F))
+        //    Fire?.Invoke();
+    }
 
 }
