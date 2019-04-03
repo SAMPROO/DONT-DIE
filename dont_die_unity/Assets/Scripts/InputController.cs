@@ -83,6 +83,7 @@ public class InputController
         else
             Focus = false;
 
+        // added because fire button doesnt work on ps4 controller (currently)
         if (Input.GetKeyDown(KeyCode.F))
             Fire?.Invoke();
 	}
