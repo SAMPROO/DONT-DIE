@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279b13d50a2a6cd40b1c28cc71cdb0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVelocity: 5
-  touchDamageRepeatDelay: 1
+  minimumFallHeight: 1
+  tickRate: 1
   TakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -476,11 +476,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300044, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
+    - target: {fileID: 2300046, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 57f546e750ea450458814779a2b39b16, type: 2}
-    - target: {fileID: 2300046, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
+    - target: {fileID: 2300044, guid: ddaa78e12776acc49b1740009240b63a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 57f546e750ea450458814779a2b39b16, type: 2}
