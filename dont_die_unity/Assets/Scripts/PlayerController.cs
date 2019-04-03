@@ -41,18 +41,19 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
-	//private void Start ()
-	//{
-	//	// Initialize in builder scene only
-	//	if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterBuilder")
-	//	{
-	//		Initialize(new PlayerHandle(0), "No idea");
-	//	}
-	//}
+    //private void Start ()
+    //{
+    //	// Initialize in builder scene only
+    //	if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterBuilder")
+    //	{
+    //		Initialize(new PlayerHandle(0), "No idea");
+    //	}
+    //}
+    public void Initialize(PlayerHandle handle, Camera camera, InputController inputCnt)
+    {
+        input = inputCnt;
 
-	public void Initialize(PlayerHandle handle, Camera camera)
-	{
-		this.handle = handle;
+        this.handle = handle;
 
         orbitCamera = camera.GetComponent<OrbitCameraTP>();
         orbitCamera.anchor = orbitAnchor;

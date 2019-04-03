@@ -5,29 +5,85 @@ public delegate void OneOffAction();
 
 public class InputController
 {
-	public float Horizontal => Input.GetAxis("Horizontal");
-	public float Vertical => Input.GetAxis("Vertical");
+    private static string
+        nullAxisName = "NullAxis",
+        baseMoveAxisXName   = "MoveX",
+        baseMoveAxisYName   = "MoveY",
+        baseLookAxisXName   = "LookX",
+        baseLookAxisYName   = "LookY",
+        baseJumpKeyName     = "A",
+        baseInteractKeyName = "X",
+        baseLTAxisName      = "LT",
+        baseRTAxisName      = "RT";
 
-	public event OneOffAction Jump;
+
+
+
+    public static InputController[] CreateControllers(int playersCount)
+    {
+        InputController[] inputControllers = new InputController[playersCount];
+
+        for (int i = 0; i < playersCount; i++)
+        {
+            inputControllers[i] = new InputController
+            {
+                moveAxisXName   = $"{baseMoveAxisXName}{i + 1}",
+                moveAxisYName   = $"{baseMoveAxisYName}{i + 1}",
+                lookAxisXName   = $"{baseLookAxisXName}{i + 1}",
+                lookAxisYName   = $"{baseLookAxisYName}{i + 1}",
+                LTAxisName      = $"{baseLTAxisName}{i + 1}",
+                RTAxisName      = $"{baseRTAxisName}{i + 1}",
+                jumpKeyName     = $"{baseJumpKeyName}{i + 1}",
+                interactKeyName = $"{baseInteractKeyName}{i + 1}"
+            };
+        }
+        return inputControllers;
+    }
+
+    private string
+        moveAxisXName = nullAxisName,
+        moveAxisYName = nullAxisName,
+        lookAxisXName = nullAxisName,
+        lookAxisYName = nullAxisName,
+        LTAxisName = nullAxisName,
+        RTAxisName = nullAxisName,
+        jumpKeyName = nullAxisName,
+        interactKeyName = nullAxisName;
+        
+
+
+    public float Horizontal => Input.GetAxis(moveAxisXName);
+	public float Vertical => -Input.GetAxis(moveAxisYName);
+
+    public float LookHorizontal => Input.GetAxisRaw(lookAxisXName);
+    public float LookVertical => Input.GetAxisRaw(lookAxisYName);
+
+    public bool Focus;
+
+    public event OneOffAction Jump;
 	public event OneOffAction Fire;
 	public event OneOffAction PickUp;
 
-    private KeyCode jumpKey = KeyCode.Space;
-	private KeyCode fireKey = KeyCode.Mouse0;
-	private KeyCode pickUpKey = KeyCode.E;
+	private KeyCode fireKey = KeyCode.E;
 
-    // This is probably not a monobehaviour, hence it needs to be updated manually
-    // Either by player class or some sort InputControllerManager
-    public void UpdateController()
+    
+	// This is probably not a monobehaviour, hence it needs to be updated manually
+	// Either by player class or some sort InputControllerManager
+	public void UpdateController()
 	{
-		if (Input.GetKeyDown(jumpKey))
+		if (Input.GetButtonDown(jumpKeyName))
 			Jump?.Invoke();
 
-		if (Input.GetKeyDown(fireKey))
+        if (Input.GetAxisRaw(RTAxisName) > 0.5f)
 			Fire?.Invoke();
 
-        if (Input.GetKeyDown(pickUpKey))
+        if (Input.GetKeyDown(interactKeyName))
             PickUp?.Invoke();
-    }
+
+        if (Input.GetAxisRaw(LTAxisName) > 0.5f)
+            Focus = true;
+        else
+            Focus = false;
+	}
 }
 
