@@ -82,6 +82,9 @@ public class InputController
             Focus = true;
         else
             Focus = false;
+
+        if (Input.GetKeyDown(KeyCode.F))
+            Fire?.Invoke();
 	}
 }
 
