@@ -64,8 +64,6 @@ public class InputController
 	public event OneOffAction Fire;
 	public event OneOffAction PickUp;
 
-	private KeyCode fireKey = KeyCode.E;
-
     
 	// This is probably not a monobehaviour, hence it needs to be updated manually
 	// Either by player class or some sort InputControllerManager
@@ -77,7 +75,7 @@ public class InputController
         if (Input.GetAxisRaw(RTAxisName) > 0.5f)
 			Fire?.Invoke();
 
-        if (Input.GetKeyDown(interactKeyName))
+        if (Input.GetButtonDown(interactKeyName))
             PickUp?.Invoke();
 
         if (Input.GetAxisRaw(LTAxisName) > 0.5f)

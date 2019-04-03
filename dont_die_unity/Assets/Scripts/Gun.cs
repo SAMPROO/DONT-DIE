@@ -70,7 +70,8 @@ public class Gun : MonoBehaviour
 	{
 		// Turn off physics etc.
 		transform.SetParent(carrier);
-        transform.position = carrier.position;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
 		Debug.Log("Gun hops on");
 	}
 
