@@ -10,7 +10,7 @@ public class OrbitCameraTP : MonoBehaviour
     [HideInInspector]
     public Transform anchor;
 
-    public float sensitivity;
+    public Vector2 sensitivity = new Vector2(1,1);
     public float cameraDistanceMax;
     public float cameraDistanceMin;
 
@@ -22,23 +22,26 @@ public class OrbitCameraTP : MonoBehaviour
 
     private bool aim;
 
+    private InputController input;
+
     //for player
     public Quaternion baseRotation => Quaternion.Euler(0, inputX, 0);
 
-    //private void Start()
-    //{
-    //    Cursor.visible = false;
-    //    Cursor.lockState = CursorLockMode.Locked;
-    //}
+    private void Start()
+    {
+        if (sensitivity.x == 0) sensitivity.x = 2f;
+        if (sensitivity.y == 0) sensitivity.y = 0.5f;
+    }
+
 
     private void Update()
     {
-        inputX += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-        inputY += Input.GetAxis("Mouse Y") * -sensitivity * Time.deltaTime;
-
+        inputX += input.LookHorizontal * sensitivity.x *90* Time.deltaTime;
+        inputY += input.LookVertical * sensitivity.y *90* Time.deltaTime;
+        //Debug.Log(input.LookHorizontal);
         inputY = Mathf.Clamp(inputY, Y_ANGLE_MIN, Y_ANGLE_MAX);
 
-        if (Input.GetMouseButton(1))
+        if (input.Focus)
         {
             aim = true;
         }
@@ -75,5 +78,11 @@ public class OrbitCameraTP : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(_yRot, _xRot, 0);
         transform.position = anchor.position + rotation * dir;
         transform.LookAt(anchor.position);
+    }
+
+    public void SetInputController(InputController _input)
+    {
+        input = _input;
+        Debug.Log(sensitivity);
     }
 }

@@ -75,24 +75,27 @@ public class SingletonGameManager : MonoBehaviour
         // Get number of players
         // get spawnpoints from level
 
-		// For number od players:
+        // For number od players:
         // 		Instantiate players to spawn points
         // 		Reset/initialize players
+        InputController[] inputControllers = InputController.CreateControllers(numberOfPlayers);
         players = new PlayerController[maxPlayers];
         playerCameras = new Camera[maxPlayers];
 
         Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(4, 0, 0) };
 
-		for (int i = 0; i < numberOfPlayers; i++)
-		{
-            playerCameras[i] = Instantiate (orbitCameraPrefab, spawnPoints[i], Quaternion.identity).GetComponent<Camera>();
+        for (int i = 0; i < numberOfPlayers; i++)
+        {
+            playerCameras[i] = Instantiate(orbitCameraPrefab, spawnPoints[i], Quaternion.identity).GetComponent<Camera>();
+            playerCameras[i].GetComponent<OrbitCameraTP>().SetInputController(inputControllers[i]);
+            Debug.Log(playerCameras[i].GetComponent<OrbitCameraTP>().sensitivity);
 
             players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
 
 			// Get controller, camera, hud, random color, etc
-			players[i].Initialize(new PlayerHandle (i), playerCameras[i]);//, color, controller, etc....);
-
+			players[i].Initialize(new PlayerHandle (i), playerCameras[i],inputControllers[i]);//, color, controller, etc....);
 			players[i].OnDie += OnPlayerDie;
+
 		}
 
         SetViewports(playerCameras);
