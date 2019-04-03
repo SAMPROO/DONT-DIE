@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -6,23 +7,31 @@ public class FloatEvent : UnityEvent<float>{}
 
 public class DamageController : MonoBehaviour
 {
-    // minimum relative velocity before any impact damage
-    public float minVelocity;
+    // minimum heigh/distance at 1g acceleration before damage
+    public float minimumFallHeight;
 
-    // any touchDamage is repeated with delay
-    public float touchDamageRepeatDelay;
+    // minimum relative velocity before any impact damage
+    private float minimumVelocity;
+
+    // any touchDamage is repeated every tick
+    public float tickRate;
 
     [Header("(Use \"Dynamic float\" option)")]
     public FloatEvent TakeDamage = new FloatEvent();
 
-    float touchDamage = 0;
+    private float touchDamage = 0;
+    private List<float> touchDamages = new List<float>();
 
     private void Start()
     {
+        // pass this script to all damageChilds
         foreach (var child in GetComponentsInChildren<DamageChild>())
         {
             child.damageController = this;
         }
+
+        // calculation to get minimumVelocity from minimumFallHeight
+        minimumVelocity = Mathf.Sqrt(2 * Physics.gravity.magnitude * minimumFallHeight);
     }
 
     public void CalculateImpactDamage(Collision collision, float damageMultiplier)
@@ -30,7 +39,7 @@ public class DamageController : MonoBehaviour
         // velocity relative to other gameobject at the time of the collision
         float impactVelocity = collision.relativeVelocity.magnitude;
 
-        if (impactVelocity > minVelocity)
+        if (impactVelocity > minimumVelocity)
         {
             float impactDamage = 1;
 
@@ -46,7 +55,7 @@ public class DamageController : MonoBehaviour
             if (impactDamageType == 1) // damage is based on relative velocity
             {
                 // consider velocity over minimum as damage
-                impactDamage *= impactVelocity - minVelocity;
+                impactDamage *= impactVelocity - minimumVelocity;
             }
 
             // multiply damage depending on which part got hit
@@ -58,24 +67,31 @@ public class DamageController : MonoBehaviour
                 TakeDamage.Invoke(impactDamage);
                 Debug.Log("Impact damage: " + impactDamage);
             }
-
-            // could be later just hard coded similar to:
-            // player.GetComponent<PlayerController>().TakeDamage(impactDamage);
         }
     }
 
     // add or remove touch damage
     public void AddTouchDamage(float amount)
     {
-        touchDamage += amount;
+        if (amount > 0)
+        {
+            touchDamages.Add(amount);
+        }
+        else
+        {
+            touchDamages.Remove(-amount);
+        }
 
-        // clamp minimum to 0
-        touchDamage = Mathf.Max(touchDamage, 0);
+        if (touchDamages.Count > 0)
+        {
+            touchDamage = Mathf.Max(touchDamages.ToArray());
+        }
+        else touchDamage = 0;
 
         // if there is any touchDamage it is repeatedly applied to player
         if (!IsInvoking("TakeTouchDamage") && touchDamage > 0)
         {
-            InvokeRepeating("TakeTouchDamage", 0, touchDamageRepeatDelay);
+            InvokeRepeating("TakeTouchDamage", 0, tickRate);
         }
         else if (IsInvoking("TakeTouchDamage") && touchDamage == 0)
         {
@@ -83,7 +99,7 @@ public class DamageController : MonoBehaviour
         }
     }
 
-    void TakeTouchDamage()
+    private void TakeTouchDamage()
     {
         TakeDamage.Invoke(touchDamage);
         Debug.Log("Touch damage: " + touchDamage);
