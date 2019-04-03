@@ -22,9 +22,12 @@ public class Gun : MonoBehaviour
     [Space]
     public float time;
 
+    private Rigidbody rb;
+
     private void Start()
     {
         secondsPerRound = 1f / roundPerSecond;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -72,6 +75,7 @@ public class Gun : MonoBehaviour
 		transform.SetParent(carrier);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        rb.isKinematic = true;
 		Debug.Log("Gun hops on");
 	}
 
@@ -79,7 +83,8 @@ public class Gun : MonoBehaviour
 	{
 		// Turn on physics etc.
 		transform.SetParent(null);
-		Debug.Log("Gun thrown away");
+        rb.isKinematic = false;
+        Debug.Log("Gun thrown away");
 	}
 
     void AccuracyReticle(int CircleVertexCount, float reticleDistance)

@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
             if (gunDistance < distance)
             {
-                newGun = hitColliders[i].GetComponent<Gun>();
+                newGun = hitColliders[i].GetComponentInParent<Gun>();
             }
         }
 
