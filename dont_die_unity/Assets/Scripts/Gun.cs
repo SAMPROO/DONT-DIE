@@ -70,6 +70,7 @@ public class Gun : MonoBehaviour
 	{
 		// Turn off physics etc.
 		transform.SetParent(carrier);
+        transform.position = carrier.position;
 		Debug.Log("Gun hops on");
 	}
 

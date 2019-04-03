@@ -22,9 +22,13 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float speed = 3.0f;
 	[SerializeField] private Gun gun;
 	[SerializeField] private Transform gunParent;
+    [SerializeField] private LayerMask gunLayer;
+    [SerializeField] private Transform bodyCenterPosition;
 
-	// This is really not serializable thing, but it is injected from hudmanager or similar
-	[SerializeField] private PlayerHUD hud;
+    [SerializeField] private bool collisionWithGun;
+
+    // This is really not serializable thing, but it is injected from hudmanager or similar
+    [SerializeField] private PlayerHUD hud;
  
 	[Header("Health")]
 	[SerializeField] private int maxHitpoints = 100;
@@ -56,9 +60,10 @@ public class PlayerController : MonoBehaviour
         // Subscribe input events
         input.Fire += Fire;
 		input.Jump += driver.Jump;
+		input.PickUp += StartCarryingGun;
 
-		// Initialize health systems
-		hitpoints = maxHitpoints;
+        // Initialize health systems
+        hitpoints = maxHitpoints;
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
@@ -105,11 +110,36 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-
-	private void StartCarryingGun(Gun gun)
+    //Once the arm is working, we can create Physics.OverlapSphere infront of hand 
+    private void StartCarryingGun()
 	{
-		this.gun = gun;
-		gun.StartCarrying(gunParent);
+        Gun newGun = null;
+
+        float sphereRadius = transform.localScale.y;
+
+        Collider[] hitColliders = Physics.OverlapSphere(bodyCenterPosition.position, sphereRadius, gunLayer);
+
+        float distance = sphereRadius;
+
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            float gunDistance = Vector3.Distance(hitColliders[i].transform.position, bodyCenterPosition.position);
+
+            if (gunDistance < distance)
+            {
+                newGun = hitColliders[i].GetComponent<Gun>();
+            }
+        }
+
+        if (gun == null && newGun != null)
+        {
+            this.gun = newGun;
+            gun.StartCarrying(gunParent);
+        }
+        else if (gun != null && newGun != null)
+        {
+            StopCarryingGun();
+        }
 	}
 
 	private void StopCarryingGun()
@@ -118,5 +148,10 @@ public class PlayerController : MonoBehaviour
 		gun = null;
 	}
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+        Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
+    }
 }

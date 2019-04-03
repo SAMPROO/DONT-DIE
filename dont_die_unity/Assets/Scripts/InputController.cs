@@ -10,19 +10,24 @@ public class InputController
 
 	public event OneOffAction Jump;
 	public event OneOffAction Fire;
+	public event OneOffAction PickUp;
 
-	private KeyCode jumpKey = KeyCode.Space;
-	private KeyCode fireKey = KeyCode.E;
+    private KeyCode jumpKey = KeyCode.Space;
+	private KeyCode fireKey = KeyCode.Mouse0;
+	private KeyCode pickUpKey = KeyCode.E;
 
-	// This is probably not a monobehaviour, hence it needs to be updated manually
-	// Either by player class or some sort InputControllerManager
-	public void UpdateController()
+    // This is probably not a monobehaviour, hence it needs to be updated manually
+    // Either by player class or some sort InputControllerManager
+    public void UpdateController()
 	{
 		if (Input.GetKeyDown(jumpKey))
 			Jump?.Invoke();
 
 		if (Input.GetKeyDown(fireKey))
 			Fire?.Invoke();
-	}
+
+        if (Input.GetKeyDown(pickUpKey))
+            PickUp?.Invoke();
+    }
 }
 

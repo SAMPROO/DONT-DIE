@@ -3203,7 +3203,17 @@ PrefabInstance:
     - target: {fileID: 1747447971221620282, guid: 600d842e55e5adc439b96d99b5b9d207,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747447971221620282, guid: 600d842e55e5adc439b96d99b5b9d207,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747447971221620282, guid: 600d842e55e5adc439b96d99b5b9d207,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1747447971221620281, guid: 600d842e55e5adc439b96d99b5b9d207,
         type: 3}
