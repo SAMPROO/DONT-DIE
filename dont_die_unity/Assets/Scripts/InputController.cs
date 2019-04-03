@@ -55,7 +55,6 @@ public class InputController
         interactKeyName = nullAxisName;
 
 
-
     public float Horizontal     => Input.GetAxis(moveAxisXName);
 	public float Vertical       => -Input.GetAxis(moveAxisYName);
 
