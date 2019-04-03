@@ -29,6 +29,7 @@ public class OrbitCameraTP : MonoBehaviour
 
     private void Start()
     {
+        //Hack sensitivityn Vector2 prefabissa instanssioituna on jostain syystä 0 ja 0
         if (sensitivity.x == 0) sensitivity.x = 2f;
         if (sensitivity.y == 0) sensitivity.y = 0.5f;
     }
@@ -83,6 +84,5 @@ public class OrbitCameraTP : MonoBehaviour
     public void SetInputController(InputController _input)
     {
         input = _input;
-        Debug.Log(sensitivity);
     }
 }
