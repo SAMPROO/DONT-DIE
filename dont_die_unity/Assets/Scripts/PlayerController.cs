@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform orbitAnchor;
 
     // this also needs to be set outside
-    private InputController input = new InputController(); 
+    private IInputController input;
 	
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     //		Initialize(new PlayerHandle(0), "No idea");
     //	}
     //}
-    public void Initialize(PlayerHandle handle, Camera camera, InputController inputCnt)
+    public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
     {
         input = inputCnt;
 

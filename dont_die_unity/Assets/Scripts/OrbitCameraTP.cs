@@ -22,7 +22,7 @@ public class OrbitCameraTP : MonoBehaviour
 
     private bool aim;
 
-    private InputController input;
+    private IInputController input;
 
     //for player
     public Quaternion baseRotation => Quaternion.Euler(0, inputX, 0);
@@ -81,7 +81,7 @@ public class OrbitCameraTP : MonoBehaviour
         transform.LookAt(anchor.position);
     }
 
-    public void SetInputController(InputController _input)
+    public void SetInputController(IInputController _input)
     {
         input = _input;
     }
