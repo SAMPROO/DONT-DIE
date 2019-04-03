@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         input.Fire += Fire;
 		input.Jump += driver.Jump;
 		input.PickUp += StartCarryingGun;
-
+        
         // Initialize health systems
         hitpoints = maxHitpoints;
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
@@ -98,7 +98,6 @@ public class PlayerController : MonoBehaviour
 
 	public void Hurt(float damage)
 	{
-		Debug.Log($"[{name}]: Hurt ({damage})");
 
 
 		hitpoints -= Mathf.RoundToInt(damage);
@@ -107,7 +106,6 @@ public class PlayerController : MonoBehaviour
 		if (hitpoints <= 0)
 		{
 			OnDie?.Invoke(handle);
-			Debug.Log($"[{name}]: died");
 		}
 	}
 
