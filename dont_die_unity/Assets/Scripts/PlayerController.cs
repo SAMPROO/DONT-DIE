@@ -11,7 +11,11 @@ public class PlayerController : MonoBehaviour
 
     // this also needs to be set outside
     private IInputController input;
-	
+
+    #if UNITY_EDITOR
+    public EditorInput editorInput = null;
+	#endif
+
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
 	// [SerializeField] private CharacterHealth health;
@@ -39,6 +43,11 @@ public class PlayerController : MonoBehaviour
 	{
 		driver = GetComponent<RagdollCharacterDriver>();
 		damageController = GetComponent<DamageController>();
+
+		#if UNITY_EDITOR
+		if (editorInput != null)
+			input = editorInput;
+		#endif
 	}
 
     public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
