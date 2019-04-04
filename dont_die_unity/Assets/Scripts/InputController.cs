@@ -57,8 +57,8 @@ public class InputControllerManager
         //Base prefix can be removed
         baseMoveAxisXName   = "MoveX",
         baseMoveAxisYName   = "MoveY",
-        baseLookAxisXName   = "LT",
-        baseLookAxisYName   = "RT",
+        baseLookAxisXName   = "LookXAlt",
+        baseLookAxisYName   = "LookYAlt",
         baseJumpKeyName     = "X",
         baseInteractKeyName = "A",
         baseLTAxisName      = "LTALT",
