@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PunchGun : MonoBehaviour, IWeapon
 {
     public float force;
-    public Rigidbody BoxingGlove;
+    public Rigidbody boxingGlove;
 
     public float waitTime;
 
@@ -15,23 +16,23 @@ public class PunchGun : MonoBehaviour, IWeapon
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        startPosition = BoxingGlove.transform.localPosition;
+        startPosition = boxingGlove.transform.localPosition;
     }
 
     public void Use()
     {
-        if (BoxingGlove.isKinematic)
+        if (boxingGlove.isKinematic)
         {
             Debug.Log("Punch!!!");
 
-            BoxingGlove.isKinematic = false;
-            BoxingGlove.AddForce(transform.forward * force);
+            boxingGlove.isKinematic = false;
+            boxingGlove.AddForce(transform.forward * force);
 
-            Invoke("ReturnToSender", waitTime);
+            Invoke(nameof(ReturnToSender), waitTime);
         }
         else
         {
-            Debug.Log("Can't punch while puncing...");
+            Debug.Log("Can't punch while punching...");
         }
     }
 
@@ -61,8 +62,8 @@ public class PunchGun : MonoBehaviour, IWeapon
     {
         // reel the glove back in...
 
-        BoxingGlove.isKinematic = true;
-        BoxingGlove.transform.localPosition = startPosition;
-        BoxingGlove.transform.localRotation = Quaternion.identity;
+        boxingGlove.isKinematic = true;
+        boxingGlove.transform.localPosition = startPosition;
+        boxingGlove.transform.localRotation = Quaternion.identity;
     }
 }

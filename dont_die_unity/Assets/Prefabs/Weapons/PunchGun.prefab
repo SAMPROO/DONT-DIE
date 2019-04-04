@@ -295,8 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 300
-  BoxingGlove: {fileID: 1186899448350215796}
-  waitTime: 0.5
+  boxingGlove: {fileID: 1186899448350215796}
+  waitTime: 1.1
 --- !u!145 &1186899449158231846
 SpringJoint:
   m_ObjectHideFlags: 0
