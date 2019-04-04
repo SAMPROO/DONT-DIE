@@ -1,69 +1,65 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class RagdollCharacterDriver : MonoBehaviour
 {
+	[Serializable]
+	private class ControlBone
+	{
+		public Rigidbody rigidbody;
+		public Vector3 targetPosition;
+		public float force;
+	}
+
+	[Header("Specs")]
 	[SerializeField] private float jumpPower = 5f;
 	[SerializeField] private float speed = 3f;
-
-	private new Rigidbody rigidbody;
-
-	[SerializeField] private Rigidbody hipRb;
-	[SerializeField] private Rigidbody headRb;
+	[SerializeField] private float moveForce;
+	[SerializeField] private float stabilityForce;
+	[SerializeField] private float hipStabilityForce;
 
 
+	[Header("Controlled parts")]
+	[SerializeField] private ControlBone hip;
+	[SerializeField] private ControlBone neck;
+	[SerializeField] private ControlBone head;
 
-	[SerializeField] private float hipHeight = 0.5f;
-	Vector3 hipPosition => transform.position + new Vector3(0, hipHeight, 0);
-	[SerializeField] private float headHeight = 2.0f;
-	Vector3 headPosition => transform.position + new Vector3(0, headHeight, 0);
+	[SerializeField] private Rigidbody controlRb;
 
-	public float moveForce;
-	public float stabilityForce;
+	Vector3 hipPosition => controlRb.position + hip.targetPosition;
+	Vector3 headPosition => controlRb.position + neck.targetPosition;
 
-	public float abdomenDamp = 0.5f;
-
-	private void Awake()
-	{
-		rigidbody = GetComponent<Rigidbody> ();
-	}
 
 	private void FixedUpdate()
 	{
-		hipRb.AddForce((hipPosition - hipRb.position) * stabilityForce);
-		headRb.AddForce ((headPosition - headRb.position) * stabilityForce);
+		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
+		neck.rigidbody.AddForce((headPosition - neck.rigidbody.position) * neck.force);
+
+		head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
+		// head.rigidbody.transform.localRotation = Quaternion.identity;
 	}
 
 	// Move character to direction, do this in fixed update
 	public void Drive(Vector3 direction, float amount)
 	{
 		// Enforce this to be used only in fixed update
-	#if UNITY_EDITOR
-		if (!Time.inFixedTimeStep)
+		if (Time.inFixedTimeStep == false)
+		{
 			Debug.LogError("Use RagdollCharacterDriver.Drive only in FixedUpdate");				
-	#endif
+			return;
+		}
 
 		if (amount > 0)
 		{
 			amount *= speed;
-
-			transform.position += direction * amount;
-			// hipRb.AddForce(moveForce * direction * amount);
-
-			Debug.Log($"[{name}]: Added force ({(moveForce * direction * amount).magnitude})");
-
-			Debug.DrawRay(hipPosition, moveForce * direction * amount, Color.cyan);
-
-
-			// rigidbody.MovePosition(transform.position + direction * amount);
-			// rigidbody.MoveRotation(Quaternion.LookRotation (direction, Vector3.up));
+			controlRb.MovePosition(controlRb.position + direction * amount);
 		}
 	}
 
 	public void Jump()
 	{
 		// Todo: test if touching walkable perimeter, and only jump if do
-		rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+		controlRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
 		Debug.Log("Ragdoll do jump");
 	}
 
@@ -72,6 +68,7 @@ public class RagdollCharacterDriver : MonoBehaviour
 		Gizmos.color = Color.magenta;
 
 		Gizmos.DrawWireSphere(hipPosition, 0.05f);
-	}
+		Gizmos.DrawWireSphere(headPosition, 0.05f);
 
+	}
 }
