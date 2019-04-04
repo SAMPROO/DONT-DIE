@@ -65,7 +65,6 @@ public class DamageController : MonoBehaviour
             if (impactDamage > 0)
             {
                 TakeDamage.Invoke(impactDamage);
-                Debug.Log("Impact damage: " + impactDamage);
             }
         }
     }
@@ -102,6 +101,5 @@ public class DamageController : MonoBehaviour
     private void TakeTouchDamage()
     {
         TakeDamage.Invoke(touchDamage);
-        Debug.Log("Touch damage: " + touchDamage);
     }
 }

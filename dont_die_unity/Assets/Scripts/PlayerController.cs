@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform orbitAnchor;
 
     // this also needs to be set outside
-    private InputController input = new InputController(); 
+    private IInputController input;
 	
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	public event Action<PlayerHandle> OnDie;
 
 	[SerializeField] private float speed = 3.0f;
-	[SerializeField] private Gun gun;
+	[SerializeField] private IWeapon gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
     [SerializeField] private Transform bodyCenterPosition;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
-    public void Initialize(PlayerHandle handle, Camera camera, InputController inputCnt)
+    public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
     {
         input = inputCnt;
 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         input.Fire += Fire;
 		input.Jump += driver.Jump;
 		input.PickUp += StartCarryingGun;
-
+        
         // Initialize health systems
         hitpoints = maxHitpoints;
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (gun != null)
 		{
-			/*bool didShoot = */gun.Shoot();
+			gun.Use();
 		}
 		else
 		{
@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
 
 	public void Hurt(float damage)
 	{
-		Debug.Log($"[{name}]: Hurt ({damage})");
 
 
 		hitpoints -= Mathf.RoundToInt(damage);
@@ -99,14 +98,13 @@ public class PlayerController : MonoBehaviour
 		if (hitpoints <= 0)
 		{
 			OnDie?.Invoke(handle);
-			Debug.Log($"[{name}]: died");
 		}
 	}
 
     //Once the arm is working, we can create Physics.OverlapSphere infront of hand 
     private void StartCarryingGun()
 	{
-        Gun newGun = null;
+        IWeapon newGun = null;
 
         float sphereRadius = transform.localScale.y;
 
@@ -120,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
             if (gunDistance < distance)
             {
-                newGun = hitColliders[i].GetComponent<Gun>();
+                newGun = hitColliders[i].GetComponentInParent<IWeapon>();
             }
         }
 

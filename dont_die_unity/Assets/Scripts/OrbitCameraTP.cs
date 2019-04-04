@@ -21,13 +21,14 @@ public class OrbitCameraTP : MonoBehaviour
 
     private bool aim;
 
-    private InputController input;
+    private IInputController input;
 
     //for player
     public Quaternion baseRotation => Quaternion.Euler(0, inputX, 0);
 
     private void Start()
     {
+        //Hack sensitivityn Vector2 prefabissa instanssioituna on jostain syystä 0 ja 0
         if (sensitivity.x == 0) sensitivity.x = 2f;
         if (sensitivity.y == 0) sensitivity.y = 0.5f;
     }
@@ -79,9 +80,8 @@ public class OrbitCameraTP : MonoBehaviour
         transform.LookAt(anchor.position);
     }
 
-    public void SetInputController(InputController _input)
+    public void SetInputController(IInputController _input)
     {
         input = _input;
-        Debug.Log(sensitivity);
     }
 }

@@ -78,7 +78,7 @@ public class SingletonGameManager : MonoBehaviour
         // For number od players:
         // 		Instantiate players to spawn points
         // 		Reset/initialize players
-        InputController[] inputControllers = InputController.CreateControllers(numberOfPlayers);
+        IInputController[] inputControllers = InputControllerManager.CreateControllers(numberOfPlayers);
         players = new PlayerController[maxPlayers];
         playerCameras = new Camera[maxPlayers];
 
@@ -88,7 +88,6 @@ public class SingletonGameManager : MonoBehaviour
         {
             playerCameras[i] = Instantiate(orbitCameraPrefab, spawnPoints[i], Quaternion.identity).GetComponent<Camera>();
             playerCameras[i].GetComponent<OrbitCameraTP>().SetInputController(inputControllers[i]);
-            Debug.Log(playerCameras[i].GetComponent<OrbitCameraTP>().sensitivity);
 
             players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
 
@@ -121,7 +120,6 @@ public class SingletonGameManager : MonoBehaviour
     public void SetPlayerCount(int playerCount)
     {
         numberOfPlayers = playerCount;
-        Debug.Log("Number of players: " + numberOfPlayers);
         LoadNextLevel();
     }
 
