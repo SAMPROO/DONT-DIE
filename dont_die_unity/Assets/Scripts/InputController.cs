@@ -8,6 +8,9 @@ public delegate void OneOffAction();
 
 public interface IInputController
 {
+    //Should be improved
+    float AxisInversion { get; set; }
+    //Should be improved
     float Horizontal    { get; }
     float Vertical      { get; }
 
@@ -59,7 +62,7 @@ public class InputControllerManager
         baseMoveAxisYName   = "MoveY",
         baseLookAxisXName   = "LookXAlt",
         baseLookAxisYName   = "LookYAlt",
-        baseJumpKeyName     = "X",
+        baseJumpKeyName     = "B",
         baseInteractKeyName = "A",
         baseLTAxisName      = "LTALT",
         baseRTAxisName      = "RTALT"
@@ -87,9 +90,13 @@ public class InputControllerManager
             }
 
             JoystickMap map = controllerNames[i] == dualShockName ? dualShockMap : xBoneMap;
-           
+            
+            
+            
+
             controllers[i] = new GamepadController
             {
+
                 //integer i + 1 to match unity's own input system to the player index values
                 moveAxisXName   = $"{map.baseMoveAxisXName}{i + 1}",
                 moveAxisYName   = $"{map.baseMoveAxisYName}{i + 1}",
@@ -101,6 +108,11 @@ public class InputControllerManager
                 interactKeyName = $"{map.baseInteractKeyName}{i + 1}",
                 //Base prefix can be removed
             };
+
+            //Should be improved
+            if (controllerNames[i] == dualShockName) controllers[i].AxisInversion = -1f;
+            else controllers[i].AxisInversion = 1f;
+            //Should be improved
         }
         return controllers;
     }
@@ -111,6 +123,14 @@ public class InputControllerManager
 public class NullController : IInputController
 {
 
+    //Should be improved I think
+    public float AxisInversion
+    {
+        get { return axisInversion; }
+        set { axisInversion = value; }
+    }
+    private float axisInversion;
+    //Should be improved
     public float Horizontal => 0.0f;
     public float Vertical => 0.0f;
 
@@ -141,13 +161,18 @@ public class GamepadController : IInputController
         RTAxisName      = null,
         jumpKeyName     = null,
         interactKeyName = null;
-        
-
+    //Should be improved
+    public float AxisInversion
+    {
+        get { return axisInversion; }
+        set { axisInversion = value; }
+    }
+    private float axisInversion;
+    //Should be improved
     public float Horizontal     => Input.GetAxis(moveAxisXName);
 	public float Vertical       => -Input.GetAxis(moveAxisYName);
-
-    public float LookHorizontal => Input.GetAxisRaw(lookAxisXName);
-    public float LookVertical   => Input.GetAxisRaw(lookAxisYName);
+    public float LookHorizontal => Input.GetAxisRaw(lookAxisXName) * axisInversion; //axis inversion -1 will make it work for dualshock
+    public float LookVertical   => Input.GetAxisRaw(lookAxisYName) * axisInversion;
 
     public bool Focus { get; private set; }
 
