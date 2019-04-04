@@ -8,9 +8,30 @@ public class RagdollCharacterDriver : MonoBehaviour
 
 	private new Rigidbody rigidbody;
 
+	[SerializeField] private Rigidbody hipRb;
+	[SerializeField] private Rigidbody headRb;
+
+
+
+	[SerializeField] private float hipHeight = 0.5f;
+	Vector3 hipPosition => transform.position + new Vector3(0, hipHeight, 0);
+	[SerializeField] private float headHeight = 2.0f;
+	Vector3 headPosition => transform.position + new Vector3(0, headHeight, 0);
+
+	public float moveForce;
+	public float stabilityForce;
+
+	public float abdomenDamp = 0.5f;
+
 	private void Awake()
 	{
-		rigidbody = GetComponent<Rigidbody> ();		
+		rigidbody = GetComponent<Rigidbody> ();
+	}
+
+	private void FixedUpdate()
+	{
+		hipRb.AddForce((hipPosition - hipRb.position) * stabilityForce);
+		headRb.AddForce ((headPosition - headRb.position) * stabilityForce);
 	}
 
 	// Move character to direction, do this in fixed update
@@ -26,8 +47,16 @@ public class RagdollCharacterDriver : MonoBehaviour
 		{
 			amount *= speed;
 
-			rigidbody.MovePosition(transform.position + direction * amount);
-			rigidbody.MoveRotation(Quaternion.LookRotation (direction, Vector3.up));
+			transform.position += direction * amount;
+			// hipRb.AddForce(moveForce * direction * amount);
+
+			Debug.Log($"[{name}]: Added force ({(moveForce * direction * amount).magnitude})");
+
+			Debug.DrawRay(hipPosition, moveForce * direction * amount, Color.cyan);
+
+
+			// rigidbody.MovePosition(transform.position + direction * amount);
+			// rigidbody.MoveRotation(Quaternion.LookRotation (direction, Vector3.up));
 		}
 	}
 
@@ -37,4 +66,12 @@ public class RagdollCharacterDriver : MonoBehaviour
 		rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
 		Debug.Log("Ragdoll do jump");
 	}
+
+	public void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.magenta;
+
+		Gizmos.DrawWireSphere(hipPosition, 0.05f);
+	}
+
 }
