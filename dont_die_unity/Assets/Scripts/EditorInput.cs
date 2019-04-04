@@ -27,7 +27,11 @@ public class EditorInput : MonoBehaviour, IInputController
     public void UpdateController()
     {
         if (Input.GetKeyDown(fireKey)) Fire?.Invoke();
-        if (Input.GetKeyDown(jumpKey)) Jump?.Invoke();
+        if (Input.GetKeyDown(jumpKey))
+        {
+            Debug.Log("Editor jump");
+            Jump?.Invoke();
+        } 
         if (Input.GetKeyDown(pickupKey)) PickUp?.Invoke();
     }
 }

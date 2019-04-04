@@ -60,6 +60,7 @@ public class RagdollCharacterDriver : MonoBehaviour
 	{
 		// Todo: test if touching walkable perimeter, and only jump if do
 		controlRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+		Debug.Log("Jump");
 	}
 
 	public void OnDrawGizmosSelected()

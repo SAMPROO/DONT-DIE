@@ -13,7 +13,12 @@ public class PlayerController : MonoBehaviour
     private IInputController input;
 
     #if UNITY_EDITOR
-    public EditorInput editorInput = null;
+    // Use these to set some values manually in editor only
+    [Header ("Editor Only")]
+    [SerializeField] private EditorInput editorInput = null;
+    [SerializeField] private OrbitCameraTP cameraThing = null;
+    [SerializeField] private bool initializeOnStart = false;
+    [Space]
 	#endif
 
 	private RagdollCharacterDriver driver;
@@ -46,8 +51,38 @@ public class PlayerController : MonoBehaviour
 
 		#if UNITY_EDITOR
 		if (editorInput != null)
+		{
 			input = editorInput;
+			if (cameraThing != null)
+			{
+				cameraThing.SetInputController(editorInput);
+			}
+		}
+
+		if (initializeOnStart)
+		{
+			Initialize(new PlayerHandle(0), cameraThing, editorInput);
+		}
 		#endif
+	}
+
+    public void Initialize(PlayerHandle handle, OrbitCameraTP camera, IInputController inputCnt)
+    {
+        input = inputCnt;
+
+        this.handle = handle;
+
+        orbitCamera = camera;
+        orbitCamera.anchor = orbitAnchor;
+
+        // Subscribe input events
+        input.Fire += Fire;
+		input.Jump += driver.Jump;
+		input.PickUp += StartCarryingGun;
+        
+        // Initialize health systems
+        hitpoints = maxHitpoints;
+		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
     public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
