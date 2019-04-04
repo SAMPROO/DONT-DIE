@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class ProjectileLauncher : MonoBehaviour, IWeapon
 {
     public Transform projectileOrigin;
     public GameObject projectilePrefab;
@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     public float lifetime;
 
     public float roundPerSecond = 3;
-    float secondsPerRound;
+    private float secondsPerRound;
 
     public int ammo = 30;
 
@@ -18,24 +18,29 @@ public class Gun : MonoBehaviour
     public bool debug;
     public int resolution;
     public float reticleDistance;
+    public LayerMask reticleRaycastMask;
 
-    [Space]
-    public float time;
+    private float time;
+
+    private Rigidbody rb;
+
+    private bool isCarried;
 
     private void Start()
     {
         secondsPerRound = 1f / roundPerSecond;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (debug)
+        if (debug && isCarried)
         {
             AccuracyReticle(resolution, reticleDistance);
         }
     }
 
-    public bool Shoot()
+    public void Use()
 	{
         if (ammo > 0 && secondsPerRound - (Time.time - time) <= 0)
         {
@@ -61,28 +66,37 @@ public class Gun : MonoBehaviour
             Debug.Log("Gun says \"Click!\"");
         }
 
-		// Return true if there was enough ammo, so shooter can react
-		// maybe return eg. Vector3? representing recoil
-		return ammo == 0;
-	}
+        // Return true if there was enough ammo, so shooter can react
+        // maybe return eg. Vector3? representing recoil
 
-	public void StartCarrying(Transform carrier)
+        // or just add force from projectileOrigin backwards if shot and when ammo==0: play a sound "click" 
+    }
+
+    public void StartCarrying(Transform carrier)
 	{
 		// Turn off physics etc.
 		transform.SetParent(carrier);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-		Debug.Log("Gun hops on");
+        rb.isKinematic = true;
+
+        isCarried = true;
+
+        Debug.Log("Gun hops on");
 	}
 
 	public void StopCarrying()
 	{
 		// Turn on physics etc.
 		transform.SetParent(null);
-		Debug.Log("Gun thrown away");
+        rb.isKinematic = false;
+
+        isCarried = false;
+
+        Debug.Log("Gun thrown away");
 	}
 
-    void AccuracyReticle(int CircleVertexCount, float reticleDistance)
+    private void AccuracyReticle(int CircleVertexCount, float reticleDistance)
     {
         float segmentWidth = Mathf.PI * 2f / CircleVertexCount;
         float angle = 0f;
@@ -108,7 +122,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    Vector3 GetPointOnCircle(float angle, float distanceMultiplier)
+    private Vector3 GetPointOnCircle(float angle, float distanceMultiplier)
     {
         Vector3 vertex = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
         vertex += Vector3.up * accuracy;
@@ -119,14 +133,14 @@ public class Gun : MonoBehaviour
         return vertex;
     }
 
-    Vector3 Raycast(Vector3 vertex)
+    private Vector3 Raycast(Vector3 vertex)
     {
         Vector3 origin = projectileOrigin.position;
         Vector3 direction = (vertex - projectileOrigin.position).normalized;
 
         float distance = initialVelocity * lifetime;
 
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance, ~(1 << 9)))
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, distance, reticleRaycastMask))
         {
             return hit.point;
         }

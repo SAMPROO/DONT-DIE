@@ -145,8 +145,6 @@ public class NullController : IInputController
     public void UpdateController() { }
 }
 
-
-
 public class GamepadController : IInputController
 {
 
@@ -184,7 +182,7 @@ public class GamepadController : IInputController
     private bool fireEventTriggered = false;
 
     public float triggerDeadzone = 0.7f;
-    
+
 	// This is probably not a monobehaviour, hence it needs to be updated manually
 	// Either by player class or some sort InputControllerManager
 	public void UpdateController()
@@ -193,7 +191,7 @@ public class GamepadController : IInputController
         {
             Jump?.Invoke();
         }
-			
+
 
         //fire input
         float rightTriggerValue = Input.GetAxisRaw(RTAxisName);
@@ -216,7 +214,9 @@ public class GamepadController : IInputController
         if (Input.GetButtonDown(interactKeyName))
             PickUp?.Invoke();
 
-	}
+        //// added because fire button doesnt work on ps4 controller (currently)
+        //if (Input.GetKeyDown(KeyCode.F))
+        //    Fire?.Invoke();
+    }
 
 }
-

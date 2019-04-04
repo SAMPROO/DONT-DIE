@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RubberBulletScript : MonoBehaviour
 {
-    Rigidbody rb;
-    float speed;
-    Vector3 heading;
+    private Rigidbody rb;
+    private float speed;
+    private Vector3 heading;
 
     private void Start()
     {

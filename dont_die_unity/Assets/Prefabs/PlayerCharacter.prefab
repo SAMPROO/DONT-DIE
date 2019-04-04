@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3509930633070889733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: -0.028}
+  m_LocalPosition: {x: 0, y: 0.863, z: -0.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5374742700604096989}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4197488706684751804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.391, y: 1.415, z: 0}
+  m_LocalPosition: {x: 0.475, y: 1.067, z: 0.356}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5374742700604096989}
@@ -177,7 +177,6 @@ MonoBehaviour:
   orbitCamera: {fileID: 0}
   orbitAnchor: {fileID: 5525131589223187735}
   speed: 3
-  gun: {fileID: 0}
   gunParent: {fileID: 1940505290495959984}
   gunLayer:
     serializedVersion: 2
