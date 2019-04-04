@@ -55,19 +55,19 @@ public class InputControllerManager
     public static JoystickMap dualShockMap = new JoystickMap
     {
         //Base prefix can be removed
-        baseMoveAxisXName = "MoveX",
+        baseMoveAxisXName   = "MoveX",
         baseMoveAxisYName   = "MoveY",
-        baseLookAxisXName   = "LookX",
-        baseLookAxisYName   = "LookY",
-        baseJumpKeyName     = "A",
-        baseInteractKeyName = "X",
-        baseLTAxisName      = "LT",
-        baseRTAxisName      = "RT"
+        baseLookAxisXName   = "LT",
+        baseLookAxisYName   = "RT",
+        baseJumpKeyName     = "X",
+        baseInteractKeyName = "A",
+        baseLTAxisName      = "LTALT",
+        baseRTAxisName      = "RTALT"
     };
 
     //xbone until proven dualshock
     private const string 
-        dualShockName = "I dont have value";
+        dualShockName = "Wireless Controller";
 
     public static IInputController[] CreateControllers(int playersCount)
     {
