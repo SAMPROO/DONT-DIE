@@ -8,9 +8,9 @@ public delegate void OneOffAction();
 
 public interface IInputController
 {
-    //Should be improved
-    float AxisInversion { get; set; }
-    //Should be improved
+    // //Should be improved
+    // float AxisInversion { get; set; }
+    // //Should be improved
     float Horizontal    { get; }
     float Vertical      { get; }
 
@@ -81,7 +81,6 @@ public class InputControllerManager
 
         for (int i = 0; i < playersCount; i++)
         {
-            
             //if i exceeds controllerCount then a controller will become a nullcontroller
             if(i >= controllerCount)
             {
@@ -89,14 +88,14 @@ public class InputControllerManager
                 continue;
             }
 
-            JoystickMap map = controllerNames[i] == dualShockName ? dualShockMap : xBoneMap;
-            
-            
-            
+            // Create gamepad controller
+            bool isPSController = controllerNames[i] == dualShockName;
 
-            controllers[i] = new GamepadController
+            JoystickMap map = isPSController ? dualShockMap : xBoneMap;
+            
+            // Construct new controller as concrete class and not interface
+            GamepadController gamepad = new GamepadController
             {
-
                 //integer i + 1 to match unity's own input system to the player index values
                 moveAxisXName   = $"{map.baseMoveAxisXName}{i + 1}",
                 moveAxisYName   = $"{map.baseMoveAxisYName}{i + 1}",
@@ -109,10 +108,11 @@ public class InputControllerManager
                 //Base prefix can be removed
             };
 
-            //Should be improved
-            if (controllerNames[i] == dualShockName) controllers[i].AxisInversion = -1f;
-            else controllers[i].AxisInversion = 1f;
-            //Should be improved
+            // This is fine
+            gamepad.AxisInversion = isPSController ? -1f : 1f;
+
+            // Now set controller to interface array
+            controllers [i] = gamepad;
         }
         return controllers;
     }
@@ -122,15 +122,14 @@ public class InputControllerManager
 //Used to represent invalid/missing controller
 public class NullController : IInputController
 {
-
-    //Should be improved I think
-    public float AxisInversion
-    {
-        get { return axisInversion; }
-        set { axisInversion = value; }
-    }
-    private float axisInversion;
-    //Should be improved
+    // //Should be improved I think
+    // public float AxisInversion
+    // {
+    //     get { return axisInversion; }
+    //     set { axisInversion = value; }
+    // }
+    // private float axisInversion;
+    // //Should be improved
     public float Horizontal => 0.0f;
     public float Vertical => 0.0f;
 
@@ -144,7 +143,6 @@ public class NullController : IInputController
     public event OneOffAction PickUp;
 
     public void UpdateController() { }
-
 }
 
 
@@ -161,18 +159,21 @@ public class GamepadController : IInputController
         RTAxisName      = null,
         jumpKeyName     = null,
         interactKeyName = null;
-    //Should be improved
-    public float AxisInversion
-    {
-        get { return axisInversion; }
-        set { axisInversion = value; }
-    }
-    private float axisInversion;
-    //Should be improved
+        
+    // //Should be improved
+    // public float AxisInversion
+    // {
+    //     get { return axisInversion; }
+    //     set { axisInversion = value; }
+    // }
+    // private float axisInversion;
+    // //Should be improved
+    public float AxisInversion { get; set; } // One nice line is enough when using default getter and setter. We must use this Capital name below though.
+
     public float Horizontal     => Input.GetAxis(moveAxisXName);
 	public float Vertical       => -Input.GetAxis(moveAxisYName);
-    public float LookHorizontal => Input.GetAxisRaw(lookAxisXName) * axisInversion; //axis inversion -1 will make it work for dualshock
-    public float LookVertical   => Input.GetAxisRaw(lookAxisYName) * axisInversion;
+    public float LookHorizontal => Input.GetAxisRaw(lookAxisXName) * AxisInversion; //axis inversion -1 will make it work for dualshock
+    public float LookVertical   => Input.GetAxisRaw(lookAxisYName) * AxisInversion;
 
     public bool Focus { get; private set; }
 
