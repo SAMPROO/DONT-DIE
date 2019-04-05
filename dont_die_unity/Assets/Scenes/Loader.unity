@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5374742700604096977, guid: 4b3b6691c96e91e4ebeab7b74b8aad07,
     type: 3}
-  orbitCameraPrefab: {fileID: 989385682688600771, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
+  orbitCameraPrefab: {fileID: 3173458186620795841, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
     type: 3}
 --- !u!4 &1931732103
 Transform:
