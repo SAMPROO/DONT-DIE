@@ -14,10 +14,6 @@ public class RagdollCharacterDriver : MonoBehaviour
 	[Header("Specs")]
 	[SerializeField] private float jumpPower = 5f;
 	[SerializeField] private float speed = 3f;
-	[SerializeField] private float moveForce;
-	[SerializeField] private float stabilityForce;
-	[SerializeField] private float hipStabilityForce;
-
 
 	[Header("Controlled parts")]
 	[SerializeField] private ControlBone hip;
@@ -35,8 +31,9 @@ public class RagdollCharacterDriver : MonoBehaviour
 		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
 		neck.rigidbody.AddForce((headPosition - neck.rigidbody.position) * neck.force);
 
-		head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
-		// head.rigidbody.transform.localRotation = Quaternion.identity;
+		// Sometimes inverse works. What is going on here?
+		head.rigidbody.MoveRotation(hip.rigidbody.rotation);
+		// head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
 	}
 
 	// Move character to direction, do this in fixed update

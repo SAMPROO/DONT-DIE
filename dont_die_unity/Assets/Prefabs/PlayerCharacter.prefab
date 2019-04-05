@@ -639,36 +639,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 0.2, y: 0.2}
   m_UseGraphicAlpha: 1
---- !u!1 &7073596238573464271
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7073596238573464270}
-  m_Layer: 0
-  m_Name: Orbit Camera Anchor (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7073596238573464270
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7073596238573464271}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.544, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5354246890466600390}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7073596238776118795
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,7 +649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7073596238776118794}
   m_Layer: 0
-  m_Name: BodyCenterPosition (1)
+  m_Name: BodyCenterPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,7 +667,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5354246890466600390}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7073596238787123895
 GameObject:
@@ -1979,7 +1949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7073596239910871427}
   m_Layer: 0
-  m_Name: GunParent (1)
+  m_Name: GunParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1997,7 +1967,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5354246890466600390}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7073596239946069512
 GameObject:
@@ -2010,7 +1980,7 @@ GameObject:
   - component: {fileID: 7073596239946069519}
   - component: {fileID: 7073596239946069518}
   m_Layer: 0
-  m_Name: RigDummy
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2104,7 +2074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7073596239961715094}
   m_Layer: 0
-  m_Name: MOCK_HP_BAR (1)
+  m_Name: MOCK_HP_BAR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2123,7 +2093,7 @@ Transform:
   m_Children:
   - {fileID: 7073596239091895738}
   m_Father: {fileID: 5354246890466600390}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8449348683169769090
 GameObject:
@@ -2161,7 +2131,6 @@ Transform:
   m_Children:
   - {fileID: 7073596239633061745}
   - {fileID: 7073596239946069519}
-  - {fileID: 7073596238573464270}
   - {fileID: 7073596238776118794}
   - {fileID: 7073596239961715094}
   - {fileID: 7073596239910871427}
@@ -2217,9 +2186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 5
   speed: 3
-  moveForce: 200
-  stabilityForce: 100
-  hipStabilityForce: 500
   hip:
     rigidbody: {fileID: 7073596239847329770}
     targetPosition: {x: 0, y: 0.5, z: 0}
@@ -2259,7 +2225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbitCamera: {fileID: 0}
-  orbitAnchor: {fileID: 7073596238573464270}
+  orbitAnchor: {fileID: 0}
   editorInput: {fileID: 0}
   cameraThing: {fileID: 0}
   initializeOnStart: 0

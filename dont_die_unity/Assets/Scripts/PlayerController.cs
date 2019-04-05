@@ -4,12 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(RagdollCharacterDriver), typeof(DamageController))]
 public class PlayerController : MonoBehaviour
 {
-    // this should instead be set from game manager etc. when creating screen
-    // use this to align movement with camera
-    [SerializeField] private OrbitCameraTP orbitCamera;
-    [SerializeField] private Transform orbitAnchor;
-
-    // this also needs to be set outside
+    // These are set on Inititialize()
+	private OrbitCameraTP cameraRig;
     private IInputController input;
 
     #if UNITY_EDITOR
@@ -72,10 +68,8 @@ public class PlayerController : MonoBehaviour
 
         this.handle = handle;
 
-        orbitCamera = camera;
-        Debug.Log($"this {this.GetInstanceID()}, camera {orbitCamera != null}, anchor {orbitAnchor != null}");
-
-        orbitCamera.anchor = orbitAnchor;
+        cameraRig = camera;
+        cameraRig.anchor = transform;
 
         // Subscribe input events
         input.Fire += Fire;
@@ -90,12 +84,14 @@ public class PlayerController : MonoBehaviour
 	[Obsolete("Use Version that sets OrbitCameraTP directly")]
     public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
     {
+    	Debug.Log("Old Initialize Called");
+
         input = inputCnt;
 
         this.handle = handle;
 
-        orbitCamera = camera.GetComponent<OrbitCameraTP>();
-        orbitCamera.anchor = orbitAnchor;
+        cameraRig = camera.GetComponent<OrbitCameraTP>();
+        cameraRig.anchor = transform;
 
         // Subscribe input events
         input.Fire += Fire;
@@ -115,8 +111,8 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 movement = 
-			orbitCamera.baseRotation * Vector3.right * input.Horizontal
-			+ orbitCamera.baseRotation * Vector3.forward * input.Vertical;
+			cameraRig.baseRotation * Vector3.right * input.Horizontal
+			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
 
