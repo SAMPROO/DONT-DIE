@@ -4,14 +4,19 @@ using UnityEngine;
 [RequireComponent(typeof(RagdollCharacterDriver), typeof(DamageController))]
 public class PlayerController : MonoBehaviour
 {
-    // this should instead be set from game manager etc. when creating screen
-    // use this to align movement with camera
-    [SerializeField] private OrbitCameraTP orbitCamera;
-    [SerializeField] private Transform orbitAnchor;
-
-    // this also needs to be set outside
+    // These are set on Inititialize()
+	private OrbitCameraTP cameraRig;
     private IInputController input;
-	
+
+    #if UNITY_EDITOR
+    // Use these to set some values manually in editor only
+    [Header ("Editor Only")]
+    [SerializeField] private EditorInput editorInput = null;
+    [SerializeField] private OrbitCameraTP cameraThing = null;
+    [SerializeField] private bool initializeOnStart = false;
+    [Space]
+	#endif
+
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
 	// [SerializeField] private CharacterHealth health;
@@ -39,24 +44,32 @@ public class PlayerController : MonoBehaviour
 	{
 		driver = GetComponent<RagdollCharacterDriver>();
 		damageController = GetComponent<DamageController>();
+
+		#if UNITY_EDITOR
+		if (editorInput != null)
+		{
+			input = editorInput;
+			if (cameraThing != null)
+			{
+				cameraThing.SetInputController(editorInput);
+			}
+		}
+
+		if (initializeOnStart)
+		{
+			Initialize(new PlayerHandle(0), cameraThing, editorInput);
+		}
+		#endif
 	}
 
-    //private void Start ()
-    //{
-    //	// Initialize in builder scene only
-    //	if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "CharacterBuilder")
-    //	{
-    //		Initialize(new PlayerHandle(0), "No idea");
-    //	}
-    //}
-    public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
+    public void Initialize(PlayerHandle handle, OrbitCameraTP camera, IInputController inputCnt)
     {
         input = inputCnt;
 
         this.handle = handle;
 
-        orbitCamera = camera.GetComponent<OrbitCameraTP>();
-        orbitCamera.anchor = orbitAnchor;
+        cameraRig = camera;
+        cameraRig.anchor = transform;
 
         // Subscribe input events
         input.Fire += Fire;
@@ -68,7 +81,29 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
-	private void Update()
+	[Obsolete("Use Version that sets OrbitCameraTP directly")]
+    public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
+    {
+    	Debug.Log("Old Initialize Called");
+
+        input = inputCnt;
+
+        this.handle = handle;
+
+        cameraRig = camera.GetComponent<OrbitCameraTP>();
+        cameraRig.anchor = transform;
+
+        // Subscribe input events
+        input.Fire += Fire;
+		input.Jump += driver.Jump;
+		input.PickUp += StartCarryingGun;
+        
+        // Initialize health systems
+        hitpoints = maxHitpoints;
+		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
+	}
+
+	private void Update() 
 	{
 		input.UpdateController();
 	}
@@ -76,8 +111,8 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 movement = 
-			orbitCamera.baseRotation * Vector3.right * input.Horizontal
-			+ orbitCamera.baseRotation * Vector3.forward * input.Vertical;
+			cameraRig.baseRotation * Vector3.right * input.Horizontal
+			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
 

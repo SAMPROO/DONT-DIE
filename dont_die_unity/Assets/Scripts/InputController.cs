@@ -72,6 +72,30 @@ public class InputControllerManager
     private const string 
         dualShockName = "Wireless Controller";
 
+    public static IInputController CreateGamepad(bool isPSController = false)
+    {
+        JoystickMap map = isPSController ? dualShockMap : xBoneMap;
+
+        // Use this as long as it works, not ideal though
+        int controllerIndex = 1;
+
+        GamepadController gamepad = new GamepadController
+        {
+            //integer i + 1 to match unity's own input system to the player index values
+            moveAxisXName   = $"{map.baseMoveAxisXName}{controllerIndex}",
+            moveAxisYName   = $"{map.baseMoveAxisYName}{controllerIndex}",
+            lookAxisXName   = $"{map.baseLookAxisXName}{controllerIndex}",
+            lookAxisYName   = $"{map.baseLookAxisYName}{controllerIndex}",
+            LTAxisName      = $"{map.baseLTAxisName}{controllerIndex}",
+            RTAxisName      = $"{map.baseRTAxisName}{controllerIndex}",
+            jumpKeyName     = $"{map.baseJumpKeyName}{controllerIndex}",
+            interactKeyName = $"{map.baseInteractKeyName}{controllerIndex}",
+
+            AxisInversion   = isPSController ? -1f : 1f
+        };
+        return gamepad;
+    }
+
     public static IInputController[] CreateControllers(int playersCount)
     {
         var controllerNames = Input.GetJoystickNames();

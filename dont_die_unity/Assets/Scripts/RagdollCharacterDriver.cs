@@ -1,40 +1,71 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class RagdollCharacterDriver : MonoBehaviour
 {
+	[Serializable]
+	private class ControlBone
+	{
+		public Rigidbody rigidbody;
+		public Vector3 targetPosition;
+		public float force;
+	}
+
+	[Header("Specs")]
 	[SerializeField] private float jumpPower = 5f;
 	[SerializeField] private float speed = 3f;
 
-	private new Rigidbody rigidbody;
+	[Header("Controlled parts")]
+	[SerializeField] private ControlBone hip;
+	[SerializeField] private ControlBone neck;
+	[SerializeField] private ControlBone head;
 
-	private void Awake()
+	[SerializeField] private Rigidbody controlRb;
+
+	Vector3 hipPosition => controlRb.position + hip.targetPosition;
+	Vector3 headPosition => controlRb.position + neck.targetPosition;
+
+
+	private void FixedUpdate()
 	{
-		rigidbody = GetComponent<Rigidbody> ();		
+		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
+		neck.rigidbody.AddForce((headPosition - neck.rigidbody.position) * neck.force);
+
+		// Sometimes inverse works. What is going on here?
+		head.rigidbody.MoveRotation(hip.rigidbody.rotation);
+		// head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
 	}
 
 	// Move character to direction, do this in fixed update
 	public void Drive(Vector3 direction, float amount)
 	{
 		// Enforce this to be used only in fixed update
-	#if UNITY_EDITOR
-		if (!Time.inFixedTimeStep)
+		if (Time.inFixedTimeStep == false)
+		{
 			Debug.LogError("Use RagdollCharacterDriver.Drive only in FixedUpdate");				
-	#endif
+			return;
+		}
 
 		if (amount > 0)
 		{
 			amount *= speed;
-
-			rigidbody.MovePosition(transform.position + direction * amount);
-			rigidbody.MoveRotation(Quaternion.LookRotation (direction, Vector3.up));
+			controlRb.MovePosition(controlRb.position + direction * amount);
 		}
 	}
 
 	public void Jump()
 	{
 		// Todo: test if touching walkable perimeter, and only jump if do
-		rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+		controlRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+		Debug.Log("Jump");
+	}
+
+	public void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.magenta;
+
+		Gizmos.DrawWireSphere(hipPosition, 0.05f);
+		Gizmos.DrawWireSphere(headPosition, 0.05f);
 
 	}
 }

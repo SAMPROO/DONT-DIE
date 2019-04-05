@@ -7,7 +7,6 @@ public class OrbitCameraTP : MonoBehaviour
     private const float Y_ANGLE_MIN = -80;
     private const float Y_ANGLE_MAX = 80;
 
-    [HideInInspector]
     public Transform anchor;
 
     public Vector2 sensitivity = new Vector2(1,1);
@@ -83,6 +82,7 @@ public class OrbitCameraTP : MonoBehaviour
 
     public void SetInputController(IInputController _input)
     {
+        Debug.Log("Setted inputs");
         input = _input;
     }
 }
