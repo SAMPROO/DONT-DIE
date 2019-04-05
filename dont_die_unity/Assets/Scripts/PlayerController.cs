@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
+	[Obsolete("Use Version that sets OrbitCameraTP directly")]
     public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
     {
         input = inputCnt;
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
-	private void Update()
+	private void Update() 
 	{
 		input.UpdateController();
 	}
