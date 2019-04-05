@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &989385682688600771
+--- !u!1 &3173458186620795841
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 989385682688600783}
-  - component: {fileID: 989385682688600768}
-  - component: {fileID: 989385682688600769}
-  - component: {fileID: 989385682688600770}
+  - component: {fileID: 7551561484764702598}
+  - component: {fileID: 7567691214352118146}
+  - component: {fileID: 7297019159560987834}
+  - component: {fileID: 7755439791233267441}
   m_Layer: 0
   m_Name: Orbit Camera
   m_TagString: Untagged
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &989385682688600783
+--- !u!4 &7551561484764702598
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989385682688600771}
+  m_GameObject: {fileID: 3173458186620795841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.295575, y: 1.8049983, z: -3.919665}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &989385682688600768
+--- !u!20 &7567691214352118146
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989385682688600771}
+  m_GameObject: {fileID: 3173458186620795841}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -75,30 +75,28 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &989385682688600769
+--- !u!81 &7297019159560987834
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989385682688600771}
+  m_GameObject: {fileID: 3173458186620795841}
   m_Enabled: 1
---- !u!114 &989385682688600770
+--- !u!114 &7755439791233267441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989385682688600771}
+  m_GameObject: {fileID: 3173458186620795841}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1672f1f4e5279be4abb37c5c7a8ce32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 0}
-  cameraPosition: {fileID: 0}
-  cam: {fileID: 0}
-  sensitivity: 30
+  sensitivity: {x: 1, y: 1}
   cameraDistanceMax: 30
   cameraDistanceMin: 4
   cameraDistanceCurrent: 0

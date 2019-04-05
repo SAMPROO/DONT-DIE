@@ -8,7 +8,7 @@
 /[Ll]ogs/
 
 # Never ignore Asset meta data
-!/[Aa]ssets/**/*.meta
+# !/[Aa]ssets/**/*.meta
 
 # TextMesh Pro files
 [Aa]ssets/TextMesh*Pro/
@@ -45,6 +45,9 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+
+# Jetbrains ideas
+/.idea/
 
 # Unity3D generated meta files
 *.pidb.meta
