@@ -9,6 +9,8 @@ public class OrbitCameraTP : MonoBehaviour
 
     public Transform anchor;
 
+    public Vector3 offset;
+
     public Vector2 sensitivity = new Vector2(1,1);
     public float cameraDistanceMax;
     public float cameraDistanceMin;
@@ -76,13 +78,12 @@ public class OrbitCameraTP : MonoBehaviour
     {
         Vector3 dir = new Vector3(0, 0, -cameraDistanceCurrent);
         Quaternion rotation = Quaternion.Euler(_yRot, _xRot, 0);
-        transform.position = anchor.position + rotation * dir;
-        transform.LookAt(anchor.position);
+        transform.position = anchor.position + offset + rotation * dir;
+        transform.LookAt(anchor.position + offset);
     }
 
     public void SetInputController(IInputController _input)
     {
-        Debug.Log("Setted inputs");
         input = _input;
     }
 }

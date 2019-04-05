@@ -6,9 +6,19 @@ public class RagdollCharacterDriver : MonoBehaviour
 	[Serializable]
 	private class ControlBone
 	{
+		public bool active = true;
 		public Rigidbody rigidbody;
 		public Vector3 targetPosition;
 		public float force;
+
+		// transformPosition is drivers current position, it is used as an base offset
+		public void Control(Vector3 transformPosition)
+		{
+			float currentForce = active ? force : 0f;
+			rigidbody.AddForce(
+				(transformPosition + targetPosition - rigidbody.position) * currentForce
+			);
+		}
 	}
 
 	[Header("Specs")]
@@ -19,12 +29,18 @@ public class RagdollCharacterDriver : MonoBehaviour
 	[SerializeField] private ControlBone hip;
 	[SerializeField] private ControlBone neck;
 	[SerializeField] private ControlBone head;
+	[SerializeField] private ControlBone rightHand;
 
 	[SerializeField] private Rigidbody controlRb;
 
 	Vector3 hipPosition => controlRb.position + hip.targetPosition;
 	Vector3 headPosition => controlRb.position + neck.targetPosition;
 
+	public bool ControlRightHand
+	{
+		get => rightHand.active;
+		set => rightHand.active = value;
+	}
 
 	private void FixedUpdate()
 	{
@@ -34,7 +50,11 @@ public class RagdollCharacterDriver : MonoBehaviour
 		// Sometimes inverse works. What is going on here?
 		head.rigidbody.MoveRotation(hip.rigidbody.rotation);
 		// head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
+
+		rightHand.Control(controlRb.position);
 	}
+
+	// TODO: Orient dude towards fron
 
 	// Move character to direction, do this in fixed update
 	public void Drive(Vector3 direction, float amount)
@@ -66,6 +86,7 @@ public class RagdollCharacterDriver : MonoBehaviour
 
 		Gizmos.DrawWireSphere(hipPosition, 0.05f);
 		Gizmos.DrawWireSphere(headPosition, 0.05f);
+		Gizmos.DrawWireSphere(controlRb.position + rightHand.targetPosition, 0.05f);
 
 	}
 }

@@ -197,6 +197,7 @@ public class GamepadController : IInputController
     public float LookHorizontal => Input.GetAxisRaw(lookAxisXName) * AxisInversion; //axis inversion -1 will make it work for dualshock
     public float LookVertical   => Input.GetAxisRaw(lookAxisYName) * AxisInversion;
 
+    // TODO: this can also use simple expression body getter
     public bool Focus { get; private set; }
 
     public event OneOffAction Jump;

@@ -1,3 +1,8 @@
+/*
+Sampo's Game Company
+Leo Tamminen
+*/
+
 using System;
 using UnityEngine;
 
@@ -5,8 +10,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // These are set on Inititialize()
+	private PlayerHandle handle;
 	private OrbitCameraTP cameraRig;
     private IInputController input;
+
+    // This is really not serializable thing, but it is injected from hudmanager or similar
+    [SerializeField] private PlayerHUD hud;
 
     #if UNITY_EDITOR
     // Use these to set some values manually in editor only
@@ -14,31 +23,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private EditorInput editorInput = null;
     [SerializeField] private OrbitCameraTP cameraThing = null;
     [SerializeField] private bool initializeOnStart = false;
-    [Space]
 	#endif
 
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
-	// [SerializeField] private CharacterHealth health;
 
-	private PlayerHandle handle;
 	public event Action<PlayerHandle> OnDie;
 
 	[SerializeField] private float speed = 3.0f;
 	[SerializeField] private IWeapon gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
-    [SerializeField] private Transform bodyCenterPosition;
+    // [SerializeField] private Transform bodyCenterPosition;
+    [SerializeField] private float pickUpRange;
 
     [SerializeField] private bool collisionWithGun;
 
-    // This is really not serializable thing, but it is injected from hudmanager or similar
-    [SerializeField] private PlayerHUD hud;
- 
 	[Header("Health")]
 	[SerializeField] private int maxHitpoints = 100;
 	private int hitpoints;
 
+	[SerializeField] private Transform rightHandTransform;
+	[SerializeField] private Transform leftHandTransform;
 
 	private void Awake()
 	{
@@ -74,7 +80,7 @@ public class PlayerController : MonoBehaviour
         // Subscribe input events
         input.Fire += Fire;
 		input.Jump += driver.Jump;
-		input.PickUp += StartCarryingGun;
+		input.PickUp += TogglePickup;
         
         // Initialize health systems
         hitpoints = maxHitpoints;
@@ -82,30 +88,16 @@ public class PlayerController : MonoBehaviour
 	}
 
 	[Obsolete("Use Version that sets OrbitCameraTP directly")]
-    public void Initialize(PlayerHandle handle, Camera camera, IInputController inputCnt)
+    public void Initialize(PlayerHandle handle, Camera camera, IInputController controller)
     {
-    	Debug.Log("Old Initialize Called");
-
-        input = inputCnt;
-
-        this.handle = handle;
-
-        cameraRig = camera.GetComponent<OrbitCameraTP>();
-        cameraRig.anchor = transform;
-
-        // Subscribe input events
-        input.Fire += Fire;
-		input.Jump += driver.Jump;
-		input.PickUp += StartCarryingGun;
-        
-        // Initialize health systems
-        hitpoints = maxHitpoints;
-		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
+    	// just redirect to new one
+    	Initialize (handle, camera.GetComponent<OrbitCameraTP>(), controller);
 	}
 
 	private void Update() 
 	{
 		input.UpdateController();
+		driver.ControlRightHand = input.Focus;
 	}
 
 	private void FixedUpdate()
@@ -145,8 +137,45 @@ public class PlayerController : MonoBehaviour
 	}
 
     //Once the arm is working, we can create Physics.OverlapSphere infront of hand 
-    private void StartCarryingGun()
+    private void TogglePickup()
 	{
+		// Drop if we have gun
+		if (gun != null)
+		{
+			StopCarryingGun();
+		}
+
+		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
+        // Vector3 handPosition = rightHandTransform.position;
+        Vector3 handPosition = transform.position;
+
+        Collider[] hitColliders = Physics.OverlapSphere(
+        	handPosition,
+        	pickUpRange,
+        	gunLayer
+    	);
+
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            float distanceToGun = Vector3.Distance(
+            	hitColliders[i].transform.position,
+            	handPosition
+        	);
+
+            if (distanceToGun < pickUpRange)
+            {
+            	// TODO: not likey this at all. Things in gun (or rather pickup) layer should have right component in itself and not parent
+               	gun = hitColliders[i].GetComponentInParent<IWeapon>();
+               	if (gun != null)
+               	{
+	            	gun.StartCarrying(rightHandTransform);
+	            	return;
+               	}
+            }
+        }
+
+
+		/*
         IWeapon newGun = null;
 
         float sphereRadius = transform.localScale.y;
@@ -174,6 +203,7 @@ public class PlayerController : MonoBehaviour
         {
             StopCarryingGun();
         }
+        */
 	}
 
 	private void StopCarryingGun()
@@ -182,10 +212,10 @@ public class PlayerController : MonoBehaviour
 		gun = null;
 	}
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
-        Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
-    }
+    // private void OnDrawGizmosSelected()
+    // {
+    //     Gizmos.color = Color.red;
+    //     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+    //     Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
+    // }
 }
