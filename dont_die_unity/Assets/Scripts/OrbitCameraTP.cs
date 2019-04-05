@@ -82,6 +82,7 @@ public class OrbitCameraTP : MonoBehaviour
 
     public void SetInputController(IInputController _input)
     {
+        Debug.Log("Setted inputs");
         input = _input;
     }
 }

@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
         this.handle = handle;
 
         orbitCamera = camera;
+        Debug.Log($"this {this.GetInstanceID()}, camera {orbitCamera != null}, anchor {orbitAnchor != null}");
+
         orbitCamera.anchor = orbitAnchor;
 
         // Subscribe input events
