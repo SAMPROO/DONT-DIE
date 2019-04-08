@@ -6,7 +6,7 @@ Leo Tamminen
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(RagdollCharacterDriver), typeof(DamageController))]
+[RequireComponent(typeof(DamageController))]
 public class PlayerController : MonoBehaviour
 {
     // These are set on Inititialize()
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // This is really not serializable thing, but it is injected from hudmanager or similar
     [SerializeField] private PlayerHUD hud;
 
-	private RagdollCharacterDriver driver;
+	private RagdollRig ragdoll;
 	private DamageController damageController;
 
 	public event Action<PlayerHandle> OnDie;
@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private Transform bodyCenterPosition;
     [SerializeField] private float pickUpRange;
 
-    [SerializeField] private bool collisionWithGun;
-
 	[Header("Health")]
 	[SerializeField] private int maxHitpoints = 100;
 	private int hitpoints;
@@ -38,11 +36,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform rightHandTransform;
 	[SerializeField] private Transform leftHandTransform;
 
-	public bool Grounded => driver.Grounded;
+	public bool Grounded => ragdoll.Grounded;
 
 	private void Awake()
 	{
-		driver = GetComponent<RagdollCharacterDriver>();
+		ragdoll = GetComponentInChildren<RagdollRig>();
 		damageController = GetComponent<DamageController>();
 	}
 
@@ -57,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
         // Subscribe input events
         input.Fire += Fire;
-		input.Jump += driver.Jump;
+		input.Jump += ragdoll.Jump;
 		input.PickUp += TogglePickup;
         
         // Initialize health systems
@@ -75,7 +73,7 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
-		driver.ControlRightHand = input.Focus;
+		ragdoll.ControlRightHand = input.Focus;
 	}
 
 	private void FixedUpdate()
@@ -86,7 +84,9 @@ public class PlayerController : MonoBehaviour
 
 		float amount = Vector3.Magnitude(movement);
 
-		driver.Drive(movement / amount, amount * Time.deltaTime);
+		Debug.Log(input.Horizontal);
+
+		ragdoll.Move(movement / amount, amount * Time.deltaTime);
 	}
 
 	private void Fire()

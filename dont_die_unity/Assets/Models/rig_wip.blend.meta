@@ -34,6 +34,11 @@ ModelImporter:
     100056: Thigh_L
     100058: Thigh_R
     100060: Torso
+    100062: Foot_L
+    100064: Foot_R
+    100066: Hand_L
+    100068: Hand_L_001
+    100070: Hand_R
     400000: Cube_005
     400002: Cube_008
     400004: Cube_009
@@ -65,6 +70,11 @@ ModelImporter:
     400056: Thigh_L
     400058: Thigh_R
     400060: Torso
+    400062: Foot_L
+    400064: Foot_R
+    400066: Hand_L
+    400068: Hand_L_001
+    400070: Hand_R
     2100000: unnamed
     2300000: Cube_005
     2300002: Cube_008
@@ -78,6 +88,7 @@ ModelImporter:
     2300018: ScaleObject
     2300020: Sphere_002
     2300022: Sphere_003
+    2300024: RigDummy
     3300000: Cube_005
     3300002: Cube_008
     3300004: Cube_009
@@ -90,6 +101,7 @@ ModelImporter:
     3300018: ScaleObject
     3300020: Sphere_002
     3300022: Sphere_003
+    3300024: RigDummy
     4300000: Cube_015
     4300002: Cube_014
     4300004: Cube_008
@@ -119,8 +131,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftFoot' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -143,10 +154,10 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -159,7 +170,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
