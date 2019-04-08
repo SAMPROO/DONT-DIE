@@ -72,6 +72,30 @@ public class InputControllerManager
     private const string 
         dualShockName = "Wireless Controller";
 
+    public static IInputController CreateGamepad(bool isPSController = false)
+    {
+        JoystickMap map = isPSController ? dualShockMap : xBoneMap;
+
+        // Use this as long as it works, not ideal though
+        int controllerIndex = 1;
+
+        GamepadController gamepad = new GamepadController
+        {
+            //integer i + 1 to match unity's own input system to the player index values
+            moveAxisXName   = $"{map.baseMoveAxisXName}{controllerIndex}",
+            moveAxisYName   = $"{map.baseMoveAxisYName}{controllerIndex}",
+            lookAxisXName   = $"{map.baseLookAxisXName}{controllerIndex}",
+            lookAxisYName   = $"{map.baseLookAxisYName}{controllerIndex}",
+            LTAxisName      = $"{map.baseLTAxisName}{controllerIndex}",
+            RTAxisName      = $"{map.baseRTAxisName}{controllerIndex}",
+            jumpKeyName     = $"{map.baseJumpKeyName}{controllerIndex}",
+            interactKeyName = $"{map.baseInteractKeyName}{controllerIndex}",
+
+            AxisInversion   = isPSController ? -1f : 1f
+        };
+        return gamepad;
+    }
+
     public static IInputController[] CreateControllers(int playersCount)
     {
         var controllerNames = Input.GetJoystickNames();
@@ -169,25 +193,26 @@ public class GamepadController : IInputController
     public float AxisInversion { get; set; } // One nice line is enough when using default getter and setter. We must use this Capital name below though.
 
     public float Horizontal     => Input.GetAxis(moveAxisXName);
-	public float Vertical       => -Input.GetAxis(moveAxisYName);
+    public float Vertical       => -Input.GetAxis(moveAxisYName);
     public float LookHorizontal => Input.GetAxisRaw(lookAxisXName) * AxisInversion; //axis inversion -1 will make it work for dualshock
     public float LookVertical   => Input.GetAxisRaw(lookAxisYName) * AxisInversion;
 
+    // TODO: this can also use simple expression body getter
     public bool Focus { get; private set; }
 
     public event OneOffAction Jump;
-	public event OneOffAction Fire;
-	public event OneOffAction PickUp;
+    public event OneOffAction Fire;
+    public event OneOffAction PickUp;
 
     private bool fireEventTriggered = false;
 
     public float triggerDeadzone = 0.7f;
 
-	// This is probably not a monobehaviour, hence it needs to be updated manually
-	// Either by player class or some sort InputControllerManager
-	public void UpdateController()
-	{
-		if (Input.GetButtonDown(jumpKeyName))
+    // This is probably not a monobehaviour, hence it needs to be updated manually
+    // Either by player class or some sort InputControllerManager
+    public void UpdateController()
+    {
+        if (Input.GetButtonDown(jumpKeyName))
         {
             Jump?.Invoke();
         }
