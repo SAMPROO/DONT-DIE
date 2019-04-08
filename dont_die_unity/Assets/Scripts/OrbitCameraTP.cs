@@ -7,8 +7,9 @@ public class OrbitCameraTP : MonoBehaviour
     private const float Y_ANGLE_MIN = -80;
     private const float Y_ANGLE_MAX = 80;
 
-    [HideInInspector]
     public Transform anchor;
+    public Vector2 normalLookOffset;
+    public Vector2 focusLookOffset;
 
     public Vector2 sensitivity = new Vector2(1,1);
     public float cameraDistanceMax;
@@ -26,6 +27,12 @@ public class OrbitCameraTP : MonoBehaviour
 
     //for player
     public Quaternion baseRotation => Quaternion.Euler(0, inputX, 0);
+
+    // Focus lerp things
+    private int smoothIndex = 0;
+    private const int smoothArraySize = 20;
+    private float [] smoothArray = new float[smoothArraySize];
+    private float focusLerp;
 
     private void Start()
     {
@@ -50,12 +57,14 @@ public class OrbitCameraTP : MonoBehaviour
         {
             aim = false;
         }
-
-
     }
 
     private void LateUpdate()
     {
+        smoothArray [smoothIndex] = input.Focus == true ? 1f : 0f; // == 0 / 1
+        smoothIndex = (smoothIndex + 1) % smoothArray.Length;
+        focusLerp = smoothArray.Average();
+
         MoveCamera(inputY, inputX);
 
         if (aim == false)
@@ -70,15 +79,25 @@ public class OrbitCameraTP : MonoBehaviour
         {
             cameraDistanceCurrent = Mathf.Lerp(cameraDistanceCurrent, cameraDistanceMin / 2, 0.5f);
         }
-
     }
 
     public void MoveCamera(float _yRot, float _xRot)
     {
-        Vector3 dir = new Vector3(0, 0, -cameraDistanceCurrent);
+        Vector3 zPosition = new Vector3(0, 0, -cameraDistanceCurrent);
+
+        Vector2 offset = Vector2.Lerp(normalLookOffset, focusLookOffset, focusLerp);
+        Vector3 xyPosition = new Vector3(offset.x, offset.y, 0);
+
+        // TODO: make this happen to make camera not go underground      
+        // Vector3 anchor2 = anchor.position + rotation * xyposition;
+        // Ray ray = new Ray (anchor2, -1 * rotation * Vector3.forward);
+        // Vector3 finalPosition = sphereCast (ray, cameraDistanceCurrent);
+
         Quaternion rotation = Quaternion.Euler(_yRot, _xRot, 0);
-        transform.position = anchor.position + rotation * dir;
-        transform.LookAt(anchor.position);
+        transform.position = anchor.position + rotation * (xyPosition + zPosition);
+
+        Vector3 lookTarget = anchor.position + rotation * xyPosition;
+        transform.LookAt(lookTarget);
     }
 
     public void SetInputController(IInputController _input)
