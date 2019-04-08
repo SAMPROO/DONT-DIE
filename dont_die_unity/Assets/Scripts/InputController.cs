@@ -193,7 +193,7 @@ public class GamepadController : IInputController
     public float AxisInversion { get; set; } // One nice line is enough when using default getter and setter. We must use this Capital name below though.
 
     public float Horizontal     => Input.GetAxis(moveAxisXName);
-	public float Vertical       => -Input.GetAxis(moveAxisYName);
+    public float Vertical       => -Input.GetAxis(moveAxisYName);
     public float LookHorizontal => Input.GetAxisRaw(lookAxisXName) * AxisInversion; //axis inversion -1 will make it work for dualshock
     public float LookVertical   => Input.GetAxisRaw(lookAxisYName) * AxisInversion;
 
@@ -201,18 +201,18 @@ public class GamepadController : IInputController
     public bool Focus { get; private set; }
 
     public event OneOffAction Jump;
-	public event OneOffAction Fire;
-	public event OneOffAction PickUp;
+    public event OneOffAction Fire;
+    public event OneOffAction PickUp;
 
     private bool fireEventTriggered = false;
 
     public float triggerDeadzone = 0.7f;
 
-	// This is probably not a monobehaviour, hence it needs to be updated manually
-	// Either by player class or some sort InputControllerManager
-	public void UpdateController()
-	{
-		if (Input.GetButtonDown(jumpKeyName))
+    // This is probably not a monobehaviour, hence it needs to be updated manually
+    // Either by player class or some sort InputControllerManager
+    public void UpdateController()
+    {
+        if (Input.GetButtonDown(jumpKeyName))
         {
             Jump?.Invoke();
         }
