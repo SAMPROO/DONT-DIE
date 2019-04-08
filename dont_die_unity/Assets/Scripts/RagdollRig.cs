@@ -4,13 +4,15 @@ Leo Tamminen
 */
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class RagdollRig : MonoBehaviour
 {
 	[Serializable]
-	private class ControlBone
+	public class ControlBone
 	{
 		public bool active = true;
 		public Rigidbody rigidbody;
@@ -25,17 +27,31 @@ public class RagdollRig : MonoBehaviour
 				(transformPosition + targetPosition - rigidbody.position) * currentForce
 			);
 		}
+
+		public void ControlWithTransform(Matrix4x4 localToWorld)
+		{
+			float currentForce = active ? force : 0f;
+
+			Vector3 target = localToWorld.MultiplyPoint(targetPosition);
+
+			rigidbody.AddForce ((target - rigidbody.position) * currentForce);
+		}
 	}
+
+	private FixedJoint rightHandController;
+	private FixedJoint leftHandController;
+
 
 	[Header("Specs")]
 	[SerializeField] private float jumpPower = 5f;
 	[SerializeField] private float speed = 3f;
 
 	[Header("Controlled parts")]
-	[SerializeField] private ControlBone hip;
-	[SerializeField] private ControlBone neck;
-	[SerializeField] private ControlBone head;
-	[SerializeField] private ControlBone rightHand;
+	public ControlBone hip;
+	public ControlBone neck;
+	public ControlBone head;
+	public ControlBone rightHand;
+	public ControlBone leftHand;
 
 	private Rigidbody controlRb;
 
@@ -44,10 +60,46 @@ public class RagdollRig : MonoBehaviour
 
 	public Transform abdomen;
 
-	public bool ControlRightHand
+	private bool handsControlled;
+	public void SetRightHandControl(bool value)
 	{
-		get => rightHand.active;
-		set => rightHand.active = value;
+		// do not set same value again
+		if (handsControlled == value)
+			return;
+
+		handsControlled = value;
+
+		if (value)
+		{
+			SetControllerActive(
+				rightHandController,
+				rightHand.rigidbody,
+				transform.TransformPoint(rightHand.targetPosition)
+			);
+
+			SetControllerActive(
+				leftHandController,
+				leftHand.rigidbody,
+				transform.TransformPoint(leftHand.targetPosition)
+			);
+		}
+
+		else
+		{
+			rightHandController.connectedBody = null;
+			leftHandController.connectedBody = null;
+			rightHandController.gameObject.SetActive(value);
+			leftHandController.gameObject.SetActive(value);
+		}
+	}
+
+	private static void SetControllerActive(FixedJoint controller, Rigidbody controlledBody, Vector3 targetPosition)
+	{
+		controller.transform.position = controlledBody.transform.position;
+		controller.transform.rotation = controlledBody.transform.rotation;
+		controller.connectedBody = controlledBody;
+		controller.gameObject.SetActive(true);
+		controller.transform.position = targetPosition;
 	}
 
 	public bool Grounded { get; private set; }
@@ -55,18 +107,32 @@ public class RagdollRig : MonoBehaviour
 	private void Awake()
 	{
 		controlRb = GetComponent<Rigidbody>();
+
+		rightHandController = CreateJointController("rightHandController");
+		rightHandController.transform.SetParent(hip.rigidbody.transform);
+
+		leftHandController = CreateJointController("leftHandController");
+		leftHandController.transform.SetParent(hip.rigidbody.transform);
+
 	}
+
+	[Range(0f, 1f)] public float hipDamping = 0.5f;
 
 	private void FixedUpdate()
 	{
 		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
-		neck.rigidbody.AddForce((headPosition - neck.rigidbody.position) * neck.force);
+		neck.rigidbody.AddForce((headPosition - neck.rigidbody.position).y * Vector3.up * neck.force);
 
-		// Sometimes inverse works. What is going on here?
-		head.rigidbody.MoveRotation(hip.rigidbody.rotation);
-		// head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
+		leftHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
+		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
+	}
 
-		rightHand.ControlWithOffset(controlRb.position);
+	private FixedJoint CreateJointController(string name)
+	{
+		var joint = new GameObject(name, typeof(FixedJoint)).GetComponent<FixedJoint>();
+		joint.GetComponent<Rigidbody>().isKinematic = true;
+		joint.gameObject.SetActive(false);
+		return joint;
 	}
 
 	// TODO: Orient dude towards move direction
@@ -99,10 +165,10 @@ public class RagdollRig : MonoBehaviour
 			controlRb.MoveRotation(Quaternion.LookRotation(direction));
 
 		}
-		// hip.rigidbody.MoveRotation(controlRb.rotation);	
+		hip.rigidbody.MoveRotation(controlRb.rotation);	
 
 		Debug.DrawRay (transform.position + Vector3.up, transform.forward * 2.5f, Color.red);
-		Debug.DrawRay (transform.position + Vector3.up, hip.rigidbody.transform.forward * 2.5f, Color.cyan);
+		Debug.DrawRay (hipPosition, hip.rigidbody.transform.forward * 2.5f, Color.cyan);
 		Debug.DrawRay (abdomen.position, abdomen.forward * 2.5f, Color.green);
 	}
 
@@ -122,7 +188,25 @@ public class RagdollRig : MonoBehaviour
 
 		Gizmos.DrawWireSphere(hipPosition, 0.05f);
 		Gizmos.DrawWireSphere(headPosition, 0.05f);
-		Gizmos.DrawWireSphere(transform.position + rightHand.targetPosition, 0.05f);
 
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightHand.targetPosition), 0.05f);
+		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(leftHand.targetPosition), 0.05f);
+
+	}
+
+	public static Transform [] GetRecursiveChildren(Transform parent)
+	{
+		var children = new List<Transform>();
+
+		int childCount = parent.childCount;
+		for (int i = 0; i < childCount; i++)
+		{
+			var child = parent.GetChild(i);
+			children.Add(child);
+			children.AddRange(GetRecursiveChildren(child));
+		}
+
+		return children.ToArray();
 	}
 }

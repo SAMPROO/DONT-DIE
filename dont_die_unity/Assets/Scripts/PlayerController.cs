@@ -22,11 +22,10 @@ public class PlayerController : MonoBehaviour
 
 	public event Action<PlayerHandle> OnDie;
 
-	[SerializeField] private float speed = 3.0f;
 	[SerializeField] private IWeapon gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
-    // [SerializeField] private Transform bodyCenterPosition;
+
     [SerializeField] private float pickUpRange;
 
 	[Header("Health")]
@@ -41,6 +40,8 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		ragdoll = GetComponentInChildren<RagdollRig>();
+		ragdoll.transform.position = transform.position;
+
 		damageController = GetComponent<DamageController>();
 	}
 
@@ -73,7 +74,11 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
-		ragdoll.ControlRightHand = input.Focus;
+
+		ragdoll.SetRightHandControl(input.Focus);
+
+		// ragdoll.rightHand.active = input.Focus;
+		// ragdoll.leftHand.active = input.Focus;
 	}
 
 	private void FixedUpdate()
@@ -83,10 +88,9 @@ public class PlayerController : MonoBehaviour
 			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
-
-		Debug.Log(input.Horizontal);
-
 		ragdoll.Move(movement / amount, amount * Time.deltaTime);
+
+		// transform.position = ragdoll.transform.position;
 	}
 
 	private void Fire()
@@ -103,8 +107,6 @@ public class PlayerController : MonoBehaviour
 
 	public void Hurt(float damage)
 	{
-
-
 		hitpoints -= Mathf.RoundToInt(damage);
 		hud.Hp = hitpoints;
 
@@ -114,7 +116,6 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    //Once the arm is working, we can create Physics.OverlapSphere infront of hand 
     private void TogglePickup()
 	{
 		// Drop if we have gun
@@ -135,6 +136,9 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
+        	Debug.Log(hitColliders[i].name);
+
+
             float distanceToGun = Vector3.Distance(
             	hitColliders[i].transform.position,
             	handPosition
@@ -196,4 +200,50 @@ public class PlayerController : MonoBehaviour
     //     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
     //     Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
     // }
+}
+
+public class SmoothFloat
+{
+	private int index;
+	private float []array;
+	public readonly int length;
+
+	// Set min and max to clamp values when putting in
+	public SmoothFloat (int arrayLength = 10, float? min = null, float? max = null)
+	{
+		array = new float [arrayLength];
+		index = 0;
+		length = arrayLength;
+
+		// Make one null check here, so we don't have to check everytime
+		if (min == null || max == null)
+		{
+			Put = PutImplement;	
+		}
+		else 
+		{
+			float _min = min ?? 0.0f;
+			float _max = max ?? 1.0f;
+			_max = Mathf.Max(_min, _max);
+
+			Put = (value) =>
+			{
+				value = Mathf.Clamp(value, _min, _max);
+				PutImplement(value);
+			};
+		}
+	}
+
+	public System.Action<float> Put;
+
+	private void PutImplement(float value)
+	{
+		array[index] = value;
+		index = (index + 1) % length;
+	}
+
+	public float Get()
+	{
+		return array.Average();	
+	}
 }

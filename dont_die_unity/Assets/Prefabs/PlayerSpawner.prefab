@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d8f12f2d39d454790e9ea49cacd2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4880680699854804365, guid: a69680b367b7e51498699b3e3ce920ad,
+  playerPrefab: {fileID: 8863532333247962239, guid: 8165ba6fd5be9364d9410908ca20f607,
     type: 3}
   cameraRigPrefab: {fileID: 7755439791233267441, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
     type: 3}
