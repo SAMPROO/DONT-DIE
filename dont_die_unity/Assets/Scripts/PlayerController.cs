@@ -17,14 +17,6 @@ public class PlayerController : MonoBehaviour
     // This is really not serializable thing, but it is injected from hudmanager or similar
     [SerializeField] private PlayerHUD hud;
 
-    #if UNITY_EDITOR
-    // Use these to set some values manually in editor only
-    [Header ("Editor Only")]
-    [SerializeField] private EditorInput editorInput = null;
-    [SerializeField] private OrbitCameraTP cameraThing = null;
-    [SerializeField] private bool initializeOnStart = false;
-	#endif
-
 	private RagdollCharacterDriver driver;
 	private DamageController damageController;
 
@@ -46,26 +38,12 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform rightHandTransform;
 	[SerializeField] private Transform leftHandTransform;
 
+	public bool Grounded => driver.Grounded;
+
 	private void Awake()
 	{
 		driver = GetComponent<RagdollCharacterDriver>();
 		damageController = GetComponent<DamageController>();
-
-		#if UNITY_EDITOR
-		if (editorInput != null)
-		{
-			input = editorInput;
-			if (cameraThing != null)
-			{
-				cameraThing.SetInputController(editorInput);
-			}
-		}
-
-		if (initializeOnStart)
-		{
-			Initialize(new PlayerHandle(0), cameraThing, editorInput);
-		}
-		#endif
 	}
 
     public void Initialize(PlayerHandle handle, OrbitCameraTP camera, IInputController inputCnt)

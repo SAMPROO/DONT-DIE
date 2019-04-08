@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchor: {fileID: 0}
-  normalLookOffset: {x: 2, y: 0}
-  focusLookOffset: {x: 0, y: 0}
+  normalLookOffset: {x: 2, y: 1.5}
+  focusLookOffset: {x: 1, y: 2}
+  offset: {x: 0, y: 0, z: 0}
   sensitivity: {x: 1, y: 1}
   cameraDistanceMax: 30
   cameraDistanceMin: 4

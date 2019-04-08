@@ -1,6 +1,12 @@
+/*
+Sampo's Game Company
+Leo Tamminen
+*/
+
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class RagdollCharacterDriver : MonoBehaviour
 {
 	[Serializable]
@@ -31,7 +37,7 @@ public class RagdollCharacterDriver : MonoBehaviour
 	[SerializeField] private ControlBone head;
 	[SerializeField] private ControlBone rightHand;
 
-	[SerializeField] private Rigidbody controlRb;
+	private Rigidbody controlRb;
 
 	Vector3 hipPosition => controlRb.position + hip.targetPosition;
 	Vector3 headPosition => controlRb.position + neck.targetPosition;
@@ -40,6 +46,13 @@ public class RagdollCharacterDriver : MonoBehaviour
 	{
 		get => rightHand.active;
 		set => rightHand.active = value;
+	}
+
+	public bool Grounded { get; private set; }
+
+	private void Awake()
+	{
+		controlRb = GetComponent<Rigidbody>();
 	}
 
 	private void FixedUpdate()
@@ -54,7 +67,18 @@ public class RagdollCharacterDriver : MonoBehaviour
 		rightHand.Control(controlRb.position);
 	}
 
-	// TODO: Orient dude towards fron
+	// TODO: Orient dude towards move direction
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		Grounded = true;	
+	}
+
+	private void OnCollisionExit()
+	{
+		Grounded = false;
+	}
+
 
 	// Move character to direction, do this in fixed update
 	public void Drive(Vector3 direction, float amount)
@@ -76,6 +100,9 @@ public class RagdollCharacterDriver : MonoBehaviour
 	public void Jump()
 	{
 		// Todo: test if touching walkable perimeter, and only jump if do
+		if (Grounded == false)
+			return;
+
 		controlRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
 		Debug.Log("Jump");
 	}
