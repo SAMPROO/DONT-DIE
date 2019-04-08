@@ -96,15 +96,10 @@ public class OrbitCameraTP : MonoBehaviour
         // Vector3 finalPosition = sphereCast (ray, cameraDistanceCurrent);
 
         Quaternion rotation = Quaternion.Euler(_yRot, _xRot, 0);
-<<<<<<< HEAD
-        transform.position = anchor.position + offset + rotation * dir;
-        transform.LookAt(anchor.position + offset);
-=======
         transform.position = anchor.position + rotation * (xyPosition + zPosition);
 
         Vector3 lookTarget = anchor.position + rotation * xyPosition;
         transform.LookAt(lookTarget);
->>>>>>> master
     }
 
     public void SetInputController(IInputController _input)
