@@ -18,7 +18,7 @@ public class RagdollCharacterDriver : MonoBehaviour
 		public float force;
 
 		// transformPosition is drivers current position, it is used as an base offset
-		public void Control(Vector3 transformPosition)
+		public void ControlWithOffset(Vector3 transformPosition)
 		{
 			float currentForce = active ? force : 0f;
 			rigidbody.AddForce(
@@ -42,6 +42,8 @@ public class RagdollCharacterDriver : MonoBehaviour
 	Vector3 hipPosition => controlRb.position + hip.targetPosition;
 	Vector3 headPosition => controlRb.position + neck.targetPosition;
 
+	public Transform abdomen;
+
 	public bool ControlRightHand
 	{
 		get => rightHand.active;
@@ -64,7 +66,7 @@ public class RagdollCharacterDriver : MonoBehaviour
 		head.rigidbody.MoveRotation(hip.rigidbody.rotation);
 		// head.rigidbody.MoveRotation(Quaternion.Inverse(hip.rigidbody.rotation));
 
-		rightHand.Control(controlRb.position);
+		rightHand.ControlWithOffset(controlRb.position);
 	}
 
 	// TODO: Orient dude towards move direction
@@ -94,7 +96,14 @@ public class RagdollCharacterDriver : MonoBehaviour
 		{
 			amount *= speed;
 			controlRb.MovePosition(controlRb.position + direction * amount);
+			controlRb.MoveRotation(Quaternion.LookRotation(direction));
+
 		}
+		hip.rigidbody.MoveRotation(controlRb.rotation);
+
+		Debug.DrawRay (transform.position + Vector3.up, transform.forward * 2.5f, Color.red);
+		Debug.DrawRay (transform.position + Vector3.up, hip.rigidbody.transform.forward * 2.5f, Color.cyan);
+		Debug.DrawRay (abdomen.position, abdomen.forward * 2.5f, Color.green);
 	}
 
 	public void Jump()

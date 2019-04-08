@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
                	gun = hitColliders[i].GetComponentInParent<IWeapon>();
                	if (gun != null)
                	{
-	            	gun.StartCarrying(rightHandTransform);
+	            	gun.StartCarrying(gunParent);
 	            	return;
                	}
             }
