@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 	public event Action<PlayerHandle> OnDie;
 
 	[SerializeField] private float speed = 3.0f;
-	[SerializeField] private IWeapon gun;
+	[SerializeField] private Equipment gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
     [SerializeField] private Transform bodyCenterPosition;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     //Once the arm is working, we can create Physics.OverlapSphere infront of hand 
     private void StartCarryingGun()
 	{
-        IWeapon newGun = null;
+        Equipment newGun = null;
 
         float sphereRadius = transform.localScale.y;
 
@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
             if (gunDistance < distance)
             {
-                newGun = hitColliders[i].GetComponentInParent<IWeapon>();
+                newGun = hitColliders[i].GetComponentInParent<Equipment>();
             }
         }
 
