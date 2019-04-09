@@ -74,11 +74,7 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
-
-		ragdoll.SetRightHandControl(input.Focus);
-
-		// ragdoll.rightHand.active = input.Focus;
-		// ragdoll.leftHand.active = input.Focus;
+		ragdoll.SetHandControl(input.Focus);
 	}
 
 	private void FixedUpdate()
@@ -202,48 +198,3 @@ public class PlayerController : MonoBehaviour
     // }
 }
 
-public class SmoothFloat
-{
-	private int index;
-	private float []array;
-	public readonly int length;
-
-	// Set min and max to clamp values when putting in
-	public SmoothFloat (int arrayLength = 10, float? min = null, float? max = null)
-	{
-		array = new float [arrayLength];
-		index = 0;
-		length = arrayLength;
-
-		// Make one null check here, so we don't have to check everytime
-		if (min == null || max == null)
-		{
-			Put = PutImplement;	
-		}
-		else 
-		{
-			float _min = min ?? 0.0f;
-			float _max = max ?? 1.0f;
-			_max = Mathf.Max(_min, _max);
-
-			Put = (value) =>
-			{
-				value = Mathf.Clamp(value, _min, _max);
-				PutImplement(value);
-			};
-		}
-	}
-
-	public System.Action<float> Put;
-
-	private void PutImplement(float value)
-	{
-		array[index] = value;
-		index = (index + 1) % length;
-	}
-
-	public float Get()
-	{
-		return array.Average();	
-	}
-}

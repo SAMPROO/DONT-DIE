@@ -32,9 +32,14 @@ public class NullController : IInputController
 
     public bool Focus => false;
 
-    public event OneOffAction Jump;
-    public event OneOffAction Fire;
-    public event OneOffAction PickUp;
+    // Using empty explicit implementations, we do not get stupid compiler warnings
+    event OneOffAction IInputController.Jump    { add {} remove {} }
+    event OneOffAction IInputController.Fire    { add {} remove {} }
+    event OneOffAction IInputController.PickUp  { add {} remove {} }
+
+    // public event OneOffAction Jump;
+    // public event OneOffAction Fire;
+    // public event OneOffAction PickUp;
 
     public void UpdateController() { }
 }

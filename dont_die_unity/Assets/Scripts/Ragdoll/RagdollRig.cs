@@ -38,9 +38,11 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
-	private FixedJoint rightHandController;
-	private FixedJoint leftHandController;
+	private Joint leftHandController;
+	private Joint rightHandController;
 
+	[SerializeField] private RagdollFootControl leftFoot;
+	[SerializeField] private RagdollFootControl rightFoot;
 
 	[Header("Specs")]
 	[SerializeField] private float jumpPower = 5f;
@@ -56,12 +58,12 @@ public class RagdollRig : MonoBehaviour
 	private Rigidbody controlRb;
 
 	Vector3 hipPosition => transform.position + hip.targetPosition;
-	Vector3 headPosition => transform.position + neck.targetPosition;
+	Vector3 neckPosition => transform.position + neck.targetPosition;
 
 	public Transform abdomen;
 
 	private bool handsControlled;
-	public void SetRightHandControl(bool value)
+	public void SetHandControl(bool value)
 	{
 		// do not set same value again
 		if (handsControlled == value)
@@ -93,7 +95,7 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
-	private static void SetControllerActive(FixedJoint controller, Rigidbody controlledBody, Vector3 targetPosition)
+	private static void SetControllerActive(Joint controller, Rigidbody controlledBody, Vector3 targetPosition)
 	{
 		controller.transform.position = controlledBody.transform.position;
 		controller.transform.rotation = controlledBody.transform.rotation;
@@ -102,51 +104,46 @@ public class RagdollRig : MonoBehaviour
 		controller.transform.position = targetPosition;
 	}
 
-	public bool Grounded { get; private set; }
+	// public bool Grounded { get; private set; }
+	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
 
 	private void Awake()
 	{
 		controlRb = GetComponent<Rigidbody>();
 
-		rightHandController = CreateJointController("rightHandController");
+		rightHandController = CreateJointController<FixedJoint>("rightHandController");
 		rightHandController.transform.SetParent(hip.rigidbody.transform);
 
-		leftHandController = CreateJointController("leftHandController");
+		leftHandController = CreateJointController<FixedJoint>("leftHandController");
 		leftHandController.transform.SetParent(hip.rigidbody.transform);
-
 	}
 
-	[Range(0f, 1f)] public float hipDamping = 0.5f;
+	public float neckDistanceFromHip = 0.5f;
 
 	private void FixedUpdate()
 	{
-		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
-		neck.rigidbody.AddForce((headPosition - neck.rigidbody.position).y * Vector3.up * neck.force);
+		// Only hold hip and neck if Grounded
+		// TODO: make neck target relative to hip instead of ground
+		if (Grounded)
+		{
+			hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
+			// neck.rigidbody.AddForce((neckPosition - neck.rigidbody.position).y * Vector3.up * neck.force);
+		}
+
+		// Vector3 neckTargetPosition = hip.rigidbody.position + hip.rigidbody.transform.up * neckDistanceFromHip;
+		// neck.rigidbody.AddForce((neckTargetPosition - neck.rigidbody.position) * neck.force);
 
 		leftHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 	}
 
-	private FixedJoint CreateJointController(string name)
+	private static JointType CreateJointController<JointType>(string name) where JointType : Joint
 	{
-		var joint = new GameObject(name, typeof(FixedJoint)).GetComponent<FixedJoint>();
+		JointType joint = new GameObject(name).AddComponent<JointType>();
 		joint.GetComponent<Rigidbody>().isKinematic = true;
 		joint.gameObject.SetActive(false);
 		return joint;
 	}
-
-	// TODO: Orient dude towards move direction
-
-	private void OnCollisionEnter(Collision collision)
-	{
-		Grounded = true;	
-	}
-
-	private void OnCollisionExit()
-	{
-		Grounded = false;
-	}
-
 
 	// Move character to direction, do this in fixed update
 	public void Move(Vector3 direction, float amount)
@@ -158,7 +155,7 @@ public class RagdollRig : MonoBehaviour
 			return;
 		}
 
-		if (amount > 0)
+		if (Grounded && amount > 0)
 		{
 			amount *= speed;
 			controlRb.MovePosition(controlRb.position + direction * amount);
@@ -172,22 +169,29 @@ public class RagdollRig : MonoBehaviour
 		Debug.DrawRay (abdomen.position, abdomen.forward * 2.5f, Color.green);
 	}
 
+	public float hipMultiplier = 1f;
+
 	public void Jump()
 	{
 		// Todo: test if touching walkable perimeter, and only jump if do
 		if (Grounded == false)
 			return;
 
+		hip.rigidbody.AddForce(Vector3.up * jumpPower * hipMultiplier, ForceMode.Impulse);
+		neck.rigidbody.AddForce(Vector3.up * jumpPower * hipMultiplier, ForceMode.Impulse);
+		
 		controlRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-		Debug.Log("Jump");
 	}
 
 	public void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.magenta;
 
+		Vector3 neckTargetPosition = hip.rigidbody.position + hip.rigidbody.transform.up * neckDistanceFromHip;
+		Gizmos.DrawWireSphere(neckTargetPosition, 0.05f);
+
+
 		Gizmos.DrawWireSphere(hipPosition, 0.05f);
-		Gizmos.DrawWireSphere(headPosition, 0.05f);
 
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightHand.targetPosition), 0.05f);
