@@ -5,17 +5,15 @@ Leo Tamminen
 
 using UnityEngine;
 
-
-[RequireComponent(typeof(SphereCollider), typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class RagdollFootControl : MonoBehaviour
 {
-	private int collisionCount;// { get; private set; } = 0;
-	public bool Grounded => smoothGrounded.Value > 0.1f; //collisionCount > 0;
+	private int collisionCount;
+	private SmoothFloat smoothGrounded = new SmoothFloat(10);
+	public bool Grounded => smoothGrounded.Value > 0.1f;
 
 	private void OnCollisionEnter() => collisionCount++;
 	private void OnCollisionExit() => collisionCount--;
-
-	private SmoothFloat smoothGrounded = new SmoothFloat(10);
 
 	private void FixedUpdate()
 	{

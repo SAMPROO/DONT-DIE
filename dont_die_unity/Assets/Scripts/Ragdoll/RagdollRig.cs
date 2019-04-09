@@ -122,16 +122,8 @@ public class RagdollRig : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		// Only hold hip and neck if Grounded
-		// TODO: make neck target relative to hip instead of ground
-		if (Grounded)
-		{
-			hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
-			// neck.rigidbody.AddForce((neckPosition - neck.rigidbody.position).y * Vector3.up * neck.force);
-		}
-
-		// Vector3 neckTargetPosition = hip.rigidbody.position + hip.rigidbody.transform.up * neckDistanceFromHip;
-		// neck.rigidbody.AddForce((neckTargetPosition - neck.rigidbody.position) * neck.force);
+		// Keep hip in position
+		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
 
 		leftHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
@@ -155,7 +147,7 @@ public class RagdollRig : MonoBehaviour
 			return;
 		}
 
-		if (Grounded && amount > 0)
+		if (amount > 0)
 		{
 			amount *= speed;
 			controlRb.MovePosition(controlRb.position + direction * amount);

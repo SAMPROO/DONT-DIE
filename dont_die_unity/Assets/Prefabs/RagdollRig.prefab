@@ -1080,7 +1080,7 @@ MonoBehaviour:
   hip:
     active: 1
     rigidbody: {fileID: 2034884842}
-    targetPosition: {x: 0, y: 0.5, z: 0}
+    targetPosition: {x: 0, y: 0.6, z: 0}
     force: 5000
   neck:
     active: 1
