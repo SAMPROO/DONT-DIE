@@ -33,7 +33,7 @@ public class Gun : Equipment
     {
         if (ammo > 0 && secondsPerRound - (Time.time - time) <= 0/* && !isReeling*/)
         {
-            projectile = Instantiate(projectilePrefab, transform.position + Quaternion.LookRotation(transform.forward) * spawnOffset, Quaternion.identity);
+            projectile = Instantiate(projectilePrefab, transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset, Quaternion.identity);
             projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
 
             time = Time.time;
@@ -53,10 +53,12 @@ public class Gun : Equipment
         }
     }
 
-    void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
+
         // Draw a sphere at the projectile spawn position
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + Quaternion.LookRotation(transform.forward) * spawnOffset, .05f);
+        Gizmos.DrawWireSphere(transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset, .05f);
     }
 }

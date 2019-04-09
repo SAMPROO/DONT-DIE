@@ -120,10 +120,12 @@ public class PlayerController : MonoBehaviour
 
     private void TogglePickup()
 	{
+        Equipment lastGun = null;
+
         // Drop if we have gun
 		if (gun != null)
 		{
-			StopCarryingGun();
+			lastGun = StopCarryingGun();
 		}
 
 		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
@@ -150,50 +152,21 @@ public class PlayerController : MonoBehaviour
             {
             	// TODO: not likey this at all. Things in gun (or rather pickup) layer should have right component in itself and not parent
                	gun = hitColliders[i].GetComponentInParent<Equipment>();
-               	if (gun != null)
+               	if (gun != lastGun)
                	{
 	            	gun.StartCarrying(gunParent);
 	            	return;
                	}
             }
         }
-
-
-		/*
-        IWeapon newGun = null;
-
-        float sphereRadius = transform.localScale.y;
-
-        Collider[] hitColliders = Physics.OverlapSphere(bodyCenterPosition.position, sphereRadius, gunLayer);
-
-        float distance = sphereRadius;
-
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            float gunDistance = Vector3.Distance(hitColliders[i].transform.position, bodyCenterPosition.position);
-
-            if (gunDistance < distance)
-            {
-                newGun = hitColliders[i].GetComponentInParent<Equipment>();
-            }
-        }
-
-        if (gun == null && newGun != null)
-        {
-            this.gun = newGun;
-            gun.StartCarrying(gunParent);
-        }
-        else if (gun != null && newGun != null)
-        {
-            StopCarryingGun();
-        }
-        */
 	}
 
-	private void StopCarryingGun()
+	private Equipment StopCarryingGun()
 	{
 		gun?.StopCarrying();
+        var lastGun = gun;
 		gun = null;
+        return lastGun;
 	}
 
     // private void OnDrawGizmosSelected()

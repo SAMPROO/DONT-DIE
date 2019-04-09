@@ -490,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66d8d0393c64384fbcc4c3a9b20e121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdPosition: {x: 0, y: -0.15, z: -0.21}
   projectileOrigin: {fileID: 4258337539844123082}
   projectilePrefab: {fileID: 5389533523361623170, guid: df0ac88ff0a1ee64dbbb9db02bd7fe26,
     type: 3}

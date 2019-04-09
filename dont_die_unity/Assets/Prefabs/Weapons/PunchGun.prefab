@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa92f9887bda23b4687021c5c5389199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdPosition: {x: 0, y: -0.18, z: -0.12}
   force: 300
   BoxingGlove: {fileID: 1186899448350215796}
   waitTime: 0.5

@@ -60,5 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7291df54917584f9efa945b6d4514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdPosition: {x: 0, y: -0.12, z: -0.03}
+  projectilePrefab: {fileID: 0}
   spawnOffset: {x: 0, y: 0, z: 1}
+  startSpeed: 10
+  startAngle: 0
   ammo: 3
+  roundPerSecond: 3
