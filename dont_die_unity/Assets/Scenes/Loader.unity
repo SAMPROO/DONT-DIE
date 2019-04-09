@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8278bede08c51be479f228d4a00b6b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 8449348683169769090, guid: 33d44a4a7ffc75d458839db590084688,
+  playerPrefab: {fileID: 5103313764410557795, guid: c2c9b060ba10cdd478dc35ee5ba1e119,
     type: 3}
   orbitCameraPrefab: {fileID: 3173458186620795841, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
     type: 3}

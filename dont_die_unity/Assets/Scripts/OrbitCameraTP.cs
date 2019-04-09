@@ -11,6 +11,8 @@ public class OrbitCameraTP : MonoBehaviour
     public Vector2 normalLookOffset;
     public Vector2 focusLookOffset;
 
+    public Vector3 offset;
+
     public Vector2 sensitivity = new Vector2(1,1);
     public float cameraDistanceMax;
     public float cameraDistanceMin;
@@ -102,7 +104,6 @@ public class OrbitCameraTP : MonoBehaviour
 
     public void SetInputController(IInputController _input)
     {
-        Debug.Log("Setted inputs");
         input = _input;
     }
 }
