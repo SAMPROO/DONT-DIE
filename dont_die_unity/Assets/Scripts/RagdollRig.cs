@@ -38,8 +38,8 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
-	private SpringJoint rightHandController;
-	private SpringJoint leftHandController;
+	private FixedJoint rightHandController;
+	private FixedJoint leftHandController;
 
 
 	[Header("Specs")]
@@ -93,7 +93,7 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
-	private static void SetControllerActive(SpringJoint controller, Rigidbody controlledBody, Vector3 targetPosition)
+	private static void SetControllerActive(FixedJoint controller, Rigidbody controlledBody, Vector3 targetPosition)
 	{
 		controller.transform.position = controlledBody.transform.position;
 		controller.transform.rotation = controlledBody.transform.rotation;
@@ -127,14 +127,11 @@ public class RagdollRig : MonoBehaviour
 		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 	}
 
-	private SpringJoint CreateJointController(string name)
+	private FixedJoint CreateJointController(string name)
 	{
-		var joint = new GameObject(name, typeof(SpringJoint)).GetComponent<SpringJoint>();
+		var joint = new GameObject(name, typeof(FixedJoint)).GetComponent<FixedJoint>();
 		joint.GetComponent<Rigidbody>().isKinematic = true;
 		joint.gameObject.SetActive(false);
-        joint.spring = 2000;
-        joint.damper = 500;
-        joint.anchor = Vector3.up * .15f;
 		return joint;
 	}
 
