@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         // Subscribe input events
         input.Fire += Fire;
 		input.Jump += ragdoll.Jump;
-		input.PickUp += TogglePickup;
+		input.PickUp += ToggleCarryGun;
         
         // Initialize health systems
         hitpoints = maxHitpoints;
@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
 		ragdoll.SetHandControl(input.Focus);
 	}
 
+	private Vector3 lastMoveDirection = Vector3.forward;
+
 	private void FixedUpdate()
 	{
 		Vector3 movement = 
@@ -84,9 +86,23 @@ public class PlayerController : MonoBehaviour
 			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
-		ragdoll.Move(movement / amount, amount * Time.deltaTime);
+		Vector3 moveDirection = movement / amount;
 
-		// transform.position = ragdoll.transform.position;
+		if (amount > 0)
+			lastMoveDirection = moveDirection;
+
+		Vector3 lookDirection = 
+			input.Focus ? 
+			cameraRig.baseRotation * Vector3.forward : 
+			lastMoveDirection;
+		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
+
+
+		// if (input.Focus)
+		// 	ragdoll.Move(moveDirection, lookDirection, amount * Time.deltaTime);
+		// else
+		// 	ragdoll.Move(moveDirection, lookDirection, amount * Time.deltaTime);
+
 	}
 
 	private void Fire()
@@ -112,12 +128,13 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    private void TogglePickup()
+    private void ToggleCarryGun()
 	{
 		// Drop if we have gun
 		if (gun != null)
 		{
-			StopCarryingGun();
+			gun?.StopCarrying();
+			gun = null;
 		}
 
 		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
@@ -151,50 +168,6 @@ public class PlayerController : MonoBehaviour
                	}
             }
         }
-
-
-		/*
-        IWeapon newGun = null;
-
-        float sphereRadius = transform.localScale.y;
-
-        Collider[] hitColliders = Physics.OverlapSphere(bodyCenterPosition.position, sphereRadius, gunLayer);
-
-        float distance = sphereRadius;
-
-        for (int i = 0; i < hitColliders.Length; i++)
-        {
-            float gunDistance = Vector3.Distance(hitColliders[i].transform.position, bodyCenterPosition.position);
-
-            if (gunDistance < distance)
-            {
-                newGun = hitColliders[i].GetComponentInParent<IWeapon>();
-            }
-        }
-
-        if (gun == null && newGun != null)
-        {
-            this.gun = newGun;
-            gun.StartCarrying(gunParent);
-        }
-        else if (gun != null && newGun != null)
-        {
-            StopCarryingGun();
-        }
-        */
 	}
-
-	private void StopCarryingGun()
-	{
-		gun?.StopCarrying();
-		gun = null;
-	}
-
-    // private void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.color = Color.red;
-    //     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
-    //     Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
-    // }
 }
 

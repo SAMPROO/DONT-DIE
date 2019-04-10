@@ -15,6 +15,14 @@ public class RagdollFootControl : MonoBehaviour
 	private void OnCollisionEnter() => collisionCount++;
 	private void OnCollisionExit() => collisionCount--;
 
+	public new Rigidbody rigidbody { get; private set; }
+	public Vector3 position => transform.position;
+
+	private void Awake()
+	{
+		rigidbody = GetComponent<Rigidbody>();
+	}
+
 	private void FixedUpdate()
 	{
 		smoothGrounded.Put(collisionCount > 0 ? 1f : 0f);

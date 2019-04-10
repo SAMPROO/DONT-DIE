@@ -41,26 +41,39 @@ public class RagdollRig : MonoBehaviour
 	private Joint leftHandController;
 	private Joint rightHandController;
 
+	private Joint leftFootController;
+	private Joint rightFootController;
+
 	[SerializeField] private RagdollFootControl leftFoot;
 	[SerializeField] private RagdollFootControl rightFoot;
 
+	[Header("Walking")]
+	public float feetWidth = 0.5f;
+	public float stepLength = 1.0f;
+	public float footForce = 1000;
+	public float footSpeed = 1;
+	private bool doWalk;
+	private float FootLerp()
+	{
+		if (doWalk == false)
+			return 0;
+		return Mathf.PingPong(footSpeed * Time.time, 1f) * 2f - 1f;
+	}
+	Vector3 leftFootTarget => new Vector3(-feetWidth, 0f, stepLength * FootLerp());
+	Vector3 rightFootTarget => new Vector3(feetWidth, 0f, -stepLength * FootLerp());
+
 	[Header("Specs")]
-	[SerializeField] private float jumpPower = 5f;
+	[SerializeField] private float jumpVelocity = 5f;
 	[SerializeField] private float speed = 3f;
 
 	[Header("Controlled parts")]
 	public ControlBone hip;
-	public ControlBone neck;
-	public ControlBone head;
 	public ControlBone rightHand;
 	public ControlBone leftHand;
 
 	private Rigidbody controlRb;
 
-	Vector3 hipPosition => transform.position + hip.targetPosition;
-	Vector3 neckPosition => transform.position + neck.targetPosition;
-
-	public Transform abdomen;
+	Vector3 hipTargetPosition => transform.position + hip.targetPosition;
 
 	private bool handsControlled;
 	public void SetHandControl(bool value)
@@ -104,93 +117,103 @@ public class RagdollRig : MonoBehaviour
 		controller.transform.position = targetPosition;
 	}
 
-	// public bool Grounded { get; private set; }
 	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
 
 	private void Awake()
 	{
 		controlRb = GetComponent<Rigidbody>();
-
-		rightHandController = CreateJointController<FixedJoint>("rightHandController");
-		rightHandController.transform.SetParent(hip.rigidbody.transform);
-
-		leftHandController = CreateJointController<FixedJoint>("leftHandController");
-		leftHandController.transform.SetParent(hip.rigidbody.transform);
 	}
 
-	public float neckDistanceFromHip = 0.5f;
+	private void Start()
+	{
+		rightHandController = CreateJointController<FixedJoint>("rightHandController", false);
+		rightHandController.transform.SetParent(hip.rigidbody.transform);
+
+		leftHandController = CreateJointController<FixedJoint>("leftHandController", false);
+		leftHandController.transform.SetParent(hip.rigidbody.transform);
+
+		leftFootController = CreateJointController<SpringJoint>("leftFootController", false);
+		leftFootController.transform.position = leftFoot.position;
+		leftFootController.connectedBody = leftFoot.rigidbody;
+		(leftFootController as SpringJoint).spring = footForce;
+		leftFootController.gameObject.SetActive(true);
+
+		rightFootController = CreateJointController<SpringJoint>("rightFootController", false);
+		rightFootController.transform.position = rightFoot.position;
+		rightFootController.connectedBody = rightFoot.rigidbody;
+		(rightFootController as SpringJoint).spring = footForce;
+		rightFootController.gameObject.SetActive(true);
+
+	}
 
 	private void FixedUpdate()
 	{
-		// Keep hip in position
-		hip.rigidbody.AddForce((hipPosition - hip.rigidbody.position) * hip.force);
+		// Only keep hip in air if feet are on the ground
+		Vector3 hipMoveVector = hipTargetPosition - hip.rigidbody.position;
+		if (Grounded == false)
+			hipMoveVector.y = 0f;
+		hip.rigidbody.AddForce(hipMoveVector * hip.force);
 
+		// TODO: get aim direction from camera and use it to orient hands (and guns)
+		// Keep hands in fixed rotation
 		leftHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
+
+		// Lets body spin in air
+		controlRb.freezeRotation = Grounded;
+
+		leftFootController.transform.position = transform.TransformPoint(leftFootTarget);
+		rightFootController.transform.position = transform.TransformPoint(rightFootTarget);
 	}
 
-	private static JointType CreateJointController<JointType>(string name) where JointType : Joint
+	private static JointType CreateJointController<JointType>(string name, bool setActive) where JointType : Joint
 	{
 		JointType joint = new GameObject(name).AddComponent<JointType>();
 		joint.GetComponent<Rigidbody>().isKinematic = true;
-		joint.gameObject.SetActive(false);
+		joint.gameObject.SetActive(setActive);
 		return joint;
 	}
 
 	// Move character to direction, do this in fixed update
-	public void Move(Vector3 direction, float amount)
+	public void Move(Vector3 movement, Vector3 look, float amount)
 	{
-		// Enforce this to be used only in fixed update
-		if (Time.inFixedTimeStep == false)
-		{
-			Debug.LogError("Use RagdollRig.Move only in FixedUpdate");				
-			return;
-		}
+		doWalk = amount > 0;
 
-		if (amount > 0)
-		{
-			amount *= speed;
-			controlRb.MovePosition(controlRb.position + direction * amount);
-			controlRb.MoveRotation(Quaternion.LookRotation(direction));
-
-		}
-		hip.rigidbody.MoveRotation(controlRb.rotation);	
-
-		Debug.DrawRay (transform.position + Vector3.up, transform.forward * 2.5f, Color.red);
-		Debug.DrawRay (hipPosition, hip.rigidbody.transform.forward * 2.5f, Color.cyan);
-		Debug.DrawRay (abdomen.position, abdomen.forward * 2.5f, Color.green);
+		amount *= speed;
+		controlRb.MovePosition(controlRb.position + movement * amount);
+		controlRb.MoveRotation(Quaternion.LookRotation(look));
+		hip.rigidbody.MoveRotation(controlRb.rotation);
 	}
-
-	public float hipMultiplier = 1f;
 
 	public void Jump()
 	{
-		// Todo: test if touching walkable perimeter, and only jump if do
 		if (Grounded == false)
 			return;
 
-		hip.rigidbody.AddForce(Vector3.up * jumpPower * hipMultiplier, ForceMode.Impulse);
-		neck.rigidbody.AddForce(Vector3.up * jumpPower * hipMultiplier, ForceMode.Impulse);
-		
-		controlRb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+		hip.rigidbody.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+		controlRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
 	}
 
 	public void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.magenta;
-
-		Vector3 neckTargetPosition = hip.rigidbody.position + hip.rigidbody.transform.up * neckDistanceFromHip;
-		Gizmos.DrawWireSphere(neckTargetPosition, 0.05f);
-
-
-		Gizmos.DrawWireSphere(hipPosition, 0.05f);
+		Gizmos.DrawWireSphere(hipTargetPosition, 0.05f);
 
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightHand.targetPosition), 0.05f);
 		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(leftHand.targetPosition), 0.05f);
 
+
+		Gizmos.color = Color.blue;
+		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(leftFootTarget), 0.05f);
+
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightFootTarget), 0.05f);
+
+
 	}
 
+	// todo: Not used anymore here, can be moved to some utility class
 	public static Transform [] GetRecursiveChildren(Transform parent)
 	{
 		var children = new List<Transform>();
