@@ -122,6 +122,8 @@ public class PlayerController : MonoBehaviour
 	{
         Equipment lastGun = null;
 
+        Debug.Log("Gun:::::" + gun);
+
         // Drop if we have gun
 		if (gun != null)
 		{
@@ -157,6 +159,7 @@ public class PlayerController : MonoBehaviour
 	            	gun.StartCarrying(gunParent);
 	            	return;
                	}
+                else gun = null;
             }
         }
 	}
