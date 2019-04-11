@@ -4,11 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Switch_Button : MonoBehaviour, ISwitch
 {
-    public bool state;
+    private bool state;
     public bool State
     {
         get => state;
-        private set { state = value; }
+        set { state = value; }
+    }
+
+    public float Range
+    {
+        get => Convert.ToInt32(State);
     }
 
     public event Action OnTurnOn;
@@ -23,9 +28,11 @@ public class Switch_Button : MonoBehaviour, ISwitch
     private float startPos;
     private bool isTriggered;
 
+    private ConfigurableJoint joint;
+
     private void OnValidate()
     {
-        var joint = GetComponent<ConfigurableJoint>();
+        joint = GetComponent<ConfigurableJoint>();
 
         startPos = .5f + movingPart.transform.localPosition.y;
 
@@ -36,6 +43,8 @@ public class Switch_Button : MonoBehaviour, ISwitch
         // set the linear limit
         joint.linearLimit = new SoftJointLimit { limit = transform.localScale.y * .5f - .001f };
         joint.yDrive = new JointDrive { positionSpring = 1000, maximumForce = triggerForce, positionDamper = triggerDamper };
+
+        OnTurnOff?.Invoke();
     }
 
     private void FixedUpdate()
@@ -44,7 +53,7 @@ public class Switch_Button : MonoBehaviour, ISwitch
 
         if(distance <= startPos - triggerDistance)
         {
-            Debug.Log("Triggered");
+            //Debug.Log("Triggered");
 
             if (isToggle)
             {
@@ -52,8 +61,8 @@ public class Switch_Button : MonoBehaviour, ISwitch
                 {
                     State = !State;
 
-                    if (State) OnTurnOn();
-                    else OnTurnOff();
+                    if (State) OnTurnOn?.Invoke();
+                    else OnTurnOff?.Invoke();
 
                     isTriggered = true;
                 }
@@ -61,12 +70,15 @@ public class Switch_Button : MonoBehaviour, ISwitch
             else
             {
                 State = true;
-                OnTurnOn();
+
+                OnTurnOn?.Invoke();
+
+                isTriggered = true;
             }
         }
-        else if (distance >= startPos - releaseDistance)
+        else if (isTriggered && distance >= startPos - releaseDistance)
         {
-            Debug.Log("Released");
+            //Debug.Log("Released");
 
             if (isToggle)
             {
@@ -75,36 +87,8 @@ public class Switch_Button : MonoBehaviour, ISwitch
             else
             {
                 State = false;
-                OnTurnOff();
+                OnTurnOff?.Invoke();
             }
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject == movingPart.gameObject)
-    //    {
-    //        if (isToggle)
-    //        {
-    //            State = !State;
-
-    //            if (State) OnTurnOn();
-    //            else OnTurnOff();
-    //        }
-    //        else
-    //        {
-    //            State = true;
-    //            OnTurnOn();
-    //        }            
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-//        if (!isToggle && other.gameObject == movingPart.gameObject)
-//        {
-//            State = false;
-//            OnTurnOff();
-//}
-    //}
 }

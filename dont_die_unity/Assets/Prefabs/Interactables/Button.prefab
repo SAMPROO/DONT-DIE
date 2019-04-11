@@ -357,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2177de9e03435b4eb40fdeddbdfe67c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
   isToggle: 0
   triggerForce: 5
   triggerDamper: 5
