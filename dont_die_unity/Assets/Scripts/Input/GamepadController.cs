@@ -3,14 +3,17 @@ using UnityEngine;
 public class GamepadController : IInputController
 {
     public string
-        moveAxisXName   = null,
-        moveAxisYName   = null,
-        lookAxisXName   = null,
-        lookAxisYName   = null,
-        LTAxisName      = null,
-        RTAxisName      = null,
-        jumpKeyName     = null,
-        interactKeyName = null;
+        moveAxisXName = null,
+        moveAxisYName = null,
+        lookAxisXName = null,
+        lookAxisYName = null,
+        LBKeyName = null,
+        RBKeyName = null,
+        LTAxisName = null,
+        RTAxisName = null,
+        jumpKeyName = null,
+        interactKeyName = null,
+        doRagdollKeyName = null;
         
     public float AxisInversion { get; set; } // One nice line is enough when using default getter and setter. We must use this Capital name below though.
 
@@ -22,9 +25,12 @@ public class GamepadController : IInputController
     // TODO: this can also use simple expression body getter
     public bool Focus { get; private set; }
 
+    public event OneOffAction ActivateLeftHand;
+    public event OneOffAction ActivateRightHand;
     public event OneOffAction Jump;
     public event OneOffAction Fire;
     public event OneOffAction PickUp;
+    public event OneOffAction DoRagdoll;
 
     private bool fireEventTriggered = false;
 
@@ -38,7 +44,6 @@ public class GamepadController : IInputController
         {
             Jump?.Invoke();
         }
-
 
         //fire input
         float rightTriggerValue = Input.GetAxisRaw(RTAxisName);
@@ -60,6 +65,15 @@ public class GamepadController : IInputController
 
         if (Input.GetButtonDown(interactKeyName))
             PickUp?.Invoke();
+        
+        if (Input.GetButtonDown(doRagdollKeyName))
+            DoRagdoll?.Invoke();
+        
+        if (Input.GetButtonDown(LBKeyName))
+            Debug.Log("Using left hand");
+        
+        if (Input.GetButtonDown(RBKeyName))
+            Debug.Log("Using right hand");
 
         //// added because fire button doesnt work on ps4 controller (currently)
         //if (Input.GetKeyDown(KeyCode.F))
