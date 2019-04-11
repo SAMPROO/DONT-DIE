@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         // Subscribe input events
         input.Fire += Fire;
 		input.Jump += ragdoll.Jump;
-		input.PickUp += TogglePickup;
+		input.PickUp += ToggleCarryGun;
         
         // Initialize health systems
         hitpoints = maxHitpoints;
@@ -76,12 +76,10 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
-
-		ragdoll.SetRightHandControl(input.Focus);
-
-		// ragdoll.rightHand.active = input.Focus;
-		// ragdoll.leftHand.active = input.Focus;
+		ragdoll.SetHandControl(input.Focus);
 	}
+
+	private Vector3 lastMoveDirection = Vector3.forward;
 
 	private void FixedUpdate()
 	{
@@ -90,9 +88,23 @@ public class PlayerController : MonoBehaviour
 			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
-		ragdoll.Move(movement / amount, amount * Time.deltaTime);
+		Vector3 moveDirection = movement / amount;
 
-		// transform.position = ragdoll.transform.position;
+		if (amount > 0)
+			lastMoveDirection = moveDirection;
+
+		Vector3 lookDirection = 
+			input.Focus ? 
+			cameraRig.baseRotation * Vector3.forward : 
+			lastMoveDirection;
+		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
+
+
+		// if (input.Focus)
+		// 	ragdoll.Move(moveDirection, lookDirection, amount * Time.deltaTime);
+		// else
+		// 	ragdoll.Move(moveDirection, lookDirection, amount * Time.deltaTime);
+
 	}
 
 	private void Fire()
@@ -118,7 +130,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    private void TogglePickup()
+    private void ToggleCarryGun()
 	{
         Equipment lastGun = null;
 
@@ -127,7 +139,8 @@ public class PlayerController : MonoBehaviour
         // Drop if we have gun
 		if (gun != null)
 		{
-			lastGun = StopCarryingGun();
+			gun?.StopCarrying();
+			gun = null;
 		}
 
 		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
@@ -163,65 +176,5 @@ public class PlayerController : MonoBehaviour
             }
         }
 	}
-
-	private Equipment StopCarryingGun()
-	{
-		gun?.StopCarrying();
-        var lastGun = gun;
-		gun = null;
-        return lastGun;
-	}
-
-    // private void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.color = Color.red;
-    //     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
-    //     Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
-    // }
 }
 
-public class SmoothFloat
-{
-	private int index;
-	private float []array;
-	public readonly int length;
-
-	// Set min and max to clamp values when putting in
-	public SmoothFloat (int arrayLength = 10, float? min = null, float? max = null)
-	{
-		array = new float [arrayLength];
-		index = 0;
-		length = arrayLength;
-
-		// Make one null check here, so we don't have to check everytime
-		if (min == null || max == null)
-		{
-			Put = PutImplement;	
-		}
-		else 
-		{
-			float _min = min ?? 0.0f;
-			float _max = max ?? 1.0f;
-			_max = Mathf.Max(_min, _max);
-
-			Put = (value) =>
-			{
-				value = Mathf.Clamp(value, _min, _max);
-				PutImplement(value);
-			};
-		}
-	}
-
-	public System.Action<float> Put;
-
-	private void PutImplement(float value)
-	{
-		array[index] = value;
-		index = (index + 1) % length;
-	}
-
-	public float Get()
-	{
-		return array.Average();	
-	}
-}
