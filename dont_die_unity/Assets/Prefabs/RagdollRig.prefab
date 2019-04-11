@@ -1158,7 +1158,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ed27468fef808304b9a7e47f7e281dd2, type: 3}
+  - {fileID: 2100000, guid: c76690f1f66e70f4a836e9dad1cf07ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1470,7 +1470,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7266626653415429319}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0.1
   m_AngularDrag: 100
   m_UseGravity: 1
@@ -1579,7 +1579,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7266626653415429321}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0.1
   m_AngularDrag: 100
   m_UseGravity: 1
@@ -2274,7 +2274,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000039115548, y: 0.34512928, z: 0.000000008265488}
+  m_ConnectedAnchor: {x: -0.000000008731149, y: 0.34512916, z: -0.000000051688403}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2412,7 +2412,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000010011718, y: 0.3451289, z: -0.000000028871}
+  m_ConnectedAnchor: {x: 0.00000002013985, y: 0.34512895, z: 0.00000009057112}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
