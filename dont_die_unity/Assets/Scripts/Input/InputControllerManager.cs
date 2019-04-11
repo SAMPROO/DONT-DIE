@@ -43,7 +43,7 @@ public class InputControllerManager
         baseLookAxisYName   = "LookYAlt",
         baseJumpKeyName     = "B",
         baseInteractKeyName = "A",
-        baseDoRagdollKeyName = "Y",   //TODO Check if this is right button name
+        baseDoRagdollKeyName = "X",   //TODO Check if this is right button name
         baseLBKeyName       = "LBALT",//TODO Check if this is right button name
         baseRBKeyName       = "RBALT",//TODO Check if this is right button name
         baseLTAxisName      = "LTALT",

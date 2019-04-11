@@ -15,15 +15,16 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/IInputController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="33" />
+            <state relative-caret-position="686">
+              <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
               <folding>
-                <marker date="1554972114142" expanded="true" signature="133:701" ph="{...}" />
-                <marker date="1554972114142" expanded="true" signature="515:670" ph="/* TODO: This function should be removed from here and moved to ... */" />
-                <marker date="1554972114142" expanded="true" signature="796:1275" ph="{...}" />
+                <marker date="1554981536689" expanded="true" signature="133:837" ph="{...}" />
+                <marker date="1554981536689" expanded="true" signature="436:518" ph="/* event OneOffAction ActivateLeftHand; ... */" />
+                <marker date="1554981536689" expanded="true" signature="651:806" ph="/* TODO: This function should be removed from here and moved to ... */" />
+                <marker date="1554981536689" expanded="true" signature="932:1447" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -32,38 +33,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/GamepadController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1420">
-              <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+            <state relative-caret-position="-342">
+              <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
               <folding>
-                <marker date="1554972718989" expanded="true" signature="69:2696" ph="{...}" />
-                <marker date="1554972718989" expanded="true" signature="1372:1516" ph="/* This is probably not a monobehaviour, hence it needs to be updated manually ... */" />
-                <marker date="1554972718989" expanded="true" signature="1551:2693" ph="{...}" />
-                <marker date="1554972718989" expanded="true" signature="1603:1651" ph="{...}" />
-                <marker date="1554972718989" expanded="true" signature="1817:1904" ph="{...}" />
-                <marker date="1554972718989" expanded="true" signature="1958:2018" ph="{...}" />
-                <marker date="1554972718989" expanded="true" signature="2542:2687" ph="/* added because fire button doesnt work on ps4 controller (currently) ... */" />
+                <marker date="1554981536707" expanded="true" signature="69:3009" ph="{...}" />
+                <marker date="1554981536707" expanded="true" signature="1440:1584" ph="/* This is probably not a monobehaviour, hence it needs to be updated manually ... */" />
+                <marker date="1554981536707" expanded="true" signature="1619:3007" ph="{...}" />
+                <marker date="1554981536707" expanded="true" signature="1671:1719" ph="{...}" />
+                <marker date="1554981536707" expanded="true" signature="1885:1972" ph="{...}" />
+                <marker date="1554981536707" expanded="true" signature="2026:2086" ph="{...}" />
+                <marker date="1554981536707" expanded="true" signature="2401:2493" ph="/* if (Input.GetButtonDown(doRagdollKeyName)) ... */" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/InputControllerManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+            <state relative-caret-position="500">
+              <caret line="46" column="79" lean-forward="true" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
               <folding>
-                <marker date="1554973184757" expanded="true" signature="55:5204" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="86:561" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="628:1077" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="1145:1738" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="1953:3192" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="2037:2121" ph="/* Use this as long as it works, not ideal though ... */" />
-                <marker date="1554973184757" expanded="true" signature="2189:3161" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="3266:5202" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="3508:5168" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="3645:3754" ph="{...}" />
-                <marker date="1554973184757" expanded="true" signature="4042:4894" ph="/* GamepadController gamepad = new GamepadController ... */" />
+                <marker date="1554981532448" expanded="true" signature="55:5204" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="86:561" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="628:1077" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="1145:1738" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="1953:3192" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="2037:2121" ph="/* Use this as long as it works, not ideal though ... */" />
+                <marker date="1554981532448" expanded="true" signature="2189:3161" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="3266:5202" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="3508:5168" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="3645:3754" ph="{...}" />
+                <marker date="1554981532448" expanded="true" signature="4042:4894" ph="/* GamepadController gamepad = new GamepadController ... */" />
               </folding>
             </state>
           </provider>
@@ -181,12 +182,12 @@
       <option name="presentableId" value="Default" />
       <updated>1554812495325</updated>
       <workItem from="1554812498540" duration="70000" />
-      <workItem from="1554968034148" duration="5552000" />
+      <workItem from="1554968034148" duration="9771000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5622000" />
+    <option name="totallyTimeSpent" value="9841000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -201,7 +202,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07193959" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.07193959" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -217,7 +218,7 @@
       <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Performance Profiler" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32969603" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
@@ -230,6 +231,36 @@
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Unit Tests Coverage" order="6" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07193959" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Unity" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="NuGet" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32969603" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -249,42 +280,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/Prefabs/Orbit Camera.prefab">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/GamepadController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
-          <folding>
-            <marker date="1554972718989" expanded="true" signature="69:2696" ph="{...}" />
-            <marker date="1554972718989" expanded="true" signature="1372:1516" ph="/* This is probably not a monobehaviour, hence it needs to be updated manually ... */" />
-            <marker date="1554972718989" expanded="true" signature="1551:2693" ph="{...}" />
-            <marker date="1554972718989" expanded="true" signature="1603:1651" ph="{...}" />
-            <marker date="1554972718989" expanded="true" signature="1817:1904" ph="{...}" />
-            <marker date="1554972718989" expanded="true" signature="1958:2018" ph="{...}" />
-            <marker date="1554972718989" expanded="true" signature="2542:2687" ph="/* added because fire button doesnt work on ps4 controller (currently) ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/InputControllerManager.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-          <folding>
-            <marker date="1554973184757" expanded="true" signature="55:5204" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="86:561" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="628:1077" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="1145:1738" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="1953:3192" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="2037:2121" ph="/* Use this as long as it works, not ideal though ... */" />
-            <marker date="1554973184757" expanded="true" signature="2189:3161" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="3266:5202" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="3508:5168" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="3645:3754" ph="{...}" />
-            <marker date="1554973184757" expanded="true" signature="4042:4894" ph="/* GamepadController gamepad = new GamepadController ... */" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/OrbitCameraTP.cs">
       <provider selected="true" editor-type-id="text-editor">
@@ -309,12 +304,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/IInputController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="33" />
+        <state relative-caret-position="686">
+          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
           <folding>
-            <marker date="1554972114142" expanded="true" signature="133:701" ph="{...}" />
-            <marker date="1554972114142" expanded="true" signature="515:670" ph="/* TODO: This function should be removed from here and moved to ... */" />
-            <marker date="1554972114142" expanded="true" signature="796:1275" ph="{...}" />
+            <marker date="1554981536689" expanded="true" signature="133:837" ph="{...}" />
+            <marker date="1554981536689" expanded="true" signature="436:518" ph="/* event OneOffAction ActivateLeftHand; ... */" />
+            <marker date="1554981536689" expanded="true" signature="651:806" ph="/* TODO: This function should be removed from here and moved to ... */" />
+            <marker date="1554981536689" expanded="true" signature="932:1447" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/GamepadController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-342">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <marker date="1554981536707" expanded="true" signature="69:3009" ph="{...}" />
+            <marker date="1554981536707" expanded="true" signature="1440:1584" ph="/* This is probably not a monobehaviour, hence it needs to be updated manually ... */" />
+            <marker date="1554981536707" expanded="true" signature="1619:3007" ph="{...}" />
+            <marker date="1554981536707" expanded="true" signature="1671:1719" ph="{...}" />
+            <marker date="1554981536707" expanded="true" signature="1885:1972" ph="{...}" />
+            <marker date="1554981536707" expanded="true" signature="2026:2086" ph="{...}" />
+            <marker date="1554981536707" expanded="true" signature="2401:2493" ph="/* if (Input.GetButtonDown(doRagdollKeyName)) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Input/InputControllerManager.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="46" column="79" lean-forward="true" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+          <folding>
+            <marker date="1554981532448" expanded="true" signature="55:5204" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="86:561" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="628:1077" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="1145:1738" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="1953:3192" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="2037:2121" ph="/* Use this as long as it works, not ideal though ... */" />
+            <marker date="1554981532448" expanded="true" signature="2189:3161" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="3266:5202" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="3508:5168" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="3645:3754" ph="{...}" />
+            <marker date="1554981532448" expanded="true" signature="4042:4894" ph="/* GamepadController gamepad = new GamepadController ... */" />
           </folding>
         </state>
       </provider>

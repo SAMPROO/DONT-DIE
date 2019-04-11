@@ -10,13 +10,16 @@ public interface IInputController
     float LookVertical  { get; }
 
     bool Focus          { get; }
+    bool ActivateLeftHand          { get; }
+    bool ActivateRightHand          { get; }
+    bool HoldRagdoll          { get; }
 
-    event OneOffAction ActivateLeftHand;
-    event OneOffAction ActivateRightHand;
+    //event OneOffAction ActivateLeftHand;
+    //event OneOffAction ActivateRightHand;
     event OneOffAction Jump;
     event OneOffAction Fire;
     event OneOffAction PickUp;
-    event OneOffAction DoRagdoll;
+    event OneOffAction ToggleRagdoll;
 
     // TODO: This function should be removed from here and moved to 
     // manager and/or made monobehaviour and only in classes 
@@ -34,13 +37,14 @@ public class NullController : IInputController
     public float LookVertical => 0.0f;
 
     public bool Focus => false;
-
-    public event OneOffAction ActivateLeftHand;
-    public event OneOffAction ActivateRightHand;
+    public bool ActivateLeftHand => false;
+    public bool ActivateRightHand => false;
+    public bool HoldRagdoll => false;
+    
     public event OneOffAction Jump;
     public event OneOffAction Fire;
     public event OneOffAction PickUp;
-    public event OneOffAction DoRagdoll;
+    public event OneOffAction ToggleRagdoll;
 
     public void UpdateController() { }
 }
