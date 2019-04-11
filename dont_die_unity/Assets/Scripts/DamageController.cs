@@ -22,8 +22,6 @@ public class DamageController : MonoBehaviour
     private float touchDamage = 0;
     private List<float> touchDamages = new List<float>();
 
-    // TODO: change to Awake, to set damage controller before childs try to collide
-    // Start is only run in first frame this is active, and collisions may happen before that
     private void Start()
     {
         // pass this script to all damageChilds

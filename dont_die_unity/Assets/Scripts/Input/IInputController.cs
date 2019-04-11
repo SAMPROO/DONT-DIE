@@ -37,15 +37,14 @@ public class NullController : IInputController
     public float LookVertical => 0.0f;
 
     public bool Focus => false;
-
-    // Using empty explicit implementations, we do not get stupid compiler warnings
-    event OneOffAction IInputController.Jump    { add {} remove {} }
-    event OneOffAction IInputController.Fire    { add {} remove {} }
-    event OneOffAction IInputController.PickUp  { add {} remove {} }
-
-    // public event OneOffAction Jump;
-    // public event OneOffAction Fire;
-    // public event OneOffAction PickUp;
+    public bool ActivateLeftHand => false;
+    public bool ActivateRightHand => false;
+    public bool HoldRagdoll => false;
+    
+    public event OneOffAction Jump;
+    public event OneOffAction Fire;
+    public event OneOffAction PickUp;
+    public event OneOffAction ToggleRagdoll;
 
     public void UpdateController() { }
 }
