@@ -42,5 +42,6 @@ public class NullController : IInputController
     public event OneOffAction PickUp;
     public event OneOffAction DoRagdoll;
 
+
     public void UpdateController() { }
 }
