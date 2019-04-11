@@ -37,14 +37,14 @@ public class NullController : IInputController
     public float LookVertical => 0.0f;
 
     public bool Focus => false;
-    public bool ActivateLeftHand => false;
-    public bool ActivateRightHand => false;
-    public bool HoldRagdoll => false;
-    
+
+    public event OneOffAction ActivateLeftHand;
+    public event OneOffAction ActivateRightHand;
     public event OneOffAction Jump;
     public event OneOffAction Fire;
     public event OneOffAction PickUp;
-    public event OneOffAction ToggleRagdoll;
+    public event OneOffAction DoRagdoll;
+
 
     public void UpdateController() { }
 }
