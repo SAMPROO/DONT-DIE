@@ -18,7 +18,7 @@ public class Spiketrap : MonoBehaviour
 
     private void ToggleSpikes()
     {
-        if (iSwitch.Status)
+        if (iSwitch.State)
         {
             Debug.Log("Spikes up!");
             Rend.material.color = Color.green;
