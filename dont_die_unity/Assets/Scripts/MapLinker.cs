@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MapLinker : MonoBehaviour
 {
-
+    
     [System.Serializable]
     public class Map
     {
@@ -16,17 +16,15 @@ public class MapLinker : MonoBehaviour
 
     private void Awake()
     {
-        
-        for (int i = 0; i < maps.Length; i++)
+        foreach (Map map in maps)
         {
-            if (maps[i].locked == false)
+            if (map.locked == false)
             {
-                maps[i].buttonPrefab.transform.GetChild(0).gameObject.SetActive(false);
-                maps[i].buttonPrefab.onClick.AddListener(delegate { SingletonGameManager.Instance.LoadNextLevel(maps[i].mapSceneName); });
-            }
-            else
+                map.buttonPrefab.transform.GetChild(0).gameObject.SetActive(false);
+                map.buttonPrefab.onClick.AddListener(delegate { SingletonGameManager.Instance.LoadNextLevel(map.mapSceneName); });
+            }else
             {
-                maps[i].buttonPrefab.transform.GetChild(0).gameObject.SetActive(true);
+                map.buttonPrefab.transform.GetChild(0).gameObject.SetActive(true);
             }
         }
     }
