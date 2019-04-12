@@ -124,7 +124,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1916847530}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1916847531}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1916847531}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &413602349
@@ -885,6 +885,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b8cfb20a8c2f942aeff0256a1ff726, type: 3}
+--- !u!1 &1916847531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5216624398665941537, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+    type: 3}
+  m_PrefabInstance: {fileID: 1916847530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1945333708
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +931,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 680, y: 280}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945333710
 MonoBehaviour:
