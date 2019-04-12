@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 413602348}
   - component: {fileID: 413602347}
   - component: {fileID: 413602350}
+  - component: {fileID: 413602351}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -267,14 +268,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413602346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: MoveX1
   m_VerticalAxis: MoveY1
-  m_SubmitButton: A1
+  m_SubmitButton: Submit
   m_CancelButton: B1
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
@@ -322,8 +323,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxis: DpadMoveX1
   m_VerticalAxis: DpadMoveY1
-  m_SubmitButton: A1
+  m_SubmitButton: Submit
   m_CancelButton: B1
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &413602351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413602346}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
