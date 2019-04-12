@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+// [RequireComponent(typeof(Rigidbody))]
 public class RagdollRig : MonoBehaviour
 {
 	[Serializable]
@@ -59,8 +59,19 @@ public class RagdollRig : MonoBehaviour
 			return 0;
 		return Mathf.PingPong(footSpeed * Time.time, 1f) * 2f - 1f;
 	}
+
+	// foot targets in local space
 	Vector3 leftFootTarget => new Vector3(-feetWidth, 0f, stepLength * FootLerp());
 	Vector3 rightFootTarget => new Vector3(feetWidth, 0f, -stepLength * FootLerp());
+
+	Vector3 getComputedFootPosition(Vector3 localFootTarget)
+	{
+		Vector3 forward = controlRb.transform.forward;
+		forward.y = 0;
+		forward = forward.normalized;
+
+		return Quaternion.LookRotation(forward) * localFootTarget + hipHitPosition;
+	}
 
 	[Header("Specs")]
 	[SerializeField] private float jumpVelocity = 5f;
@@ -75,6 +86,9 @@ public class RagdollRig : MonoBehaviour
 
 	Vector3 hipTargetPosition => transform.position + hip.targetPosition;
 
+	public LayerMask hitRayMask;
+	public float hipHeight = 0.65f;
+
 	private bool handsControlled;
 	public void SetHandControl(bool value)
 	{
@@ -86,13 +100,13 @@ public class RagdollRig : MonoBehaviour
 
 		if (value)
 		{
-			SetControllerActive(
+			EnableController(
 				rightHandController,
 				rightHand.rigidbody,
 				transform.TransformPoint(rightHand.targetPosition)
 			);
 
-			SetControllerActive(
+			EnableController(
 				leftHandController,
 				leftHand.rigidbody,
 				transform.TransformPoint(leftHand.targetPosition)
@@ -108,20 +122,28 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
-	private static void SetControllerActive(Joint controller, Rigidbody controlledBody, Vector3 targetPosition)
+	private static void EnableController(Joint controller, Rigidbody controlledBody, Vector3? targetPosition = null)
 	{
 		controller.transform.position = controlledBody.transform.position;
 		controller.transform.rotation = controlledBody.transform.rotation;
 		controller.connectedBody = controlledBody;
 		controller.gameObject.SetActive(true);
-		controller.transform.position = targetPosition;
+		controller.transform.position = targetPosition ?? Vector3.zero;
+	}
+
+	private static void DisableController(Joint controller)
+	{
+		controller.connectedBody = null;
+		controller.gameObject.SetActive(false);		
 	}
 
 	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
 
 	private void Awake()
 	{
-		controlRb = GetComponent<Rigidbody>();
+		// controlRb = GetComponent<Rigidbody>();
+		controlRb = hip.rigidbody;
+		controlRb.transform.SetParent(null);
 	}
 
 	private void Start()
@@ -136,23 +158,50 @@ public class RagdollRig : MonoBehaviour
 		leftFootController.transform.position = leftFoot.position;
 		leftFootController.connectedBody = leftFoot.rigidbody;
 		(leftFootController as SpringJoint).spring = footForce;
-		leftFootController.gameObject.SetActive(true);
+		// leftFootController.gameObject.SetActive(true);
 
 		rightFootController = CreateJointController<SpringJoint>("rightFootController", false);
 		rightFootController.transform.position = rightFoot.position;
 		rightFootController.connectedBody = rightFoot.rigidbody;
 		(rightFootController as SpringJoint).spring = footForce;
-		rightFootController.gameObject.SetActive(true);
+		// rightFootController.gameObject.SetActive(true);
 
 	}
+
+	private Vector3 hipHitPosition;
 
 	private void FixedUpdate()
 	{
 		// Only keep hip in air if feet are on the ground
-		Vector3 hipMoveVector = hipTargetPosition - hip.rigidbody.position;
-		if (Grounded == false)
-			hipMoveVector.y = 0f;
-		hip.rigidbody.AddForce(hipMoveVector * hip.force);
+		// Vector3 hipMoveVector = hipTargetPosition - hip.rigidbody.position;
+		// if (Grounded == false)
+		// 	hipMoveVector.y = 0f;
+		// hip.rigidbody.AddForce(hipMoveVector * hip.force);
+
+
+		// follow controlRb, it is different transform
+		transform.position = hipHitPosition;
+
+		bool hipGrounded = false;
+		RaycastHit hit;
+
+		if (Physics.Raycast(hip.rigidbody.position, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
+		{	
+			hipGrounded = true;
+
+			hipHitPosition = hit.point;
+			hip.rigidbody.AddForce(hip.force * Vector3.up);
+
+			// EnableController(leftFootController, leftFoot.rigidbody);
+			// EnableController(rightFootController, rightFoot.rigidbody);
+		}
+		else
+		{
+			DisableController(leftFootController);
+			DisableController(rightFootController);
+			hipHitPosition = hip.rigidbody.position + Vector3.down* hipHeight;
+		}
+
 
 		// TODO: get aim direction from camera and use it to orient hands (and guns)
 		// Keep hands in fixed rotation
@@ -160,10 +209,8 @@ public class RagdollRig : MonoBehaviour
 		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 
 		// Lets body spin in air
-		controlRb.freezeRotation = Grounded;
-
-		leftFootController.transform.position = transform.TransformPoint(leftFootTarget);
-		rightFootController.transform.position = transform.TransformPoint(rightFootTarget);
+		leftFootController.transform.position = getComputedFootPosition(leftFootTarget);
+		rightFootController.transform.position = getComputedFootPosition(rightFootTarget);
 	}
 
 	private static JointType CreateJointController<JointType>(string name, bool setActive) where JointType : Joint
@@ -182,22 +229,18 @@ public class RagdollRig : MonoBehaviour
 		amount *= speed;
 		controlRb.MovePosition(controlRb.position + movement * amount);
 		controlRb.MoveRotation(Quaternion.LookRotation(look));
-		hip.rigidbody.MoveRotation(controlRb.rotation);
 	}
 
 	public void Jump()
 	{
-		if (Grounded == false)
-			return;
-
+		// TODO: ground check
 		hip.rigidbody.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
-		controlRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
 	}
 
 	public void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.magenta;
-		Gizmos.DrawWireSphere(hipTargetPosition, 0.05f);
+		Gizmos.DrawWireSphere(hipHitPosition, 0.05f);
 
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightHand.targetPosition), 0.05f);
@@ -205,10 +248,13 @@ public class RagdollRig : MonoBehaviour
 
 
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(leftFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(transform.TransformPoint(leftFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(getComputedFootPosition(leftFootTarget), 0.05f);
 
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(transform.TransformPoint(rightFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(getComputedFootPosition(rightFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(getComputedFootPosition(rightFootTarget), 0.05f);
 
 
 	}
