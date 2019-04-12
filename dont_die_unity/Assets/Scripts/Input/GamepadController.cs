@@ -24,13 +24,14 @@ public class GamepadController : IInputController
 
     // TODO: this can also use simple expression body getter
     public bool Focus { get; private set; }
+    public bool ActivateLeftHand { get; private set; }
+    public bool ActivateRightHand { get; private set; }
+    public bool HoldRagdoll { get; private set; }
 
-    public event OneOffAction ActivateLeftHand;
-    public event OneOffAction ActivateRightHand;
     public event OneOffAction Jump;
     public event OneOffAction Fire;
     public event OneOffAction PickUp;
-    public event OneOffAction DoRagdoll;
+    public event OneOffAction ToggleRagdoll;
 
     private bool fireEventTriggered = false;
 
@@ -63,21 +64,28 @@ public class GamepadController : IInputController
         else
             Focus = false;
 
+        
         if (Input.GetButtonDown(interactKeyName))
             PickUp?.Invoke();
         
+        //ToggleRagdoll for testing toggle for ragdolling
+        /*if (Input.GetButtonDown(doRagdollKeyName))
+            ToggleRagdoll?.Invoke();
+        */
+        
         if (Input.GetButtonDown(doRagdollKeyName))
-            DoRagdoll?.Invoke();
+            HoldRagdoll = true;
+        if (Input.GetButtonUp(doRagdollKeyName))
+            HoldRagdoll = false;
         
         if (Input.GetButtonDown(LBKeyName))
-            Debug.Log("Using left hand");
-        
+            ActivateLeftHand = true;
+        if (Input.GetButtonUp(LBKeyName))
+            ActivateLeftHand = false;
+
         if (Input.GetButtonDown(RBKeyName))
-            Debug.Log("Using right hand");
-
-        //// added because fire button doesnt work on ps4 controller (currently)
-        //if (Input.GetKeyDown(KeyCode.F))
-        //    Fire?.Invoke();
+            ActivateRightHand = true;
+        if (Input.GetButtonUp(RBKeyName))
+            ActivateRightHand = false;
     }
-
 }
