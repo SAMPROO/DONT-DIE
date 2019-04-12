@@ -88,6 +88,7 @@ public class RagdollRig : MonoBehaviour
 
 	public LayerMask hitRayMask;
 	public float hipHeight = 0.65f;
+	public float hipForce = 5000f;
 
 	private bool handsControlled;
 	public void SetHandControl(bool value)
@@ -190,10 +191,10 @@ public class RagdollRig : MonoBehaviour
 			hipGrounded = true;
 
 			hipHitPosition = hit.point;
-			hip.rigidbody.AddForce(hip.force * Vector3.up);
+			hip.rigidbody.AddForce(hipForce * Vector3.up);
 
-			// EnableController(leftFootController, leftFoot.rigidbody);
-			// EnableController(rightFootController, rightFoot.rigidbody);
+			EnableController(leftFootController, leftFoot.rigidbody);
+			EnableController(rightFootController, rightFoot.rigidbody);
 		}
 		else
 		{
