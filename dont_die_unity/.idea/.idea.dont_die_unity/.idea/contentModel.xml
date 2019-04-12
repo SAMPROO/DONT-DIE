@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Blackstorm\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Blackstorm\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_dont_die_unity.1160316577.00" t="ExcludeRecursive" />
-    <e p="G:\DONT-DIE\dont_die_unity" t="IncludeRecursive">
+    <e p="C:\GitHub\DONT-DIE\dont_die_unity" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="EditorUtilities" t="Include">
@@ -21,7 +19,9 @@
           <e p="Camera3rdPerson.cs" t="Include" />
           <e p="DamageChild.cs" t="Include" />
           <e p="DamageController.cs" t="Include" />
+          <e p="Equipment.cs" t="Include" />
           <e p="FallDamageTester.cs" t="Include" />
+          <e p="Gun.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
           <e p="ImpactDamage.cs" t="Include" />
           <e p="Input" t="Include">
@@ -29,10 +29,10 @@
             <e p="IInputController.cs" t="Include" />
             <e p="InputControllerManager.cs" t="Include" />
           </e>
-          <e p="Interfaces.cs" t="Include" />
+          <e p="LifeTime.cs" t="Include" />
+          <e p="MapLinker.cs" t="Include" />
           <e p="MathUtils.cs" t="Include" />
           <e p="OrbitCameraTP.cs" t="Include" />
-          <e p="PhysicsTestGun.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerHandle.cs" t="Include" />
           <e p="PlayerHUD.cs" t="Include" />
@@ -50,7 +50,11 @@
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
     </e>
+    <e p="C:\Users\Sampo\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Sampo\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_dont_die_unity.-536598830.00" t="ExcludeRecursive" />
   </component>
 </project>

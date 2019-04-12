@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Loader.unity
     guid: cc16e3ed4a4daf542b04e7e49304e381
   - enabled: 1
-    path: Assets/Scenes/Start.unity
+    path: Assets/Scenes/MapSelection.unity
     guid: e1e49cad5245af64b9dd4c02a3055380
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 6d5953c12f1c21b4aa2e6e220880db36
   - enabled: 1
     path: Assets/Scenes/Level.unity
     guid: 511d3c5feb1289d4babc5678bd695fce
