@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileLauncher : MonoBehaviour, IWeapon
+public class ProjectileLauncher : Equipment
 {
     public Transform projectileOrigin;
     public GameObject projectilePrefab;
@@ -20,16 +20,11 @@ public class ProjectileLauncher : MonoBehaviour, IWeapon
     public float reticleDistance;
     public LayerMask reticleRaycastMask;
 
-    private float time;
-
-    private Rigidbody rb;
-
-    private bool isCarried;
+    private float time;    
 
     private void Start()
     {
         secondsPerRound = 1f / roundPerSecond;
-        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -40,7 +35,7 @@ public class ProjectileLauncher : MonoBehaviour, IWeapon
         }
     }
 
-    public void Use()
+    public override void Use()
 	{
         if (ammo > 0 && secondsPerRound - (Time.time - time) <= 0)
         {
@@ -71,30 +66,6 @@ public class ProjectileLauncher : MonoBehaviour, IWeapon
 
         // or just add force from projectileOrigin backwards if shot and when ammo==0: play a sound "click" 
     }
-
-    public void StartCarrying(Transform carrier)
-	{
-		// Turn off physics etc.
-		transform.SetParent(carrier);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        rb.isKinematic = true;
-
-        isCarried = true;
-
-        Debug.Log("Gun hops on");
-	}
-
-	public void StopCarrying()
-	{
-		// Turn on physics etc.
-		transform.SetParent(null);
-        rb.isKinematic = false;
-
-        isCarried = false;
-
-        Debug.Log("Gun thrown away");
-	}
 
     private void AccuracyReticle(int CircleVertexCount, float reticleDistance)
     {

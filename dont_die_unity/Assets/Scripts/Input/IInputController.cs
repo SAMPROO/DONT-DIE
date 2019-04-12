@@ -11,9 +11,12 @@ public interface IInputController
 
     bool Focus          { get; }
 
+    event OneOffAction ActivateLeftHand;
+    event OneOffAction ActivateRightHand;
     event OneOffAction Jump;
     event OneOffAction Fire;
     event OneOffAction PickUp;
+    event OneOffAction DoRagdoll;
 
     // TODO: This function should be removed from here and moved to 
     // manager and/or made monobehaviour and only in classes 
@@ -32,14 +35,12 @@ public class NullController : IInputController
 
     public bool Focus => false;
 
-    // Using empty explicit implementations, we do not get stupid compiler warnings
-    event OneOffAction IInputController.Jump    { add {} remove {} }
-    event OneOffAction IInputController.Fire    { add {} remove {} }
-    event OneOffAction IInputController.PickUp  { add {} remove {} }
-
-    // public event OneOffAction Jump;
-    // public event OneOffAction Fire;
-    // public event OneOffAction PickUp;
+    public event OneOffAction ActivateLeftHand;
+    public event OneOffAction ActivateRightHand;
+    public event OneOffAction Jump;
+    public event OneOffAction Fire;
+    public event OneOffAction PickUp;
+    public event OneOffAction DoRagdoll;
 
     public void UpdateController() { }
 }

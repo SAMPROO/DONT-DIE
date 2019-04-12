@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
 	public event Action<PlayerHandle> OnDie;
 
-	[SerializeField] private IWeapon gun;
+	[SerializeField] private Equipment gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
 
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
             if (distanceToGun < pickUpRange)
             {
             	// TODO: not likey this at all. Things in gun (or rather pickup) layer should have right component in itself and not parent
-               	gun = hitColliders[i].GetComponentInParent<IWeapon>();
+               	gun = hitColliders[i].GetComponentInParent<Equipment>();
                	if (gun != null)
                	{
 	            	gun.StartCarrying(gunParent);
