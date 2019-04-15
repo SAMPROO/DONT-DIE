@@ -31,7 +31,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud:
-    hpText: {fileID: 5380263533694187226}
+    hpText: {fileID: 0}
+  speed: 3
   gun: {fileID: 0}
   gunParent: {fileID: 5103313764410333465}
   gunLayer:
@@ -399,6 +400,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034884843, guid: dd00292729b78574a974da182be2ce6a, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 7266626653415131291, guid: dd00292729b78574a974da182be2ce6a,
         type: 3}
