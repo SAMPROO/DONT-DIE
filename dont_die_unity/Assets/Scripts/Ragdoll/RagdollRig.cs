@@ -90,6 +90,10 @@ public class RagdollRig : MonoBehaviour
 	public float hipHeight = 0.65f;
 	public float hipForce = 5000f;
 
+	public Rigidbody neckRb;
+	public float neckHeight = 1.5f;
+	public float neckForce = 5000f;
+
 	private bool handsControlled;
 	public void SetHandControl(bool value)
 	{
@@ -191,7 +195,7 @@ public class RagdollRig : MonoBehaviour
 			hipGrounded = true;
 
 			hipHitPosition = hit.point;
-			hip.rigidbody.AddForce(hipForce * Vector3.up);
+			// hip.rigidbody.AddForce(hipForce * Vector3.up);
 
 			EnableController(leftFootController, leftFoot.rigidbody);
 			EnableController(rightFootController, rightFoot.rigidbody);
@@ -203,6 +207,8 @@ public class RagdollRig : MonoBehaviour
 			hipHitPosition = hip.rigidbody.position + Vector3.down* hipHeight;
 		}
 
+		hip.rigidbody.AddForce(hipForce * Vector3.up);
+		neckRb.AddForce(neckForce * Vector3.up);
 
 		// TODO: get aim direction from camera and use it to orient hands (and guns)
 		// Keep hands in fixed rotation
