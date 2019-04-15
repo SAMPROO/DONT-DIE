@@ -74,7 +74,8 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
-		ragdoll.SetHandControl(input.Focus);
+		ragdoll.ControlLeftHand = input.ActivateLeftHand;
+		ragdoll.ControlRightHand = input.ActivateRightHand;
 	}
 
 	private Vector3 lastMoveDirection = Vector3.forward;
@@ -91,18 +92,12 @@ public class PlayerController : MonoBehaviour
 		if (amount > 0)
 			lastMoveDirection = moveDirection;
 
+		bool doFocus = input.ActivateLeftHand || input.ActivateRightHand;
 		Vector3 lookDirection = 
-			input.Focus ? 
+			doFocus ? 
 			cameraRig.baseRotation * Vector3.forward : 
 			lastMoveDirection;
 		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
-
-
-		// if (input.Focus)
-		// 	ragdoll.Move(moveDirection, lookDirection, amount * Time.deltaTime);
-		// else
-		// 	ragdoll.Move(moveDirection, lookDirection, amount * Time.deltaTime);
-
 	}
 
 	private void Fire()
@@ -170,4 +165,3 @@ public class PlayerController : MonoBehaviour
         }
 	}
 }
-

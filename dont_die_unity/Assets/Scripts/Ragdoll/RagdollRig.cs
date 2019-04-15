@@ -38,8 +38,8 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
-	private Joint leftHandController;
-	private Joint rightHandController;
+	private SpringJoint leftHandController;
+	private SpringJoint rightHandController;
 
 	public Joint leftFootController;
 	public Joint rightFootController;
@@ -64,7 +64,7 @@ public class RagdollRig : MonoBehaviour
 	Vector3 leftFootTarget => new Vector3(-feetWidth, 0f, stepLength * FootLerp());
 	Vector3 rightFootTarget => new Vector3(feetWidth, 0f, -stepLength * FootLerp());
 
-	Vector3 getComputedFootPosition(Vector3 localFootTarget)
+	Vector3 GetComputedFootPosition(Vector3 localFootTarget)
 	{
 		Vector3 forward = hipRb.transform.forward;
 		forward.y = 0;
@@ -78,55 +78,32 @@ public class RagdollRig : MonoBehaviour
 	[SerializeField] private float speed = 3f;
 
 	[Header("Controlled parts")]
-	public ControlBone hip;
 	public ControlBone rightHand;
 	public ControlBone leftHand;
+	public float handForce = 1000f;
 
+	// This is expected to have locked rotation
 	public Rigidbody hipRb;
-
-	Vector3 hipTargetPosition => transform.position + hip.targetPosition;
 
 	public LayerMask hitRayMask;
 	public float hipForce = 5000f;
 	public float hipHeight = 0.65f;
 	public float hipZOffset = -0.1f;
 
+
+	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
+	public float hipRbHorizontalDrag = 10f;
+	private Vector3 hipHitPosition;
+
 	public Rigidbody neckRb;
 	public float neckForce;
 	public float neckZOffset = 0.1f;
 
-	private bool handsControlled;
-	public void SetHandControl(bool value)
-	{
-		// do not set same value again
-		if (handsControlled == value)
-			return;
+	private SmoothFloat leftHandControlWeight = new SmoothFloat();
+	private SmoothFloat rightHandControlWeight = new SmoothFloat();
 
-		handsControlled = value;
-
-		if (value)
-		{
-			EnableController(
-				rightHandController,
-				rightHand.rigidbody,
-				transform.TransformPoint(rightHand.targetPosition)
-			);
-
-			EnableController(
-				leftHandController,
-				leftHand.rigidbody,
-				transform.TransformPoint(leftHand.targetPosition)
-			);
-		}
-
-		else
-		{
-			rightHandController.connectedBody = null;
-			leftHandController.connectedBody = null;
-			rightHandController.gameObject.SetActive(value);
-			leftHandController.gameObject.SetActive(value);
-		}
-	}
+	public bool ControlLeftHand { get; set; }
+	public bool ControlRightHand { get; set; }
 
 	private static void EnableController(Joint controller, Rigidbody controlledBody, Vector3? targetPosition = null)
 	{
@@ -143,22 +120,33 @@ public class RagdollRig : MonoBehaviour
 		controller.gameObject.SetActive(false);		
 	}
 
-	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
-
-	public float controlRbHorizontalDrag = 10f;
 
 	private void Awake()
 	{
 		hipRb.transform.SetParent(null);
+		hipRb.freezeRotation = true;
 	}
 
 	private void Start()
 	{
-		rightHandController = CreateJointController<FixedJoint>("rightHandController", false);
+		rightHandController = CreateJointController<SpringJoint>("rightHandController", false);
 		rightHandController.transform.SetParent(hipRb.transform);
 
-		leftHandController = CreateJointController<FixedJoint>("leftHandController", false);
+		leftHandController = CreateJointController<SpringJoint>("leftHandController", false);
 		leftHandController.transform.SetParent(hipRb.transform);
+
+		EnableController(
+			rightHandController,
+			rightHand.rigidbody,
+			hipRb.transform.TransformPoint(rightHand.targetPosition)
+		);
+
+		EnableController(
+			leftHandController,
+			leftHand.rigidbody,
+			hipRb.transform.TransformPoint(leftHand.targetPosition)
+		);
+
 
 		leftFootController = CreateJointController<SpringJoint>("leftFootController", false);
 		leftFootController.transform.position = leftFoot.position;
@@ -174,11 +162,35 @@ public class RagdollRig : MonoBehaviour
 
 	}
 
-	private Vector3 hipHitPosition;
-	public bool DEBUGGrounded;
 
 	private void FixedUpdate()
 	{
+		// Control hands ------------------------------------------------------------------
+		leftHandControlWeight.Put(ControlLeftHand ? 1f : 0f);
+		leftHandController.spring = Mathf.Lerp(0, handForce, leftHandControlWeight.Value);	
+
+		if (leftHandControlWeight.Value > 0.5f)
+		{
+			leftHand.rigidbody.MoveRotation(Quaternion.LookRotation(hipRb.transform.forward));
+			leftHand.rigidbody.freezeRotation = true;
+		}
+		else {
+			leftHand.rigidbody.freezeRotation = false;
+		}
+
+		rightHandControlWeight.Put(ControlRightHand ? 1f : 0f);
+		rightHandController.spring = Mathf.Lerp(0, handForce, rightHandControlWeight.Value);	
+
+		if (rightHandControlWeight.Value > 0.5f)
+		{
+			rightHand.rigidbody.MoveRotation(Quaternion.LookRotation(hipRb.transform.forward));
+			rightHand.rigidbody.freezeRotation = true;
+		}
+		else {
+			rightHand.rigidbody.freezeRotation = false;
+		}
+
+		// Control hips etc. --------------------------------------------------------------------
 		bool hipGrounded = false;
 		RaycastHit hit;
 
@@ -188,9 +200,7 @@ public class RagdollRig : MonoBehaviour
 		if (Physics.Raycast(hipRayOrigin, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
 		{	
 			hipGrounded = true;
-
 			hipHitPosition = hit.point;
-
 		}
 	
 
@@ -215,19 +225,13 @@ public class RagdollRig : MonoBehaviour
 
 		// Apply custom drag in horizontal directions
 		var velocity = hipRb.velocity;
-		velocity.x /= controlRbHorizontalDrag;
-		velocity.z /= controlRbHorizontalDrag;
+		velocity.x /= hipRbHorizontalDrag;
+		velocity.z /= hipRbHorizontalDrag;
 		hipRb.velocity = velocity;
 
-		// TODO: get aim direction from camera and use it to orient hands (and guns)
-		// Keep hands in fixed rotation
-		leftHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
-		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
-
-		if (leftFootController != null)
-			leftFootController.transform.position = getComputedFootPosition(leftFootTarget);
-		rightFootController.transform.position = getComputedFootPosition(rightFootTarget);
-
+		// Control feet ----------------------------------------------------------
+		leftFootController.transform.position = GetComputedFootPosition(leftFootTarget);
+		rightFootController.transform.position = GetComputedFootPosition(rightFootTarget);
 
 		// follow hipRb, it is different transform
 		transform.position = hipHitPosition;
@@ -254,9 +258,11 @@ public class RagdollRig : MonoBehaviour
 	public void Jump()
 	{
 		// TODO: ground check
-		hipRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
-		neckRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
-
+		if (Grounded)
+		{
+			hipRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+			neckRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+		}
 	}
 
 	public void OnDrawGizmosSelected()
@@ -268,17 +274,23 @@ public class RagdollRig : MonoBehaviour
 		Gizmos.DrawWireSphere(hipRb.position - hipHeight * Vector3.up, 0.07f);
 
 		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightHand.targetPosition), 0.05f);
-		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(leftHand.targetPosition), 0.05f);
+		Gizmos.DrawWireSphere(hipRb.transform.TransformPoint(leftHand.targetPosition), 0.05f);
+		Gizmos.DrawWireSphere(hipRb.transform.TransformPoint(rightHand.targetPosition), 0.05f);
 
+		if (Application.isPlaying)
+		{
+			Gizmos.color = new Color (1f, 0.3f, 0f);
+			Gizmos.DrawWireSphere(leftHandController.transform.position, 0.07f);
+			Gizmos.DrawWireSphere(rightHandController.transform.position, 0.07f);
+		}
 
 		Gizmos.color = Color.blue;
 		Gizmos.DrawWireSphere(transform.TransformPoint(leftFootTarget), 0.05f);
-		Gizmos.DrawWireSphere(getComputedFootPosition(leftFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(GetComputedFootPosition(leftFootTarget), 0.05f);
 
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.TransformPoint(rightFootTarget), 0.05f);
-		Gizmos.DrawWireSphere(getComputedFootPosition(rightFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(GetComputedFootPosition(rightFootTarget), 0.05f);
 	}
 
 	// todo: Not used anymore here, can be moved to some utility class
@@ -295,5 +307,14 @@ public class RagdollRig : MonoBehaviour
 		}
 
 		return children.ToArray();
+	}
+
+	private void OnValidate()
+	{
+		if (hipRb != null && hipRb.freezeRotation == false)
+		{
+			hipRb.freezeRotation = true;
+			Debug.Log($"Locked 'hipRb({hipRb.name})' rotation. It is expected behaviour.");
+		}
 	}
 }

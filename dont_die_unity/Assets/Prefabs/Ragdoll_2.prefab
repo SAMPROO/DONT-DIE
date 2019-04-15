@@ -1011,36 +1011,31 @@ MonoBehaviour:
   feetWidth: 0.26
   stepLength: 0.5
   footForce: 10000
-  footSpeed: 1
+  footSpeed: 2.5
   jumpVelocity: 15
   speed: 3
-  hip:
-    active: 1
-    rigidbody: {fileID: 4533184863676686066}
-    targetPosition: {x: 0, y: 0, z: 0}
-    force: 0
   rightHand:
     active: 1
     rigidbody: {fileID: 4533184863676685972}
-    targetPosition: {x: 0, y: 0, z: 0}
+    targetPosition: {x: 0.4, y: 1, z: 0.8}
     force: 0
   leftHand:
     active: 1
     rigidbody: {fileID: 4533184863676682601}
-    targetPosition: {x: 0, y: 0, z: 0}
+    targetPosition: {x: -0.4, y: 1, z: 0.8}
     force: 0
+  handForce: 1000
   hipRb: {fileID: 4533184863676686066}
   hitRayMask:
     serializedVersion: 2
     m_Bits: 1591
   hipForce: 1000
-  hipHeight: 0.29
+  hipHeight: 0.35
   hipZOffset: -0.1
+  hipRbHorizontalDrag: 100
   neckRb: {fileID: 4533184863676686028}
   neckForce: 1000
   neckZOffset: 0.1
-  controlRbHorizontalDrag: 100
-  DEBUGGrounded: 0
 --- !u!1 &4533184863676685977
 GameObject:
   m_ObjectHideFlags: 0
