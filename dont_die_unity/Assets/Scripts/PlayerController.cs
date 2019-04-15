@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
 	public event Action<PlayerHandle> OnDie;
 
+	public Renderer characterRenderer;
+
 	[SerializeField] private Equipment gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
@@ -45,6 +47,16 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
+    public void Initialize(
+    	PlayerHandle handle, 
+    	OrbitCameraTP camera, 
+    	IInputController inputCnt,
+    	Color color
+	){
+		characterRenderer.material.color = color;
+		Initialize(handle, camera, inputCnt);
+	}
+
     public void Initialize(PlayerHandle handle, OrbitCameraTP camera, IInputController inputCnt)
     {
         input = inputCnt;
@@ -64,12 +76,12 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
-	[Obsolete("Use Version that sets OrbitCameraTP directly")]
-    public void Initialize(PlayerHandle handle, Camera camera, IInputController controller)
-    {
-    	// just redirect to new one
-    	Initialize (handle, camera.GetComponent<OrbitCameraTP>(), controller);
-	}
+	// [Obsolete("Use Version that sets OrbitCameraTP directly")]
+ //    public void Initialize(PlayerHandle handle, Camera camera, IInputController controller)
+ //    {
+ //    	// just redirect to new one
+ //    	Initialize (handle, camera.GetComponent<OrbitCameraTP>(), controller);
+	// }
 
 	private void Update() 
 	{

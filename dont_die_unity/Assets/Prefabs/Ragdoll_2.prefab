@@ -1010,9 +1010,9 @@ MonoBehaviour:
   rightFoot: {fileID: 4533184863676685978}
   feetWidth: 0.26
   stepLength: 0.5
-  footForce: 10000
+  footForce: 5000
   footSpeed: 2.5
-  jumpVelocity: 15
+  jumpVelocity: 25
   speed: 3
   rightHand:
     active: 1
@@ -1842,25 +1842,25 @@ CharacterJoint:
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
-    spring: 0
+    spring: 100
     damper: 0
   m_LowTwistLimit:
-    limit: 25.49441
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 99.413925
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
-    spring: 0
+    spring: 100
     damper: 0
   m_Swing1Limit:
-    limit: 8.29259
+    limit: 3
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 12.333854
+    limit: 3
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0

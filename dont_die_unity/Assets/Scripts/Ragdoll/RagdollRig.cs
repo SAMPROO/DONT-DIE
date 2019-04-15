@@ -234,7 +234,8 @@ public class RagdollRig : MonoBehaviour
 		rightFootController.transform.position = GetComputedFootPosition(rightFootTarget);
 
 		// follow hipRb, it is different transform
-		transform.position = hipHitPosition;
+		// Hack, should be done in camera. Or should it?
+		transform.position = Vector3.Lerp (transform.position, hipHitPosition, 0.5f);
 	}
 
 	private static JointType CreateJointController<JointType>(string name, bool setActive) where JointType : Joint

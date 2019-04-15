@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hud:
     hpText: {fileID: 0}
+  characterRenderer: {fileID: 8655569548015356084}
   gun: {fileID: 0}
   gunParent: {fileID: 8655569548028926350}
   gunLayer:
@@ -319,6 +320,12 @@ GameObject:
 --- !u!4 &8655569548028926350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4533184863677170349, guid: 9d83ac040f350ed46932fae2a64c4d51,
+    type: 3}
+  m_PrefabInstance: {fileID: 5113794738898869027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8655569548015356084 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4533184863673570199, guid: 9d83ac040f350ed46932fae2a64c4d51,
     type: 3}
   m_PrefabInstance: {fileID: 5113794738898869027}
   m_PrefabAsset: {fileID: 0}
