@@ -11,6 +11,9 @@ public class InputControllerManager
             baseLookAxisYName   = null,
             baseJumpKeyName     = null,
             baseInteractKeyName = null,
+            baseDoRagdollKeyName = null,
+            baseLBKeyName       = null,
+            baseRBKeyName       = null,
             baseLTAxisName      = null,
             baseRTAxisName      = null;
     }
@@ -24,6 +27,9 @@ public class InputControllerManager
         baseLookAxisYName   = "LookY",
         baseJumpKeyName     = "A",
         baseInteractKeyName = "X",
+        baseDoRagdollKeyName = "B",
+        baseLBKeyName       = "LB",
+        baseRBKeyName       = "RB",
         baseLTAxisName      = "LT",
         baseRTAxisName      = "RT"
     };
@@ -37,6 +43,9 @@ public class InputControllerManager
         baseLookAxisYName   = "LookYAlt",
         baseJumpKeyName     = "B",
         baseInteractKeyName = "A",
+        baseDoRagdollKeyName = "X", //TODO Check if this is right button name
+        baseLBKeyName       = "LB", //TODO Check if this is right button name (for sure because Topias (me) changed it and didnt actually try anything with RB/LB)
+        baseRBKeyName       = "RB", //TODO Check if this is right button name (for sure because Topias (me) changed it and didnt actually try anything with RB/LB)
         baseLTAxisName      = "LTALT",
         baseRTAxisName      = "RTALT"
     };
@@ -45,12 +54,12 @@ public class InputControllerManager
     private const string 
         dualShockName = "Wireless Controller";
 
-    public static IInputController CreateGamepad(bool isPSController = false)
+    public static GamepadController CreateGamepad(bool isPSController = false, int controllerIndex = 1)
     {
         JoystickMap map = isPSController ? dualShockMap : xBoneMap;
 
         // Use this as long as it works, not ideal though
-        int controllerIndex = 1;
+        //int controllerIndex = 1;
 
         GamepadController gamepad = new GamepadController
         {
@@ -59,10 +68,13 @@ public class InputControllerManager
             moveAxisYName   = $"{map.baseMoveAxisYName}{controllerIndex}",
             lookAxisXName   = $"{map.baseLookAxisXName}{controllerIndex}",
             lookAxisYName   = $"{map.baseLookAxisYName}{controllerIndex}",
+            LBKeyName       = $"{map.baseLBKeyName}{controllerIndex}",
+            RBKeyName       = $"{map.baseRBKeyName}{controllerIndex}",
             LTAxisName      = $"{map.baseLTAxisName}{controllerIndex}",
             RTAxisName      = $"{map.baseRTAxisName}{controllerIndex}",
             jumpKeyName     = $"{map.baseJumpKeyName}{controllerIndex}",
             interactKeyName = $"{map.baseInteractKeyName}{controllerIndex}",
+            doRagdollKeyName = $"{map.baseDoRagdollKeyName}{controllerIndex}",
 
             AxisInversion   = isPSController ? -1f : 1f
         };
@@ -91,7 +103,7 @@ public class InputControllerManager
             JoystickMap map = isPSController ? dualShockMap : xBoneMap;
             
             // Construct new controller as concrete class and not interface
-            GamepadController gamepad = new GamepadController
+            /*GamepadController gamepad = new GamepadController
             {
                 //integer i + 1 to match unity's own input system to the player index values
                 moveAxisXName   = $"{map.baseMoveAxisXName}{i + 1}",
@@ -102,8 +114,12 @@ public class InputControllerManager
                 RTAxisName      = $"{map.baseRTAxisName}{i + 1}",
                 jumpKeyName     = $"{map.baseJumpKeyName}{i + 1}",
                 interactKeyName = $"{map.baseInteractKeyName}{i + 1}",
+                doRagdollKeyName = $"{map.baseDoRagdollKeyName}{i + 1}",
                 //Base prefix can be removed
             };
+            */
+
+            GamepadController gamepad = CreateGamepad(isPSController, i + 1);
 
             // This is fine
             gamepad.AxisInversion = isPSController ? -1f : 1f;
