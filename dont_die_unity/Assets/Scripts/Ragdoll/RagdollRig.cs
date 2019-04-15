@@ -41,8 +41,8 @@ public class RagdollRig : MonoBehaviour
 	private Joint leftHandController;
 	private Joint rightHandController;
 
-	private Joint leftFootController;
-	private Joint rightFootController;
+	public Joint leftFootController;
+	public Joint rightFootController;
 
 	[SerializeField] private RagdollFootControl leftFoot;
 	[SerializeField] private RagdollFootControl rightFoot;
@@ -66,7 +66,7 @@ public class RagdollRig : MonoBehaviour
 
 	Vector3 getComputedFootPosition(Vector3 localFootTarget)
 	{
-		Vector3 forward = controlRb.transform.forward;
+		Vector3 forward = hipRb.transform.forward;
 		forward.y = 0;
 		forward = forward.normalized;
 
@@ -82,17 +82,18 @@ public class RagdollRig : MonoBehaviour
 	public ControlBone rightHand;
 	public ControlBone leftHand;
 
-	private Rigidbody controlRb;
+	public Rigidbody hipRb;
 
 	Vector3 hipTargetPosition => transform.position + hip.targetPosition;
 
 	public LayerMask hitRayMask;
-	public float hipHeight = 0.65f;
 	public float hipForce = 5000f;
+	public float hipHeight = 0.65f;
+	public float hipZOffset = -0.1f;
 
 	public Rigidbody neckRb;
-	public float neckHeight = 1.5f;
-	public float neckForce = 5000f;
+	public float neckForce;
+	public float neckZOffset = 0.1f;
 
 	private bool handsControlled;
 	public void SetHandControl(bool value)
@@ -144,58 +145,63 @@ public class RagdollRig : MonoBehaviour
 
 	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
 
+	public float controlRbHorizontalDrag = 10f;
+
 	private void Awake()
 	{
-		// controlRb = GetComponent<Rigidbody>();
-		controlRb = hip.rigidbody;
-		controlRb.transform.SetParent(null);
+		hipRb.transform.SetParent(null);
 	}
 
 	private void Start()
 	{
 		rightHandController = CreateJointController<FixedJoint>("rightHandController", false);
-		rightHandController.transform.SetParent(hip.rigidbody.transform);
+		rightHandController.transform.SetParent(hipRb.transform);
 
 		leftHandController = CreateJointController<FixedJoint>("leftHandController", false);
-		leftHandController.transform.SetParent(hip.rigidbody.transform);
+		leftHandController.transform.SetParent(hipRb.transform);
 
 		leftFootController = CreateJointController<SpringJoint>("leftFootController", false);
 		leftFootController.transform.position = leftFoot.position;
 		leftFootController.connectedBody = leftFoot.rigidbody;
 		(leftFootController as SpringJoint).spring = footForce;
-		// leftFootController.gameObject.SetActive(true);
+		leftFootController.gameObject.SetActive(true);
 
 		rightFootController = CreateJointController<SpringJoint>("rightFootController", false);
 		rightFootController.transform.position = rightFoot.position;
 		rightFootController.connectedBody = rightFoot.rigidbody;
 		(rightFootController as SpringJoint).spring = footForce;
-		// rightFootController.gameObject.SetActive(true);
+		rightFootController.gameObject.SetActive(true);
 
 	}
 
 	private Vector3 hipHitPosition;
+	public bool DEBUGGrounded;
 
 	private void FixedUpdate()
 	{
-		// Only keep hip in air if feet are on the ground
-		// Vector3 hipMoveVector = hipTargetPosition - hip.rigidbody.position;
-		// if (Grounded == false)
-		// 	hipMoveVector.y = 0f;
-		// hip.rigidbody.AddForce(hipMoveVector * hip.force);
-
-
-		// follow controlRb, it is different transform
-		transform.position = hipHitPosition;
-
 		bool hipGrounded = false;
 		RaycastHit hit;
 
-		if (Physics.Raycast(hip.rigidbody.position, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
+		var hipOffsetVector = hipRb.transform.forward * hipZOffset;
+		var hipRayOrigin = hipRb.position + hipOffsetVector;
+
+		if (Physics.Raycast(hipRayOrigin, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
 		{	
 			hipGrounded = true;
 
 			hipHitPosition = hit.point;
-			// hip.rigidbody.AddForce(hipForce * Vector3.up);
+
+		}
+	
+
+		if (Grounded || hipGrounded)
+		{
+			hipRb.AddForce(hipForce * Vector3.up);
+
+			var neckToHip = (hipRb.position + hipRb.transform.forward * neckZOffset) - neckRb.position;
+			neckToHip.y = 1; // As in vector3.up, so we don't pull down, and always use full force in vertical direction
+			var neckForceVector = neckToHip * neckForce;
+			neckRb.AddForceAtPosition(neckForceVector, neckRb.position + 0.05f * Vector3.up);
 
 			EnableController(leftFootController, leftFoot.rigidbody);
 			EnableController(rightFootController, rightFoot.rigidbody);
@@ -204,20 +210,27 @@ public class RagdollRig : MonoBehaviour
 		{
 			DisableController(leftFootController);
 			DisableController(rightFootController);
-			hipHitPosition = hip.rigidbody.position + Vector3.down* hipHeight;
+			hipHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
 		}
 
-		hip.rigidbody.AddForce(hipForce * Vector3.up);
-		neckRb.AddForce(neckForce * Vector3.up);
+		// Apply custom drag in horizontal directions
+		var velocity = hipRb.velocity;
+		velocity.x /= controlRbHorizontalDrag;
+		velocity.z /= controlRbHorizontalDrag;
+		hipRb.velocity = velocity;
 
 		// TODO: get aim direction from camera and use it to orient hands (and guns)
 		// Keep hands in fixed rotation
 		leftHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 		rightHandController.transform.rotation = Quaternion.LookRotation(transform.forward);
 
-		// Lets body spin in air
-		leftFootController.transform.position = getComputedFootPosition(leftFootTarget);
+		if (leftFootController != null)
+			leftFootController.transform.position = getComputedFootPosition(leftFootTarget);
 		rightFootController.transform.position = getComputedFootPosition(rightFootTarget);
+
+
+		// follow hipRb, it is different transform
+		transform.position = hipHitPosition;
 	}
 
 	private static JointType CreateJointController<JointType>(string name, bool setActive) where JointType : Joint
@@ -234,20 +247,25 @@ public class RagdollRig : MonoBehaviour
 		doWalk = amount > 0;
 
 		amount *= speed;
-		controlRb.MovePosition(controlRb.position + movement * amount);
-		controlRb.MoveRotation(Quaternion.LookRotation(look));
+		hipRb.MovePosition(hipRb.position + movement * amount);
+		hipRb.MoveRotation(Quaternion.LookRotation(look));
 	}
 
 	public void Jump()
 	{
 		// TODO: ground check
-		hip.rigidbody.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+		hipRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+		neckRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+
 	}
 
 	public void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.magenta;
 		Gizmos.DrawWireSphere(hipHitPosition, 0.05f);
+
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawWireSphere(hipRb.position - hipHeight * Vector3.up, 0.07f);
 
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawWireSphere(transform.localToWorldMatrix.MultiplyPoint(rightHand.targetPosition), 0.05f);
@@ -261,9 +279,6 @@ public class RagdollRig : MonoBehaviour
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere(transform.TransformPoint(rightFootTarget), 0.05f);
 		Gizmos.DrawWireSphere(getComputedFootPosition(rightFootTarget), 0.05f);
-		Gizmos.DrawWireSphere(getComputedFootPosition(rightFootTarget), 0.05f);
-
-
 	}
 
 	// todo: Not used anymore here, can be moved to some utility class

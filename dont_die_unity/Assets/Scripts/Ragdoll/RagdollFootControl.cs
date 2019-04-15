@@ -9,8 +9,8 @@ using UnityEngine;
 public class RagdollFootControl : MonoBehaviour
 {
 	private int collisionCount;
-	private SmoothFloat smoothGrounded = new SmoothFloat(10);
-	public bool Grounded => smoothGrounded.Value > 0.1f;
+	private SmoothFloat smoothGrounded = new SmoothFloat(5);
+	public bool Grounded => smoothGrounded.Value > 0.5f;
 
 	private void OnCollisionEnter() => collisionCount++;
 	private void OnCollisionExit() => collisionCount--;
@@ -28,4 +28,3 @@ public class RagdollFootControl : MonoBehaviour
 		smoothGrounded.Put(collisionCount > 0 ? 1f : 0f);
 	}
 }
-
