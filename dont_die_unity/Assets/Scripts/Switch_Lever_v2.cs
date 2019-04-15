@@ -22,8 +22,7 @@ public class Switch_Lever_v2 : MonoBehaviour, ISwitch
     public event Action OnTurnOn;
     public event Action OnTurnOff;
 
-    public float fromAngle = 0;
-    public float toAngle = 90;
+    public float fromAngle = 0, toAngle = 90, triggerAngle, endSpring = 10;
 
     public Rigidbody movingPart;
 
@@ -34,6 +33,8 @@ public class Switch_Lever_v2 : MonoBehaviour, ISwitch
         minAngle = Mathf.Min(fromAngle, toAngle);
         maxAngle = Mathf.Max(fromAngle, toAngle);
         angularRange = Mathf.Abs(minAngle) + Mathf.Abs(maxAngle);
+
+        triggerAngle = Mathf.Clamp(triggerAngle, 0, angularRange / 2);
     }
 
     private void FixedUpdate()
@@ -45,11 +46,12 @@ public class Switch_Lever_v2 : MonoBehaviour, ISwitch
         Range = (currentAngle + (minAngle < 0 ? -minAngle : 0)) / angularRange;
         Range = Mathf.Clamp(Range, 0, 1);
 
-        if (currentAngle >= maxAngle)
+        if (currentAngle >= maxAngle - triggerAngle)
         {
             // limit rotation to maximum angle 
             if (currentAngle > maxAngle)
-                movingPart.transform.localRotation = Quaternion.AngleAxis(maxAngle, -transform.up);
+                movingPart.transform.localRotation = Quaternion.Lerp(movingPart.transform.localRotation, 
+                    Quaternion.AngleAxis(maxAngle, -transform.up), Time.deltaTime * endSpring);
 
             if (!State)
             {
@@ -57,11 +59,13 @@ public class Switch_Lever_v2 : MonoBehaviour, ISwitch
                 OnTurnOn?.Invoke();
             }            
         }
-        else if (currentAngle <= minAngle)
+        else if (currentAngle <= minAngle + triggerAngle)
         {
             // limit rotation to minimum angle 
             if (currentAngle < minAngle)
-                movingPart.transform.localRotation = Quaternion.AngleAxis(minAngle, -transform.up);
+                movingPart.transform.localRotation = Quaternion.Lerp(movingPart.transform.localRotation, 
+                    Quaternion.AngleAxis(minAngle, -transform.up), Time.deltaTime * endSpring);
+
 
             if (State)
             {
