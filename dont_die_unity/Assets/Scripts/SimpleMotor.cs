@@ -33,7 +33,7 @@ public class SimpleMotor : MonoBehaviour
 
         iSwitch = switchGameObject.GetComponent<ISwitch>();
 
-        startPos = rb.transform.localPosition;
+        startPos = rb.transform.position;
         endPos = startPos + positionOffset;
 
         startRot = rb.rotation;

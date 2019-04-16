@@ -1393,7 +1393,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116218
+  m_Name: pb_Mesh-175940
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2852,7 +2852,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116326
+  m_Name: pb_Mesh-175942
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -6310,7 +6310,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116486
+  m_Name: pb_Mesh-175962
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -8158,7 +8158,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh116362
+  m_Name: pb_Mesh-175946
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -8504,11 +8504,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 314726541670432144, guid: 639be382695cb764bbf41df31d3c8970,
-        type: 3}
-      propertyPath: m_Spring.spring
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 314726541670432147, guid: 639be382695cb764bbf41df31d3c8970,
         type: 3}
       propertyPath: toAngle
@@ -8528,6 +8523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: triggerAngle
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 314726541670432144, guid: 639be382695cb764bbf41df31d3c8970,
+        type: 3}
+      propertyPath: m_Spring.spring
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8085239372118946798, guid: 639be382695cb764bbf41df31d3c8970,
         type: 3}
@@ -9385,6 +9385,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 114476608}
+    - target: {fileID: 6431365050987180603, guid: 7f3e83d42eeeda745867fb3412401132,
+        type: 3}
+      propertyPath: switchGameObject
+      value: 
+      objectReference: {fileID: 1988221673}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3e83d42eeeda745867fb3412401132, type: 3}
 --- !u!1001 &7998880677537186754
