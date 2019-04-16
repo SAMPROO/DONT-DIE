@@ -2,12 +2,8 @@
 
 public class SimpleMotor : MonoBehaviour
 {
-    // use only for stationary objects !!!
-
     public GameObject switchGameObject;
     private ISwitch iSwitch;
-
-    private Rigidbody rb;
 
     [Space]
     public float speed;
@@ -29,15 +25,13 @@ public class SimpleMotor : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
         iSwitch = switchGameObject.GetComponent<ISwitch>();
 
-        startPos = rb.transform.position;
+        startPos = transform.position;
         endPos = startPos + positionOffset;
 
-        startRot = rb.rotation;
-        endRot.eulerAngles = rb.rotation.eulerAngles + rotationOffset;
+        startRot = transform.rotation;
+        endRot.eulerAngles = transform.rotation.eulerAngles + rotationOffset;
     }
 
     private void OnValidate()
@@ -79,7 +73,7 @@ public class SimpleMotor : MonoBehaviour
 
         range = Mathf.Clamp(range, 0, 1);
 
-        rb.MovePosition(Vector3.Lerp(startPos, endPos, range));
-        rb.MoveRotation(Quaternion.Lerp(startRot, endRot, range));
+        transform.position = Vector3.Lerp(startPos, endPos, range);
+        transform.rotation = Quaternion.Lerp(startRot, endRot, range);
     }
 }
