@@ -4,8 +4,10 @@
     <e p="C:\GitHub\DONT-DIE\dont_die_unity" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="DivingBoard.cs" t="Include" />
         <e p="EditorUtilities" t="Include">
           <e p="KeepSceneViewActive.cs" t="Include" />
+          <e p="SetTimeScale.cs" t="Include" />
         </e>
         <e p="RubberBulletGun" t="Include">
           <e p="Scripts" t="Include">
@@ -29,9 +31,12 @@
             <e p="IInputController.cs" t="Include" />
             <e p="InputControllerManager.cs" t="Include" />
           </e>
+          <e p="ISwitch.cs" t="Include" />
           <e p="LifeTime.cs" t="Include" />
           <e p="MapLinker.cs" t="Include" />
-          <e p="MathUtils.cs" t="Include" />
+          <e p="OldScripts" t="Include">
+            <e p="Switch_Lever.cs" t="Include" />
+          </e>
           <e p="OrbitCameraTP.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerHandle.cs" t="Include" />
@@ -39,11 +44,21 @@
           <e p="PlayerSpawner.cs" t="Include" />
           <e p="ProjectileLauncher.cs" t="Include" />
           <e p="PunchGun.cs" t="Include" />
-          <e p="RagdollRig.cs" t="Include" />
+          <e p="Ragdoll" t="Include">
+            <e p="RagdollFootControl.cs" t="Include" />
+            <e p="RagdollRig.cs" t="Include" />
+          </e>
           <e p="RestartButton.cs" t="Include" />
           <e p="RubberBulletScript.cs" t="Include" />
           <e p="SingletonGameManager.cs" t="Include" />
+          <e p="Switch_Button.cs" t="Include" />
+          <e p="Switch_Lever_v2.cs" t="Include" />
+          <e p="SwitchTest.cs" t="Include" />
           <e p="TouchDamage.cs" t="Include" />
+          <e p="Utilities" t="Include">
+            <e p="MathUtils.cs" t="Include" />
+            <e p="SmoothFloat.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="dont_die_unity.sln" t="IncludeFlat" />
