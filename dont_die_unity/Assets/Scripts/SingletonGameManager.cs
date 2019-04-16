@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SingletonGameManager : MonoBehaviour
 {
-    private static SingletonGameManager instance;
     public static SingletonGameManager Instance { get; private set; }
 
     [SerializeField]
@@ -18,6 +17,8 @@ public class SingletonGameManager : MonoBehaviour
     private int sceneIndex = 0;
 
     private int numberOfPlayers = 2;
+
+    [SerializeField] private Color [] playerColors;
 
     private void Awake()
     {
@@ -92,7 +93,12 @@ public class SingletonGameManager : MonoBehaviour
             players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
 
 			// Get controller, camera, hud, random color, etc
-			players[i].Initialize(new PlayerHandle (i), playerCameras[i],inputControllers[i]);//, color, controller, etc....);
+			players[i].Initialize(
+                new PlayerHandle (i), 
+                playerCameras[i].GetComponent<OrbitCameraTP>(),
+                inputControllers[i],
+                playerColors [i]
+            );//, color, controller, etc....);
 			players[i].OnDie += OnPlayerDie;
 
 		}
