@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
 
 	public event Action<PlayerHandle> OnDie;
 
-    [SerializeField] private float speed = 3.0f;
-	[SerializeField] private Equipment gun;
+	public Renderer characterRenderer;
 
+	[SerializeField] private Equipment gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
 
@@ -47,6 +47,16 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
+    public void Initialize(
+    	PlayerHandle handle, 
+    	OrbitCameraTP camera, 
+    	IInputController inputCnt,
+    	Color color
+	){
+		characterRenderer.material.color = color;
+		Initialize(handle, camera, inputCnt);
+	}
+
     public void Initialize(PlayerHandle handle, OrbitCameraTP camera, IInputController inputCnt)
     {
         input = inputCnt;
@@ -59,29 +69,28 @@ public class PlayerController : MonoBehaviour
         // Subscribe input events
         input.Fire += Fire;
 		input.Jump += ragdoll.Jump;
-		input.PickUp += TogglePickup;
+		input.PickUp += ToggleCarryGun;
         
         // Initialize health systems
         hitpoints = maxHitpoints;
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
-	[Obsolete("Use Version that sets OrbitCameraTP directly")]
-    public void Initialize(PlayerHandle handle, Camera camera, IInputController controller)
-    {
-    	// just redirect to new one
-    	Initialize (handle, camera.GetComponent<OrbitCameraTP>(), controller);
-	}
+	// [Obsolete("Use Version that sets OrbitCameraTP directly")]
+ //    public void Initialize(PlayerHandle handle, Camera camera, IInputController controller)
+ //    {
+ //    	// just redirect to new one
+ //    	Initialize (handle, camera.GetComponent<OrbitCameraTP>(), controller);
+	// }
 
 	private void Update() 
 	{
 		input.UpdateController();
-
-		ragdoll.SetRightHandControl(input.Focus);
-
-		// ragdoll.rightHand.active = input.Focus;
-		// ragdoll.leftHand.active = input.Focus;
+		ragdoll.ControlLeftHand = input.ActivateLeftHand;
+		ragdoll.ControlRightHand = input.ActivateRightHand;
 	}
+
+	private Vector3 lastMoveDirection = Vector3.forward;
 
 	private void FixedUpdate()
 	{
@@ -90,9 +99,17 @@ public class PlayerController : MonoBehaviour
 			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
-		ragdoll.Move(movement / amount, amount * Time.deltaTime);
+		Vector3 moveDirection = movement / amount;
 
-		// transform.position = ragdoll.transform.position;
+		if (amount > 0)
+			lastMoveDirection = moveDirection;
+
+		bool doFocus = input.ActivateLeftHand || input.ActivateRightHand;
+		Vector3 lookDirection = 
+			doFocus ? 
+			cameraRig.baseRotation * Vector3.forward : 
+			lastMoveDirection;
+		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
 	}
 
 	private void Fire()
@@ -118,16 +135,13 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-    private void TogglePickup()
+    private void ToggleCarryGun()
 	{
-        Equipment lastGun = null;
-
-        Debug.Log("Gun:::::" + gun);
-
-        // Drop if we have gun
+		// Drop if we have gun
 		if (gun != null)
 		{
-			lastGun = StopCarryingGun();
+			gun?.StopCarrying();
+			gun = null;
 		}
 
 		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
@@ -154,74 +168,12 @@ public class PlayerController : MonoBehaviour
             {
             	// TODO: not likey this at all. Things in gun (or rather pickup) layer should have right component in itself and not parent
                	gun = hitColliders[i].GetComponentInParent<Equipment>();
-               	if (gun != lastGun)
+               	if (gun != null)
                	{
 	            	gun.StartCarrying(gunParent);
 	            	return;
                	}
-                else gun = null;
             }
         }
-	}
-
-	private Equipment StopCarryingGun()
-	{
-		gun?.StopCarrying();
-        var lastGun = gun;
-		gun = null;
-        return lastGun;
-	}
-
-    // private void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.color = Color.red;
-    //     //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
-    //     Gizmos.DrawWireSphere(bodyCenterPosition.position, transform.localScale.y);
-    // }
-}
-
-public class SmoothFloat
-{
-	private int index;
-	private float []array;
-	public readonly int length;
-
-	// Set min and max to clamp values when putting in
-	public SmoothFloat (int arrayLength = 10, float? min = null, float? max = null)
-	{
-		array = new float [arrayLength];
-		index = 0;
-		length = arrayLength;
-
-		// Make one null check here, so we don't have to check everytime
-		if (min == null || max == null)
-		{
-			Put = PutImplement;	
-		}
-		else 
-		{
-			float _min = min ?? 0.0f;
-			float _max = max ?? 1.0f;
-			_max = Mathf.Max(_min, _max);
-
-			Put = (value) =>
-			{
-				value = Mathf.Clamp(value, _min, _max);
-				PutImplement(value);
-			};
-		}
-	}
-
-	public System.Action<float> Put;
-
-	private void PutImplement(float value)
-	{
-		array[index] = value;
-		index = (index + 1) % length;
-	}
-
-	public float Get()
-	{
-		return array.Average();	
 	}
 }

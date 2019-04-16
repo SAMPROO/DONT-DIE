@@ -292,10 +292,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8278bede08c51be479f228d4a00b6b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 5103313764410557795, guid: c2c9b060ba10cdd478dc35ee5ba1e119,
+  playerPrefab: {fileID: 8655569548028954036, guid: 94ec79f57bc12e043a2a24356fd4703b,
     type: 3}
   orbitCameraPrefab: {fileID: 3173458186620795841, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
     type: 3}
+  playerColors:
+  - {r: 0, g: 0.20000002, b: 0.40000004, a: 1}
+  - {r: 1, g: 0.75294125, b: 0.14117648, a: 1}
+  - {r: 0.78823537, g: 0, b: 0.5254902, a: 1}
+  - {r: 1, g: 0.36078432, b: 0.078431375, a: 1}
 --- !u!4 &1931732103
 Transform:
   m_ObjectHideFlags: 0
