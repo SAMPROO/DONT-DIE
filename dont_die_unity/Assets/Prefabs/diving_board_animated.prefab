@@ -95,7 +95,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4365334817122597424}
-  - component: {fileID: 4365334817122597427}
   - component: {fileID: 4365334817122597426}
   m_Layer: 0
   m_Name: Board_4
@@ -119,22 +118,6 @@ Transform:
   m_Father: {fileID: 4365334817736766762}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4365334817122597427
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365334817122597425}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 10
-  m_CollisionDetection: 0
 --- !u!65 &4365334817122597426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,8 +140,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4365334817145282603}
-  - component: {fileID: 4365334817145282612}
   - component: {fileID: 4365334817145282602}
+  - component: {fileID: 7715505598107658148}
+  - component: {fileID: 7715505598107658145}
   m_Layer: 0
   m_Name: Board_5
   m_TagString: Untagged
@@ -181,22 +165,6 @@ Transform:
   m_Father: {fileID: 4365334817122597424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4365334817145282612
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365334817145282600}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 10
-  m_CollisionDetection: 0
 --- !u!65 &4365334817145282602
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -210,6 +178,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.02, y: 1.53, z: 0.33}
   m_Center: {x: 0, y: 0.78, z: 0}
+--- !u!54 &7715505598107658148
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365334817145282600}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7715505598107658145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365334817145282600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27646754578cb9e4584296c5aff762d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5322793450514042769}
+  minVelocityForTrigger: 5
 --- !u!1 &4365334817224837293
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +217,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4365334817224837292}
-  - component: {fileID: 4365334817224837295}
   - component: {fileID: 4365334817224837294}
   m_Layer: 0
   m_Name: Board_1
@@ -243,22 +240,6 @@ Transform:
   m_Father: {fileID: 4365334817330921037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4365334817224837295
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365334817224837293}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 10
-  m_CollisionDetection: 0
 --- !u!65 &4365334817224837294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -343,7 +324,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4365334817524515967}
-  - component: {fileID: 4365334817524515966}
   - component: {fileID: 4365334817524515961}
   m_Layer: 0
   m_Name: Board_2
@@ -367,22 +347,6 @@ Transform:
   m_Father: {fileID: 4365334817224837292}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4365334817524515966
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365334817524515964}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 10
-  m_CollisionDetection: 0
 --- !u!65 &4365334817524515961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -437,7 +401,7 @@ GameObject:
   - component: {fileID: 4365334817630283238}
   - component: {fileID: 5322793450514042769}
   m_Layer: 0
-  m_Name: diving_board_spring_joint
+  m_Name: diving_board_animated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,7 +451,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4365334817736766762}
-  - component: {fileID: 4365334817736766773}
   - component: {fileID: 4365334817736766772}
   m_Layer: 0
   m_Name: Board_3
@@ -511,22 +474,6 @@ Transform:
   m_Father: {fileID: 4365334817524515967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4365334817736766773
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4365334817736766763}
-  serializedVersion: 2
-  m_Mass: 200
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 10
-  m_CollisionDetection: 0
 --- !u!65 &4365334817736766772
 BoxCollider:
   m_ObjectHideFlags: 0
