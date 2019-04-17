@@ -276,7 +276,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21722
+  m_Name: pb_Mesh13746
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1498,7 +1498,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21706
+  m_Name: pb_Mesh13730
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1993,7 +1993,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21774
+  m_Name: pb_Mesh13796
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2153,7 +2153,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21680
+  m_Name: pb_Mesh13704
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2758,7 +2758,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21692
+  m_Name: pb_Mesh13716
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2918,7 +2918,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21740
+  m_Name: pb_Mesh13764
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5141,17 +5141,16 @@ MonoBehaviour:
   footSpeed: 2
   jumpVelocity: 100
   speed: 3
-  rightHand:
-    active: 0
-    rigidbody: {fileID: 74918842839436052}
-    targetPosition: {x: 0.5, y: 1.5, z: 0.5}
-    force: 500
-  leftHand:
-    active: 0
-    rigidbody: {fileID: 74918842839436026}
-    targetPosition: {x: -0.5, y: 1.5, z: 0.5}
-    force: 500
   handForce: 1000
+  handsHeight: 1
+  handsDistance: 1
+  handsWidth: 0.2
+  handsAngleMin: -45
+  handsAngleMax: 45
+  leftHandRb: {fileID: 0}
+  rightHandRb: {fileID: 0}
+  handAimMultiplier: 2
+  DEBUGHandAim: 0
   hipRb: {fileID: 0}
   hitRayMask:
     serializedVersion: 2
