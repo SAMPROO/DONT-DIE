@@ -248,6 +248,9 @@ public class RagdollRig : MonoBehaviour
 		// TODO: ground check
 		if (Grounded)
 		{
+			// if (touchingJumpBonus)
+			// 	jumpVelocity += jumpBonus.Value;
+
 			hipRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
 			neckRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
 		}
