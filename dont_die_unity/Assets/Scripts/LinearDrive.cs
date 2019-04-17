@@ -47,7 +47,7 @@ public class LinearDrive : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Position: " + transform.localPosition.x);
+        //Debug.Log("Position: " + transform.localPosition.x);
 
         float velocity = 0;
 
