@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SimpleMotor : MonoBehaviour
+public class LerpDrive : MonoBehaviour
 {
     public GameObject switchGameObject;
     private ISwitch iSwitch;
@@ -27,11 +27,11 @@ public class SimpleMotor : MonoBehaviour
     {
         iSwitch = switchGameObject.GetComponent<ISwitch>();
 
-        startPos = transform.position;
+        startPos = transform.localPosition;
         endPos = startPos + positionOffset;
 
-        startRot = transform.rotation;
-        endRot.eulerAngles = transform.rotation.eulerAngles + rotationOffset;
+        startRot = transform.localRotation;
+        endRot.eulerAngles = startRot.eulerAngles + rotationOffset;
     }
 
     private void OnValidate()
@@ -73,7 +73,7 @@ public class SimpleMotor : MonoBehaviour
 
         range = Mathf.Clamp(range, 0, 1);
 
-        transform.position = Vector3.Lerp(startPos, endPos, range);
-        transform.rotation = Quaternion.Lerp(startRot, endRot, range);
+        transform.localPosition = Vector3.Lerp(startPos, endPos, range);
+        transform.localRotation = Quaternion.Lerp(startRot, endRot, range);
     }
 }
