@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7551561484764702598}
   - component: {fileID: 7567691214352118146}
-  - component: {fileID: 7297019159560987834}
   - component: {fileID: 7755439791233267441}
   m_Layer: 0
   m_Name: Orbit Camera
@@ -75,14 +74,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7297019159560987834
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3173458186620795841}
-  m_Enabled: 1
 --- !u!114 &7755439791233267441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +91,6 @@ MonoBehaviour:
   focusLookOffset: {x: 1, y: 2}
   offset: {x: 0, y: 0, z: 0}
   sensitivity: {x: 1, y: 1}
-  cameraDistanceMax: 30
+  cameraDistanceMax: 8
   cameraDistanceMin: 4
   cameraDistanceCurrent: 0
