@@ -1,3 +1,5 @@
+#if NOT_DEFINED
+
 public interface IJumpBonus
 {
 	float Value { get; }
@@ -16,3 +18,4 @@ public class DivingBoardJumpBonus : MonoBehaviour, IJumpBonus
 		jumpBonusValue = Mathf.Max(0, rigidbody.velocity.y);
 	}
 }
+#endif
