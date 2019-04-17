@@ -16685,6 +16685,151 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e745c49cf24c343b01a7f0fb30424e, type: 3}
+--- !u!1 &5922095902798582832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922095903078594562, guid: 33e745c49cf24c343b01a7f0fb30424e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922095902798582831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5922095902798582833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922095903088435739, guid: 33e745c49cf24c343b01a7f0fb30424e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922095902798582831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5922095902798582834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922095902352567553, guid: 33e745c49cf24c343b01a7f0fb30424e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922095902798582831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5922095902798582835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922095901612760150, guid: 33e745c49cf24c343b01a7f0fb30424e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922095902798582831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5922095902798582836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5922095901841133703, guid: 33e745c49cf24c343b01a7f0fb30424e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5922095902798582831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!145 &5922095902798582837
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922095902798582832}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 2.651, y: 1.158019, z: -4.7402916}
+  serializedVersion: 2
+  m_Spring: 1000
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!145 &5922095902798582838
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922095902798582833}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 2.651, y: 1.158019, z: -3.9286394}
+  serializedVersion: 2
+  m_Spring: 1000
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!145 &5922095902798582839
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922095902798582834}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 2.651, y: 1.1580192, z: -3.1169198}
+  serializedVersion: 2
+  m_Spring: 1000
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!145 &5922095902798582840
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922095902798582835}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 2.651, y: 1.1580192, z: -2.3084216}
+  serializedVersion: 2
+  m_Spring: 1000
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
+--- !u!145 &5922095902798582841
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922095902798582836}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 2.651, y: 1.1805899, z: -1.5174351}
+  serializedVersion: 2
+  m_Spring: 1000
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1001 &6306785046311749512
 PrefabInstance:
   m_ObjectHideFlags: 0

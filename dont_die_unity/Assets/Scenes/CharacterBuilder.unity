@@ -276,7 +276,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh13746
+  m_Name: pb_Mesh79522
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1498,7 +1498,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh13730
+  m_Name: pb_Mesh79506
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1993,7 +1993,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh13796
+  m_Name: pb_Mesh79572
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2153,7 +2153,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh13704
+  m_Name: pb_Mesh79480
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2758,7 +2758,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh13716
+  m_Name: pb_Mesh79492
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2918,7 +2918,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh13764
+  m_Name: pb_Mesh79540
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5131,8 +5131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95f430617255da49bd052c106ee212c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFootController: {fileID: 0}
-  rightFootController: {fileID: 0}
+  leftFootControlJoint: {fileID: 0}
+  rightFootControlJoint: {fileID: 0}
   leftFoot: {fileID: 74918842839436010}
   rightFoot: {fileID: 0}
   feetWidth: 0.13
@@ -5149,8 +5149,6 @@ MonoBehaviour:
   handsAngleMax: 45
   leftHandRb: {fileID: 0}
   rightHandRb: {fileID: 0}
-  handAimMultiplier: 2
-  DEBUGHandAim: 0
   hipRb: {fileID: 0}
   hitRayMask:
     serializedVersion: 2
