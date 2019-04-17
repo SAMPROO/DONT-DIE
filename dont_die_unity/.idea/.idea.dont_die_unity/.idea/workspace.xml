@@ -44,15 +44,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/DivingBoardTrigger.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+            <state relative-caret-position="64">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="19" />
               <folding>
-                <marker date="1555512196563" expanded="true" signature="67:400" ph="{...}" />
-                <marker date="1555512196563" expanded="true" signature="249:398" ph="{...}" />
-                <marker date="1555512196563" expanded="true" signature="326:392" ph="{...}" />
+                <marker date="1555512418033" expanded="true" signature="67:400" ph="{...}" />
+                <marker date="1555512418033" expanded="true" signature="249:398" ph="{...}" />
+                <marker date="1555512418033" expanded="true" signature="326:392" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding>
+                <marker date="1555514344915" expanded="true" signature="6:55" ph="..." />
+                <marker date="1555514344915" expanded="true" signature="105:363" ph="{...}" />
+                <marker date="1555514344915" expanded="true" signature="177:361" ph="{...}" />
+                <marker date="1555514344915" expanded="true" signature="245:355" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -149,40 +164,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/SingletonGameManager.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
-              <folding>
-                <marker date="1555434837766" expanded="false" signature="6:53" ph="..." />
-                <marker date="1555434837766" expanded="true" signature="104:4557" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="666:969" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="723:772" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="828:875" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="996:1105" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="1050:1099" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="1161:1887" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="1198:1369" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="1382:1538" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="1568:1817" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="1591:1747" ph="/* Scene loading completes next frame, so we need to subscribe event. ... */" />
-                <marker date="1555434837766" expanded="true" signature="2008:2184" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="2220:3537" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="2232:2416" ph="/* Get number of players ... */" />
-                <marker date="1555434837766" expanded="true" signature="2798:3496" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="3585:3933" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="3597:3754" ph="/* unspawn player ... */" />
-                <marker date="1555434837766" expanded="true" signature="3804:3868" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="3982:4103" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="4155:4555" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="4327:4549" ph="{...}" />
-                <marker date="1555434837766" expanded="true" signature="4377:4539" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/OrbitCameraTP.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="704">
@@ -224,6 +205,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/DivingBoard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TouchDamage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OrbitCameraTP.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ImpactDamage.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -237,6 +219,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MapLinker.cs" />
         <option value="$PROJECT_DIR$/Assets/DivingBoard.cs" />
         <option value="$PROJECT_DIR$/Assets/DivingBoardTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs" />
       </list>
     </option>
   </component>
@@ -328,7 +311,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23345000" />
+    <option name="totallyTimeSpent" value="23348000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -532,7 +515,6 @@
           <caret line="59" selection-start-line="59" selection-end-line="59" />
           <folding>
             <marker date="1555434837766" expanded="false" signature="6:53" ph="..." />
-            <marker date="1555434837766" expanded="true" signature="104:4557" ph="{...}" />
             <marker date="1555434837766" expanded="true" signature="666:969" ph="{...}" />
             <marker date="1555434837766" expanded="true" signature="723:772" ph="{...}" />
             <marker date="1555434837766" expanded="true" signature="828:875" ph="{...}" />
@@ -688,12 +670,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/DivingBoardTrigger.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+        <state relative-caret-position="64">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="19" />
           <folding>
-            <marker date="1555512196563" expanded="true" signature="67:400" ph="{...}" />
-            <marker date="1555512196563" expanded="true" signature="249:398" ph="{...}" />
-            <marker date="1555512196563" expanded="true" signature="326:392" ph="{...}" />
+            <marker date="1555512418033" expanded="true" signature="67:400" ph="{...}" />
+            <marker date="1555512418033" expanded="true" signature="249:398" ph="{...}" />
+            <marker date="1555512418033" expanded="true" signature="326:392" ph="{...}" />
           </folding>
         </state>
       </provider>
