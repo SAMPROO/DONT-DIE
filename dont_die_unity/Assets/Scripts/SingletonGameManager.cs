@@ -13,7 +13,7 @@ public class SingletonGameManager : MonoBehaviour
     private PlayerController[] players = new PlayerController[maxPlayers];
     private Camera[] playerCameras = new Camera[maxPlayers];
 
-    private readonly string[] sceneNames = {"Start", "Level", "End"};
+    private readonly string[] sceneNames = {"Start", "MapSelection", "Level", "End"};
     private int sceneIndex = 0;
 
     private int numberOfPlayers = 2;
@@ -45,10 +45,18 @@ public class SingletonGameManager : MonoBehaviour
         }
     }
 
-    public void LoadNextLevel()
+    public void LoadNextLevel(string sceneName = null)
     {
-        // Default LoadSceneMode is Single, but lets be explicit
-        SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);
+        if (sceneName == null)
+        {
+            // Default LoadSceneMode is Single, but lets be explicit
+            SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);
+        }
+        else
+        {
+            // Loads level that was selected in MapSelection scene
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        }
 
         if (sceneIndex == 1)
         {
@@ -126,7 +134,7 @@ public class SingletonGameManager : MonoBehaviour
     public void SetPlayerCount(int playerCount)
     {
         numberOfPlayers = playerCount;
-        LoadNextLevel();
+        SceneManager.LoadScene("MapSelection", LoadSceneMode.Single);
     }
 
     public void SetViewports(Camera[] cameraArray)

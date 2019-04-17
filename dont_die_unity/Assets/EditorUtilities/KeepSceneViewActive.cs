@@ -1,5 +1,8 @@
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+
 public class KeepSceneViewActive : MonoBehaviour
 {
     public bool keepSceneViewActive = true;
@@ -8,7 +11,8 @@ public class KeepSceneViewActive : MonoBehaviour
     {
         if (this.keepSceneViewActive && Application.isEditor)
         {
-            UnityEditor.SceneView.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
+            UnityEditor.EditorWindow.FocusWindowIfItsOpen(typeof(UnityEditor.SceneView));
         }
     }
 }
+#endif

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4533184863676682601}
   - component: {fileID: 4533184863676685974}
   - component: {fileID: 4533184863676685952}
+  - component: {fileID: 1371812426}
   m_Layer: 0
   m_Name: Hand.L
   m_TagString: Untagged
@@ -108,6 +109,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.09
   m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!114 &1371812426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533184863676685953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea1d43715472ac43817aa5492bfe048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedOnly: 0
+  size: 0.2
 --- !u!1 &4533184863676685955
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +521,7 @@ GameObject:
   - component: {fileID: 4533184863676685972}
   - component: {fileID: 4533184863676685966}
   - component: {fileID: 4533184863676685964}
+  - component: {fileID: 99017409}
   m_Layer: 0
   m_Name: Hand.R
   m_TagString: Untagged
@@ -602,6 +618,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.09
   m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!114 &99017409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533184863676685965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea1d43715472ac43817aa5492bfe048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedOnly: 0
+  size: 0.2
 --- !u!1 &4533184863676685967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,17 +1044,16 @@ MonoBehaviour:
   footSpeed: 2.5
   jumpVelocity: 25
   speed: 3
-  rightHand:
-    active: 1
-    rigidbody: {fileID: 4533184863676685972}
-    targetPosition: {x: 0.4, y: 1, z: 0.8}
-    force: 0
-  leftHand:
-    active: 1
-    rigidbody: {fileID: 4533184863676682601}
-    targetPosition: {x: -0.4, y: 1, z: 0.8}
-    force: 0
   handForce: 1000
+  handsHeight: 1
+  handsDistance: 1.2
+  handsWidth: 0.4
+  handsAngleMin: -60
+  handsAngleMax: 60
+  leftHandRb: {fileID: 4533184863676682601}
+  rightHandRb: {fileID: 4533184863676685972}
+  handAimMultiplier: -1.2
+  DEBUGHandAim: -0
   hipRb: {fileID: 4533184863676686066}
   hitRayMask:
     serializedVersion: 2
@@ -1130,11 +1159,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 2
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 20
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
@@ -1281,11 +1310,11 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: 2
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 20
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
