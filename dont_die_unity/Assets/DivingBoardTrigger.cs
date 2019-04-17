@@ -9,8 +9,6 @@ public class DivingBoardTrigger : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other);
-        Debug.Log("vel: " + other.relativeVelocity.magnitude);
         if (other.relativeVelocity.magnitude >= minVelocityForTrigger)
         {
             anim.SetTrigger("PlayAnimation");
