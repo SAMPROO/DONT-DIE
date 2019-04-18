@@ -68,6 +68,7 @@ public class RagdollRig : MonoBehaviour
 	private Vector3 rightHandPosition;
 	private Vector3 handsForward;
 
+	public bool HasControl { get; set; }
 
 	// This is expected to have locked rotation
 	[Space(30)]public Rigidbody hipRb;
@@ -154,30 +155,6 @@ public class RagdollRig : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		// Control hands ------------------------------------------------------------------
-		ComputeHandPositions();
-
-		ControlHand(
-			leftHandControlJoint,
-			leftHandControlWeight,
-			hipRb.transform.TransformPoint(leftHandPosition),
-			leftHandRb,
-			ControlLeftHand,
-			handsForward,
-			handForce
-		);
-
-		ControlHand(
-			rightHandControlJoint,
-			rightHandControlWeight,
-			hipRb.transform.TransformPoint(rightHandPosition),
-			rightHandRb,
-			ControlRightHand,
-			handsForward,
-			handForce
-		);
-
-		// Control hips etc. --------------------------------------------------------------------
 		bool hipGrounded = false;
 		RaycastHit hit;
 
@@ -189,36 +166,73 @@ public class RagdollRig : MonoBehaviour
 			hipGrounded = true;
 			hipHitPosition = hit.point;
 		}
-	
 
-		if (Grounded || hipGrounded)
+		if (HasControl)
 		{
-			hipRb.AddForce(hipForce * Vector3.up);
+			hipRb.freezeRotation = true;
 
-			var neckToHip = (hipRb.position + hipRb.transform.forward * neckZOffset) - neckRb.position;
-			neckToHip.y = 1; // As in vector3.up, so we don't pull down, and always use full force in vertical direction
-			var neckForceVector = neckToHip * neckForce;
-			neckRb.AddForceAtPosition(neckForceVector, neckRb.position + 0.05f * Vector3.up);
+			// Control hands ------------------------------------------------------------------
+			ComputeHandPositions();
 
-			EnableController(leftFootControlJoint, leftFoot.rigidbody);
-			EnableController(rightFootControlJoint, rightFoot.rigidbody);
+			ControlHand(
+				leftHandControlJoint,
+				leftHandControlWeight,
+				hipRb.transform.TransformPoint(leftHandPosition),
+				leftHandRb,
+				ControlLeftHand,
+				handsForward,
+				handForce
+			);
+
+			ControlHand(
+				rightHandControlJoint,
+				rightHandControlWeight,
+				hipRb.transform.TransformPoint(rightHandPosition),
+				rightHandRb,
+				ControlRightHand,
+				handsForward,
+				handForce
+			);
+
+			// Control hips etc. --------------------------------------------------------------------
+
+		
+
+			if (Grounded || hipGrounded)
+			{
+				hipRb.AddForce(hipForce * Vector3.up);
+
+				var neckToHip = (hipRb.position + hipRb.transform.forward * neckZOffset) - neckRb.position;
+				neckToHip.y = 1; // As in vector3.up, so we don't pull down, and always use full force in vertical direction
+				var neckForceVector = neckToHip * neckForce;
+				neckRb.AddForceAtPosition(neckForceVector, neckRb.position + 0.05f * Vector3.up);
+
+				EnableController(leftFootControlJoint, leftFoot.rigidbody);
+				EnableController(rightFootControlJoint, rightFoot.rigidbody);
+			}
+			else
+			{
+				DisableController(leftFootControlJoint);
+				DisableController(rightFootControlJoint);
+				hipHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
+			}
+
+			// Apply custom drag in horizontal directions
+			var velocity = hipRb.velocity;
+			velocity.x /= hipRbHorizontalDrag;
+			velocity.z /= hipRbHorizontalDrag;
+			hipRb.velocity = velocity;
+
+			// Control feet ----------------------------------------------------------
+			leftFootControlJoint.transform.position = GetComputedFootPosition(leftFootTarget);
+			rightFootControlJoint.transform.position = GetComputedFootPosition(rightFootTarget);
 		}
 		else
 		{
-			DisableController(leftFootControlJoint);
-			DisableController(rightFootControlJoint);
-			hipHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
+			hipRb.freezeRotation = false;
 		}
 
-		// Apply custom drag in horizontal directions
-		var velocity = hipRb.velocity;
-		velocity.x /= hipRbHorizontalDrag;
-		velocity.z /= hipRbHorizontalDrag;
-		hipRb.velocity = velocity;
 
-		// Control feet ----------------------------------------------------------
-		leftFootControlJoint.transform.position = GetComputedFootPosition(leftFootTarget);
-		rightFootControlJoint.transform.position = GetComputedFootPosition(rightFootTarget);
 
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
@@ -236,6 +250,10 @@ public class RagdollRig : MonoBehaviour
 	// Move character to direction, do this in fixed update
 	public void Move(Vector3 movement, Vector3 look, float amount)
 	{
+		if (HasControl == false)
+			return;
+
+		// TODO: ground check
 		doWalk = amount > 0;
 
 		amount *= speed;
@@ -245,7 +263,9 @@ public class RagdollRig : MonoBehaviour
 
 	public void Jump()
 	{
-		// TODO: ground check
+		if (HasControl == false)
+			return;
+
 		if (Grounded)
 		{
 			// if (touchingJumpBonus)

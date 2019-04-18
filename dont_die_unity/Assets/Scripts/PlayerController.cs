@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         input.Fire += Fire;
 		input.Jump += ragdoll.Jump;
 		input.PickUp += ToggleCarryGun;
+		input.ToggleRagdoll += ToggleRagdoll;
         
         // Initialize health systems
         hitpoints = maxHitpoints;
@@ -133,6 +134,11 @@ public class PlayerController : MonoBehaviour
 		{
 			OnDie?.Invoke(handle);
 		}
+	}
+
+	private void ToggleRagdoll()
+	{
+		ragdoll.HasControl = !ragdoll.HasControl;
 	}
 
     private void ToggleCarryGun()
