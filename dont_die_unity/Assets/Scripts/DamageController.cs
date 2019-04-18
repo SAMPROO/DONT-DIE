@@ -24,7 +24,7 @@ public class DamageController : MonoBehaviour
 
     // TODO: change to Awake, to set damage controller before childs try to collide
     // Start is only run in first frame this is active, and collisions may happen before that
-    private void Start()
+    private void Awake()
     {
         // pass this script to all damageChilds
         foreach (var child in GetComponentsInChildren<DamageChild>())

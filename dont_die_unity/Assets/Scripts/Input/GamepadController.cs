@@ -69,9 +69,9 @@ public class GamepadController : IInputController
             PickUp?.Invoke();
         
         //ToggleRagdoll for testing toggle for ragdolling
-        /*if (Input.GetButtonDown(doRagdollKeyName))
+        if (Input.GetButtonDown(doRagdollKeyName))
             ToggleRagdoll?.Invoke();
-        */
+        
         
         if (Input.GetButtonDown(doRagdollKeyName))
             HoldRagdoll = true;

@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private Transform rightHandTransform;
 	[SerializeField] private Transform leftHandTransform;
+	public float handAimMultiplier = -1f;
 
 	public bool Grounded => ragdoll.Grounded;
 
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
+	// This version also sets color.
     public void Initialize(
     	PlayerHandle handle, 
     	OrbitCameraTP camera, 
@@ -57,8 +59,11 @@ public class PlayerController : MonoBehaviour
 		Initialize(handle, camera, inputCnt);
 	}
 
-    public void Initialize(PlayerHandle handle, OrbitCameraTP camera, IInputController inputCnt)
-    {
+    public void Initialize(
+    	PlayerHandle handle,
+    	OrbitCameraTP camera,
+    	IInputController inputCnt
+	){
         input = inputCnt;
 
         this.handle = handle;
@@ -70,18 +75,12 @@ public class PlayerController : MonoBehaviour
         input.Fire += Fire;
 		input.Jump += ragdoll.Jump;
 		input.PickUp += ToggleCarryGun;
+		input.ToggleRagdoll += ToggleRagdoll;
         
         // Initialize health systems
         hitpoints = maxHitpoints;
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
-
-	// [Obsolete("Use Version that sets OrbitCameraTP directly")]
- //    public void Initialize(PlayerHandle handle, Camera camera, IInputController controller)
- //    {
- //    	// just redirect to new one
- //    	Initialize (handle, camera.GetComponent<OrbitCameraTP>(), controller);
-	// }
 
 	private void Update() 
 	{
@@ -95,8 +94,8 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 movement = 
-			cameraRig.baseRotation * Vector3.right * input.Horizontal
-			+ cameraRig.baseRotation * Vector3.forward * input.Vertical;
+			cameraRig.BaseRotation * Vector3.right * input.Horizontal
+			+ cameraRig.BaseRotation * Vector3.forward * input.Vertical;
 
 		float amount = Vector3.Magnitude(movement);
 		Vector3 moveDirection = movement / amount;
@@ -107,9 +106,11 @@ public class PlayerController : MonoBehaviour
 		bool doFocus = input.ActivateLeftHand || input.ActivateRightHand;
 		Vector3 lookDirection = 
 			doFocus ? 
-			cameraRig.baseRotation * Vector3.forward : 
+			cameraRig.BaseRotation * Vector3.forward : 
 			lastMoveDirection;
 		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
+
+		ragdoll.SetHandsAimAngle(cameraRig.AimAngle);// * handAimMultiplier);
 	}
 
 	private void Fire()
@@ -133,6 +134,11 @@ public class PlayerController : MonoBehaviour
 		{
 			OnDie?.Invoke(handle);
 		}
+	}
+
+	private void ToggleRagdoll()
+	{
+		ragdoll.HasControl = !ragdoll.HasControl;
 	}
 
     private void ToggleCarryGun()

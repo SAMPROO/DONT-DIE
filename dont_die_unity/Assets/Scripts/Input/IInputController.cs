@@ -3,16 +3,16 @@ public delegate void OneOffAction();
 
 public interface IInputController
 {
-    float Horizontal    { get; }
-    float Vertical      { get; }
+    float Horizontal            { get; }
+    float Vertical              { get; }
 
-    float LookHorizontal{ get; }
-    float LookVertical  { get; }
+    float LookHorizontal        { get; }
+    float LookVertical          { get; }
 
-    bool Focus          { get; }
-    bool ActivateLeftHand          { get; }
-    bool ActivateRightHand          { get; }
-    bool HoldRagdoll          { get; }
+    bool Focus                  { get; }
+    bool ActivateLeftHand       { get; }
+    bool ActivateRightHand      { get; }
+    bool HoldRagdoll            { get; }
 
     //event OneOffAction ActivateLeftHand;
     //event OneOffAction ActivateRightHand;

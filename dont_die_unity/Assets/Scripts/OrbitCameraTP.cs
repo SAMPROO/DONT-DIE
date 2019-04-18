@@ -21,14 +21,14 @@ public class OrbitCameraTP : MonoBehaviour
 
     private float inputX = 0;
     private float inputY = 0;
-    private float angle;
 
     private bool aim;
 
     private IInputController input;
 
-    //for player
-    public Quaternion baseRotation => Quaternion.Euler(0, inputX, 0);
+    // For PlayerCharacter
+    public Quaternion BaseRotation => Quaternion.Euler(0, inputX, 0);
+    public float AimAngle { get; private set; }
 
     // Focus lerp things
     private int smoothIndex = 0;
@@ -43,26 +43,16 @@ public class OrbitCameraTP : MonoBehaviour
         if (sensitivity.y == 0) sensitivity.y = 0.5f;
     }
 
-
-    private void Update()
-    {
-        inputX += input.LookHorizontal * sensitivity.x *90* Time.deltaTime;
-        inputY += input.LookVertical * sensitivity.y *90* Time.deltaTime;
-        //Debug.Log(input.LookHorizontal);
-        inputY = Mathf.Clamp(inputY, Y_ANGLE_MIN, Y_ANGLE_MAX);
-
-        if (input.Focus)
-        {
-            aim = true;
-        }
-        else
-        {
-            aim = false;
-        }
-    }
-
     private void LateUpdate()
     {
+        // Input is fine in LateUpdate Too
+        inputX += input.LookHorizontal * sensitivity.x *90* Time.deltaTime;
+        inputY += input.LookVertical * sensitivity.y *90* Time.deltaTime;
+        inputY = Mathf.Clamp(inputY, Y_ANGLE_MIN, Y_ANGLE_MAX);
+
+        // This does same           
+        aim = input.Focus;
+
         smoothArray [smoothIndex] = input.Focus == true ? 1f : 0f; // == 0 / 1
         smoothIndex = (smoothIndex + 1) % smoothArray.Length;
         focusLerp = smoothArray.Average();
@@ -71,6 +61,7 @@ public class OrbitCameraTP : MonoBehaviour
 
         if (aim == false)
         {
+            float angle;
             angle = ((inputY + 10) * 3f) / 300;
             angle -= 0.2f;
             angle = Mathf.Clamp(angle, 0, 1);
@@ -81,6 +72,9 @@ public class OrbitCameraTP : MonoBehaviour
         {
             cameraDistanceCurrent = Mathf.Lerp(cameraDistanceCurrent, cameraDistanceMin / 2, 0.5f);
         }
+
+        var flatForwardVector = new Vector3(transform.forward.x, 0, transform.forward.z);
+        AimAngle = Vector3.SignedAngle(transform.forward, flatForwardVector, transform.right);
     }
 
     public void MoveCamera(float _yRot, float _xRot)
