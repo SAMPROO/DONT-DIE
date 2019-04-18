@@ -54,9 +54,12 @@ public class RubberDuckBullet : MonoBehaviour
         foreach (Collider nearbyObject in colliders)
         {
             Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+            RagdollRig ragdollRig = nearbyObject.GetComponent<RagdollRig>();
 
             if (rb != null)
             {
+                if (ragdollRig != null)
+                    //ragdollRig.DoConcussion();
                 rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier);
             }
         }

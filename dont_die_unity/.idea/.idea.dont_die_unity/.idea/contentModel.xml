@@ -8,6 +8,7 @@
           <e p="AxisGizmo.cs" t="Include" />
           <e p="KeepSceneViewActive.cs" t="Include" />
           <e p="SetTimeScale.cs" t="Include" />
+          <e p="VelocityDetector.cs" t="Include" />
         </e>
         <e p="Materials" t="Include">
           <e p="CharacterShader.shader" t="Include" />
@@ -56,6 +57,7 @@
           <e p="PunchGun.cs" t="Include" />
           <e p="Ragdoll" t="Include">
             <e p="RagdollFootControl.cs" t="Include" />
+            <e p="RagdollHeadPiece.cs" t="Include" />
             <e p="RagdollRig.cs" t="Include" />
           </e>
           <e p="RestartButton.cs" t="Include" />
