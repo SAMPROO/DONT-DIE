@@ -184,7 +184,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64342
+  m_Name: pb_Mesh12414
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1361,7 +1361,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64326
+  m_Name: pb_Mesh12398
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1856,7 +1856,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64392
+  m_Name: pb_Mesh12456
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2016,7 +2016,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64300
+  m_Name: pb_Mesh12372
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2544,7 +2544,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64312
+  m_Name: pb_Mesh12384
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2704,7 +2704,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh64360
+  m_Name: pb_Mesh12432
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3316,8 +3316,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+      propertyPath: velocityThreshold
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+      propertyPath: sqrVelocityThreshold
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+      propertyPath: thing
+      value: 
+      objectReference: {fileID: 4533184863197014374}
+    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+      propertyPath: thingsName
+      value: HeadTip_end
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+--- !u!1 &4533184863197014374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4533184863676686039, guid: 9d83ac040f350ed46932fae2a64c4d51,
+    type: 3}
+  m_PrefabInstance: {fileID: 4533184863197014373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4864581980312284708
 PrefabInstance:
   m_ObjectHideFlags: 0

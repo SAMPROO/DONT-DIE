@@ -338,15 +338,14 @@ public class RagdollRig : MonoBehaviour
 		handsForward = hipRb.transform.TransformDirection(new Vector3(0, sin, cos));
 	}
 
-
 	private static void ControlHand(
-		SpringJoint controlJoint,
+		SpringJoint	controlJoint,
 		SmoothFloat controlWeight,
-		Vector3 targetPosition,
-		Rigidbody rigidbody,
-		bool doControl,
-		Vector3 direction,
-		float force
+		Vector3 	targetPosition,
+		Rigidbody 	rigidbody,
+		bool 		doControl,
+		Vector3 	direction,
+		float 		force
 	){
 		controlJoint.transform.position = targetPosition;
 

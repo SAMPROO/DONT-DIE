@@ -17,6 +17,8 @@ public class RagdollHeadPiece : MonoBehaviour
 		if (collision.relativeVelocity.sqrMagnitude > sqrVelocityThreshold)
 		{
 			OnImpact?.Invoke();
+
+			AudioManager.PlaySoundNonSpatial(null);
 		}
 	}
 
