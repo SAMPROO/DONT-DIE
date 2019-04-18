@@ -236,7 +236,7 @@ MonoBehaviour:
   delay: 3
   blastRadius: 5
   blastForce: 10000
-  upwardsModifier: 10
+  upwardsModifier: 10000
   exploadOnCollision: 0
   destroyAfterScale: 1
   scaleMultiplier: 50

@@ -58,7 +58,7 @@ public class RubberDuckBullet : MonoBehaviour
 
             if (rb != null)
             {
-                if (ragdollRig != null)
+                //if (ragdollRig != null)
                     //ragdollRig.DoConcussion();
                 rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier);
             }
