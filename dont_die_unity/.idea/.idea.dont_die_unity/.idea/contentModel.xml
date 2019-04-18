@@ -4,11 +4,13 @@
     <e p="C:\GitHub\DONT-DIE\dont_die_unity" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="DivingBoard.cs" t="Include" />
-        <e p="DivingBoardTrigger.cs" t="Include" />
         <e p="EditorUtilities" t="Include">
+          <e p="AxisGizmo.cs" t="Include" />
           <e p="KeepSceneViewActive.cs" t="Include" />
           <e p="SetTimeScale.cs" t="Include" />
+        </e>
+        <e p="Materials" t="Include">
+          <e p="CharacterShader.shader" t="Include" />
         </e>
         <e p="RubberBulletGun" t="Include">
           <e p="Scripts" t="Include">
@@ -18,14 +20,19 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AngularDrive.cs" t="Include" />
           <e p="ButtonLinker.cs" t="Include" />
           <e p="Camera3rdPerson.cs" t="Include" />
+          <e p="CarouselDriver.cs" t="Include" />
           <e p="DamageChild.cs" t="Include" />
           <e p="DamageController.cs" t="Include" />
+          <e p="DivingBoard.cs" t="Include" />
+          <e p="DivingBoardTrigger.cs" t="Include" />
           <e p="Equipment.cs" t="Include" />
           <e p="FallDamageTester.cs" t="Include" />
           <e p="Gun.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
+          <e p="IJumpBonus.cs" t="Include" />
           <e p="ImpactDamage.cs" t="Include" />
           <e p="Input" t="Include">
             <e p="GamepadController.cs" t="Include" />
@@ -33,7 +40,9 @@
             <e p="InputControllerManager.cs" t="Include" />
           </e>
           <e p="ISwitch.cs" t="Include" />
+          <e p="LerpDrive.cs" t="Include" />
           <e p="LifeTime.cs" t="Include" />
+          <e p="LinearDrive.cs" t="Include" />
           <e p="MapLinker.cs" t="Include" />
           <e p="OldScripts" t="Include">
             <e p="Switch_Lever.cs" t="Include" />
@@ -53,13 +62,16 @@
           <e p="RubberBulletScript.cs" t="Include" />
           <e p="SingletonGameManager.cs" t="Include" />
           <e p="Switch_Button.cs" t="Include" />
+          <e p="Switch_Inspector.cs" t="Include" />
           <e p="Switch_Lever_v2.cs" t="Include" />
           <e p="SwitchTest.cs" t="Include" />
+          <e p="TestJumpBonus.cs" t="Include" />
           <e p="TouchDamage.cs" t="Include" />
           <e p="Utilities" t="Include">
             <e p="MathUtils.cs" t="Include" />
             <e p="SmoothFloat.cs" t="Include" />
           </e>
+          <e p="VelocityBasedJumpBonus.cs" t="Include" />
         </e>
       </e>
       <e p="dont_die_unity.sln" t="IncludeFlat" />

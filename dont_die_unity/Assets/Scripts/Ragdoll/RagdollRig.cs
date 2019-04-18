@@ -78,6 +78,7 @@ public class RagdollRig : MonoBehaviour
 	public float hipHeight = 0.65f;
 	public float hipZOffset = -0.1f;
 
+	
 	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
 	public float hipRbHorizontalDrag = 10f;
 	private Vector3 hipHitPosition;
@@ -268,11 +269,12 @@ public class RagdollRig : MonoBehaviour
 
 		if (Grounded)
 		{
-			// if (touchingJumpBonus)
-			// 	jumpVelocity += jumpBonus.Value;
+			float jumpBonus = Mathf.Max(leftFoot.JumpBonusValue, rightFoot.JumpBonusValue);
 
-			hipRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
-			neckRb.AddForce(Vector3.up * jumpVelocity, ForceMode.VelocityChange);
+			float currentJumpVelocity = jumpVelocity + jumpBonus;
+			
+			hipRb.AddForce(Vector3.up * currentJumpVelocity, ForceMode.VelocityChange);
+			neckRb.AddForce(Vector3.up * currentJumpVelocity, ForceMode.VelocityChange);
 		}
 	}
 
