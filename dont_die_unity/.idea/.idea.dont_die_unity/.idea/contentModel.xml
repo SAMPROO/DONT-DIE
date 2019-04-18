@@ -27,6 +27,7 @@
           <e p="DamageChild.cs" t="Include" />
           <e p="DamageController.cs" t="Include" />
           <e p="Equipment.cs" t="Include" />
+          <e p="Explosion.cs" t="Include" />
           <e p="FallDamageTester.cs" t="Include" />
           <e p="FixedJumpBonus.cs" t="Include" />
           <e p="Gun.cs" t="Include" />

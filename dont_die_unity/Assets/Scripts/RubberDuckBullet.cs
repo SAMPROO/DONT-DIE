@@ -4,6 +4,13 @@ using UnityEngine.Serialization;
 
 public class RubberDuckBullet : MonoBehaviour
 {
+    
+    public GameObject explosionEffect;
+    public float delay = 3f;
+    public float blastRadius = 5f;
+    public float blastForce = 100f;
+    public float upwardsModifier = 0;
+    
     public bool exploadOnCollision = true;
     public bool destroyAfterScale = true;
     private bool hasCollided = false;
@@ -11,19 +18,16 @@ public class RubberDuckBullet : MonoBehaviour
     public float scaleMultiplier = 1f;
     public float timeToScale = 1f;
     
-    [Tooltip("Time before scaling starts if exploadOnCollision is false.")]
-    public float timeBeforeScale = 1f;
-
-    private Vector3 startScale;
-    private Vector3 endScale;
+    //private Vector3 startScale;
+    //private Vector3 endScale;
 
     private void Start()
     {
-        startScale = transform.localScale;
-        endScale = startScale * scaleMultiplier;
+        //startScale = transform.localScale;
+        //endScale = startScale * scaleMultiplier;
         
         if (exploadOnCollision == false)
-            StartCoroutine(Expload(timeBeforeScale));
+            StartCoroutine(Expload(delay));
     }
 
     private IEnumerator Expload(float delay = 0f)
@@ -31,13 +35,30 @@ public class RubberDuckBullet : MonoBehaviour
         if (delay != 0)
             yield return new WaitForSeconds(delay);
         
-        float i = 0f;
+        //float i = 0f;
+//
+        //while (i < timeToScale)
+        //{
+        //    i += Time.deltaTime;
+        //    //transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
+        //    yield return null;
+        //}
 
-        while (i < timeToScale)
+        if (explosionEffect != null)
         {
-            i += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
-            yield return null;
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        }
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
+
+        foreach (Collider nearbyObject in colliders)
+        {
+            Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier);
+            }
         }
 
         if (destroyAfterScale)

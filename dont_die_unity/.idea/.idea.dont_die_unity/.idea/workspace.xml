@@ -47,17 +47,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="384">
+              <caret line="48" column="80" selection-start-line="48" selection-start-column="80" selection-end-line="48" selection-end-column="80" />
               <folding>
-                <marker date="1555592969819" expanded="true" signature="6:77" ph="..." />
-                <marker date="1555592969819" expanded="true" signature="124:1637" ph="{...}" />
-                <marker date="1555592969819" expanded="true" signature="537:745" ph="{...}" />
-                <marker date="1555592969819" expanded="true" signature="796:1185" ph="{...}" />
-                <marker date="1555592969819" expanded="true" signature="942:1114" ph="{...}" />
-                <marker date="1555592969819" expanded="true" signature="1237:1396" ph="{...}" />
-                <marker date="1555592969819" expanded="true" signature="1299:1390" ph="{...}" />
-                <marker date="1555592969819" expanded="true" signature="1402:1635" ph="/* private Animator animator; ... */" />
+                <marker date="1555596703728" expanded="true" signature="6:77" ph="..." />
+                <marker date="1555596703728" expanded="true" signature="124:2251" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="525:586" ph="/* private Vector3 startScale; ... */" />
+                <marker date="1555596703728" expanded="true" signature="612:814" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="627:714" ph="/* startScale = transform.localScale; ... */" />
+                <marker date="1555596703728" expanded="true" signature="865:1799" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="965:1201" ph="/* float i = 0f; ... */" />
+                <marker date="1555596703728" expanded="true" signature="1239:1342" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="1484:1728" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="1590:1718" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="1851:2010" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="1913:2004" ph="{...}" />
+                <marker date="1555596703728" expanded="true" signature="2016:2249" ph="/* private Animator animator; ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Explosion.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="7" column="35" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="7" selection-end-column="35" />
+              <folding>
+                <marker date="1555596251202" expanded="true" signature="58:211" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -111,6 +128,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FallDamageTester.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Explosion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Equipment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageChild.cs" root0="FORCE_HIGHLIGHTING" />
@@ -158,6 +176,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollFootControl.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DivingBonusJumpBoard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/VelocityBasedJumpBonus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Explosion.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs" />
       </list>
     </option>
@@ -250,7 +269,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32169000" />
+    <option name="totallyTimeSpent" value="33661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -265,7 +284,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10731319" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10731319" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -273,7 +292,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25409198" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.25409198" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -652,19 +671,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Explosion.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="35" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="7" selection-end-column="35" />
+          <folding>
+            <marker date="1555596251202" expanded="true" signature="58:211" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="384">
+          <caret line="48" column="80" selection-start-line="48" selection-start-column="80" selection-end-line="48" selection-end-column="80" />
           <folding>
-            <marker date="1555592969819" expanded="true" signature="6:77" ph="..." />
-            <marker date="1555592969819" expanded="true" signature="124:1637" ph="{...}" />
-            <marker date="1555592969819" expanded="true" signature="537:745" ph="{...}" />
-            <marker date="1555592969819" expanded="true" signature="796:1185" ph="{...}" />
-            <marker date="1555592969819" expanded="true" signature="942:1114" ph="{...}" />
-            <marker date="1555592969819" expanded="true" signature="1237:1396" ph="{...}" />
-            <marker date="1555592969819" expanded="true" signature="1299:1390" ph="{...}" />
-            <marker date="1555592969819" expanded="true" signature="1402:1635" ph="/* private Animator animator; ... */" />
+            <marker date="1555596703728" expanded="true" signature="6:77" ph="..." />
+            <marker date="1555596703728" expanded="true" signature="124:2251" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="525:586" ph="/* private Vector3 startScale; ... */" />
+            <marker date="1555596703728" expanded="true" signature="612:814" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="627:714" ph="/* startScale = transform.localScale; ... */" />
+            <marker date="1555596703728" expanded="true" signature="865:1799" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="965:1201" ph="/* float i = 0f; ... */" />
+            <marker date="1555596703728" expanded="true" signature="1239:1342" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="1484:1728" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="1590:1718" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="1851:2010" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="1913:2004" ph="{...}" />
+            <marker date="1555596703728" expanded="true" signature="2016:2249" ph="/* private Animator animator; ... */" />
           </folding>
         </state>
       </provider>
