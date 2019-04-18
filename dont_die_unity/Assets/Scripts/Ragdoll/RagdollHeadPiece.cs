@@ -16,7 +16,6 @@ public class RagdollHeadPiece : MonoBehaviour
 
 		if (collision.relativeVelocity.sqrMagnitude > sqrVelocityThreshold)
 		{
-			Debug.Log($"Impact happened: {name}, {collision.collider.name}");
 			OnImpact?.Invoke();
 		}
 	}

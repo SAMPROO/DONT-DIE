@@ -150,7 +150,7 @@ public class RagdollRig : MonoBehaviour
 	}
 
 
-	private void Awake()
+	private void Start()
 	{
 		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
 		{
@@ -159,10 +159,7 @@ public class RagdollRig : MonoBehaviour
 	
 		hipRb.transform.SetParent(null);
 		hipRb.freezeRotation = true;
-	}
-
-	private void Start()
-	{
+		
 		rightHandControlJoint = CreateJointController<SpringJoint>("rightHandControlJoint", false);
 		rightHandControlJoint.transform.SetParent(hipRb.transform);
 

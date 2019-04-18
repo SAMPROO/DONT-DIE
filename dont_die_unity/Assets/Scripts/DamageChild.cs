@@ -13,12 +13,14 @@ public class DamageChild : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Do not hit itself
+        if (collision.collider.transform.root == transform.root)
+            return;
+
         damageController.CalculateImpactDamage(collision, damageMultiplier);
 
         if (collision.gameObject.GetComponent<TouchDamage>())
         {
-            Debug.Log("Enter: " + collision.collider.name);
-
             // add to any existing touch damage incase player is touching multiple touch damage bearing gameobjects
             damageController.AddTouchDamage(collision.gameObject.GetComponent<TouchDamage>().touchDamage * damageMultiplier);
         }
@@ -26,10 +28,12 @@ public class DamageChild : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        // Do not unhit itself
+        if (collision.collider.transform.root == transform.root)
+            return;
+
         if (collision.gameObject.GetComponent<TouchDamage>())
         {
-            Debug.Log("Exit: " + collision.collider.name);
-
             // remove touch damage caused by the gameobject the player is no longer touching
             damageController.AddTouchDamage(- collision.gameObject.GetComponent<TouchDamage>().touchDamage * damageMultiplier);
         }
