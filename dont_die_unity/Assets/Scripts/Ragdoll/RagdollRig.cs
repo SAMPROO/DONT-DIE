@@ -68,7 +68,17 @@ public class RagdollRig : MonoBehaviour
 	private Vector3 rightHandPosition;
 	private Vector3 handsForward;
 
-	public bool HasControl { get; set; }
+	private bool hasControl;
+	public bool HasControl
+	{ 
+		get => hasControl; 
+		set {
+			if (concussionState == ConcussionState.Concussion)
+				hasControl = false;
+			else
+				hasControl = value;
+		} 
+	}
 
 	// This is expected to have locked rotation
 	[Space(30)]public Rigidbody hipRb;
@@ -93,6 +103,34 @@ public class RagdollRig : MonoBehaviour
 	public bool ControlLeftHand { get; set; }
 	public bool ControlRightHand { get; set; }
 
+	[Header("Head and Concussion")]
+	public float concussionVelocityThreshold;
+	public float concussionTime = 5f;
+	public float concussionInvulnerabilityTime = 1f;
+	private enum ConcussionState { None, Concussion, Invulnerable }
+	private ConcussionState concussionState;
+	[SerializeField] private ParticleSystem concussionVFX;
+
+	private IEnumerator DoConcussion()
+	{
+		if (concussionState != ConcussionState.None)
+			yield break;
+
+		// Set concussion
+		concussionVFX.gameObject.SetActive(true);
+		concussionVFX.Play();
+		HasControl = false;
+		concussionState = ConcussionState.Concussion;	
+		yield return new WaitForSeconds	(concussionTime);
+
+		// Set invulnerability
+		concussionVFX.gameObject.SetActive(false);
+		concussionState = ConcussionState.Invulnerable;
+		yield return new WaitForSeconds (concussionInvulnerabilityTime);
+
+		concussionState = ConcussionState.None;
+	}
+
 	private static void EnableController(
 		Joint controller, 
 		Rigidbody controlledBody, 
@@ -114,6 +152,11 @@ public class RagdollRig : MonoBehaviour
 
 	private void Awake()
 	{
+		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
+		{
+			item.OnImpact += () => StartCoroutine(DoConcussion());
+		}
+	
 		hipRb.transform.SetParent(null);
 		hipRb.freezeRotation = true;
 	}
@@ -167,6 +210,10 @@ public class RagdollRig : MonoBehaviour
 			hipGrounded = true;
 			hipHitPosition = hit.point;
 		}
+		else
+		{
+			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
+		}
 
 		if (HasControl)
 		{
@@ -197,8 +244,6 @@ public class RagdollRig : MonoBehaviour
 
 			// Control hips etc. --------------------------------------------------------------------
 
-		
-
 			if (Grounded || hipGrounded)
 			{
 				hipRb.AddForce(hipForce * Vector3.up);
@@ -215,6 +260,8 @@ public class RagdollRig : MonoBehaviour
 			{
 				DisableController(leftFootControlJoint);
 				DisableController(rightFootControlJoint);
+
+				// Set this to ray's end.
 				hipHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
 			}
 
@@ -248,29 +295,24 @@ public class RagdollRig : MonoBehaviour
 		return joint;
 	}
 
-	// Move character to direction, do this in fixed update
+	// Move character to direction, do this in fixed update only
 	public void Move(Vector3 movement, Vector3 look, float amount)
 	{
-		if (HasControl == false)
-			return;
-
-		// TODO: ground check
-		doWalk = amount > 0;
-
-		amount *= speed;
-		hipRb.MovePosition(hipRb.position + movement * amount);
-		hipRb.MoveRotation(Quaternion.LookRotation(look));
+		// Walk conditionally. 'doWalk' is also used for foot animation
+		if (HasControl)
+		{
+			hipRb.MovePosition(hipRb.position + movement * amount * speed);
+			hipRb.MoveRotation(Quaternion.LookRotation(look));
+		}
+		
+		doWalk = HasControl && amount > 0;
 	}
-
+	
 	public void Jump()
 	{
-		if (HasControl == false)
-			return;
-
-		if (Grounded)
+		if (HasControl && Grounded)
 		{
 			float jumpBonus = Mathf.Max(leftFoot.JumpBonusValue, rightFoot.JumpBonusValue);
-
 			float currentJumpVelocity = jumpVelocity + jumpBonus;
 			
 			hipRb.AddForce(Vector3.up * currentJumpVelocity, ForceMode.VelocityChange);
@@ -288,30 +330,20 @@ public class RagdollRig : MonoBehaviour
 
 	private void ComputeHandPositions()
 	{
-		// Note inverting handsAngleMin, so that we can have intuitive negative inspector value
-		// and correct negative value here,
-		float angle = handsAimAngle < 0.0f ? 
-			handsAimAngle * -handsAngleMin : 
-			handsAimAngle * handsAngleMax;
-		angle = handsAimAngle;
-		angle *= Mathf.Deg2Rad;
-		// angle *= handAimMultiplier;
-
+		float angle = handsAimAngle * Mathf.Deg2Rad;
 		float sin = Mathf.Sin (angle);
 		float cos = Mathf.Cos (angle);
-
 		float height = handsHeight + sin * handsDistance;
 		float distance = cos * handsDistance;
 
 		leftHandPosition = new Vector3(-handsWidth, height, distance);
 		rightHandPosition = new Vector3(handsWidth, height, distance);
-
 		handsForward = hipRb.transform.TransformDirection(new Vector3(0, sin, cos));
 	}
 
 
 	private static void ControlHand(
-		SpringJoint controlJoint, // controlJoint
+		SpringJoint controlJoint,
 		SmoothFloat controlWeight,
 		Vector3 targetPosition,
 		Rigidbody rigidbody,
@@ -417,6 +449,12 @@ public class RagdollRig : MonoBehaviour
 		}
 
 		ComputeHandPositions();
+
+		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
+		{
+			item.velocityThreshold = concussionVelocityThreshold;
+			item.sqrVelocityThreshold = concussionVelocityThreshold * concussionVelocityThreshold;
+		}
 	}
 
 	private const string leftHandName = "Hand.L";
