@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
 
 	private void ToggleRagdoll()
 	{
-		ragdoll.HasControl = !ragdoll.HasControl;
+		ragdoll.hasControl = !ragdoll.hasControl;
 	}
 
     private void ToggleCarryGun()

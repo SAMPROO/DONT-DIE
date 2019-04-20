@@ -11,16 +11,30 @@ using UnityEngine;
 public class RagdollRig : MonoBehaviour
 {
 	public bool startWithControl = true;
-	private bool hasControl;
-	public bool HasControl
-	{ 
-		get => hasControl; 
-		set {
-			if (concussionState == ConcussionState.Concussion)
-				hasControl = false;
-			else
-				hasControl = value;
-		} 
+	public bool hasControl;
+
+	private bool isControlled => 
+		concussionState != ConcussionState.Concussion 
+		&& isGoingTooFast == false
+		&& hasControl;
+
+	// This should be close to walking speed. It is used as critical
+	// speed after which ragdoll loses controllability
+	public float horizontalSpeedThreshold = 5f;
+	private float sqrHorizontalSpeedThreshold;
+	private bool isGoingTooFast;
+
+	private bool GoesTooFast()
+	{
+		Vector3 velocity = hipRb.velocity;
+		if (velocity.y > jumpVelocity)
+			return true;
+
+		float xzSqrSpeed = velocity.x * velocity.x + velocity.z * velocity.z;
+		if (xzSqrSpeed > sqrHorizontalSpeedThreshold)
+			return true;
+
+		return false;
 	}
 
 	[Header("Walking")]
@@ -40,6 +54,7 @@ public class RagdollRig : MonoBehaviour
 		forward = forward.normalized;
 		var rotation = Quaternion.LookRotation(forward);
 
+		// TODO: Add knees
 		// Get cyclic value in range [-1 ... 1], so that we can move legs back and forth
 		// Set to zero aka standing point when not walking
 		float footLerp = doWalk ?
@@ -87,8 +102,6 @@ public class RagdollRig : MonoBehaviour
 	private SpringJoint leftHandControlJoint;
 	private SpringJoint rightHandControlJoint;
 
-
-
 	// This is expected to have locked rotation
 	[Header("Hip")]
 	public Rigidbody hipRb;
@@ -97,11 +110,11 @@ public class RagdollRig : MonoBehaviour
 	public float hipHeight = 0.65f;
 	public float hipZOffset = -0.1f;
 
-	public bool Grounded { get; private set; } //=> leftFoot.Grounded || rightFoot.Grounded;
+	public bool Grounded { get; private set; }
 	public float hipRbHorizontalDrag = 10f;
 	private Vector3 hipHitPosition;
 
-	[Header ("Neck")]
+	[Header("Neck")]
 	public Rigidbody neckRb;
 	public float neckForce;
 	public float neckZOffset = 0.1f;
@@ -128,15 +141,17 @@ public class RagdollRig : MonoBehaviour
 		// Set concussion
 		concussionVFX.gameObject.SetActive(true);
 		concussionVFX.Play();
-		HasControl = false;
 		concussionState = ConcussionState.Concussion;	
 		yield return new WaitForSeconds	(concussionTime);
 
-		// Set invulnerability
+		// Set invulnerability. Also set hasControl to false, so that we stay
+		// on ground until player presses button
 		concussionVFX.gameObject.SetActive(false);
 		concussionState = ConcussionState.Invulnerable;
+		hasControl = false;
 		yield return new WaitForSeconds (concussionInvulnerabilityTime);
 
+		// Unset conscussion
 		concussionState = ConcussionState.None;
 	}
 
@@ -161,6 +176,8 @@ public class RagdollRig : MonoBehaviour
 
 	private void Start()
 	{
+		sqrHorizontalSpeedThreshold = horizontalSpeedThreshold * horizontalSpeedThreshold;
+
 		hasControl = startWithControl;
 
 		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
@@ -190,11 +207,10 @@ public class RagdollRig : MonoBehaviour
 		);
 	}
 
-	public bool DEBUGGrounded;
-	public float DEBUGAmount;
-
 	private void FixedUpdate()
 	{
+		isGoingTooFast = GoesTooFast();
+
 		RaycastHit hit;
 
 		var hipOffsetVector = hipRb.transform.forward * hipZOffset;
@@ -212,7 +228,7 @@ public class RagdollRig : MonoBehaviour
 			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
 		}
 
-		if (HasControl)
+		if (isControlled)
 		{
 			hipRb.freezeRotation = true;
 
@@ -267,8 +283,6 @@ public class RagdollRig : MonoBehaviour
 			hipRb.freezeRotation = false;
 		}
 
-
-		DEBUGGrounded = Grounded;
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
 		transform.position = Vector3.Lerp (transform.position, hipHitPosition, 0.5f);
@@ -292,7 +306,7 @@ public class RagdollRig : MonoBehaviour
 		// Walk if we are grounded or our velocity is smaller than walk speed.
 		// This way explosions etc. can apply force through regular physics,
 		// And we can still manouver slightly in air
-		if (HasControl) 
+		if (isControlled) 
 		{
 			if (Grounded || hipRb.velocity.magnitude < walkSpeed)
 			{
@@ -302,7 +316,6 @@ public class RagdollRig : MonoBehaviour
 					hipRb.velocity.y,
 					moveDirection.z * speed
 				);	
-
 			}
 			
 			// Allow rotation in all cases
@@ -313,12 +326,12 @@ public class RagdollRig : MonoBehaviour
 			hipRb.MoveRotation(hipRotation);
 		}
 		
-		doWalk = HasControl && amount > 0.001f;
+		doWalk = isControlled && amount > 0.001f;
 	}
 	
 	public void Jump()
 	{
-		if (HasControl && Grounded)
+		if (isControlled && Grounded)
 		{
 			float jumpBonus = Mathf.Max(leftFoot.JumpBonusValue, rightFoot.JumpBonusValue);
 			float currentJumpVelocity = jumpVelocity + jumpBonus;
