@@ -493,8 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644f7b3ce08473141ad3185f2b580173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityThreshold: 4
-  sqrVelocityThreshold: 16
+  velocityThreshold: 7
+  sqrVelocityThreshold: 49
 --- !u!1 &4533184863676685963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1079,7 @@ MonoBehaviour:
   neckRb: {fileID: 4533184863676686028}
   neckForce: 1000
   neckZOffset: 0.1
-  concussionVelocityThreshold: 4
+  concussionVelocityThreshold: 7
   concussionTime: 5
   concussionInvulnerabilityTime: 1
   concussionVFX: {fileID: 4533184865232022978}
@@ -1945,8 +1945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644f7b3ce08473141ad3185f2b580173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityThreshold: 4
-  sqrVelocityThreshold: 16
+  velocityThreshold: 7
+  sqrVelocityThreshold: 49
 --- !u!1 &4533184863676686063
 GameObject:
   m_ObjectHideFlags: 0

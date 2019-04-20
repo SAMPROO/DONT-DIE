@@ -11,10 +11,23 @@ public class TestBomb : MonoBehaviour
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			Explode();
+			return;
+		}
+
+
 		if (doExplode == false) return;
 
 		doExplode = false;
 
+		Explode();
+	}
+
+
+	private void Explode()
+	{
 		int collisionCount = Physics.OverlapSphereNonAlloc(
 				transform.position,
 				radius,

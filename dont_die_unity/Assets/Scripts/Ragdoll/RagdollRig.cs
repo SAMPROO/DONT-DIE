@@ -97,8 +97,7 @@ public class RagdollRig : MonoBehaviour
 	public float hipHeight = 0.65f;
 	public float hipZOffset = -0.1f;
 
-	
-	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
+	public bool Grounded { get; private set; } //=> leftFoot.Grounded || rightFoot.Grounded;
 	public float hipRbHorizontalDrag = 10f;
 	private Vector3 hipHitPosition;
 
@@ -159,6 +158,7 @@ public class RagdollRig : MonoBehaviour
 		controller.gameObject.SetActive(false);		
 	}
 
+
 	private void Start()
 	{
 		hasControl = startWithControl;
@@ -190,9 +190,11 @@ public class RagdollRig : MonoBehaviour
 		);
 	}
 
+	public bool DEBUGGrounded;
+	public float DEBUGAmount;
+
 	private void FixedUpdate()
 	{
-		bool hipGrounded = false;
 		RaycastHit hit;
 
 		var hipOffsetVector = hipRb.transform.forward * hipZOffset;
@@ -200,15 +202,15 @@ public class RagdollRig : MonoBehaviour
 
 		if (Physics.Raycast(hipRayOrigin, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
 		{	
-			hipGrounded = true;
+			Grounded = true;
 			hipHitPosition = hit.point;
 		}
 		else
 		{
+
+			Grounded = false;
 			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
 		}
-
-		// SetFootControlsActive((Grounded || hipGrounded) && HasControl);
 
 		if (HasControl)
 		{
@@ -239,7 +241,7 @@ public class RagdollRig : MonoBehaviour
 
 			// Control hips etc. --------------------------------------------------------------------
 
-			if (Grounded || hipGrounded)
+			if (Grounded || Grounded)
 			{
 				hipRb.AddForce(hipForce * Vector3.up);
 
@@ -266,7 +268,7 @@ public class RagdollRig : MonoBehaviour
 		}
 
 
-
+		DEBUGGrounded = Grounded;
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
 		transform.position = Vector3.Lerp (transform.position, hipHitPosition, 0.5f);
@@ -280,20 +282,30 @@ public class RagdollRig : MonoBehaviour
 		return joint;
 	}
 
+
 	// Move character to direction, do this in fixed update only.
 	// NOTE: Do not use delta time for amount, instead pass [0 ... 1] value of input.
-	// moveVelocity and lookDirection should be normalized
-	public void MoveWithVelocity(Vector3 moveVelocity, Vector3 lookDirection, float amount)
+	// amount will be multiplied with ragdoll's walkSpeed.
+	// moveDirection and lookDirection should be normalized
+	public void MoveWithVelocity(Vector3 moveDirection, Vector3 lookDirection, float amount)
 	{
-		// Walk conditionally. 'doWalk' is also used for foot animation
-		if (HasControl)
+		// Walk if we are grounded or our velocity is smaller than walk speed.
+		// This way explosions etc. can apply force through regular physics,
+		// And we can still manouver slightly in air
+		if (HasControl) 
 		{
-			Vector3 velocity = hipRb.velocity;
-			float ySpeed = velocity.y;
-			velocity = moveVelocity * amount * walkSpeed;
-			velocity.y = ySpeed;
-			hipRb.velocity = velocity;
+			if (Grounded || hipRb.velocity.magnitude < walkSpeed)
+			{
+				float speed = amount * walkSpeed;
+				hipRb.velocity = new Vector3(
+					moveDirection.x * speed,
+					hipRb.velocity.y,
+					moveDirection.z * speed
+				);	
 
+			}
+			
+			// Allow rotation in all cases
 			var hipRotation = Quaternion.RotateTowards(
 				hipRb.rotation, 
 				Quaternion.LookRotation(lookDirection),
