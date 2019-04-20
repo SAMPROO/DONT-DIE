@@ -350,7 +350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4533184863677170343}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Foot.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4533184863677170347}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hand.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4533184863677170351}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Hand.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,19 +1050,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95f430617255da49bd052c106ee212c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFootControlJoint: {fileID: 0}
-  rightFootControlJoint: {fileID: 0}
-  leftFoot: {fileID: 4533184863676685982}
-  rightFoot: {fileID: 4533184863676685978}
+  startWithControl: 1
   feetWidth: 0.26
   stepLength: 0.5
   footForce: 5000
   footSpeed: 2.5
+  walkSpeed: 3
+  turnSpeed: 360
   jumpVelocity: 25
-  speed: 3
+  leftFoot: {fileID: 4533184863676685982}
+  rightFoot: {fileID: 4533184863676685978}
   handForce: 1000
   handsHeight: 1
-  handsDistance: 1.2
+  handsDistance: 0.9
   handsWidth: 0.4
   handsAngleMin: -60
   handsAngleMax: 60
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1591
   hipForce: 1000
-  hipHeight: 0.35
+  hipHeight: 0.37
   hipZOffset: -0.1
   hipRbHorizontalDrag: 100
   neckRb: {fileID: 4533184863676686028}
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 4533184863676682597}
   - component: {fileID: 4533184863676685978}
   - component: {fileID: 4533184863676685976}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Foot.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1213,7 +1213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4533184863677170363}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Foot.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 4533184863676682599}
   - component: {fileID: 4533184863676685982}
   - component: {fileID: 4533184863676685980}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Foot.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4533184863677170423}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: HeadTip_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1618,7 +1618,7 @@ GameObject:
   - component: {fileID: 4533184863676686052}
   - component: {fileID: 4533184863676686049}
   - component: {fileID: 4533184863676686054}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Thigh.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1727,7 +1727,7 @@ GameObject:
   - component: {fileID: 4533184863676686048}
   - component: {fileID: 4533184863676686061}
   - component: {fileID: 4533184863676686050}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Thigh.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2153,6 +2153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4533184863677170323}
   - component: {fileID: 4533184863676686066}
+  - component: {fileID: 517355404}
   m_Layer: 12
   m_Name: Hip
   m_TagString: Untagged
@@ -2194,6 +2195,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!135 &517355404
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533184863676686067}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4533184863676686073
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,7 +2436,7 @@ GameObject:
   - component: {fileID: 4533184863676686076}
   - component: {fileID: 4533184863676686072}
   - component: {fileID: 4533184863676686078}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2530,7 +2544,7 @@ GameObject:
   - component: {fileID: 4533184863676686074}
   - component: {fileID: 4533184863676686020}
   - component: {fileID: 4533184863676686021}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Shin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,15 +2724,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5964a828ad32e03499ea84da1e3f652c, type: 3}
---- !u!198 &4533184865232022978 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6957280378068528608, guid: 5964a828ad32e03499ea84da1e3f652c,
-    type: 3}
-  m_PrefabInstance: {fileID: 6801598967470948386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4533184865232022989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6957280378068528623, guid: 5964a828ad32e03499ea84da1e3f652c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6801598967470948386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4533184865232022978 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6957280378068528608, guid: 5964a828ad32e03499ea84da1e3f652c,
     type: 3}
   m_PrefabInstance: {fileID: 6801598967470948386}
   m_PrefabAsset: {fileID: 0}

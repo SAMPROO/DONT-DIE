@@ -108,7 +108,11 @@ public class PlayerController : MonoBehaviour
 			doFocus ? 
 			cameraRig.BaseRotation * Vector3.forward : 
 			lastMoveDirection;
-		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
+		
+		ragdoll.MoveWithVelocity(
+			lastMoveDirection,
+			lookDirection, 
+			amount);
 
 		ragdoll.SetHandsAimAngle(cameraRig.AimAngle);// * handAimMultiplier);
 	}

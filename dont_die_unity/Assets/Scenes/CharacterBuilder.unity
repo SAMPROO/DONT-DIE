@@ -184,7 +184,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12414
+  m_Name: pb_Mesh16736
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1361,7 +1361,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12398
+  m_Name: pb_Mesh16720
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1850,13 +1850,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &997345339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997345341}
+  - component: {fileID: 997345340}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &997345340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997345339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe1ee880b23f8a4592dc6771e536c39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doExplode: 0
+  power: 10
+  radius: 5
+  ragdollMask:
+    serializedVersion: 2
+    m_Bits: 4096
+--- !u!4 &997345341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997345339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6937547, y: 0.02, z: -4.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1111364886
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12456
+  m_Name: pb_Mesh16778
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2016,7 +2065,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12372
+  m_Name: pb_Mesh16694
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2544,7 +2593,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12384
+  m_Name: pb_Mesh16706
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2704,7 +2753,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh12432
+  m_Name: pb_Mesh16754
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -3316,30 +3365,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
-      propertyPath: velocityThreshold
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
-      propertyPath: sqrVelocityThreshold
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
-      propertyPath: thing
-      value: 
-      objectReference: {fileID: 4533184863197014374}
-    - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
-      propertyPath: thingsName
-      value: HeadTip_end
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
---- !u!1 &4533184863197014374 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4533184863676686039, guid: 9d83ac040f350ed46932fae2a64c4d51,
-    type: 3}
-  m_PrefabInstance: {fileID: 4533184863197014373}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4864581980312284708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3351,6 +3378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986797966215765849, guid: ffd0a9c43e923454f92da11898935ba9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8986797966215765848, guid: ffd0a9c43e923454f92da11898935ba9,
         type: 3}
