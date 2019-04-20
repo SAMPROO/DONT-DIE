@@ -65,5 +65,8 @@ sysinfo.txt
 crashlytics-build.properties
 *.log
 
+# Stupid probuilder settings
+dont_die_unity/ProjectSettings/ProbuilderSettings.json
+
 # Leo's personal items
 NextUpLeo.txt

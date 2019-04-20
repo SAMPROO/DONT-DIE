@@ -11,7 +11,7 @@ using UnityEngine;
 public class RagdollRig : MonoBehaviour
 {
 	public bool startWithControl = true;
-	public bool hasControl;
+	[NonSerialized] public bool hasControl;
 
 	private bool isControlled => 
 		concussionState != ConcussionState.Concussion 
