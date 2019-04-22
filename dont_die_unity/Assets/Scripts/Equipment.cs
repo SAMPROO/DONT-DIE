@@ -17,6 +17,7 @@ public abstract class Equipment : MonoBehaviour
 
     public abstract void Use();
 
+    [Obsolete("Use other function to directly set Rigidbody, along with configurable rotation")]
     public virtual void StartCarrying(Transform carrier)
     {
         if (joint != null) return;
