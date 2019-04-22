@@ -40,6 +40,27 @@ public abstract class Equipment : MonoBehaviour
         Debug.Log("Gun hops on");
     }
 
+
+    // Use offsetRotation to set other rotation relative to connectedBody's rotation
+    public virtual void StartCarrying(Rigidbody connectedBody, Quaternion offsetRotation)
+    {
+        if (joint != null) return;
+
+        // Lets not use this, but instead model our guns at origin
+        transform.position = 
+            connectedBody.position 
+            - Quaternion.LookRotation(connectedBody.transform.forward, connectedBody.transform.up) * holdPosition;
+        
+        transform.rotation = connectedBody.rotation * offsetRotation;
+
+        joint = gameObject.AddComponent<FixedJoint>();
+        joint.connectedBody = connectedBody.GetComponent<Rigidbody>();
+
+        isCarried = true;
+
+        Debug.Log("Gun hops on");
+    }
+
     public virtual void StopCarrying()
     {
         // Turn on physics etc.

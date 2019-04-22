@@ -80,7 +80,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 40
+    limit: 3
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -329,7 +329,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 40
+    limit: 41.826324
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -493,8 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644f7b3ce08473141ad3185f2b580173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityThreshold: 5
-  sqrVelocityThreshold: 25
+  velocityThreshold: 50
+  sqrVelocityThreshold: 2500
 --- !u!1 &4533184863676685963
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 40
+    limit: 3
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -1051,8 +1051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startWithControl: 1
-  hasControl: 0
-  velocityThreshold: 5
+  horizontalSpeedThreshold: 5
   feetWidth: 0.26
   stepLength: 0.5
   footForce: 5000
@@ -1081,7 +1080,7 @@ MonoBehaviour:
   neckRb: {fileID: 4533184863676686028}
   neckForce: 1000
   neckZOffset: 0.1
-  concussionVelocityThreshold: 5
+  concussionVelocityThreshold: 50
   concussionTime: 5
   concussionInvulnerabilityTime: 1
   concussionVFX: {fileID: 4533184865232022978}
@@ -1947,8 +1946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644f7b3ce08473141ad3185f2b580173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityThreshold: 5
-  sqrVelocityThreshold: 25
+  velocityThreshold: 50
+  sqrVelocityThreshold: 2500
 --- !u!1 &4533184863676686063
 GameObject:
   m_ObjectHideFlags: 0

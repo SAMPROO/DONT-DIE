@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
                	gun = hitColliders[i].GetComponentInParent<Equipment>();
                	if (gun != null)
                	{
-	            	gun.StartCarrying(gunParent);
+	            	gun.StartCarrying(gunParent.GetComponent<Rigidbody>(), Quaternion.Euler(-90, 0, 0));
 	            	return;
                	}
             }
