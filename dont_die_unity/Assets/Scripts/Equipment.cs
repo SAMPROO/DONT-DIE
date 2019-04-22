@@ -57,8 +57,6 @@ public abstract class Equipment : MonoBehaviour
         joint.connectedBody = connectedBody.GetComponent<Rigidbody>();
 
         isCarried = true;
-
-        Debug.Log("Gun hops on");
     }
 
     public virtual void StopCarrying()
