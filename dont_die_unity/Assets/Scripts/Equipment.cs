@@ -17,7 +17,7 @@ public abstract class Equipment : MonoBehaviour
 
     public abstract void Use();
 
-    [Obsolete("Use other function to directly set Rigidbody, along with configurable rotation")]
+    [System.Obsolete("Use other function to directly set Rigidbody, along with configurable rotation")]
     public virtual void StartCarrying(Transform carrier)
     {
         if (joint != null) return;
@@ -47,7 +47,6 @@ public abstract class Equipment : MonoBehaviour
     {
         if (joint != null) return;
 
-        // Lets not use this, but instead model our guns at origin
         transform.position = 
             connectedBody.position 
             - Quaternion.LookRotation(connectedBody.transform.forward, connectedBody.transform.up) * holdPosition;
@@ -55,7 +54,7 @@ public abstract class Equipment : MonoBehaviour
         transform.rotation = connectedBody.rotation * offsetRotation;
 
         joint = gameObject.AddComponent<FixedJoint>();
-        joint.connectedBody = connectedBody.GetComponent<Rigidbody>();
+        joint.connectedBody = connectedBody;
 
         isCarried = true;
     }

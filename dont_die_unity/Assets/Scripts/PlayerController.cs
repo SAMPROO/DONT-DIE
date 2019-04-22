@@ -152,6 +152,8 @@ public class PlayerController : MonoBehaviour
 		{
 			gun?.StopCarrying();
 			gun = null;
+
+			return;
 		}
 
 		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
