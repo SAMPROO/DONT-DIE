@@ -123,7 +123,7 @@ public class SingletonGameManager : MonoBehaviour
         //Destroy(players[handle]);
         for (int i = 0; i < numberOfPlayers; i++)
         {
-            Destroy(players[i].gameObject);
+            players[i].Destroy();
         }
 
 		players = null;

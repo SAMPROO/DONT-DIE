@@ -82,6 +82,13 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
+
+	public void Destroy()
+	{
+		Destroy(cameraRig.gameObject);
+		Destroy(gameObject);
+	}
+
 	private void Update() 
 	{
 		input.UpdateController();
