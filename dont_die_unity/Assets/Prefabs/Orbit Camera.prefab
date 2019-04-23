@@ -86,6 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1672f1f4e5279be4abb37c5c7a8ce32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 38c30de2c4fb9d4488a72539c555a3fe, type: 2}
+  Y_ANGLE_MIN: -80
+  Y_ANGLE_MAX: 80
   anchor: {fileID: 0}
   normalLookOffset: {x: 1, y: 1.5}
   focusLookOffset: {x: 1, y: 2}
@@ -94,3 +97,25 @@ MonoBehaviour:
   cameraDistanceMax: 8
   cameraDistanceMin: 4
   cameraDistanceCurrent: 0
+  anchorSmooth: 0.5
+  smoothArray:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
