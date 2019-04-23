@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SingletonGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static SingletonGameManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     [SerializeField]
     private GameObject playerPrefab, orbitCameraPrefab;
@@ -22,11 +22,11 @@ public class SingletonGameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (SingletonGameManager.Instance == null)
+        if (GameManager.Instance == null)
         {
             Instance = this;
         }
-        else if (SingletonGameManager.Instance != this)
+        else if (GameManager.Instance != this)
         {
             Destroy(this);
         }
@@ -34,15 +34,7 @@ public class SingletonGameManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         // load start scene
-        LoadNextLevel();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.RightAlt))
-        {
-            LoadNextLevel();
-        }
+        // LoadNextLevel();
     }
 
     public void LoadNextLevel(string sceneName = null)
@@ -69,6 +61,12 @@ public class SingletonGameManager : MonoBehaviour
         sceneIndex %= sceneNames.Length;
     }
 
+    public void StartGame(GameConfiguration configuration)
+    {
+        numberOfPlayers = configuration.playerCount;
+        SceneManager.LoadScene(configuration.mapSceneName);
+        SceneManager.sceneLoaded += OnLevelSceneLoaded;
+    }
 
     // Kinda hacky feeling function, but whatever
     private void OnLevelSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -152,4 +150,16 @@ public class SingletonGameManager : MonoBehaviour
             }
         }
     }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit game");
+    }
+}
+
+[System.Serializable]
+public class GameConfiguration
+{
+    public int playerCount;
+    public string mapSceneName;
 }

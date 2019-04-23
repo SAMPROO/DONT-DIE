@@ -10,7 +10,7 @@ public class RestartButton : MonoBehaviour
         if (restartButton == null)
             restartButton.GetComponent<Button>();
 
-        restartButton.onClick.AddListener(delegate { SingletonGameManager.Instance.LoadNextLevel(); });
+        restartButton.onClick.AddListener(delegate { GameManager.Instance.LoadNextLevel(); });
     }
 
 }
