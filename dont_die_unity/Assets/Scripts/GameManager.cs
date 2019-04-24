@@ -125,8 +125,9 @@ public class GameManager : MonoBehaviour
         }
 
 		players = null;
-        SceneManager.LoadScene("End");
-
+        // SceneManager.LoadScene("End");
+        SceneManager.UnloadScene("Level");
+        GetComponent<MenuSystem>().SetEndView();   
     }
 
     public void SetPlayerCount(int playerCount)

@@ -35,14 +35,20 @@ public class MenuSystem : MonoBehaviour
 	private void Start()
 	{
 		// Track first view manually
-		SetView(main, false);
-		trackedViews[0] = main;
+		// SetView(main, false);
+		SetMainMenu();
 	}
 
-	// publically only expose this versiom where tracking is must
-	public void SetView(MenuView view)
+	public void SetMainMenu()
 	{
-		SetView(view, true);
+		SetView(main, true);
+		trackedViews[0] = main;
+		trackedViewIndex = 0;
+	}
+
+	public void SetEndView()
+	{
+		SetView(end, false);	
 	}
 
 	private void SetView(MenuView view, bool track)
@@ -62,6 +68,7 @@ public class MenuSystem : MonoBehaviour
 				SetTrackedView(view);	
 		}
 	}	
+
 
 	public int TestViewIndex;
 	public bool SwapTestView;
@@ -105,8 +112,18 @@ public class MenuSystem : MonoBehaviour
 	}
 
 
-	// These are used to set up game
+	///////////////////////////////////////
+	/// Configure Game                 	///
+	///////////////////////////////////////
+
+	// These are used to set up game. 'StartConfigureGame is mapped to main menu's
+	// "play button", and others to following views completing  actions
 	private GameConfiguration configuration = new GameConfiguration();
+
+	public void StartConfigureGame()
+	{
+		SetView(playerCountView, true);
+	}
 
 	public void SetPlayerCount(int count)
 	{
@@ -117,7 +134,7 @@ public class MenuSystem : MonoBehaviour
 	public void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
-		SetView (null);
+		SetView (null, false);
 		gameManager.StartGame(configuration);
 	}
 }
