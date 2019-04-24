@@ -38,17 +38,17 @@ public class RubberDuckBullet : MonoBehaviour
             yield return new WaitForSeconds(delay);
         
         //Change scale
-        //if (changeScale)
-        //{
-        //    float i = 0f;
-//
-        //    while (i < timeToScale)
-        //    {
-        //        i += Time.deltaTime;
-        //        transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
-        //        yield return null;
-        //    }
-        //}
+        if (changeScale)
+        {
+            float i = 0f;
+
+            while (i < timeToScale)
+            {
+                i += Time.deltaTime;
+                transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
+                yield return null;
+            }
+        }
 
         if (explosionEffect != null)
         {
