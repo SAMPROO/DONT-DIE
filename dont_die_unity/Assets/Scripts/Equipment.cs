@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Equipment : MonoBehaviour
 {
+    public bool testFire;
     public Vector3 holdPosition;
 
     protected bool isCarried;
@@ -15,41 +16,24 @@ public abstract class Equipment : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (testFire)
+        {
+            Use();
+            testFire = false;
+        }
+    }
+#endif
+
     public abstract void Use();
 
-    [System.Obsolete("Use other function to directly set Rigidbody, along with configurable rotation")]
-    public virtual void StartCarrying(Transform carrier)
-    {
-        if (joint != null) return;
-
-        // Turn off physics etc.
-        //transform.SetParent(carrier);
-        //transform.localPosition = Vector3.zero;
-        //transform.localRotation = Quaternion.identity;
-
-        //rb.isKinematic = true;
-        //rb.detectCollisions = false;
-
-        transform.position = carrier.position - Quaternion.LookRotation(carrier.forward, carrier.up) * holdPosition;
-        transform.rotation = carrier.rotation;
-
-        joint = gameObject.AddComponent<FixedJoint>();
-        joint.connectedBody = carrier.GetComponent<Rigidbody>();
-
-        isCarried = true;
-
-        Debug.Log("Gun hops on");
-    }
-
-
-    // Use offsetRotation to set other rotation relative to connectedBody's rotation
     public virtual void StartCarrying(Rigidbody connectedBody, Quaternion offsetRotation)
     {
         if (joint != null) return;
 
-        transform.position = 
-            connectedBody.position 
-            - Quaternion.LookRotation(connectedBody.transform.forward, connectedBody.transform.up) * holdPosition;
+        transform.position = connectedBody.transform.TransformPoint(holdPosition);
         
         transform.rotation = connectedBody.rotation * offsetRotation;
 
@@ -61,11 +45,6 @@ public abstract class Equipment : MonoBehaviour
 
     public virtual void StopCarrying()
     {
-        // Turn on physics etc.
-        //transform.SetParent(null);
-        //rb.isKinematic = false;
-        //rb.detectCollisions = true;
-
         Destroy(joint);
         joint = null;
 
@@ -76,8 +55,8 @@ public abstract class Equipment : MonoBehaviour
 
     protected virtual void OnDrawGizmosSelected()
     {
-        // Draw a sphere at the projectile spawn position
+        // Draw a sphere at the hold position
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position + Quaternion.LookRotation(transform.forward, transform.up) * holdPosition, .05f);
+        Gizmos.DrawWireSphere(transform.TransformPoint(holdPosition), .05f);
     }
 }

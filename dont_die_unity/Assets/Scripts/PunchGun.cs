@@ -4,41 +4,96 @@ using UnityEngine;
 
 public class PunchGun : Equipment
 {
-    public float force;
-    public Rigidbody BoxingGlove;
-
-    public float waitTime;
+    public int ammo = 3;
+    public float initialSpeed, waitTime, reelSpeed, minReelDistance;
+    public Rigidbody boxingGlove;
 
     private Vector3 startPosition;
+    private bool isLaunched, beingReeled;
+
+    private FixedJoint gloveJoint;
 
     private void Start()
     {
-        startPosition = BoxingGlove.transform.localPosition;
+        startPosition = boxingGlove.transform.localPosition;
+
+        boxingGlove.transform.parent = null;
+
+        // make a new fixed joint between gun and glove
+        gloveJoint = gameObject.AddComponent<FixedJoint>();
+        gloveJoint.connectedBody = boxingGlove.GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (beingReeled)
+        {
+            Vector3 direction = transform.TransformPoint(startPosition) - boxingGlove.position;
+
+            if (direction.magnitude > minReelDistance)
+            {
+                // zero velocity in reeling direction
+                boxingGlove.velocity -= Vector3.Project(boxingGlove.velocity, direction);
+
+                // move glove towards start position
+                boxingGlove.MovePosition(boxingGlove.transform.position + direction.normalized * reelSpeed * Time.deltaTime);
+
+                // point glove away from start position
+                boxingGlove.MoveRotation(Quaternion.LookRotation(-direction.normalized));
+            }
+            else
+            {
+                // make glove temporary kinematic to ignore collisions
+                boxingGlove.isKinematic = true;
+
+                // once start position is reached, fix glove back to start position
+                beingReeled = false;
+                isLaunched = false;
+                boxingGlove.transform.position = transform.TransformPoint(startPosition);
+                boxingGlove.transform.rotation = Quaternion.LookRotation(transform.forward);
+
+                // make a new fixed joint between gun and glove
+                gloveJoint = gameObject.AddComponent<FixedJoint>();
+                gloveJoint.connectedBody = boxingGlove.GetComponent<Rigidbody>();
+
+                boxingGlove.isKinematic = false;
+            }
+        }
     }
 
     public override void Use()
     {
-        if (BoxingGlove.isKinematic)
+        if (!isLaunched && ammo > 0)
         {
-            Debug.Log("Punch!!!");
+            isLaunched = true;
 
-            BoxingGlove.isKinematic = false;
-            BoxingGlove.AddForce(transform.forward * force);
+            // destroy the fixed joint between gun and glove
+            Destroy(gloveJoint);
+            gloveJoint = null;
 
-            Invoke("ReturnToSender", waitTime);
+            // set initial velocity
+            boxingGlove.velocity = transform.forward * initialSpeed;
+
+            if (ammo > 1)
+            {
+                Invoke("ReturnToSender", waitTime);
+            }
+            else
+            {
+                // TODO: play a sound as line snaps on last punch...
+            }
+
+            ammo--;
         }
         else
         {
-            Debug.Log("Can't punch while puncing...");
+            // Projectile is already launched
         }
     }
 
     private void ReturnToSender()
     {
-        // reel the glove back in...
-
-        BoxingGlove.isKinematic = true;
-        BoxingGlove.transform.localPosition = startPosition;
-        BoxingGlove.transform.localRotation = Quaternion.identity;
+        // start reeling the glove back in
+        beingReeled = true;
     }
 }
