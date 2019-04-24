@@ -10,14 +10,32 @@ using UnityEngine;
 
 public class RagdollRig : MonoBehaviour
 {
-	private SpringJoint leftHandControlJoint;
-	private SpringJoint rightHandControlJoint;
+	public bool startWithControl = true;
+	[NonSerialized] public bool hasControl;
 
-	public Joint leftFootControlJoint;
-	public Joint rightFootControlJoint;
+	private bool isControlled => 
+		concussionState != ConcussionState.Concussion 
+		&& isGoingTooFast == false
+		&& hasControl;
 
-	[SerializeField] private RagdollFootControl leftFoot;
-	[SerializeField] private RagdollFootControl rightFoot;
+	// This should be close to walking speed. It is used as critical
+	// speed after which ragdoll loses controllability
+	public float horizontalSpeedThreshold = 5f;
+	private float sqrHorizontalSpeedThreshold;
+	private bool isGoingTooFast;
+
+	private bool GoesTooFast()
+	{
+		Vector3 velocity = hipRb.velocity;
+		if (velocity.y > jumpVelocity)
+			return true;
+
+		float xzSqrSpeed = velocity.x * velocity.x + velocity.z * velocity.z;
+		if (xzSqrSpeed > sqrHorizontalSpeedThreshold)
+			return true;
+
+		return false;
+	}
 
 	[Header("Walking")]
 	public float feetWidth = 0.5f;
@@ -25,29 +43,42 @@ public class RagdollRig : MonoBehaviour
 	public float footForce = 1000;
 	public float footSpeed = 1;
 	private bool doWalk;
-	private float FootLerp()
-	{
-		if (doWalk == false)
-			return 0;
-		return Mathf.PingPong(footSpeed * Time.time, 1f) * 2f - 1f;
-	}
 
-	// foot targets in local space
-	Vector3 leftFootTarget => new Vector3(-feetWidth, 0f, stepLength * FootLerp());
-	Vector3 rightFootTarget => new Vector3(feetWidth, 0f, -stepLength * FootLerp());
+	private Vector3 leftFootPosition;
+	private Vector3 rightFootPosition;
 
-	Vector3 GetComputedFootPosition(Vector3 localFootTarget)
+	private void ComputeFootPositions()
 	{
 		Vector3 forward = hipRb.transform.forward;
 		forward.y = 0;
 		forward = forward.normalized;
+		var rotation = Quaternion.LookRotation(forward);
 
-		return Quaternion.LookRotation(forward) * localFootTarget + hipHitPosition;
+		// TODO: Add knees
+		// Get cyclic value in range [-1 ... 1], so that we can move legs back and forth
+		// Set to zero aka standing point when not walking
+		float footLerp = doWalk ?
+			Mathf.PingPong(footSpeed * Time.time, 1f) * 2f - 1f:
+			0f;
+
+		// foot targets in local space
+		Vector3 leftFootTarget = new Vector3(-feetWidth, 0f, stepLength * footLerp);
+		Vector3 rightFootTarget = new Vector3(feetWidth, 0f, -stepLength * footLerp);
+
+		leftFootPosition  = rotation * leftFootTarget + hipHitPosition;
+		rightFootPosition  = rotation * rightFootTarget + hipHitPosition;
 	}
 
-	[Header("Specs")]
-	[SerializeField] private float jumpVelocity = 5f;
-	[SerializeField] private float speed = 3f;
+
+	public float walkSpeed = 3f;
+	public float turnSpeed = 360f;
+	public float jumpVelocity = 5f;
+
+	private Joint leftFootControlJoint;
+	private Joint rightFootControlJoint;
+
+	[SerializeField] private RagdollFootControl leftFoot;
+	[SerializeField] private RagdollFootControl rightFoot;
 
 	[Header("Hands")]
 	public float handForce = 1000f;
@@ -68,31 +99,22 @@ public class RagdollRig : MonoBehaviour
 	private Vector3 rightHandPosition;
 	private Vector3 handsForward;
 
-	private bool hasControl;
-	public bool HasControl
-	{ 
-		get => hasControl; 
-		set {
-			if (concussionState == ConcussionState.Concussion)
-				hasControl = false;
-			else
-				hasControl = value;
-		} 
-	}
+	private SpringJoint leftHandControlJoint;
+	private SpringJoint rightHandControlJoint;
 
 	// This is expected to have locked rotation
-	[Space(30)]public Rigidbody hipRb;
-
+	[Header("Hip")]
+	public Rigidbody hipRb;
 	public LayerMask hitRayMask;
 	public float hipForce = 5000f;
 	public float hipHeight = 0.65f;
 	public float hipZOffset = -0.1f;
 
-	
-	public bool Grounded => leftFoot.Grounded || rightFoot.Grounded;
+	public bool Grounded { get; private set; }
 	public float hipRbHorizontalDrag = 10f;
 	private Vector3 hipHitPosition;
 
+	[Header("Neck")]
 	public Rigidbody neckRb;
 	public float neckForce;
 	public float neckZOffset = 0.1f;
@@ -119,15 +141,17 @@ public class RagdollRig : MonoBehaviour
 		// Set concussion
 		concussionVFX.gameObject.SetActive(true);
 		concussionVFX.Play();
-		HasControl = false;
 		concussionState = ConcussionState.Concussion;	
 		yield return new WaitForSeconds	(concussionTime);
 
-		// Set invulnerability
+		// Set invulnerability. Also set hasControl to false, so that we stay
+		// on ground until player presses button
 		concussionVFX.gameObject.SetActive(false);
 		concussionState = ConcussionState.Invulnerable;
+		hasControl = false;
 		yield return new WaitForSeconds (concussionInvulnerabilityTime);
 
+		// Unset conscussion
 		concussionState = ConcussionState.None;
 	}
 
@@ -152,6 +176,10 @@ public class RagdollRig : MonoBehaviour
 
 	private void Start()
 	{
+		sqrHorizontalSpeedThreshold = horizontalSpeedThreshold * horizontalSpeedThreshold;
+
+		hasControl = startWithControl;
+
 		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
 		{
 			item.OnImpact += () => StartCoroutine(DoConcussion());
@@ -177,26 +205,12 @@ public class RagdollRig : MonoBehaviour
 			leftHandRb,
 			hipRb.transform.TransformPoint(leftHandPosition)
 		);
-
-		leftFootControlJoint = CreateJointController<SpringJoint>("leftFootControlJoint", false);
-		leftFootControlJoint.transform.position = leftFoot.position;
-		leftFootControlJoint.connectedBody = leftFoot.rigidbody;
-		(leftFootControlJoint as SpringJoint).spring = footForce;
-		leftFootControlJoint.gameObject.SetActive(true);
-
-		rightFootControlJoint = CreateJointController<SpringJoint>("rightFootControlJoint", false);
-		rightFootControlJoint.transform.position = rightFoot.position;
-		rightFootControlJoint.connectedBody = rightFoot.rigidbody;
-		(rightFootControlJoint as SpringJoint).spring = footForce;
-		rightFootControlJoint.gameObject.SetActive(true);
-
 	}
-
-
 
 	private void FixedUpdate()
 	{
-		bool hipGrounded = false;
+		isGoingTooFast = GoesTooFast();
+
 		RaycastHit hit;
 
 		var hipOffsetVector = hipRb.transform.forward * hipZOffset;
@@ -204,15 +218,17 @@ public class RagdollRig : MonoBehaviour
 
 		if (Physics.Raycast(hipRayOrigin, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
 		{	
-			hipGrounded = true;
+			Grounded = true;
 			hipHitPosition = hit.point;
 		}
 		else
 		{
+
+			Grounded = false;
 			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
 		}
 
-		if (HasControl)
+		if (isControlled)
 		{
 			hipRb.freezeRotation = true;
 
@@ -241,7 +257,7 @@ public class RagdollRig : MonoBehaviour
 
 			// Control hips etc. --------------------------------------------------------------------
 
-			if (Grounded || hipGrounded)
+			if (Grounded || Grounded)
 			{
 				hipRb.AddForce(hipForce * Vector3.up);
 
@@ -249,35 +265,23 @@ public class RagdollRig : MonoBehaviour
 				neckToHip.y = 1; // As in vector3.up, so we don't pull down, and always use full force in vertical direction
 				var neckForceVector = neckToHip * neckForce;
 				neckRb.AddForceAtPosition(neckForceVector, neckRb.position + 0.05f * Vector3.up);
-
-				EnableController(leftFootControlJoint, leftFoot.rigidbody);
-				EnableController(rightFootControlJoint, rightFoot.rigidbody);
 			}
 			else
 			{
-				DisableController(leftFootControlJoint);
-				DisableController(rightFootControlJoint);
-
 				// Set this to ray's end.
 				hipHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
 			}
 
-			// Apply custom drag in horizontal directions
-			var velocity = hipRb.velocity;
-			velocity.x /= hipRbHorizontalDrag;
-			velocity.z /= hipRbHorizontalDrag;
-			hipRb.velocity = velocity;
-
 			// Control feet ----------------------------------------------------------
-			leftFootControlJoint.transform.position = GetComputedFootPosition(leftFootTarget);
-			rightFootControlJoint.transform.position = GetComputedFootPosition(rightFootTarget);
+			ComputeFootPositions();
+
+			leftFoot.rigidbody.MovePosition(leftFootPosition);
+			rightFoot.rigidbody.MovePosition(rightFootPosition);
 		}
 		else
 		{
 			hipRb.freezeRotation = false;
 		}
-
-
 
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
@@ -292,22 +296,42 @@ public class RagdollRig : MonoBehaviour
 		return joint;
 	}
 
-	// Move character to direction, do this in fixed update only
-	public void Move(Vector3 movement, Vector3 look, float amount)
+
+	// Move character to direction, do this in fixed update only.
+	// NOTE: Do not use delta time for amount, instead pass [0 ... 1] value of input.
+	// amount will be multiplied with ragdoll's walkSpeed.
+	// moveDirection and lookDirection should be normalized
+	public void MoveWithVelocity(Vector3 moveDirection, Vector3 lookDirection, float amount)
 	{
-		// Walk conditionally. 'doWalk' is also used for foot animation
-		if (HasControl)
+		// Walk if we are grounded or our velocity is smaller than walk speed.
+		// This way explosions etc. can apply force through regular physics,
+		// And we can still manouver slightly in air
+		if (isControlled) 
 		{
-			hipRb.MovePosition(hipRb.position + movement * amount * speed);
-			hipRb.MoveRotation(Quaternion.LookRotation(look));
+			if (Grounded || hipRb.velocity.magnitude < walkSpeed)
+			{
+				float speed = amount * walkSpeed;
+				hipRb.velocity = new Vector3(
+					moveDirection.x * speed,
+					hipRb.velocity.y,
+					moveDirection.z * speed
+				);	
+			}
+			
+			// Allow rotation in all cases
+			var hipRotation = Quaternion.RotateTowards(
+				hipRb.rotation, 
+				Quaternion.LookRotation(lookDirection),
+				turnSpeed * Time.deltaTime);
+			hipRb.MoveRotation(hipRotation);
 		}
 		
-		doWalk = HasControl && amount > 0;
+		doWalk = isControlled && amount > 0.001f;
 	}
 	
 	public void Jump()
 	{
-		if (HasControl && Grounded)
+		if (isControlled && Grounded)
 		{
 			float jumpBonus = Mathf.Max(leftFoot.JumpBonusValue, rightFoot.JumpBonusValue);
 			float currentJumpVelocity = jumpVelocity + jumpBonus;
@@ -338,15 +362,14 @@ public class RagdollRig : MonoBehaviour
 		handsForward = hipRb.transform.TransformDirection(new Vector3(0, sin, cos));
 	}
 
-
 	private static void ControlHand(
-		SpringJoint controlJoint,
+		SpringJoint	controlJoint,
 		SmoothFloat controlWeight,
-		Vector3 targetPosition,
-		Rigidbody rigidbody,
-		bool doControl,
-		Vector3 direction,
-		float force
+		Vector3 	targetPosition,
+		Rigidbody 	rigidbody,
+		bool 		doControl,
+		Vector3 	direction,
+		float 		force
 	){
 		controlJoint.transform.position = targetPosition;
 
@@ -398,12 +421,10 @@ public class RagdollRig : MonoBehaviour
 		}
 
 		Gizmos.color = Color.blue;
-		Gizmos.DrawWireSphere(transform.TransformPoint(leftFootTarget), 0.05f);
-		Gizmos.DrawWireSphere(GetComputedFootPosition(leftFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(leftFootPosition, 0.05f);
 
 		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(transform.TransformPoint(rightFootTarget), 0.05f);
-		Gizmos.DrawWireSphere(GetComputedFootPosition(rightFootTarget), 0.05f);
+		Gizmos.DrawWireSphere(rightFootPosition, 0.05f);
 	}
 
 	// todo: Not used anymore here, can be moved to some utility class

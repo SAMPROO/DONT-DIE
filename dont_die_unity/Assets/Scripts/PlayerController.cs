@@ -82,6 +82,13 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
+
+	public void Destroy()
+	{
+		Destroy(cameraRig.gameObject);
+		Destroy(gameObject);
+	}
+
 	private void Update() 
 	{
 		input.UpdateController();
@@ -108,7 +115,11 @@ public class PlayerController : MonoBehaviour
 			doFocus ? 
 			cameraRig.BaseRotation * Vector3.forward : 
 			lastMoveDirection;
-		ragdoll.Move(lastMoveDirection, lookDirection, amount * Time.deltaTime);
+		
+		ragdoll.MoveWithVelocity(
+			lastMoveDirection,
+			lookDirection, 
+			amount);
 
 		ragdoll.SetHandsAimAngle(cameraRig.AimAngle);// * handAimMultiplier);
 	}
@@ -138,7 +149,7 @@ public class PlayerController : MonoBehaviour
 
 	private void ToggleRagdoll()
 	{
-		ragdoll.HasControl = !ragdoll.HasControl;
+		ragdoll.hasControl = !ragdoll.hasControl;
 	}
 
     private void ToggleCarryGun()
@@ -148,6 +159,8 @@ public class PlayerController : MonoBehaviour
 		{
 			gun?.StopCarrying();
 			gun = null;
+
+			return;
 		}
 
 		// Check if new gun is nearby and pick int. Use main transform now, since hands are not controlled
@@ -176,7 +189,7 @@ public class PlayerController : MonoBehaviour
                	gun = hitColliders[i].GetComponentInParent<Equipment>();
                	if (gun != null)
                	{
-	            	gun.StartCarrying(gunParent);
+	            	gun.StartCarrying(gunParent.GetComponent<Rigidbody>(), Quaternion.Euler(-90, 0, 0));
 	            	return;
                	}
             }

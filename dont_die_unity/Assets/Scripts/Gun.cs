@@ -33,7 +33,11 @@ public class Gun : Equipment
     {
         if (ammo > 0 && secondsPerRound - (Time.time - time) <= 0/* && !isReeling*/)
         {
-            projectile = Instantiate(projectilePrefab, transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset, Quaternion.identity);
+            projectile = Instantiate(
+                projectilePrefab,
+                transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset,
+                transform.rotation
+            );
             projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
 
             time = Time.time;
@@ -41,16 +45,16 @@ public class Gun : Equipment
 
             //isReeling = reuseable;
 
-            Debug.Log("Gun says \"Bang!\"");
+            // Debug.Log("Gun says \"Bang!\"");
         }
         //else if (reuseable && isReeling && projectile != null)
         //{
             
         //}
-        else
-        {
-            Debug.Log("Gun says \"Click!\"");
-        }
+        // else
+        // {
+        //     Debug.Log("Gun says \"Click!\"");
+        // }
     }
 
     protected override void OnDrawGizmosSelected()
