@@ -31,6 +31,7 @@
           <e p="ButtonLinker.cs" t="Include" />
           <e p="Camera3rdPerson.cs" t="Include" />
           <e p="CarouselDriver.cs" t="Include" />
+          <e p="ChangeScale.cs" t="Include" />
           <e p="DamageChild.cs" t="Include" />
           <e p="DamageController.cs" t="Include" />
           <e p="Equipment.cs" t="Include" />
@@ -47,6 +48,7 @@
             <e p="InputControllerManager.cs" t="Include" />
           </e>
           <e p="ISwitch.cs" t="Include" />
+          <e p="JumpPad.cs" t="Include" />
           <e p="LerpDrive.cs" t="Include" />
           <e p="LifeTime.cs" t="Include" />
           <e p="LinearDrive.cs" t="Include" />

@@ -100,24 +100,55 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+            <state relative-caret-position="240">
+              <caret line="17" column="36" lean-forward="true" selection-end-line="85" />
               <folding>
-                <marker date="1556095567765" expanded="false" signature="6:77" ph="..." />
-                <marker date="1556095567765" expanded="true" signature="124:2367" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="695:893" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="944:2154" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="1083:1358" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="1156:1348" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="1396:1499" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="1641:2079" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="1824:2069" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="1855:1929" ph="/* if (ragdollRig != null) ... */" />
-                <marker date="1556095567765" expanded="true" signature="2206:2365" ph="{...}" />
-                <marker date="1556095567765" expanded="true" signature="2268:2359" ph="{...}" />
+                <marker date="1556095858549" expanded="false" signature="6:77" ph="..." />
+                <marker date="1556095858549" expanded="true" signature="124:2389" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="695:893" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="944:2176" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="1044:1380" ph="/* Change scale ... */" />
+                <marker date="1556095858549" expanded="true" signature="1418:1521" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="1663:2101" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="1846:2091" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="1877:1951" ph="/* if (ragdollRig != null) ... */" />
+                <marker date="1556095858549" expanded="true" signature="2228:2387" ph="{...}" />
+                <marker date="1556095858549" expanded="true" signature="2290:2381" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+              <folding>
+                <marker date="1556111344182" expanded="true" signature="6:44" ph="..." />
+                <marker date="1556111344182" expanded="true" signature="81:346" ph="{...}" />
+                <marker date="1556111344182" expanded="true" signature="165:344" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="1" selection-end-column="18" />
+              <folding>
+                <marker date="1556111338108" expanded="true" signature="6:44" ph="..." />
+                <marker date="1556111338108" expanded="true" signature="86:1378" ph="{...}" />
+                <marker date="1556111338108" expanded="true" signature="503:699" ph="{...}" />
+                <marker date="1556111338108" expanded="true" signature="750:1167" ph="{...}" />
+                <marker date="1556111338108" expanded="true" signature="905:1077" ph="{...}" />
+                <marker date="1556111338108" expanded="true" signature="1219:1376" ph="{...}" />
+                <marker date="1556111338108" expanded="true" signature="1279:1370" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -192,11 +223,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/VelocityBasedJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ProjectileLauncher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LinearDrive.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapLinker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Orbit Camera.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TouchDamage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OrbitCameraTP.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ImpactDamage.cs" root0="FORCE_HIGHLIGHTING" />
@@ -222,6 +255,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Explosion.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollRig.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/JumpPad.cs" />
       </list>
     </option>
   </component>
@@ -295,10 +330,10 @@
       <option name="pid" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="4312">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="14268">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4312" />
+      <option name="pid" value="14268" />
       <method v="2" />
     </configuration>
   </component>
@@ -315,12 +350,12 @@
       <workItem from="1554812498540" duration="70000" />
       <workItem from="1554968034148" duration="9771000" />
       <workItem from="1555495646575" duration="2590000" />
-      <workItem from="1556093641863" duration="2048000" />
+      <workItem from="1556093641863" duration="7734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37144000" />
+    <option name="totallyTimeSpent" value="42830000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -335,7 +370,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10810811" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10810811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -343,7 +378,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.25409198" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25409198" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -637,13 +672,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Materials/JumpBonus.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/TestJumpBonus.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollFootControl.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/JumpBonus.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/DivingBonusJumpBoard.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/DivingBoard.cs" />
@@ -811,23 +839,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollFootControl.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <marker date="1555582276891" expanded="true" signature="0:44" ph="/* Sampo's Gaming Department ... */" />
+            <marker date="1555582276891" expanded="false" signature="52:117" ph="..." />
+            <marker date="1555582276891" expanded="true" signature="204:1371" ph="{...}" />
+            <marker date="1555582276891" expanded="true" signature="536:760" ph="{...}" />
+            <marker date="1555582276891" expanded="true" signature="651:757" ph="{...}" />
+            <marker date="1555582276891" expanded="true" signature="812:1105" ph="{...}" />
+            <marker date="1555582276891" expanded="true" signature="929:1102" ph="{...}" />
+            <marker date="1555582276891" expanded="true" signature="1231:1278" ph="{...}" />
+            <marker date="1555582276891" expanded="true" signature="1307:1365" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        <state relative-caret-position="240">
+          <caret line="17" column="36" lean-forward="true" selection-end-line="85" />
           <folding>
-            <marker date="1556095567765" expanded="false" signature="6:77" ph="..." />
-            <marker date="1556095567765" expanded="true" signature="124:2367" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="695:893" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="944:2154" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="1083:1358" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="1156:1348" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="1396:1499" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="1641:2079" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="1824:2069" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="1855:1929" ph="/* if (ragdollRig != null) ... */" />
-            <marker date="1556095567765" expanded="true" signature="2206:2365" ph="{...}" />
-            <marker date="1556095567765" expanded="true" signature="2268:2359" ph="{...}" />
+            <marker date="1556095858549" expanded="false" signature="6:77" ph="..." />
+            <marker date="1556095858549" expanded="true" signature="124:2389" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="695:893" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="944:2176" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="1044:1380" ph="/* Change scale ... */" />
+            <marker date="1556095858549" expanded="true" signature="1418:1521" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="1663:2101" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="1846:2091" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="1877:1951" ph="/* if (ragdollRig != null) ... */" />
+            <marker date="1556095858549" expanded="true" signature="2228:2387" ph="{...}" />
+            <marker date="1556095858549" expanded="true" signature="2290:2381" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="18" />
+          <folding>
+            <marker date="1556111338108" expanded="true" signature="6:44" ph="..." />
+            <marker date="1556111338108" expanded="true" signature="86:1378" ph="{...}" />
+            <marker date="1556111338108" expanded="true" signature="503:699" ph="{...}" />
+            <marker date="1556111338108" expanded="true" signature="750:1167" ph="{...}" />
+            <marker date="1556111338108" expanded="true" signature="905:1077" ph="{...}" />
+            <marker date="1556111338108" expanded="true" signature="1219:1376" ph="{...}" />
+            <marker date="1556111338108" expanded="true" signature="1279:1370" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+          <folding>
+            <marker date="1556111344182" expanded="true" signature="6:44" ph="..." />
+            <marker date="1556111344182" expanded="true" signature="81:346" ph="{...}" />
+            <marker date="1556111344182" expanded="true" signature="165:344" ph="{...}" />
           </folding>
         </state>
       </provider>
