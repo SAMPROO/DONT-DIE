@@ -5,26 +5,28 @@ using UnityEngine.Serialization;
 public class RubberDuckBullet : MonoBehaviour
 {
     
+    [Header("Properties")] 
     public GameObject explosionEffect;
     public float delay = 3f;
     public float blastRadius = 5f;
     public float blastForce = 100f;
     public float upwardsModifier = 0;
-    
     public bool exploadOnCollision = true;
-    public bool destroyAfterScale = true;
-    private bool hasCollided = false;
-    
+    public bool destroyAfterExplosion = true;
+
+    [Header("Scale")] 
+    public bool changeScale = false;
     public float scaleMultiplier = 1f;
     public float timeToScale = 1f;
     
-    //private Vector3 startScale;
-    //private Vector3 endScale;
+    private Vector3 startScale;
+    private Vector3 endScale;
+    private bool hasCollided = false;    
 
     private void Start()
     {
-        //startScale = transform.localScale;
-        //endScale = startScale * scaleMultiplier;
+        startScale = transform.localScale;
+        endScale = startScale * scaleMultiplier;
         
         if (exploadOnCollision == false)
             StartCoroutine(Expload(delay));
@@ -35,13 +37,17 @@ public class RubberDuckBullet : MonoBehaviour
         if (delay != 0)
             yield return new WaitForSeconds(delay);
         
-        //float i = 0f;
-//
-        //while (i < timeToScale)
+        //Change scale
+        //if (changeScale)
         //{
-        //    i += Time.deltaTime;
-        //    //transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
-        //    yield return null;
+        //    float i = 0f;
+//
+        //    while (i < timeToScale)
+        //    {
+        //        i += Time.deltaTime;
+        //        transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
+        //        yield return null;
+        //    }
         //}
 
         if (explosionEffect != null)
@@ -60,11 +66,11 @@ public class RubberDuckBullet : MonoBehaviour
             {
                 //if (ragdollRig != null)
                     //ragdollRig.DoConcussion();
-                rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier);
+                rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier, ForceMode.VelocityChange);
             }
         }
 
-        if (destroyAfterScale)
+        if (destroyAfterExplosion)
             Destroy(gameObject);
     }
 
@@ -76,14 +82,4 @@ public class RubberDuckBullet : MonoBehaviour
             StartCoroutine(Expload());
         }
     }
-
-    //private Animator animator;
-    //void Start()
-    //{
-    //    animator = GetComponent<Animator>();
-    //}
-    //private void OnCollisionEnter(Collision other)
-    //{
-    //    animator.SetTrigger("RubberDuckExplosion");
-    //}
 }

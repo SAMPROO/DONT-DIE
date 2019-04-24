@@ -235,9 +235,10 @@ MonoBehaviour:
   explosionEffect: {fileID: 0}
   delay: 3
   blastRadius: 5
-  blastForce: 10000
-  upwardsModifier: 10000
+  blastForce: 50
+  upwardsModifier: 3
   exploadOnCollision: 0
-  destroyAfterScale: 1
-  scaleMultiplier: 50
+  destroyAfterExplosion: 1
+  changeScale: 1
+  scaleMultiplier: 30
   timeToScale: 0.3
