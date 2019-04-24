@@ -7,6 +7,7 @@ public class RubberDuckBullet : MonoBehaviour
     
     [Header("Properties")] 
     public GameObject explosionEffect;
+    public AudioClip explosionSound;
     public float delay = 3f;
     public float blastRadius = 5f;
     public float blastForce = 100f;
@@ -67,6 +68,7 @@ public class RubberDuckBullet : MonoBehaviour
                 //if (ragdollRig != null)
                     //ragdollRig.DoConcussion();
                 rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier, ForceMode.VelocityChange);
+                //Play Explosion SFX
             }
         }
 

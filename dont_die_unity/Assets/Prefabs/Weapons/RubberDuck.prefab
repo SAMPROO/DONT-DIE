@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPosition: {x: 0, y: -0.12, z: -0.21}
-  projectilePrefab: {fileID: 5389533523361623170, guid: 58d2bb11840c65b40b3e83c635f8a83c,
+  projectilePrefab: {fileID: 4337601339283480907, guid: b60749cdc9a0f454d908851ff6a51c77,
     type: 3}
   spawnOffset: {x: 0, y: 0, z: 0.71}
   startSpeed: 10
