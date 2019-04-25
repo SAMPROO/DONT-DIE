@@ -295,7 +295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testFire: 0
   holdPosition: {x: 0, y: -0.18, z: -0.12}
-  ammo: 10
+  fiveSecondRule: 5
+  ammo: 5
   initialSpeed: 15
   waitTime: 1
   reelSpeed: 20
@@ -451,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186899450261008417}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.029999971}
+  m_LocalPosition: {x: 0, y: 0, z: 0.068}
   m_LocalScale: {x: 0.3810523, y: 0.114722244, z: 0.3810523}
   m_Children: []
   m_Father: {fileID: 1186899448350215799}

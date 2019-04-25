@@ -6,6 +6,9 @@ public abstract class Equipment : MonoBehaviour
     public bool testFire;
     public Vector3 holdPosition;
 
+    public float fiveSecondRule = 5;
+    public int ammo = 1;
+
     protected bool isCarried;
     protected Rigidbody rb;
 
@@ -16,16 +19,29 @@ public abstract class Equipment : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-#if UNITY_EDITOR
+
     private void Update()
     {
+        // Destroy this gameobject if not carried and has no ammo after 5? seconds
+
+        if (!isCarried && ammo <= 0)
+        {
+            Invoke("Destroy", fiveSecondRule);
+        }
+        else if (IsInvoking("Destroy"))
+        {
+            CancelInvoke("Destroy");
+        }
+
+#if UNITY_EDITOR
         if (testFire)
         {
             Use();
             testFire = false;
         }
-    }
 #endif
+    }
+
 
     public abstract void Use();
 
@@ -51,6 +67,11 @@ public abstract class Equipment : MonoBehaviour
         isCarried = false;
 
         Debug.Log("Gun thrown away");
+    }
+
+    public virtual void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     protected virtual void OnDrawGizmosSelected()

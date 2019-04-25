@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PunchGun : Equipment
 {
-    public int ammo = 3;
     public float initialSpeed, waitTime, reelSpeed, minReelDistance;
     public Rigidbody boxingGlove;
 
@@ -95,5 +94,14 @@ public class PunchGun : Equipment
     {
         // start reeling the glove back in
         beingReeled = true;
+    }
+
+    public override void Destroy()
+    {
+        // destroy the boxing glove
+        Destroy(boxingGlove.gameObject);
+
+        // continue with the base destroy funtion from Equipment
+        base.Destroy();
     }
 }

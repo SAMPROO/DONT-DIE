@@ -8,8 +8,6 @@ public class Gun : Equipment
     public float startSpeed = 10;
     public float startAngle = 0;
 
-    public int ammo = 3;
-
     // Used to limit the firerate so player can't spam fire
     public float roundPerSecond = 3;
 
