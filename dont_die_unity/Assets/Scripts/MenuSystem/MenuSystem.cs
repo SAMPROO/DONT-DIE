@@ -5,19 +5,42 @@ using UnityEngine.UI;
 [RequireComponent(typeof(GameManager))]
 public class MenuSystem : MonoBehaviour
 {
-	public MenuView	main;
-	public MenuView	playerCountView;
-	public MenuView	mapSelect;
-	public MenuView	end;
+	[Header("Main Menu")]
+	[SerializeField] private GameObject main;
+	[SerializeField] private Button 	mainPlayButton;
+	[SerializeField] private Button 	mainExitButton;
 
-	private MenuView [] allViews;
-	private MenuView lastView = null;
+	[Header("Player Count View")]
+	[SerializeField] private GameObject playerCountView;
+    [SerializeField] private Button [] 	playerCountButtons;
+    [SerializeField] private Button 	playerCountBackButton;
 
+    [Header("Map Select View")]
+	[SerializeField] private GameObject 		mapSelect;
+	[SerializeField] private MapButtonInfo [] 	mapButtonInfos;
+	[SerializeField] private Button 			mapSelectBackButton;
+	[SerializeField] private Text 				mapSelectPlayerCountText;
+
+	[System.Serializable]
+	private class MapButtonInfo
+	{
+	    public Button   button;
+	    public string   mapSceneName;
+	    public bool     locked = false;
+	}
+
+	[Header("End View")]
+	[SerializeField] private GameObject end;
+	[SerializeField] private Button 	endGoToMainButton;
+	[SerializeField] private Text 		endWinnerNumberText;
+
+
+	private GameObject [] allViews;
 	private GameManager gameManager;
 
-	private const int maxTrackedPreviousViews = 10;
-	private MenuView [] trackedViews = new MenuView[maxTrackedPreviousViews];
-	private int trackedViewIndex;
+	[Header("Testing stuff")]
+	public int TestViewIndex;
+	public bool SwapTestView;
 
 	private void Awake()
 	{
@@ -30,52 +53,70 @@ public class MenuSystem : MonoBehaviour
 			end
 		};
 
+		// Main view
+		mainPlayButton.onClick.AddListener(StartConfigureGame);
+		mainExitButton.onClick.AddListener(gameManager.QuitGame);
+
+		// Player Count view
+		for (int i = 0; i < playerCountButtons.Length; i++)
+		{
+			// Add one to count since indices go [0 -> 3] and counts [1 -> 4]
+			int count = i + 1;
+			playerCountButtons[i].onClick.AddListener(() => SetPlayerCount(count));			
+		}
+
+        // Map Select view
+        foreach (var info in mapButtonInfos)
+        {
+            if (info.locked == false)
+            {
+                info.button.onClick.AddListener(() => SetMapSceneName(info.mapSceneName));
+                info.button.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            else
+            {
+                info.button.transform.GetChild(0).gameObject.SetActive(true);
+            }
+        }
+
+        // End view
+        endGoToMainButton.onClick.AddListener(SetMainMenu);
+
+        // Back Buttons
+        playerCountBackButton.onClick.AddListener(SetMainMenu);
+        mapSelectBackButton.onClick.AddListener(StartConfigureGame);
+
 	}
 
 	private void Start()
 	{
-		// Track first view manually
-		// SetView(main, false);
 		SetMainMenu();
 	}
 
 	public void SetMainMenu()
 	{
 		SetView(main, true);
-		trackedViews[0] = main;
-		trackedViewIndex = 0;
 	}
 
-	public void SetEndView()
-	{
-		SetView(end, false);	
-	}
 
-	private void SetView(MenuView view, bool track)
+
+	private void SetView(GameObject view, bool track)
 	{
 		// Hide all views
 		for (int i = 0; i < allViews.Length; i++)
 		{
-			allViews[i].gameObject.SetActive(false);
+			allViews[i].SetActive(false);
 		}
 
 		// Show selected view
 		if (view != null)
 		{
-			view.gameObject.SetActive(true);
-		
-			if (track)
-				SetTrackedView(view);	
+			view.SetActive(true);
 		}
 	}	
 
-
-	public int TestViewIndex;
-	public bool SwapTestView;
-
 	private void OnValidate()
 	{
-
 		if (SwapTestView)
 		{
 			allViews = new []{
@@ -89,52 +130,41 @@ public class MenuSystem : MonoBehaviour
 		}
 	}
 
-	public void SetPreviousView()
-	{
-		// If we ever try to go back from zero, we have miscreated menuview
-		// traversing hierarchy, and should fix that instead of zero or null
-		// checking here.
-
-		trackedViewIndex -= 1;
-		SetView(trackedViews[trackedViewIndex], false);
-	}
-
-	private void SetTrackedView(MenuView view)
-	{
-		trackedViewIndex += 1;
-		trackedViews [trackedViewIndex] = view;
-
-		if (trackedViewIndex >= maxTrackedPreviousViews)
-		{
-			Debug.LogError("Cannot track this many views");
-			trackedViewIndex -= 1; // keep first ones in tracklist, only not track new ones
-		}
-	}
-
-
 	///////////////////////////////////////
 	/// Configure Game                 	///
 	///////////////////////////////////////
 
 	// These are used to set up game. 'StartConfigureGame is mapped to main menu's
 	// "play button", and others to following views completing  actions
-	private GameConfiguration configuration = new GameConfiguration();
+	private GameConfiguration configuration;
 
 	public void StartConfigureGame()
 	{
+		configuration = new GameConfiguration();
 		SetView(playerCountView, true);
 	}
 
-	public void SetPlayerCount(int count)
+	private void SetPlayerCount(int count)
 	{
 		configuration.playerCount = count;
+		mapSelectPlayerCountText.text = count.ToString();
 		SetView(mapSelect, true);
 	}
 
-	public void SetMapSceneName(string mapSceneName)
+	private void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
 		SetView (null, false);
 		gameManager.StartGame(configuration);
+	}
+
+	///////////////////////////////////////
+	/// End view stuff                 	///
+	///////////////////////////////////////
+
+	public void SetEndView(GameEndStatus endStatus)
+	{
+		endWinnerNumberText.text = $"#{endStatus.winnerNumber}";
+		SetView(end, false);	
 	}
 }

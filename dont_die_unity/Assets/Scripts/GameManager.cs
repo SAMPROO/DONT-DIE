@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    // public static GameManager Instance { get; private set; }
+    private static GameManager Instance { get; set; }
 
     [SerializeField]
     private GameObject playerPrefab, orbitCameraPrefab;
@@ -125,10 +126,17 @@ public class GameManager : MonoBehaviour
         }
 
 		players = null;
-        // SceneManager.LoadScene("End");
-        SceneManager.UnloadScene("Level");
-        GetComponent<MenuSystem>().SetEndView();   
+
+        var endStatus = new GameEndStatus
+        {
+            // Add 1 to make range [1 --> 4]
+            winnerNumber = handle.index + 1
+        };
+        GetComponent<MenuSystem>().SetEndView(endStatus);   
+
+        SceneManager.UnloadSceneAsync("Level");
     }
+
 
     public void SetPlayerCount(int playerCount)
     {
@@ -154,7 +162,11 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit game");
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
 }
 
@@ -163,4 +175,9 @@ public class GameConfiguration
 {
     public int playerCount;
     public string mapSceneName;
+}
+
+public class GameEndStatus
+{
+    public int winnerNumber;
 }
