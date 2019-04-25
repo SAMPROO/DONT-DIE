@@ -29,13 +29,13 @@ public abstract class Equipment : MonoBehaviour
 
     public abstract void Use();
 
-    public virtual void StartCarrying(Rigidbody connectedBody, Quaternion offsetRotation)
+    public virtual void StartCarrying(Rigidbody connectedBody, float angle)
     {
         if (joint != null) return;
 
-        transform.position = connectedBody.transform.TransformPoint(holdPosition);
+        transform.rotation = connectedBody.rotation * Quaternion.AngleAxis(angle, Vector3.right);
         
-        transform.rotation = connectedBody.rotation * offsetRotation;
+        transform.position = connectedBody.transform.TransformPoint(Quaternion.AngleAxis(angle + 180, Vector3.right) * holdPosition);
 
         joint = gameObject.AddComponent<FixedJoint>();
         joint.connectedBody = connectedBody;
