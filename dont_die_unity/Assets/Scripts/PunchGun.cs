@@ -8,9 +8,10 @@ public class PunchGun : Equipment
     public Rigidbody boxingGlove;
 
     private Vector3 startPosition;
-    private bool isLaunched, beingReeled;
+    private bool isLaunched, beingReeled, drawLine;
 
     private FixedJoint gloveJoint;
+    private LineRenderer lineRenderer;
 
     private void Start()
     {
@@ -21,6 +22,21 @@ public class PunchGun : Equipment
         // make a new fixed joint between gun and glove
         gloveJoint = gameObject.AddComponent<FixedJoint>();
         gloveJoint.connectedBody = boxingGlove.GetComponent<Rigidbody>();
+
+        lineRenderer = GetComponent<LineRenderer>();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (drawLine)
+        {
+            Vector3[] positions = { transform.TransformPoint(startPosition), boxingGlove.position };
+
+            lineRenderer.SetPositions(positions);
+            lineRenderer.enabled = true;
+        }
     }
 
     private void FixedUpdate()
@@ -56,6 +72,9 @@ public class PunchGun : Equipment
                 gloveJoint.connectedBody = boxingGlove.GetComponent<Rigidbody>();
 
                 boxingGlove.isKinematic = false;
+
+                drawLine = false;
+                lineRenderer.enabled = false;
             }
         }
     }
@@ -75,6 +94,7 @@ public class PunchGun : Equipment
 
             if (ammo > 1)
             {
+                drawLine = true;
                 Invoke("ReturnToSender", waitTime);
             }
             else
