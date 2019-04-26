@@ -9,6 +9,7 @@ public class MenuSystem : MonoBehaviour
 	[Header("Main Menu")]
 	[SerializeField] private GameObject mainViewObject;
 	[SerializeField] private Button 	mainPlayButton;
+	[SerializeField] private Button 	mainCreditsButton;
 	[SerializeField] private Button 	mainExitButton;
 
 	[Header("Player Count View")]
@@ -31,9 +32,13 @@ public class MenuSystem : MonoBehaviour
 	}
 
 	[Header("End View")]
-	[SerializeField] private GameObject end;
+	[SerializeField] private GameObject endViewObject;
 	[SerializeField] private Button 	endGoToMainButton;
 	[SerializeField] private Text 		endWinnerNumberText;
+
+	[Header("Credits View")]
+	[SerializeField] private GameObject creditsViewObject;
+	[SerializeField] private Button 	creditsBackButton;
 
 	private GameManager gameManager;
 	private EventSystem eventSystem;
@@ -49,15 +54,11 @@ public class MenuSystem : MonoBehaviour
 		gameManager = GetComponent<GameManager>();
 		eventSystem = GetComponentInChildren<EventSystem>();
 
-		allViews = new []{
-			mainViewObject,
-			playerCountViewObject,
-			mapSelectViewObject,
-			end
-		};
+		allViews = GetAllViews();
 
 		// Main view
 		mainPlayButton.onClick.AddListener(StartConfigureGame);
+		mainCreditsButton.onClick.AddListener(SetCreditsView);
 		mainExitButton.onClick.AddListener(gameManager.QuitGame);
 
 
@@ -73,7 +74,8 @@ public class MenuSystem : MonoBehaviour
         // Map Select view
         foreach (var info in mapButtonInfos)
         {
-            info.button.onClick.AddListener(() => SetMapSceneName(info.mapSceneName));
+        	if (info.locked == false)
+            	info.button.onClick.AddListener(() => SetMapSceneName(info.mapSceneName));
             info.button.transform.GetChild(0).gameObject.SetActive(info.locked);
         }
         mapSelectViewObject.GetComponent<CancelEvent>().OnCancel.AddListener(StartConfigureGame);
@@ -81,9 +83,13 @@ public class MenuSystem : MonoBehaviour
         // End view
         endGoToMainButton.onClick.AddListener(SetMainMenu);
 
+        // Credits view
+        creditsViewObject.GetComponent<CancelEvent>().OnCancel.AddListener(SetMainMenu);
+
         // Back Buttons
         playerCountBackButton.onClick.AddListener(SetMainMenu);
         mapSelectBackButton.onClick.AddListener(StartConfigureGame);
+        creditsBackButton.onClick.AddListener(SetMainMenu);
 
 	}
 
@@ -100,11 +106,11 @@ public class MenuSystem : MonoBehaviour
 
 	public void SetMainMenu()
 	{
-		SetView(mainViewObject, true);
+		SetView(mainViewObject);
 		eventSystem.SetSelectedGameObject(mainPlayButton.gameObject);
 	}
 
-	private void SetView(GameObject view, bool track)
+	private void SetView(GameObject view)
 	{
 		// Hide all views
 		for (int i = 0; i < allViews.Length; i++)
@@ -119,18 +125,23 @@ public class MenuSystem : MonoBehaviour
 		}
 	}	
 
+	private GameObject [] GetAllViews()
+	{
+		return new [] {
+			mainViewObject,
+			playerCountViewObject,
+			mapSelectViewObject,
+			endViewObject,
+			creditsViewObject
+		};
+	}
+
 	private void OnValidate()
 	{
 		if (SwapTestView)
 		{
-			allViews = new []{
-				mainViewObject,
-				playerCountViewObject,
-				mapSelectViewObject,
-				end
-			};
-
-			SetView(allViews[TestViewIndex], false);
+			allViews = GetAllViews();
+			SetView(allViews[TestViewIndex]);
 		}
 	}
 
@@ -145,7 +156,7 @@ public class MenuSystem : MonoBehaviour
 	private void StartConfigureGame()
 	{
 		configuration = new GameConfiguration();
-		SetView(playerCountViewObject, true);
+		SetView(playerCountViewObject);
 		eventSystem.SetSelectedGameObject(playerCountButtons[0].gameObject);
 	}
 
@@ -153,14 +164,14 @@ public class MenuSystem : MonoBehaviour
 	{
 		configuration.playerCount = count;
 		mapSelectPlayerCountText.text = count.ToString();
-		SetView(mapSelectViewObject, true);
+		SetView(mapSelectViewObject);
 		eventSystem.SetSelectedGameObject(mapButtonInfos[0].button.gameObject);
 	}
 
 	private void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
-		SetView (null, false);
+		SetView (null);
 		gameManager.StartGame(configuration);
 	}
 
@@ -171,6 +182,17 @@ public class MenuSystem : MonoBehaviour
 	public void SetEndView(GameEndStatus endStatus)
 	{
 		endWinnerNumberText.text = $"#{endStatus.winnerNumber}";
-		SetView(end, false);	
+		SetView(endViewObject);	
+		eventSystem.SetSelectedGameObject(endGoToMainButton.gameObject);
+	}
+
+	///////////////////////////////////////
+	/// Other Stuff 					///
+	///////////////////////////////////////
+
+	private void SetCreditsView()
+	{
+		SetView(creditsViewObject);
+		eventSystem.SetSelectedGameObject(creditsBackButton.gameObject);
 	}
 }
