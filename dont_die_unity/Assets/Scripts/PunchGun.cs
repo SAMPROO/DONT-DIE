@@ -17,6 +17,7 @@ public class PunchGun : Equipment
     {
         startPosition = boxingGlove.transform.localPosition;
 
+        // seperate boxing glove from the gun so that if boxing glove stops it doesn't follow the parrent physics.
         boxingGlove.transform.parent = null;
 
         // make a new fixed joint between gun and glove
@@ -24,6 +25,7 @@ public class PunchGun : Equipment
         gloveJoint.connectedBody = boxingGlove.GetComponent<Rigidbody>();
 
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
     }
 
     public override void Update()
@@ -81,7 +83,7 @@ public class PunchGun : Equipment
 
     public override void Use()
     {
-        if (!isLaunched && ammo > 0)
+        if (!isLaunched && Ammo > 0)
         {
             isLaunched = true;
 
@@ -92,7 +94,7 @@ public class PunchGun : Equipment
             // set initial velocity
             boxingGlove.velocity = transform.forward * initialSpeed;
 
-            if (ammo > 1)
+            if (Ammo > 1)
             {
                 drawLine = true;
                 Invoke("ReturnToSender", waitTime);
@@ -102,7 +104,7 @@ public class PunchGun : Equipment
                 // TODO: play a sound as line snaps on last punch...
             }
 
-            ammo--;
+            Ammo--;
         }
         else
         {

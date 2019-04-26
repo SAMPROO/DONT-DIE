@@ -29,7 +29,7 @@ public class Gun : Equipment
 
     public override void Use()
     {
-        if (ammo > 0 && secondsPerRound - (Time.time - time) <= 0/* && !isReeling*/)
+        if (Ammo > 0 && secondsPerRound - (Time.time - time) <= 0/* && !isReeling*/)
         {
             projectile = Instantiate(
                 projectilePrefab,
@@ -39,7 +39,7 @@ public class Gun : Equipment
             projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
 
             time = Time.time;
-            ammo--;
+            Ammo--;
 
             //isReeling = reuseable;
 

@@ -7,17 +7,25 @@ public abstract class Equipment : MonoBehaviour
     public Vector3 holdPosition;
 
     public float fiveSecondRule = 5;
-    public int ammo = 1;
+    public bool infiniteAmmo;
+
+    [SerializeField] private int ammo = 0;
+    [SerializeField] public int Ammo
+    {
+        get
+        {
+            return infiniteAmmo ? int.MaxValue : ammo;
+        }
+
+        set
+        {
+            ammo = value;
+        }
+    }
 
     protected bool isCarried;
-    protected Rigidbody rb;
 
     private FixedJoint joint;
-
-    public virtual void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     /* if you need Update use this in your script: (works for other funtions aswell)
      * public override void Update()
@@ -30,8 +38,7 @@ public abstract class Equipment : MonoBehaviour
     public virtual void Update()
     {
         // Destroy this gameobject if not carried and has no ammo after a time in seconds
-
-        if (!isCarried && ammo <= 0)
+        if (!isCarried && !infiniteAmmo && Ammo <= 0)
         {
             Invoke(nameof(Destroy), fiveSecondRule);
         }

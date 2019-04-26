@@ -438,7 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4258337540476499136}
   - component: {fileID: 5124748070445212559}
-  - component: {fileID: 1235746203705851062}
+  - component: {fileID: 3231120993625212629}
   m_Layer: 9
   m_Name: RubberUzi
   m_TagString: Untagged
@@ -478,7 +478,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1235746203705851062
+--- !u!114 &3231120993625212629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -487,21 +487,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4258337540476499138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66d8d0393c64384fbcc4c3a9b20e121, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7291df54917584f9efa945b6d4514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdPosition: {x: 0, y: -0.15, z: -0.21}
-  projectileOrigin: {fileID: 4258337539844123082}
+  testFire: 0
+  holdPosition: {x: 0, y: -0.21, z: -0.13}
+  fiveSecondRule: 5
+  infiniteAmmo: 1
+  ammo: 3
   projectilePrefab: {fileID: 5389533523361623170, guid: df0ac88ff0a1ee64dbbb9db02bd7fe26,
     type: 3}
-  initialVelocity: 10
-  accuracy: 10
-  lifetime: 2
+  spawnOffset: {x: 0, y: 0, z: 0.71}
+  startSpeed: 10
+  startAngle: 0
   roundPerSecond: 3
-  ammo: 30
-  debug: 0
-  resolution: 64
-  reticleDistance: 0.5
-  reticleRaycastMask:
-    serializedVersion: 2
-    m_Bits: 823
