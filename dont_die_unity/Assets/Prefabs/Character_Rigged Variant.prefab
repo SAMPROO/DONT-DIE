@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &7401543352571510456
 MonoBehaviour:
@@ -27,6 +28,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &6398239578881453310
 MonoBehaviour:
@@ -41,6 +43,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 5
+  isHead: 1
   damageController: {fileID: 0}
 --- !u!114 &6328432125730515045
 MonoBehaviour:
@@ -55,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &65967137481234939
 MonoBehaviour:
@@ -69,6 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &8246959185096119745
 MonoBehaviour:
@@ -126,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &4451822257311006082
 MonoBehaviour:
@@ -140,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &6101029733824970635
 MonoBehaviour:
@@ -154,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &3784443253379104209
 MonoBehaviour:
@@ -168,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &1942273636468139413
 MonoBehaviour:
@@ -182,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &4513017214815242192
 MonoBehaviour:
@@ -196,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &415933103694739968
 MonoBehaviour:
@@ -210,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &7639640596390336905
 MonoBehaviour:
@@ -224,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 2
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &1464772373398460042
 MonoBehaviour:
@@ -238,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!114 &6687164490680781969
 MonoBehaviour:
@@ -252,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  isHead: 0
   damageController: {fileID: 0}
 --- !u!1001 &1865552667269688119
 PrefabInstance:
@@ -417,6 +432,31 @@ PrefabInstance:
       propertyPath: concussionVelocityThreshold
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.00000017741696
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.5387995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000008940697
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676685970, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.000000040046874
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676685970, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000018626453
+      objectReference: {fileID: 0}
     - target: {fileID: 4533184863676685974, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -437,21 +477,6 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.000000011150103
       objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.00000017741696
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.5387995
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.00000008940697
-      objectReference: {fileID: 0}
     - target: {fileID: 4533184863676686050, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -462,15 +487,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.1306563
       objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676685970, guid: 9d83ac040f350ed46932fae2a64c4d51,
+    - target: {fileID: 4533184863676686017, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.000000040046874
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676685970, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.000000018626453
+      value: 0.000000011150103
       objectReference: {fileID: 0}
     - target: {fileID: 4533184863676686060, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
@@ -517,6 +537,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.00000005401669
       objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676682592, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.000000012543707
+      objectReference: {fileID: 0}
     - target: {fileID: 2075806775, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
       propertyPath: velocityThreshold
       value: 50
@@ -535,15 +560,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.5387995
       objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676686017, guid: 9d83ac040f350ed46932fae2a64c4d51,
+    - target: {fileID: 4533184863676686018, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.000000011150103
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676682592, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.000000012543707
       objectReference: {fileID: 0}
     - target: {fileID: 4533184863676682600, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
@@ -582,11 +602,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.000000026077032
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676686018, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.000000011150103
       objectReference: {fileID: 0}
     - target: {fileID: 4533184863676682604, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}

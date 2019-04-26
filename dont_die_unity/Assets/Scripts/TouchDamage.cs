@@ -6,4 +6,7 @@ public class TouchDamage : MonoBehaviour
 {
     // repeated while touching the gameobject
     public float touchDamage;
+
+    // affects only head
+    public bool headOnly;
 }
