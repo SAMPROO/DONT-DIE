@@ -78,7 +78,7 @@ MonoBehaviour:
   exploadOnCollision: 1
   destroyAfterExplosion: 1
   changeScale: 1
-  scaleMultiplier: 5
+  scaleMultiplier: 10
   timeToScale: 1
 --- !u!1001 &4337601339283580907
 PrefabInstance:
