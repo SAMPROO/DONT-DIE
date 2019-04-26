@@ -83,10 +83,9 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-	public void Destroy()
+	private void OnDestroy()
 	{
 		Destroy(cameraRig.gameObject);
-		Destroy(gameObject);
 	}
 
 	private void Update() 

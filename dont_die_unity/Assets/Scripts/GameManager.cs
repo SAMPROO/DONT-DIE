@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Color [] playerColors;
 
     private MenuSystem menuSystem;
+    private const string menuSceneName = "MenuViewer";
 
     private void Awake()
     {
@@ -19,7 +20,13 @@ public class GameManager : MonoBehaviour
         menuSystem = GetComponent<MenuSystem>();
     }
 
-    // Use this from menusystem to start correct level etc.
+    private void Start()
+    {
+        menuSystem.SetMainMenu();
+        SceneManager.LoadScene(menuSceneName);
+    }
+
+    // Use this from menu system to start correct level etc.
     public void StartGame(GameConfiguration configuration)
     {
         this.configuration = configuration;
@@ -34,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
     	InitializeLevel();
         menuSystem.Hide();
+
     	SceneManager.sceneLoaded -= OnLevelSceneLoaded;
     }
 
@@ -88,7 +96,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < configuration.playerCount; i++)
         {
-            players[i].Destroy();
+            Destroy(players[i].gameObject);
         }
 		players = null;
 
@@ -99,7 +107,7 @@ public class GameManager : MonoBehaviour
         };
 
         menuSystem.SetEndView(endStatus);   
-        SceneManager.UnloadSceneAsync("Level");
+        SceneManager.LoadScene(menuSceneName);
     }
 
     private static Rect [] GetViewRects (int count)

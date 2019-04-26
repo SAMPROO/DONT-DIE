@@ -98,12 +98,6 @@ public class MenuSystem : MonoBehaviour
 		SetView (null);
 	}
 
-
-	private void Start()
-	{
-		SetMainMenu();
-	}
-
 	public void SetMainMenu()
 	{
 		SetView(mainViewObject);
