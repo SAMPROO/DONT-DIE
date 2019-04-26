@@ -91,7 +91,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   pickUpRange: 1
-  maxHitpoints: 10
+  maxHitpoints: 10000
   rightHandTransform: {fileID: 0}
   leftHandTransform: {fileID: 0}
   handAimMultiplier: -1
@@ -405,17 +405,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: concussionVFX
-      value: 
-      objectReference: {fileID: 6957280378068528608, guid: 5964a828ad32e03499ea84da1e3f652c,
-        type: 3}
-    - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
-        type: 3}
-      propertyPath: concussionVelocityThreshold
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
