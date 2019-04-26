@@ -8,6 +8,10 @@ public class JumpPad : MonoBehaviour
         Rigidbody rigidbody = other.transform.root.GetComponent<Rigidbody>();
 
         if (rigidbody != null)
-            rigidbody.velocity = Vector3.up * force;
+        {
+            rigidbody.AddForce(force * transform.up, ForceMode.VelocityChange);
+            gameObject.GetComponent<Rigidbody>().AddForce(-force * transform.up, ForceMode.VelocityChange);
+        }
+            
     }
 }
