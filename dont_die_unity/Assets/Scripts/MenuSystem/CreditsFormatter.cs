@@ -1,6 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+This class provides way of nicely formatting all entries in credits
+view from single settings.
+*/
+
 public class CreditsFormatter : MonoBehaviour
 {
 	[System.Serializable]

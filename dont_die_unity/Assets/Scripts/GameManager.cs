@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     {
         this.configuration = configuration;
 
-        // numberOfPlayers = configuration.playerCount;
         SceneManager.LoadScene(configuration.mapSceneName);
         SceneManager.sceneLoaded += OnLevelSceneLoaded;
     }
@@ -43,24 +42,27 @@ public class GameManager : MonoBehaviour
 
     private void InitializeLevel()
 	{
-        // Get number of players
-        // get spawnpoints from level
-
-        // For number od players:
-        // 		Instantiate players to spawn points
-        // 		Reset/initialize players
         IInputController[] inputControllers = InputControllerManager.CreateControllers(configuration.playerCount);
         players = new PlayerController[maxPlayers];
         playerCameras = new Camera[maxPlayers];
 
-        Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(4, 0, 0) };
+        // Find spawnpoints and hide them from view. We can't hide them from elsewhere before used here.
+        var spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            spawnPoints[i].gameObject.SetActive(false);
+        }
 
         for (int i = 0; i < configuration.playerCount; i++)
         {
-            playerCameras[i] = Instantiate(orbitCameraPrefab, spawnPoints[i], Quaternion.identity).GetComponent<Camera>();
+            playerCameras[i] = Instantiate(orbitCameraPrefab).GetComponent<Camera>();
             playerCameras[i].GetComponent<OrbitCameraTP>().SetInputController(inputControllers[i]);
 
-            players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity);//.GetComponent<PlayerController>();
+            players[i] = Instantiate (
+                playerPrefab, 
+                spawnPoints[i].Position, 
+                spawnPoints[i].Orientation 
+            );
 
 			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(
@@ -68,7 +70,8 @@ public class GameManager : MonoBehaviour
                 playerCameras[i].GetComponent<OrbitCameraTP>(),
                 inputControllers[i],
                 playerColors [i]
-            );//, color, controller, etc....);
+            );
+
 			players[i].OnDie += OnPlayerDie;
 
 		}
