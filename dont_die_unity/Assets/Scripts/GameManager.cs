@@ -4,13 +4,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerPrefab;
-    [SerializeField] private GameObject orbitCameraPrefab;
+    [SerializeField] private OrbitCameraTP orbitCameraPrefab;
 
-    private const int maxPlayers = 4;
-
-    private PlayerController[] players = new PlayerController[maxPlayers];
-    private Camera[] playerCameras = new Camera[maxPlayers];
-
+    private PlayerController[] players;
     private GameConfiguration configuration;
 
     [SerializeField] private Color [] playerColors;
@@ -37,16 +33,19 @@ public class GameManager : MonoBehaviour
     private void OnLevelSceneLoaded(Scene scene, LoadSceneMode mode)
     {
     	InitializeLevel();
+        menuSystem.Hide();
     	SceneManager.sceneLoaded -= OnLevelSceneLoaded;
     }
 
     private void InitializeLevel()
 	{
         IInputController[] inputControllers = InputControllerManager.CreateControllers(configuration.playerCount);
-        players = new PlayerController[maxPlayers];
-        playerCameras = new Camera[maxPlayers];
+        players = new PlayerController[configuration.playerCount];
 
-        // Find spawnpoints and hide them from view. We can't hide them from elsewhere before used here.
+        // Get number of viewport rectangle sizes depending on player count
+        var viewRects = GetViewRects(configuration.playerCount);
+
+        // Find spawn points and hide them from view. We can't unactivate them from elsewhere before used here.
         var spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
         for (int i = 0; i < spawnPoints.Length; i++)
         {
@@ -55,8 +54,14 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < configuration.playerCount; i++)
         {
-            playerCameras[i] = Instantiate(orbitCameraPrefab).GetComponent<Camera>();
-            playerCameras[i].GetComponent<OrbitCameraTP>().SetInputController(inputControllers[i]);
+            OrbitCameraTP orbitCamera = Instantiate(
+                orbitCameraPrefab,
+                spawnPoints[i].Position,
+                spawnPoints[i].Orientation
+            );
+            
+            orbitCamera.SetInputController(inputControllers[i]);
+            orbitCamera.GetCamera().rect = viewRects[i];
 
             players[i] = Instantiate (
                 playerPrefab, 
@@ -67,17 +72,13 @@ public class GameManager : MonoBehaviour
 			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(
                 new PlayerHandle (i), 
-                playerCameras[i].GetComponent<OrbitCameraTP>(),
+                orbitCamera,
                 inputControllers[i],
                 playerColors [i]
             );
 
 			players[i].OnDie += OnPlayerDie;
-
 		}
-
-        SetViewports(playerCameras);
-        menuSystem.Hide();
 	}
 
 	private void OnPlayerDie(PlayerHandle handle)
@@ -101,20 +102,44 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync("Level");
     }
 
-    private void SetViewports(Camera[] cameraArray)
+    private static Rect [] GetViewRects (int count)
     {
-        float sizeX = configuration.playerCount == 1 ? 1 : 0.5f;
-        float sizeY = configuration.playerCount <= 2 ? 1 : 0.5f;
-
-        int i = 0;
-        for (int y = 0; y < 2; y++)
+        if (count < 1 || 4 < count)
         {
-            for (int x = 0; x < 2; x++)
-            {
-                cameraArray[i++].rect = new Rect(0.5f * x, 0.5f * y, sizeX, sizeY);
-                if (i == configuration.playerCount) return;
-            }
+            Debug.LogError($"{count} number of players not supported. Count must be 1 - 4.");
         }
+
+        float sizeX = count == 1 ? 1 : 0.5f;
+        float sizeY = count <= 2 ? 1 : 0.5f;
+
+        Rect[] rects = new Rect[count];
+
+        switch (count)
+        {
+            case 1:
+                rects[0] = new Rect(0, 0, sizeX, sizeY);
+                break;
+            case 2:
+                rects[0] = new Rect(0, 0, sizeX, sizeY);
+                rects[1] = new Rect(0.5f, 0, sizeX, sizeY);
+                break;
+
+            // Notice that rects [0] and [1] are now on top row, so their y-coordinate
+            // is different from above
+            case 3:
+                rects[0] = new Rect(0, 0.5f, sizeX, sizeY);
+                rects[1] = new Rect(0.5f, 0.5f, sizeX, sizeY);
+                rects[2] = new Rect(0, 0, sizeX, sizeY);
+                break;
+            case 4:
+                rects[0] = new Rect(0, 0.5f, sizeX, sizeY);
+                rects[1] = new Rect(0.5f, 0.5f, sizeX, sizeY);
+                rects[2] = new Rect(0, 0, sizeX, sizeY);
+                rects[3] = new Rect(0.5f, 0, sizeX, sizeY);
+                break;
+        }
+
+        return rects;
     }
 
     public void QuitGame()

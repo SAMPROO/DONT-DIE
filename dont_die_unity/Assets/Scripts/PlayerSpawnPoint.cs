@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Merely a tag to find all these when game loads
+[ExecuteInEditMode]
 public class PlayerSpawnPoint : MonoBehaviour
 {
 	public Vector3 Position => transform.position;
@@ -14,8 +14,9 @@ public class PlayerSpawnPoint : MonoBehaviour
 		}
 	}
 
-	// private void Awake()
-	// {
-	// 	gameObject.SetActive(false);
-	// }
+	private void Update()
+	{
+		// Snap to horizontal orientation
+		transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+	}
 }
