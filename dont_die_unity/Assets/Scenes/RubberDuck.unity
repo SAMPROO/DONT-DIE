@@ -13413,6 +13413,77 @@ Mesh:
     offset: 0
     size: 0
     path: 
+
+--- !u!1001 &609404567970194728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1323803731}
+    m_Modifications:
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.687784
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.0026765
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.844298
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2960371
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.2960371
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6421542
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6421542
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 49.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013185705651651770, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+        type: 3}
+      propertyPath: m_Name
+      value: RubberDuck
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 067add798a4e8d44e9b0d0bacc20aa69, type: 3}
+
 --- !u!1001 &1186899449802113070
 PrefabInstance:
   m_ObjectHideFlags: 0

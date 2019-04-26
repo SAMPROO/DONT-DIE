@@ -2,12 +2,19 @@
 public class JumpPad : MonoBehaviour
 {
     public float force = 0f;
-
-    private void OnCollisionEnter(Collision other)
+    
+    private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = other.transform.root.GetComponent<Rigidbody>();
+        var ragdollRoot = other.transform.root.GetComponent<RagdollArmatureRoot>();
+        var rigidbody = other.transform.GetComponent<Rigidbody>();
 
-        if (rb != null)
-            rb.AddForce(Vector3.up * force, ForceMode.VelocityChange);
+        ragdollRoot?.AddUniformForce(force * transform.up, ForceMode.VelocityChange);
+        
+        if (ragdollRoot == null && rigidbody != null )
+            rigidbody.AddForce(force * transform.up, ForceMode.VelocityChange);
+        
+        // Also add counter force to this only if hit something hittable
+        if (ragdollRoot != null || rigidbody != null)
+            gameObject.GetComponent<Rigidbody>().AddForce(-force * transform.up, ForceMode.VelocityChange);
     }
 }
