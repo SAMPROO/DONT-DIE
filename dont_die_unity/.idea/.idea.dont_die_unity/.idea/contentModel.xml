@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\GitHub\DONT-DIE\dont_die_unity" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="EditorUtilities" t="Include">
@@ -28,16 +29,19 @@
             <e p="ConfiguredAudioSource.cs" t="Include" />
             <e p="MeanAudioListener.cs" t="Include" />
           </e>
-          <e p="ButtonLinker.cs" t="Include" />
           <e p="Camera3rdPerson.cs" t="Include" />
           <e p="CarouselDriver.cs" t="Include" />
           <e p="ChangeScale.cs" t="Include" />
           <e p="DamageChild.cs" t="Include" />
           <e p="DamageController.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="Checkings.cs" t="Include" />
+          </e>
           <e p="Equipment.cs" t="Include" />
           <e p="Explosion.cs" t="Include" />
           <e p="FallDamageTester.cs" t="Include" />
           <e p="FixedJumpBonus.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="Gun.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
           <e p="IJumpBonus.cs" t="Include" />
@@ -52,7 +56,11 @@
           <e p="LerpDrive.cs" t="Include" />
           <e p="LifeTime.cs" t="Include" />
           <e p="LinearDrive.cs" t="Include" />
-          <e p="MapLinker.cs" t="Include" />
+          <e p="MenuSystem" t="Include">
+            <e p="CancelEvent.cs" t="Include" />
+            <e p="CreditsFormatter.cs" t="Include" />
+            <e p="MenuSystem.cs" t="Include" />
+          </e>
           <e p="OldScripts" t="Include">
             <e p="Switch_Lever.cs" t="Include" />
           </e>
@@ -61,17 +69,16 @@
           <e p="PlayerHandle.cs" t="Include" />
           <e p="PlayerHUD.cs" t="Include" />
           <e p="PlayerSpawner.cs" t="Include" />
-          <e p="ProjectileLauncher.cs" t="Include" />
+          <e p="PlayerSpawnPoint.cs" t="Include" />
           <e p="PunchGun.cs" t="Include" />
           <e p="Ragdoll" t="Include">
+            <e p="RagdollArmatureRoot.cs" t="Include" />
             <e p="RagdollFootControl.cs" t="Include" />
             <e p="RagdollHeadPiece.cs" t="Include" />
             <e p="RagdollRig.cs" t="Include" />
           </e>
-          <e p="RestartButton.cs" t="Include" />
           <e p="RubberBulletScript.cs" t="Include" />
           <e p="RubberDuckBullet.cs" t="Include" />
-          <e p="SingletonGameManager.cs" t="Include" />
           <e p="StickyProjectile.cs" t="Include" />
           <e p="Switch_Button.cs" t="Include" />
           <e p="Switch_Inspector.cs" t="Include" />
