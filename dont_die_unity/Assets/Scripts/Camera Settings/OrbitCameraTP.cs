@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class OrbitCameraTP : MonoBehaviour
 {
     [SerializeField]
@@ -46,6 +47,8 @@ public class OrbitCameraTP : MonoBehaviour
     public float [] smoothArray = new float[smoothArraySize];
     private float focusLerp;
 
+    public Camera GetCamera() => GetComponent<Camera>();
+
     private void Start()
     {
         //Hack sensitivityn Vector2 prefabissa instanssioituna on jostain syystä 0 ja 0
@@ -67,7 +70,6 @@ public class OrbitCameraTP : MonoBehaviour
         inputY += input.LookVertical * sensitivity.y *90* Time.deltaTime;
         inputY = Mathf.Clamp(inputY, Y_ANGLE_MIN, Y_ANGLE_MAX);
 
-        // This does same           
         aim = input.Focus;
 
         smoothArray [smoothIndex] = input.Focus == true ? 1f : 0f; // == 0 / 1

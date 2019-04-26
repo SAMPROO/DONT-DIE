@@ -207,6 +207,12 @@ public class RagdollRig : MonoBehaviour
 		);
 	}
 
+	// Since we break hierarchy in Start(), we need explicitly destroy hip
+	private void OnDestroy()
+	{
+		Destroy(hipRb.gameObject);
+	}
+
 	private void FixedUpdate()
 	{
 		isGoingTooFast = GoesTooFast();
