@@ -1,22 +1,23 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(GameManager))]
 public class MenuSystem : MonoBehaviour
 {
 	[Header("Main Menu")]
-	[SerializeField] private GameObject main;
+	[SerializeField] private GameObject mainViewObject;
 	[SerializeField] private Button 	mainPlayButton;
 	[SerializeField] private Button 	mainExitButton;
 
 	[Header("Player Count View")]
-	[SerializeField] private GameObject playerCountView;
+	[SerializeField] private GameObject playerCountViewObject;
     [SerializeField] private Button [] 	playerCountButtons;
     [SerializeField] private Button 	playerCountBackButton;
 
     [Header("Map Select View")]
-	[SerializeField] private GameObject 		mapSelect;
+	[SerializeField] private GameObject 		mapSelectViewObject;
 	[SerializeField] private MapButtonInfo [] 	mapButtonInfos;
 	[SerializeField] private Button 			mapSelectBackButton;
 	[SerializeField] private Text 				mapSelectPlayerCountText;
@@ -34,9 +35,10 @@ public class MenuSystem : MonoBehaviour
 	[SerializeField] private Button 	endGoToMainButton;
 	[SerializeField] private Text 		endWinnerNumberText;
 
+	private GameManager gameManager;
+	private EventSystem eventSystem;
 
 	private GameObject [] allViews;
-	private GameManager gameManager;
 
 	[Header("Testing stuff")]
 	public int TestViewIndex;
@@ -45,17 +47,19 @@ public class MenuSystem : MonoBehaviour
 	private void Awake()
 	{
 		gameManager = GetComponent<GameManager>();
+		eventSystem = GetComponentInChildren<EventSystem>();
 
 		allViews = new []{
-			main,
-			playerCountView,
-			mapSelect,
+			mainViewObject,
+			playerCountViewObject,
+			mapSelectViewObject,
 			end
 		};
 
 		// Main view
 		mainPlayButton.onClick.AddListener(StartConfigureGame);
 		mainExitButton.onClick.AddListener(gameManager.QuitGame);
+
 
 		// Player Count view
 		for (int i = 0; i < playerCountButtons.Length; i++)
@@ -64,20 +68,15 @@ public class MenuSystem : MonoBehaviour
 			int count = i + 1;
 			playerCountButtons[i].onClick.AddListener(() => SetPlayerCount(count));			
 		}
+		playerCountViewObject.GetComponent<CancelEvent>().OnCancel.AddListener(SetMainMenu);
 
         // Map Select view
         foreach (var info in mapButtonInfos)
         {
-            if (info.locked == false)
-            {
-                info.button.onClick.AddListener(() => SetMapSceneName(info.mapSceneName));
-                info.button.transform.GetChild(0).gameObject.SetActive(false);
-            }
-            else
-            {
-                info.button.transform.GetChild(0).gameObject.SetActive(true);
-            }
+            info.button.onClick.AddListener(() => SetMapSceneName(info.mapSceneName));
+            info.button.transform.GetChild(0).gameObject.SetActive(info.locked);
         }
+        mapSelectViewObject.GetComponent<CancelEvent>().OnCancel.AddListener(StartConfigureGame);
 
         // End view
         endGoToMainButton.onClick.AddListener(SetMainMenu);
@@ -88,6 +87,12 @@ public class MenuSystem : MonoBehaviour
 
 	}
 
+	private void SubsrcribeCancels (GameObject parent, System.Action onCancelFunction)
+	{
+		var children = parent.GetComponentsInChildren<CancelEvent>();
+		Debug.Log($"{children.Length} cancels found under {parent}");
+	}
+
 	private void Start()
 	{
 		SetMainMenu();
@@ -95,10 +100,9 @@ public class MenuSystem : MonoBehaviour
 
 	public void SetMainMenu()
 	{
-		SetView(main, true);
+		SetView(mainViewObject, true);
+		eventSystem.SetSelectedGameObject(mainPlayButton.gameObject);
 	}
-
-
 
 	private void SetView(GameObject view, bool track)
 	{
@@ -120,9 +124,9 @@ public class MenuSystem : MonoBehaviour
 		if (SwapTestView)
 		{
 			allViews = new []{
-				main,
-				playerCountView,
-				mapSelect,
+				mainViewObject,
+				playerCountViewObject,
+				mapSelectViewObject,
 				end
 			};
 
@@ -134,21 +138,23 @@ public class MenuSystem : MonoBehaviour
 	/// Configure Game                 	///
 	///////////////////////////////////////
 
-	// These are used to set up game. 'StartConfigureGame is mapped to main menu's
+	// These are used to set up game. 'StartConfigureGame' is mapped to main menu's
 	// "play button", and others to following views completing  actions
 	private GameConfiguration configuration;
 
-	public void StartConfigureGame()
+	private void StartConfigureGame()
 	{
 		configuration = new GameConfiguration();
-		SetView(playerCountView, true);
+		SetView(playerCountViewObject, true);
+		eventSystem.SetSelectedGameObject(playerCountButtons[0].gameObject);
 	}
 
 	private void SetPlayerCount(int count)
 	{
 		configuration.playerCount = count;
 		mapSelectPlayerCountText.text = count.ToString();
-		SetView(mapSelect, true);
+		SetView(mapSelectViewObject, true);
+		eventSystem.SetSelectedGameObject(mapButtonInfos[0].button.gameObject);
 	}
 
 	private void SetMapSceneName(string mapSceneName)
