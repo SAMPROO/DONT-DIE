@@ -93,11 +93,11 @@ public class MenuSystem : MonoBehaviour
 
 	}
 
-	private void SubsrcribeCancels (GameObject parent, System.Action onCancelFunction)
+	public void Hide()
 	{
-		var children = parent.GetComponentsInChildren<CancelEvent>();
-		Debug.Log($"{children.Length} cancels found under {parent}");
+		SetView (null);
 	}
+
 
 	private void Start()
 	{
@@ -171,7 +171,7 @@ public class MenuSystem : MonoBehaviour
 	private void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
-		SetView (null);
+		// SetView (null);
 		gameManager.StartGame(configuration);
 	}
 

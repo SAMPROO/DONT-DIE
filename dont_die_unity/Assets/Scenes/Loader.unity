@@ -4495,7 +4495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3c4396fb71dc2448433725b7bf0a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 8655569548028954036, guid: 94ec79f57bc12e043a2a24356fd4703b,
+  playerPrefab: {fileID: 8246959185096119745, guid: 94ec79f57bc12e043a2a24356fd4703b,
     type: 3}
   orbitCameraPrefab: {fileID: 3173458186620795841, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
     type: 3}

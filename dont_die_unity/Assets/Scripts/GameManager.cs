@@ -3,78 +3,41 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // public static GameManager Instance { get; private set; }
-    private static GameManager Instance { get; set; }
-
-    [SerializeField]
-    private GameObject playerPrefab, orbitCameraPrefab;
+    [SerializeField] private PlayerController playerPrefab;
+    [SerializeField] private GameObject orbitCameraPrefab;
 
     private const int maxPlayers = 4;
 
     private PlayerController[] players = new PlayerController[maxPlayers];
     private Camera[] playerCameras = new Camera[maxPlayers];
 
-    private readonly string[] sceneNames = {"Start", "MapSelection", "Level", "End"};
-    private int sceneIndex = 0;
-
-    private int numberOfPlayers = 2;
+    private GameConfiguration configuration;
 
     [SerializeField] private Color [] playerColors;
 
+    private MenuSystem menuSystem;
+
     private void Awake()
     {
-        if (GameManager.Instance == null)
-        {
-            Instance = this;
-        }
-        else if (GameManager.Instance != this)
-        {
-            Destroy(this);
-        }
-
         DontDestroyOnLoad(this);
-
-        // load start scene
-        // LoadNextLevel();
+        menuSystem = GetComponent<MenuSystem>();
     }
 
-    public void LoadNextLevel(string sceneName = null)
-    {
-        if (sceneName == null)
-        {
-            // Default LoadSceneMode is Single, but lets be explicit
-            SceneManager.LoadScene(sceneNames[sceneIndex], LoadSceneMode.Single);
-        }
-        else
-        {
-            // Loads level that was selected in MapSelection scene
-            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-        }
-
-        if (sceneIndex == 1)
-        {
-            // Scene loading completes next frame, so we need to subscribe event.
-            // Also we need to unsubscribe, so let's use proper function.            	
-            SceneManager.sceneLoaded += OnLevelSceneLoaded;
-        }
-
-        sceneIndex++;
-        sceneIndex %= sceneNames.Length;
-    }
-
+    // Use this from menusystem to start correct level etc.
     public void StartGame(GameConfiguration configuration)
     {
-        numberOfPlayers = configuration.playerCount;
+        this.configuration = configuration;
+
+        // numberOfPlayers = configuration.playerCount;
         SceneManager.LoadScene(configuration.mapSceneName);
         SceneManager.sceneLoaded += OnLevelSceneLoaded;
     }
 
-    // Kinda hacky feeling function, but whatever
+    // Initialize level (stored as scene), that has just been loaded. 
+	// Unsubscribe itself, so we don't keep initializing level, when not supposed to
     private void OnLevelSceneLoaded(Scene scene, LoadSceneMode mode)
     {
     	InitializeLevel();
-
-    	// Unsubscribe itself, so we don't keep initializing level, when not supposed to
     	SceneManager.sceneLoaded -= OnLevelSceneLoaded;
     }
 
@@ -86,18 +49,18 @@ public class GameManager : MonoBehaviour
         // For number od players:
         // 		Instantiate players to spawn points
         // 		Reset/initialize players
-        IInputController[] inputControllers = InputControllerManager.CreateControllers(numberOfPlayers);
+        IInputController[] inputControllers = InputControllerManager.CreateControllers(configuration.playerCount);
         players = new PlayerController[maxPlayers];
         playerCameras = new Camera[maxPlayers];
 
         Vector3[] spawnPoints = { new Vector3(0, 0, 0), new Vector3(2, 0, 0), new Vector3(-2, 0, 0), new Vector3(4, 0, 0) };
 
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < configuration.playerCount; i++)
         {
             playerCameras[i] = Instantiate(orbitCameraPrefab, spawnPoints[i], Quaternion.identity).GetComponent<Camera>();
             playerCameras[i].GetComponent<OrbitCameraTP>().SetInputController(inputControllers[i]);
 
-            players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity).GetComponent<PlayerController>();
+            players[i] = Instantiate (playerPrefab, spawnPoints[i], Quaternion.identity);//.GetComponent<PlayerController>();
 
 			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(
@@ -111,20 +74,18 @@ public class GameManager : MonoBehaviour
 		}
 
         SetViewports(playerCameras);
+        menuSystem.Hide();
 	}
 
 	private void OnPlayerDie(PlayerHandle handle)
 	{
         // unspawn player
-        // if enough players (1) is died, end match, and someone wins
+        // if enough players (1) has died, end match, and someone wins
 
-        // Do not really destroy
-        //Destroy(players[handle]);
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < configuration.playerCount; i++)
         {
             players[i].Destroy();
         }
-
 		players = null;
 
         var endStatus = new GameEndStatus
@@ -132,22 +93,15 @@ public class GameManager : MonoBehaviour
             // Add 1 to make range [1 --> 4]
             winnerNumber = handle.index + 1
         };
-        GetComponent<MenuSystem>().SetEndView(endStatus);   
 
+        menuSystem.SetEndView(endStatus);   
         SceneManager.UnloadSceneAsync("Level");
     }
 
-
-    public void SetPlayerCount(int playerCount)
+    private void SetViewports(Camera[] cameraArray)
     {
-        numberOfPlayers = playerCount;
-        SceneManager.LoadScene("MapSelection", LoadSceneMode.Single);
-    }
-
-    public void SetViewports(Camera[] cameraArray)
-    {
-        float sizeX = numberOfPlayers == 1 ? 1 : 0.5f;
-        float sizeY = numberOfPlayers <= 2 ? 1 : 0.5f;
+        float sizeX = configuration.playerCount == 1 ? 1 : 0.5f;
+        float sizeY = configuration.playerCount <= 2 ? 1 : 0.5f;
 
         int i = 0;
         for (int y = 0; y < 2; y++)
@@ -155,7 +109,7 @@ public class GameManager : MonoBehaviour
             for (int x = 0; x < 2; x++)
             {
                 cameraArray[i++].rect = new Rect(0.5f * x, 0.5f * y, sizeX, sizeY);
-                if (i == numberOfPlayers) return;
+                if (i == configuration.playerCount) return;
             }
         }
     }
@@ -170,7 +124,7 @@ public class GameManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
+// [System.Serializable]
 public class GameConfiguration
 {
     public int playerCount;
