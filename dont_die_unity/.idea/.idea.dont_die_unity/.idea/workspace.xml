@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0426a530-40b7-447d-8f41-8b8c44455279" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+              <folding>
+                <marker date="1556309572882" expanded="false" signature="6:77" ph="..." />
+                <marker date="1556309572882" expanded="true" signature="124:2441" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="732:930" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="981:2228" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="1120:1395" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="1193:1385" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="1433:1536" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="1678:2153" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="1861:2143" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="1892:1966" ph="/* if (ragdollRig != null) ... */" />
+                <marker date="1556309572882" expanded="true" signature="2280:2439" ph="{...}" />
+                <marker date="1556309572882" expanded="true" signature="2342:2433" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <marker date="1556311518331" expanded="true" signature="55:779" ph="{...}" />
+                <marker date="1556311518331" expanded="true" signature="139:777" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollArmatureRoot.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <folding>
+                <marker date="1556311518337" expanded="true" signature="68:489" ph="{...}" />
+                <marker date="1556311518337" expanded="true" signature="136:211" ph="{...}" />
+                <marker date="1556311518337" expanded="true" signature="341:487" ph="{...}" />
+                <marker date="1556311518337" expanded="true" signature="403:481" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding>
+                <marker date="1555582276889" expanded="true" signature="75:136" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="1" selection-end-column="18" />
+              <folding>
+                <marker date="1556309430258" expanded="false" signature="6:44" ph="..." />
+                <marker date="1556309430258" expanded="true" signature="86:1378" ph="{...}" />
+                <marker date="1556309430258" expanded="true" signature="503:699" ph="{...}" />
+                <marker date="1556309430258" expanded="true" signature="750:1167" ph="{...}" />
+                <marker date="1556309430258" expanded="true" signature="905:1077" ph="{...}" />
+                <marker date="1556309430258" expanded="true" signature="1219:1376" ph="{...}" />
+                <marker date="1556309430258" expanded="true" signature="1279:1370" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8D2DEAE-EB3A-4471-B3E2-24C2A136823A/80/069efecc/Vector3.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="10272">
+              <caret line="646" column="6" selection-start-line="646" selection-start-column="6" selection-end-line="646" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/LifeTime.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1554969892433" expanded="false" signature="6:78" ph="..." />
+                <marker date="1554969892433" expanded="true" signature="117:225" ph="{...}" />
+                <marker date="1554969892433" expanded="true" signature="172:223" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Equipment.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+              <folding>
+                <marker date="1556311518330" expanded="true" signature="105:2232" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="315:473" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="333:408" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="421:467" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="541:752" ph="/* if you need Update use this in your script: (works for other funtions aswell) ... */" />
+                <marker date="1556311518330" expanded="true" signature="785:1239" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="935:1008" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="1054:1117" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="1157:1226" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="1350:1767" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="1807:1932" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="1967:2008" ph="{...}" />
+                <marker date="1556311518330" expanded="true" signature="2059:2230" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>head</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FallDamageTester.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Equipment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Explosion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageChild.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/RubberDuck.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LifeTime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollRig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/GamepadController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/IInputController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RubberBulletScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/InputControllerManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/645B5729-CB30-4920-886A-95AAF544DA6F/21/7fbf5af5/ScriptableBakedReflectionSystemWrapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollFootControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8D2DEAE-EB3A-4471-B3E2-24C2A136823A/80/069efecc/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/VelocityBasedJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LinearDrive.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollArmatureRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Orbit Camera.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TouchDamage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/OrbitCameraTP.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ImpactDamage.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/Input/IInputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Input/GamepadController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputControllerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ButtonLinker.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SingletonGameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapLinker.cs" />
+        <option value="$PROJECT_DIR$/Assets/DivingBoard.cs" />
+        <option value="$PROJECT_DIR$/Assets/DivingBoardTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/IJumpBonus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Materials/JumpBonus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TestJumpBonus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollFootControl.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DivingBonusJumpBoard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/VelocityBasedJumpBonus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Explosion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollArmatureRoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollRig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/JumpPad.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/RubberDuck.unity" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Ragdoll" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
+      </pane>
+    </panes>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" pid="14268">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="14268" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0426a530-40b7-447d-8f41-8b8c44455279" name="Default Changelist" comment="" />
+      <created>1554812495325</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554812495325</updated>
+      <workItem from="1554812498540" duration="70000" />
+      <workItem from="1554968034148" duration="9771000" />
+      <workItem from="1555495646575" duration="2590000" />
+      <workItem from="1556093641863" duration="8564000" />
+      <workItem from="1556286556655" duration="6871000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="549000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10890302" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25409198" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32969603" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Unity" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" weight="0.3298887" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" weight="0.3298887" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07193959" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Unity" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="NuGet" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32969603" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Errors In Solution" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="6" />
+    </layout-to-restore>
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberBulletScript.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1554381387631" expanded="false" signature="6:78" ph="..." />
+            <marker date="1554381387631" expanded="true" signature="127:766" ph="{...}" />
+            <marker date="1554381387631" expanded="true" signature="235:368" ph="{...}" />
+            <marker date="1554381387631" expanded="true" signature="424:764" ph="{...}" />
+            <marker date="1554381387631" expanded="true" signature="529:594" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollRig.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-142">
+          <caret line="158" column="24" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
+          <folding>
+            <marker date="1556311518338" expanded="true" signature="0:39" ph="/* Sampo's Game Company ... */" />
+            <marker date="1556311518338" expanded="false" signature="47:133" ph="..." />
+            <marker date="1556311518338" expanded="true" signature="174:14626" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="385:501" ph="/* This should be close to walking speed. It is used as critical ... */" />
+            <marker date="1556311518338" expanded="true" signature="649:895" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="1175:1903" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="1327:1481" ph="/* TODO: Add knees ... */" />
+            <marker date="1556311518338" expanded="true" signature="3826:4451" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="4086:4198" ph="/* Set invulnerability. Also set hasControl to false, so that we stay ... */" />
+            <marker date="1556311518338" expanded="true" signature="4577:4871" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="4929:5014" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="5038:5918" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="5229:5295" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="6017:6052" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="6081:8207" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="6374:6434" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="6441:6532" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="6553:7979" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="7231:7629" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="7637:7758" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="7986:8027" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="8031:8124" ph="/* follow hipRb, it is different transform ... */" />
+            <marker date="1556311518338" expanded="true" signature="8320:8505" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="8509:8766" ph="/* Move character to direction, do this in fixed update only. ... */" />
+            <marker date="1556311518338" expanded="true" signature="8856:9577" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="8862:9050" ph="/* Walk if we are grounded or our velocity is smaller than walk speed. ... */" />
+            <marker date="1556311518338" expanded="true" signature="9071:9527" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="9132:9304" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="9599:9948" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="9634:9945" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="10025:10157" ph="/* Hands' forward axes actually point up, so we want to rotate them additional 90 degrees ... */" />
+            <marker date="1556311518338" expanded="true" signature="10333:10754" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="10958:11357" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="11180:11304" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="11304:11354" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="11513:12562" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="11926:12399" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="12698:12970" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="12819:12937" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="13110:13413" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="13252:13390" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="13441:13875" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="13498:13621" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="13717:13872" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="14018:14268" ph="{...}" />
+            <marker date="1556311518338" expanded="true" signature="14444:14624" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/.idea.dont_die_unity/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="87" column="12" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scenes/RubberDuck.unity">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="1972" column="42" selection-start-line="1972" selection-start-column="42" selection-end-line="1972" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <marker date="1556311518331" expanded="true" signature="55:779" ph="{...}" />
+            <marker date="1556311518331" expanded="true" signature="139:777" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/RubberDuckBullet.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+          <folding>
+            <marker date="1556309572882" expanded="false" signature="6:77" ph="..." />
+            <marker date="1556309572882" expanded="true" signature="124:2441" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="732:930" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="981:2228" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="1120:1395" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="1193:1385" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="1433:1536" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="1678:2153" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="1861:2143" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="1892:1966" ph="/* if (ragdollRig != null) ... */" />
+            <marker date="1556309572882" expanded="true" signature="2280:2439" ph="{...}" />
+            <marker date="1556309572882" expanded="true" signature="2342:2433" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
