@@ -60,7 +60,7 @@ MonoBehaviour:
   explosionSound: {fileID: 0}
   delay: 3
   blastRadius: 5
-  blastForce: 35
+  blastForce: 42.39
   upwardsModifier: 1
   exploadOnCollision: 1
   destroyAfterExplosion: 1
