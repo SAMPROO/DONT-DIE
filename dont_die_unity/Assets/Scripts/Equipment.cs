@@ -3,55 +3,69 @@
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Equipment : MonoBehaviour
 {
+    public bool testFire;
     public Vector3 holdPosition;
 
+    public float fiveSecondRule = 5;
+    public bool infiniteAmmo;
+
+    [SerializeField] private int ammo = 0;
+    [SerializeField] public int Ammo
+    {
+        get
+        {
+            return infiniteAmmo ? int.MaxValue : ammo;
+        }
+
+        set
+        {
+            ammo = value;
+        }
+    }
+
     protected bool isCarried;
-    protected Rigidbody rb;
 
     private FixedJoint joint;
 
-    public virtual void Awake()
+    /* if you need Update use this in your script: (works for other funtions aswell)
+     * public override void Update()
+     * {
+     *      base.Update();
+     *      
+     *      // your code...
+     * }
+     */
+    public virtual void Update()
     {
-        rb = GetComponent<Rigidbody>();
+        // Destroy this gameobject if not carried and has no ammo after a time in seconds
+        if (!isCarried && !infiniteAmmo && Ammo <= 0)
+        {
+            Invoke(nameof(Destroy), fiveSecondRule);
+        }
+        else if (IsInvoking(nameof(Destroy)))
+        {
+            CancelInvoke(nameof(Destroy));
+        }
+
+#if UNITY_EDITOR
+        if (testFire)
+        {
+            Use();
+            testFire = false;
+        }
+#endif
     }
+
 
     public abstract void Use();
 
-    [System.Obsolete("Use other function to directly set Rigidbody, along with configurable rotation")]
-    public virtual void StartCarrying(Transform carrier)
+    public virtual void StartCarrying(Rigidbody connectedBody, float angle)
     {
         if (joint != null) return;
 
-        // Turn off physics etc.
-        //transform.SetParent(carrier);
-        //transform.localPosition = Vector3.zero;
-        //transform.localRotation = Quaternion.identity;
-
-        //rb.isKinematic = true;
-        //rb.detectCollisions = false;
-
-        transform.position = carrier.position - Quaternion.LookRotation(carrier.forward, carrier.up) * holdPosition;
-        transform.rotation = carrier.rotation;
-
-        joint = gameObject.AddComponent<FixedJoint>();
-        joint.connectedBody = carrier.GetComponent<Rigidbody>();
-
-        isCarried = true;
-
-        Debug.Log("Gun hops on");
-    }
-
-
-    // Use offsetRotation to set other rotation relative to connectedBody's rotation
-    public virtual void StartCarrying(Rigidbody connectedBody, Quaternion offsetRotation)
-    {
-        if (joint != null) return;
-
-        transform.position = 
-            connectedBody.position 
-            - Quaternion.LookRotation(connectedBody.transform.forward, connectedBody.transform.up) * holdPosition;
+        transform.rotation = connectedBody.rotation * Quaternion.AngleAxis(angle, Vector3.right);
         
-        transform.rotation = connectedBody.rotation * offsetRotation;
+        transform.position = connectedBody.transform.TransformPoint(Quaternion.AngleAxis(angle + 180, Vector3.right) * holdPosition);
 
         joint = gameObject.AddComponent<FixedJoint>();
         joint.connectedBody = connectedBody;
@@ -61,11 +75,6 @@ public abstract class Equipment : MonoBehaviour
 
     public virtual void StopCarrying()
     {
-        // Turn on physics etc.
-        //transform.SetParent(null);
-        //rb.isKinematic = false;
-        //rb.detectCollisions = true;
-
         Destroy(joint);
         joint = null;
 
@@ -74,10 +83,15 @@ public abstract class Equipment : MonoBehaviour
         Debug.Log("Gun thrown away");
     }
 
+    public virtual void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
     protected virtual void OnDrawGizmosSelected()
     {
-        // Draw a sphere at the projectile spawn position
+        // Draw a sphere at the hold position
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position + Quaternion.LookRotation(transform.forward, transform.up) * holdPosition, .05f);
+        Gizmos.DrawWireSphere(transform.TransformPoint(holdPosition), .05f);
     }
 }
