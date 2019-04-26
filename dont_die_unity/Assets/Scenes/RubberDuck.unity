@@ -13352,11 +13352,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1323803731}
     m_Modifications:
-    - target: {fileID: 6013185705651651770, guid: 067add798a4e8d44e9b0d0bacc20aa69,
-        type: 3}
-      propertyPath: m_Name
-      value: RubberDuck
-      objectReference: {fileID: 0}
     - target: {fileID: 6013185705651651768, guid: 067add798a4e8d44e9b0d0bacc20aa69,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13412,12 +13407,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 6013185705651651771, guid: 067add798a4e8d44e9b0d0bacc20aa69,
+    - target: {fileID: 6013185705651651770, guid: 067add798a4e8d44e9b0d0bacc20aa69,
         type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 5389533523361623170, guid: 58d2bb11840c65b40b3e83c635f8a83c,
-        type: 3}
+      propertyPath: m_Name
+      value: RubberDuck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 067add798a4e8d44e9b0d0bacc20aa69, type: 3}
 --- !u!1001 &1186899449802113070
@@ -13858,7 +13852,8 @@ MonoBehaviour:
   blastForce: 100
   upwardsModifier: 0
   exploadOnCollision: 1
-  destroyAfterScale: 1
+  destroyAfterExplosion: 1
+  changeScale: 0
   scaleMultiplier: 20
   timeToScale: 4
 --- !u!1001 &5520171765789608878
@@ -13963,6 +13958,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1388109064303999509, guid: 58d2bb11840c65b40b3e83c635f8a83c,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5389533523361623170, guid: 58d2bb11840c65b40b3e83c635f8a83c,
         type: 3}
       propertyPath: m_Name
@@ -14037,11 +14037,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388109064303999509, guid: 58d2bb11840c65b40b3e83c635f8a83c,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9046003567612411877, guid: 58d2bb11840c65b40b3e83c635f8a83c,
         type: 3}

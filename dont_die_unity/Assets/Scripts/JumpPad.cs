@@ -3,11 +3,11 @@ public class JumpPad : MonoBehaviour
 {
     public float force = 0f;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rb = other.transform.root.GetComponent<Rigidbody>();
+        Rigidbody rigidbody = other.transform.root.GetComponent<Rigidbody>();
 
-        if (rb != null)
-            rb.AddForce(Vector3.up * force, ForceMode.VelocityChange);
+        if (rigidbody != null)
+            rigidbody.velocity = Vector3.up * force;
     }
 }
