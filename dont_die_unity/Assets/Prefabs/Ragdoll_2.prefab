@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4533184863676685974}
   - component: {fileID: 4533184863676685952}
   - component: {fileID: 1371812426}
+  - component: {fileID: 259953832}
   m_Layer: 13
   m_Name: Hand.L
   m_TagString: Untagged
@@ -123,6 +124,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedOnly: 0
   size: 0.2
+--- !u!114 &259953832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533184863676685953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b115032fd6a70b47bb8427d41210781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.12
+  offset: {x: 0, y: 0.1, z: 0}
 --- !u!1 &4533184863676685955
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +553,7 @@ GameObject:
   - component: {fileID: 4533184863676685966}
   - component: {fileID: 4533184863676685964}
   - component: {fileID: 99017409}
+  - component: {fileID: 79990566}
   m_Layer: 13
   m_Name: Hand.R
   m_TagString: Untagged
@@ -648,6 +664,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedOnly: 0
   size: 0.2
+--- !u!114 &79990566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533184863676685965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b115032fd6a70b47bb8427d41210781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.12
+  offset: {x: 0, y: 0.1, z: 0}
 --- !u!1 &4533184863676685967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,6 +1129,8 @@ MonoBehaviour:
   handsAngleMax: 60
   leftHandRb: {fileID: 4533184863676682601}
   rightHandRb: {fileID: 4533184863676685972}
+  leftGrab: {fileID: 259953832}
+  rightGrab: {fileID: 79990566}
   hipRb: {fileID: 4533184863676686066}
   hitRayMask:
     serializedVersion: 2
@@ -2629,6 +2661,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4533184863677170345}
     m_Modifications:
+    - target: {fileID: 6957280378068528610, guid: 5964a828ad32e03499ea84da1e3f652c,
+        type: 3}
+      propertyPath: m_Name
+      value: SeeingStars
+      objectReference: {fileID: 0}
     - target: {fileID: 6957280378068528623, guid: 5964a828ad32e03499ea84da1e3f652c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2693,16 +2730,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6957280378068528610, guid: 5964a828ad32e03499ea84da1e3f652c,
-        type: 3}
-      propertyPath: m_Name
-      value: SeeingStars
-      objectReference: {fileID: 0}
-    - target: {fileID: 6957280378068528610, guid: 5964a828ad32e03499ea84da1e3f652c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5964a828ad32e03499ea84da1e3f652c, type: 3}

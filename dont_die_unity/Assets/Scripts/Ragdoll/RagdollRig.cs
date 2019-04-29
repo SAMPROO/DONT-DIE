@@ -91,6 +91,9 @@ public class RagdollRig : MonoBehaviour
 	public Rigidbody leftHandRb;
 	public Rigidbody rightHandRb;
 
+	public RagdollHandGrab leftGrab;
+	public RagdollHandGrab rightGrab;
+
 	// Set aim angle between min and max
 	public void SetHandsAimAngle(float value) => handsAimAngle = value;
 	private float handsAimAngle;
@@ -260,6 +263,9 @@ public class RagdollRig : MonoBehaviour
 				handsForward,
 				handForce
 			);
+
+			leftGrab.SetGrab(ControlLeftHand);
+			rightGrab.SetGrab(ControlRightHand);
 
 			// Control hips etc. --------------------------------------------------------------------
 

@@ -2820,6 +2820,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 2045726436}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 310099413}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b8cfb20a8c2f942aeff0256a1ff726, type: 3}
 --- !u!224 &770659431 stripped
@@ -5158,6 +5163,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
       objectReference: {fileID: 770659432}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 310099413}
     - target: {fileID: 1539798929341540052, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
         type: 3}
       propertyPath: m_Sprite
