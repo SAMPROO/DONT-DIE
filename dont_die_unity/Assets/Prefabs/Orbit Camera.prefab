@@ -94,3 +94,7 @@ MonoBehaviour:
   cameraDistanceMax: 8
   cameraDistanceMin: 4
   cameraDistanceCurrent: 0
+  cameraRayMask:
+    serializedVersion: 2
+    m_Bits: 1591
+  cameraColliderRadius: 0.4

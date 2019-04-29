@@ -18,12 +18,9 @@ public class RagdollHandGrab : MonoBehaviour
 
 	public void SetGrab(bool value)
 	{
-		if (value == false)
-		{
-			if (grabJoint != null)
-				Destroy(grabJoint);
-		}
-
+		// If we release hold, destroy any joint
+		if (value == false && grabJoint != null)
+			Destroy(grabJoint);
 
 		grabTrigger.enabled = value;
 	}
@@ -35,9 +32,6 @@ public class RagdollHandGrab : MonoBehaviour
 
 		if (grabJoint != null)
 			return;
-
-		Debug.Log("Grab trigger entered");
-
 
 		grabJoint = gameObject.AddComponent<FixedJoint>();
 		grabJoint.connectedBody = other.GetComponent<Rigidbody>();

@@ -26,6 +26,8 @@ public class OrbitCameraTP : MonoBehaviour
     private bool aim;
 
     private IInputController input;
+    public void SetInputController(IInputController _input)
+        => input = _input;
 
     // For PlayerCharacter
     public Quaternion BaseRotation => Quaternion.Euler(0, inputX, 0);
@@ -39,16 +41,19 @@ public class OrbitCameraTP : MonoBehaviour
 
     public Camera GetCamera() => GetComponent<Camera>();
 
-    private void Start()
-    {
-        //Hack sensitivityn Vector2 prefabissa instanssioituna on jostain syystä 0 ja 0
-        if (sensitivity.x == 0) sensitivity.x = 2f;
-        if (sensitivity.y == 0) sensitivity.y = 0.5f;
-    }
+    private Vector3 DEBUGCameraPosition;
+    private Vector3 DEBUGRayOrigin;
+    private Vector3 DEBUGRayDirection;
+
+
+    private Vector3 [] DEBUGRayPoints = new Vector3[3];
+
+    public LayerMask cameraRayMask;
+    public float cameraColliderRadius = 0.2f;
 
     private void LateUpdate()
     {
-        // Input is fine in LateUpdate Too
+        // Input is fine in LateUpdate
         inputX += input.LookHorizontal * sensitivity.x *90* Time.deltaTime;
         inputY += input.LookVertical * sensitivity.y *90* Time.deltaTime;
         inputY = Mathf.Clamp(inputY, Y_ANGLE_MIN, Y_ANGLE_MAX);
@@ -59,8 +64,7 @@ public class OrbitCameraTP : MonoBehaviour
         smoothIndex = (smoothIndex + 1) % smoothArray.Length;
         focusLerp = smoothArray.Average();
 
-        MoveCamera(inputY, inputX);
-
+        /// Aim stuff -------------------------------------------------------
         if (aim == false)
         {
             float angle;
@@ -77,29 +81,65 @@ public class OrbitCameraTP : MonoBehaviour
 
         var flatForwardVector = new Vector3(transform.forward.x, 0, transform.forward.z);
         AimAngle = Vector3.SignedAngle(transform.forward, flatForwardVector, transform.right);
-    }
 
-    public void MoveCamera(float _yRot, float _xRot)
-    {
-        Vector3 zPosition = new Vector3(0, 0, -cameraDistanceCurrent);
 
+        // Move stuff ------------------------------------------------------
         Vector2 offset = Vector2.Lerp(normalLookOffset, focusLookOffset, focusLerp);
         Vector3 xyPosition = new Vector3(offset.x, offset.y, 0);
 
-        // TODO: make this happen to make camera not go underground      
-        // Vector3 anchor2 = anchor.position + rotation * xyposition;
-        // Ray ray = new Ray (anchor2, -1 * rotation * Vector3.forward);
-        // Vector3 finalPosition = sphereCast (ray, cameraDistanceCurrent);
 
-        Quaternion rotation = Quaternion.Euler(_yRot, _xRot, 0);
-        transform.position = anchor.position + rotation * (xyPosition + zPosition);
+        Vector3 zPosition = new Vector3(0, 0, -cameraDistanceCurrent);
 
-        Vector3 lookTarget = anchor.position + rotation * xyPosition;
+        Quaternion rotation = Quaternion.Euler(inputY, inputX, 0);
+
+        // Go up. No avoid clipping on this direction, so no cast
+        // TODO: rotating updirection may be the cause of "nod"
+        // var upDir = rotation * Vector3.up;
+        var upDir = Vector3.up;
+        var point0 = anchor.position + upDir * offset.y;
+        
+        // Go right/left
+        var rightDir = rotation * Vector3.right;
+        var point1 = point0 + rightDir * offset.x;
+        RaycastHit hit1;
+        if (Physics.SphereCast(point0, cameraColliderRadius, rightDir, out hit1, offset.x, cameraRayMask))
+        {
+            point1 = point0 + rightDir * hit1.distance;
+        }
+
+        // Go back
+        var backDir = rotation * Vector3.back;
+        var point2 = point1 + backDir * cameraDistanceCurrent;
+        RaycastHit hit2;
+        if (Physics.SphereCast(point1, cameraColliderRadius, backDir, out hit2, cameraDistanceCurrent, cameraRayMask))
+        {
+            point2 = point1 + backDir * hit2.distance;
+        }
+
+
+        DEBUGRayPoints[0] = point0;
+        DEBUGRayPoints[1] = point1;
+        DEBUGRayPoints[2] = point2;
+
+        transform.position = point2;
+
+        Vector3 lookTarget = point1;
         transform.LookAt(lookTarget);
     }
 
-    public void SetInputController(IInputController _input)
+    private void OnDrawGizmos()
     {
-        input = _input;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(DEBUGRayPoints[0], 0.15f);
+        Gizmos.DrawLine(DEBUGRayPoints[0], DEBUGRayPoints[1]);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(DEBUGRayPoints[1], 0.15f);
+        Gizmos.DrawLine(DEBUGRayPoints[1], DEBUGRayPoints[2]);
+
+        Gizmos.color = new Color(1, 0, 1);
+        Gizmos.DrawWireSphere(DEBUGRayPoints[2], 0.15f);    
+
+
     }
 }
