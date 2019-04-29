@@ -7,6 +7,7 @@ public class ProjectileAttacher : MonoBehaviour
     private bool isAttached;
     private bool ready;
     public float primeTime=0.3f;
+    public AudioClip sound;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,6 +19,7 @@ public class ProjectileAttacher : MonoBehaviour
 
     private void DoAttach(GameObject go,Vector3 hitPos)
     {
+        GetComponent<AudioSource>().PlayOneShot(sound);
         Debug.Log("I got attached to "+go);
         FixedJoint instance = gameObject.AddComponent<FixedJoint>();
         if(go.GetComponent<Rigidbody>()!=null)

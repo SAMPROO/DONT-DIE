@@ -4,6 +4,8 @@ public class Gun : Equipment
 {
     public GameObject projectilePrefab;
     public Vector3 spawnOffset;
+    public Vector3 projectileRotationOffset;
+    private Quaternion projectileRotationOffset2;
 
     public float startSpeed = 10;
     public float startAngle = 0;
@@ -22,9 +24,18 @@ public class Gun : Equipment
 
     private GameObject projectile;
 
+    //Sounds
+    private AudioSource audioSrc;
+    public AudioClip[] gunSounds;
+    public AudioClip[] noAmmoSounds;
+
     private void Start()
     {
         secondsPerRound = 1f / roundPerSecond;
+        audioSrc = GetComponent<AudioSource>();
+        if (gunSounds.Length < 1)
+            Debug.Log("No sounds");
+        projectileRotationOffset2 = Quaternion.Euler(projectileRotationOffset.x, projectileRotationOffset.y, projectileRotationOffset.z);
     }
 
     public override void Use()
@@ -34,10 +45,11 @@ public class Gun : Equipment
             projectile = Instantiate(
                 projectilePrefab,
                 transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset,
-                transform.rotation
+                transform.rotation * projectileRotationOffset2
             );
             projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
-
+            AudioClip selectedClip = gunSounds[Random.Range(0, gunSounds.Length)];
+            audioSrc.PlayOneShot(selectedClip);
             time = Time.time;
             Ammo--;
 
