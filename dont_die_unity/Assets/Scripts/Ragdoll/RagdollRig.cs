@@ -263,7 +263,7 @@ public class RagdollRig : MonoBehaviour
 
 			// Control hips etc. --------------------------------------------------------------------
 
-			if (Grounded || Grounded)
+			if (Grounded)
 			{
 				hipRb.AddForce(hipForce * Vector3.up);
 

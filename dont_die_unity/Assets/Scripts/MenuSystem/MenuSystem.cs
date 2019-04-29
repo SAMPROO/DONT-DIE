@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(GameManager))]
 public class MenuSystem : MonoBehaviour
 {
+	[SerializeField] private MenuInputSetter menuInputSetter;
+
 	[Header("Main Menu")]
 	[SerializeField] private GameObject mainViewObject;
 	[SerializeField] private Button 	mainPlayButton;
@@ -90,7 +92,6 @@ public class MenuSystem : MonoBehaviour
         playerCountBackButton.onClick.AddListener(SetMainMenu);
         mapSelectBackButton.onClick.AddListener(StartConfigureGame);
         creditsBackButton.onClick.AddListener(SetMainMenu);
-
 	}
 
 	public void Hide()
@@ -102,6 +103,7 @@ public class MenuSystem : MonoBehaviour
 	{
 		SetView(mainViewObject);
 		eventSystem.SetSelectedGameObject(mainPlayButton.gameObject);
+		menuInputSetter.DetectAndSet();
 	}
 
 	private void SetView(GameObject view)
@@ -165,7 +167,6 @@ public class MenuSystem : MonoBehaviour
 	private void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
-		// SetView (null);
 		gameManager.StartGame(configuration);
 	}
 
