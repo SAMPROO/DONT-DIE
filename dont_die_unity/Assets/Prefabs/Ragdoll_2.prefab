@@ -1134,7 +1134,7 @@ MonoBehaviour:
   hipRb: {fileID: 4533184863676686066}
   hitRayMask:
     serializedVersion: 2
-    m_Bits: 1591
+    m_Bits: 788023
   hipForce: 1000
   hipHeight: 0.37
   hipZOffset: -0.1
