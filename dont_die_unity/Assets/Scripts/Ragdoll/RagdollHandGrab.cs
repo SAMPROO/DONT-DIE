@@ -27,14 +27,17 @@ public class RagdollHandGrab : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.transform.root == transform.root)
+		// Dont grab self or if already grabbing something
+		if (other.transform.root == transform.root || grabJoint != null)
 			return;
 
-		if (grabJoint != null)
-			return;
-
-		grabJoint = gameObject.AddComponent<FixedJoint>();
-		grabJoint.connectedBody = other.GetComponent<Rigidbody>();
+		// Also only grab rigidbodies now
+		var otherRigidbody = other.GetComponent<Rigidbody>();
+		if (otherRigidbody != null)
+		{
+			grabJoint = gameObject.AddComponent<FixedJoint>();
+			grabJoint.connectedBody = otherRigidbody;
+		}
 	}
 
 	private void OnDrawGizmosSelected ()

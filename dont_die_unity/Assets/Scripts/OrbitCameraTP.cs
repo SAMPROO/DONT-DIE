@@ -26,8 +26,8 @@ public class OrbitCameraTP : MonoBehaviour
     private bool aim;
 
     private IInputController input;
-    public void SetInputController(IInputController _input)
-        => input = _input;
+    public void SetInputController(IInputController input)
+        => this.input = input;
 
     // For PlayerCharacter
     public Quaternion BaseRotation => Quaternion.Euler(0, inputX, 0);
@@ -91,6 +91,7 @@ public class OrbitCameraTP : MonoBehaviour
         Vector3 zPosition = new Vector3(0, 0, -cameraDistanceCurrent);
 
         Quaternion rotation = Quaternion.Euler(inputY, inputX, 0);
+        Quaternion posRotation = rotation;//Quaternion.Euler(Mathf.Max(0, inputY), inputX, 0);
 
         // Go up. No avoid clipping on this direction, so no cast
         // TODO: rotating updirection may be the cause of "nod"
@@ -99,7 +100,7 @@ public class OrbitCameraTP : MonoBehaviour
         var point0 = anchor.position + upDir * offset.y;
         
         // Go right/left
-        var rightDir = rotation * Vector3.right;
+        var rightDir = posRotation * Vector3.right;
         var point1 = point0 + rightDir * offset.x;
         RaycastHit hit1;
         if (Physics.SphereCast(point0, cameraColliderRadius, rightDir, out hit1, offset.x, cameraRayMask))
@@ -108,7 +109,7 @@ public class OrbitCameraTP : MonoBehaviour
         }
 
         // Go back
-        var backDir = rotation * Vector3.back;
+        var backDir = posRotation * Vector3.back;
         var point2 = point1 + backDir * cameraDistanceCurrent;
         RaycastHit hit2;
         if (Physics.SphereCast(point1, cameraColliderRadius, backDir, out hit2, cameraDistanceCurrent, cameraRayMask))
@@ -123,8 +124,7 @@ public class OrbitCameraTP : MonoBehaviour
 
         transform.position = point2;
 
-        Vector3 lookTarget = point1;
-        transform.LookAt(lookTarget);
+        transform.rotation = rotation;
     }
 
     private void OnDrawGizmos()
