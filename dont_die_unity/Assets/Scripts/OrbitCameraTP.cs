@@ -35,7 +35,6 @@ public class OrbitCameraTP : MonoBehaviour
 
     public Camera GetCamera() => GetComponent<Camera>();
 
-
     private void LateUpdate()
     {
         // Input stuff --------------------------------------------------------
@@ -49,12 +48,13 @@ public class OrbitCameraTP : MonoBehaviour
         /// Aim stuff ---------------------------------------------------------
         
         // TODO: what do these numbers do? Commented line below yields same result
-        float angle;
-        angle = ((yAngle + 10) * 3f) / 300;
-        angle -= 0.2f;
-        angle = Mathf.Clamp(angle, 0, 1);
+        // float angle;
+        // angle = ((yAngle + 10) * 3f) / 300;
+        // angle -= 0.2f;
+        // angle = Mathf.Clamp(angle, 0, 1);
 
-        // float angle = Mathf.Clamp01((yAngle + 10) / 100f - 0.2f);
+        // Tested values, do not change if you are not Iiro Pelttari ¤#"¤!(¤"!
+        float angle = Mathf.Clamp01((yAngle + 10) / 100f - 0.2f);
 
         float noAimTargetDistance = Mathf.Lerp(cameraDistanceMin, cameraDistanceMax, angle);
         float yesAimTargetDistance = cameraDistanceMin / 2f;
@@ -81,8 +81,6 @@ public class OrbitCameraTP : MonoBehaviour
         */
 
         // Go up. No avoid clipping on this direction, so no cast
-        // TODO: rotating updirection may be the cause of "nod"
-        // var upDir = rotation * Vector3.up;
         var upDir = Vector3.up;
         var upPoint = anchor.position + upDir * yLocalPos;
 
