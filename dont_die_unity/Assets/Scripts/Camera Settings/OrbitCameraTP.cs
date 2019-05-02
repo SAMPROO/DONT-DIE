@@ -28,7 +28,7 @@ public class OrbitCameraTP : MonoBehaviour
 
     private float xAngle = 0;
     private float yAngle = 0;
-    private SmoothFloat smoothFocus = new SmoothFloat (10);
+    public SmoothFloat smoothFocus = new SmoothFloat (10);
 
     private IInputController input;
     public void SetInputController(IInputController input)
@@ -39,6 +39,11 @@ public class OrbitCameraTP : MonoBehaviour
     public float AimAngle { get; private set; }
 
     public Camera GetCamera() => GetComponent<Camera>();
+
+    private void Start()
+    {
+        settings.ApplySettings(this);
+    }
 
     private void LateUpdate()
     {

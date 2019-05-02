@@ -137,7 +137,10 @@ public class RagdollRig : MonoBehaviour
 	private ConcussionState concussionState;
 	[SerializeField] private ParticleSystem concussionVFX;
 
-	private IEnumerator DoConcussion()
+    [Header("Other Status things")]
+    public ParticleSystem healVFX;
+    public ParticleSystem damageVFX;
+    private IEnumerator DoConcussion()
 	{
 		if (concussionState != ConcussionState.None)
 			yield break;

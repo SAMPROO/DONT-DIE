@@ -8,19 +8,23 @@ public class ProjectileAttacher : MonoBehaviour
     private bool ready;
     public float primeTime=0.3f;
     public AudioClip sound;
+    public GameObject go;
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("I hitted " + collision.gameObject);
-
         if(isAttached == false && ready && !collision.gameObject.CompareTag("weapon") && !collision.gameObject.CompareTag("projectile"))
             DoAttach(collision.gameObject, collision.GetContact(0).point);
     }
 
-    private void DoAttach(GameObject go,Vector3 hitPos)
+    private void DoAttach(GameObject _go,Vector3 hitPos)
     {
+        go = _go;
         GetComponent<AudioSource>().PlayOneShot(sound);
-        Debug.Log("I got attached to "+go);
+        if(go.GetComponentInParent<StatusHelper>())
+        {
+            go.GetComponentInParent<StatusHelper>().rr.OnStatusHeal(5, 20, true);
+        }
+
         FixedJoint instance = gameObject.AddComponent<FixedJoint>();
         if(go.GetComponent<Rigidbody>()!=null)
         {

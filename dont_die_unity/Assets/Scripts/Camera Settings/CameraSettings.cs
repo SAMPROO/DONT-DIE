@@ -19,17 +19,13 @@ public class CameraSettings : ScriptableObject
     [Header("Focus smooth value 1 | 40")]
     [Range(1f,40f)]
     public int focusSmooth = 20;
-    [Header("Camera anchor position smooth 0.1 | 1.0")]
-    [Range(0.1f, 1f)]
-    public float anchorSmooth = 0.5f;
 
     public void ApplySettings(OrbitCameraTP camera)
     {
         camera.Y_ANGLE_MIN = verticalAngleMin;
         camera.Y_ANGLE_MAX = verticalAngleMax;
-        camera.smoothArray = new float[focusSmooth];
+        camera.smoothFocus = new SmoothFloat(focusSmooth);
         camera.cameraDistanceMin = distanceMin;
         camera.cameraDistanceMax = distanceMax;
-        camera.anchorSmooth = anchorSmooth;
     }
 }
