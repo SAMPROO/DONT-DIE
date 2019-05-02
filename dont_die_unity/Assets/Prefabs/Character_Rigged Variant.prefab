@@ -70,6 +70,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageMultiplier: 1
   damageController: {fileID: 0}
+--- !u!114 &2905015301143484042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655569548028954036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed026efa1af9aa48a114584b1bf04b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickDelay: 0.5
+  currentTickTime: 0
 --- !u!114 &8246959185096119745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,19 +127,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &2905015301143484042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655569548028954036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed026efa1af9aa48a114584b1bf04b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tickdelay: 0.1
 --- !u!114 &3418976754278881038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4533184863676685960, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
