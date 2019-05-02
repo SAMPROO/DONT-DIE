@@ -182,11 +182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7291df54917584f9efa945b6d4514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testFire: 0
   holdPosition: {x: 0, y: 0, z: 0}
+  fiveSecondRule: 5
+  infiniteAmmo: 0
+  ammo: 1000
   projectilePrefab: {fileID: 7087827899675200820, guid: 8c7622abf2d5ca246a9baf21dda11cbf,
     type: 3}
   spawnOffset: {x: 0, y: 0.25, z: 0.89}
   startSpeed: 10
   startAngle: 0
-  ammo: 1000
   roundPerSecond: 3

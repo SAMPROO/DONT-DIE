@@ -43,9 +43,12 @@ public class SmoothFloat
 		}
 	}
 
+	// Signature of put function
+	public delegate void PutFunction(float value);
+
 	// Put in next value. 
 	// NOTE: This is defined in constructor.
-	public System.Action<float> Put;
+	public PutFunction Put;
 
 	// This does actual adding value.
 	private void PutImplement(float value)

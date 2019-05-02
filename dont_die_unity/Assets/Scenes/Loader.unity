@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 28016412}
   - component: {fileID: 28016411}
   m_Layer: 0
-  m_Name: Leo
+  m_Name: Rolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Leo Tamminen - Troll
+  m_Text: Rolf Gustavson - Music
 --- !u!222 &28016412
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -715,6 +715,85 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 4
+--- !u!1 &275983796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 275983797}
+  - component: {fileID: 275983799}
+  - component: {fileID: 275983798}
+  m_Layer: 0
+  m_Name: Leo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &275983797
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275983796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1928461593}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -308.5}
+  m_SizeDelta: {x: 100, y: 29}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &275983798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275983796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: aea4d6794a702d04f82bb00c0c7e2f69, type: 3}
+    m_FontSize: 29
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Leo Tamminen - programming
+--- !u!222 &275983799
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275983796}
+  m_CullTransparentMesh: 0
 --- !u!1 &304123180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,22 +1395,25 @@ MonoBehaviour:
   entries:
   - firstName: Sampo
     lastName: Tuisku
-    job: 98
+    job: design
   - firstName: Topias
     lastName: Paljakka
-    job: 254
+    job: programming
   - firstName: Iiro
-    lastName: "Mik\xE4sunnimion"
-    job: 76
+    lastName: Pelttari
+    job: Programming
   - firstName: Samuli
-    lastName: jokusukunimi
-    job: 8991
-  - firstName: Tanja??
-    lastName: someforeignname
-    job: 16
+    lastName: Kokko
+    job: Art
+  - firstName: Tatiana
+    lastName: Eremich
+    job: Art
+  - firstName: Rolf
+    lastName: Gustavson
+    job: Music
   - firstName: Leo
     lastName: Tamminen
-    job: Troll
+    job: programming
   textObjectsParent: {fileID: 1928461593}
   textObjects:
   - {fileID: 1079638788}
@@ -1340,6 +1422,7 @@ MonoBehaviour:
   - {fileID: 888662397}
   - {fileID: 1207449983}
   - {fileID: 28016411}
+  - {fileID: 275983798}
   font: {fileID: 12800000, guid: aea4d6794a702d04f82bb00c0c7e2f69, type: 3}
   fontStyle: 1
   fontSize: 29
@@ -2722,6 +2805,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 2045726436}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 2045726436}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 310099413}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b8cfb20a8c2f942aeff0256a1ff726, type: 3}
 --- !u!224 &770659431 stripped
@@ -2899,7 +3002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Samuli jokusukunimi - 8991
+  m_Text: Samuli Kokko - Art
 --- !u!222 &888662398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3173,7 +3276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Sampo Tuisku - 98
+  m_Text: Sampo Tuisku - design
 --- !u!222 &1079638789
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3310,10 +3413,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: MenuHorizontal
-  m_VerticalAxis: MenuVertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: MenuHorizontalPS4
+  m_VerticalAxis: MenuVerticalPS4
+  m_SubmitButton: SubmitPS4
+  m_CancelButton: CancelPS4
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -3358,7 +3461,7 @@ GameObject:
   - component: {fileID: 1207449984}
   - component: {fileID: 1207449983}
   m_Layer: 0
-  m_Name: Tanja??
+  m_Name: Tatiana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3397,7 +3500,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Tanja?? someforeignname - 16
+  m_Text: Tatiana Eremich - Art
 --- !u!222 &1207449984
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4144,7 +4247,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Topias Paljakka - 254
+  m_Text: Topias Paljakka - programming
 --- !u!222 &1768612754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4434,12 +4537,13 @@ RectTransform:
   - {fileID: 888662399}
   - {fileID: 1207449985}
   - {fileID: 28016413}
+  - {fileID: 275983797}
   m_Father: {fileID: 381536584}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -36.8, y: -42.8}
+  m_AnchoredPosition: {x: -206, y: -7}
   m_SizeDelta: {x: 424, y: 343.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928461594
@@ -4532,6 +4636,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd03012b33a6ce40b24e70269426022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuInputSetter:
+    XBoxNames:
+      horizontal: MenuHorizontal
+      vertical: MenuVertical
+      submit: Submit
+      cancel: Cancel
+    PS4Names:
+      horizontal: MenuHorizontalPS4
+      vertical: MenuVerticalPS4
+      submit: SubmitPS4
+      cancel: CancelPS4
+    inputModule: {fileID: 1181714474}
   mainViewObject: {fileID: 746703741}
   mainPlayButton: {fileID: 778272827}
   mainCreditsButton: {fileID: 2075765822}
@@ -5037,6 +5153,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 770659432}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 770659432}
+    - target: {fileID: 4997495925553477539, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnDown
+      value: 
+      objectReference: {fileID: 310099413}
     - target: {fileID: 1539798929341540052, guid: 48b8cfb20a8c2f942aeff0256a1ff726,
         type: 3}
       propertyPath: m_Sprite
@@ -5255,7 +5386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Iiro Mik\xE4sunnimion - 76"
+  m_Text: Iiro Pelttari - Programming
 --- !u!222 &2097009425
 CanvasRenderer:
   m_ObjectHideFlags: 0

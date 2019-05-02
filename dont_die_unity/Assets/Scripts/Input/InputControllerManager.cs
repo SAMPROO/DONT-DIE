@@ -51,7 +51,7 @@ public class InputControllerManager
     };
 
     //xbone until proven dualshock
-    private const string 
+    public const string 
         dualShockName = "Wireless Controller";
 
     public static GamepadController CreateGamepad(bool isPSController = false, int controllerIndex = 1)
@@ -101,24 +101,6 @@ public class InputControllerManager
             bool isPSController = controllerNames[i] == dualShockName;
 
             JoystickMap map = isPSController ? dualShockMap : xBoneMap;
-            
-            // Construct new controller as concrete class and not interface
-            /*GamepadController gamepad = new GamepadController
-            {
-                //integer i + 1 to match unity's own input system to the player index values
-                moveAxisXName   = $"{map.baseMoveAxisXName}{i + 1}",
-                moveAxisYName   = $"{map.baseMoveAxisYName}{i + 1}",
-                lookAxisXName   = $"{map.baseLookAxisXName}{i + 1}",
-                lookAxisYName   = $"{map.baseLookAxisYName}{i + 1}",
-                LTAxisName      = $"{map.baseLTAxisName}{i + 1}",
-                RTAxisName      = $"{map.baseRTAxisName}{i + 1}",
-                jumpKeyName     = $"{map.baseJumpKeyName}{i + 1}",
-                interactKeyName = $"{map.baseInteractKeyName}{i + 1}",
-                doRagdollKeyName = $"{map.baseDoRagdollKeyName}{i + 1}",
-                //Base prefix can be removed
-            };
-            */
-
             GamepadController gamepad = CreateGamepad(isPSController, i + 1);
 
             // This is fine

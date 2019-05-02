@@ -5,10 +5,27 @@ public class PlayerSpawner : MonoBehaviour
 	public PlayerController playerPrefab;
 	public OrbitCameraTP	cameraRigPrefab;
 	public bool 			disableOnStart =  true;
+	public int 				controllerIndex = 1;
+
+	public enum ControllerType
+	{
+		XBox, PS4, Null
+	}
+
+	public ControllerType controllerType;
 
 	private void Start()
 	{
-		var controller = InputControllerManager.CreateGamepad();
+		IInputController controller;
+
+		switch(controllerType)
+		{
+			case ControllerType.XBox: 	controller = InputControllerManager.CreateGamepad(false, controllerIndex); 	break;
+			case ControllerType.PS4: 	controller = InputControllerManager.CreateGamepad(true, controllerIndex);	break;
+			
+			default: controller = new NullController(); break;
+		}
+
 		var cameraRig = Instantiate(cameraRigPrefab);
 		cameraRig.SetInputController(controller);
 

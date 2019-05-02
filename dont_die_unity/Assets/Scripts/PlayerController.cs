@@ -36,7 +36,10 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] private Transform rightHandTransform;
 	[SerializeField] private Transform leftHandTransform;
-	public float handAimMultiplier = -1f;
+	public float handAimMultiplier = 1f;
+	public float minHandsAngle = -45f;
+	public float maxHandsAngle = 45f;
+
 
 	public bool Grounded => ragdoll.Grounded;
 
@@ -91,8 +94,12 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
+		
 		ragdoll.ControlLeftHand = input.ActivateLeftHand;
 		ragdoll.ControlRightHand = input.ActivateRightHand;
+
+		// Only grab if we are not carrying gun
+		ragdoll.CanGrab = gun == null;
 	}
 
 	private Vector3 lastMoveDirection = Vector3.forward;
@@ -120,7 +127,8 @@ public class PlayerController : MonoBehaviour
 			lookDirection, 
 			amount);
 
-		ragdoll.SetHandsAimAngle(cameraRig.AimAngle);// * handAimMultiplier);
+		float handsAngle = Mathf.Clamp(cameraRig.AimAngle * handAimMultiplier, minHandsAngle, maxHandsAngle);
+		ragdoll.SetHandsAimAngle(handsAngle);
 	}
 
 	private void Fire()

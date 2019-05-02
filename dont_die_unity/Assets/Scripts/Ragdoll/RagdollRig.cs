@@ -91,6 +91,9 @@ public class RagdollRig : MonoBehaviour
 	public Rigidbody leftHandRb;
 	public Rigidbody rightHandRb;
 
+	public RagdollHandGrab leftGrab;
+	public RagdollHandGrab rightGrab;
+
 	// Set aim angle between min and max
 	public void SetHandsAimAngle(float value) => handsAimAngle = value;
 	private float handsAimAngle;
@@ -124,6 +127,7 @@ public class RagdollRig : MonoBehaviour
 
 	public bool ControlLeftHand { get; set; }
 	public bool ControlRightHand { get; set; }
+	public bool CanGrab { get; set; }
 
 	[Header("Head and Concussion")]
 	public float concussionVelocityThreshold;
@@ -155,29 +159,9 @@ public class RagdollRig : MonoBehaviour
 		concussionState = ConcussionState.None;
 	}
 
-	private static void EnableController(
-		Joint controller, 
-		Rigidbody controlledBody, 
-		Vector3? targetPosition = null
-	){
-		controller.transform.position = controlledBody.transform.position;
-		controller.transform.rotation = controlledBody.transform.rotation;
-		controller.connectedBody = controlledBody;
-		controller.gameObject.SetActive(true);
-		controller.transform.position = targetPosition ?? Vector3.zero;
-	}
-
-	private static void DisableController(Joint controller)
-	{
-		controller.connectedBody = null;
-		controller.gameObject.SetActive(false);		
-	}
-
-
 	private void Start()
 	{
 		sqrHorizontalSpeedThreshold = horizontalSpeedThreshold * horizontalSpeedThreshold;
-
 		hasControl = startWithControl;
 
 		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
@@ -188,22 +172,18 @@ public class RagdollRig : MonoBehaviour
 		hipRb.transform.SetParent(null);
 		hipRb.freezeRotation = true;
 		
-		rightHandControlJoint = CreateJointController<SpringJoint>("rightHandControlJoint", false);
-		rightHandControlJoint.transform.SetParent(hipRb.transform);
-
-		leftHandControlJoint = CreateJointController<SpringJoint>("leftHandControlJoint", false);
-		leftHandControlJoint.transform.SetParent(hipRb.transform);
-
-		EnableController(
-			rightHandControlJoint,
-			rightHandRb,
-			hipRb.transform.TransformPoint(rightHandPosition)
+		leftHandControlJoint = CreateHandControlJoint(
+			"leftHandControlJoint",
+			leftHandRb,
+			hipRb.transform,
+			leftHandPosition
 		);
 
-		EnableController(
-			leftHandControlJoint,
-			leftHandRb,
-			hipRb.transform.TransformPoint(leftHandPosition)
+		rightHandControlJoint = CreateHandControlJoint(
+			"rightHandControlJoint",
+			rightHandRb,
+			hipRb.transform,
+			rightHandPosition
 		);
 	}
 
@@ -229,7 +209,6 @@ public class RagdollRig : MonoBehaviour
 		}
 		else
 		{
-
 			Grounded = false;
 			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
 		}
@@ -261,9 +240,12 @@ public class RagdollRig : MonoBehaviour
 				handForce
 			);
 
+			// leftGrab.SetGrab(ControlLeftHand);
+			// rightGrab.SetGrab(ControlRightHand);
+
 			// Control hips etc. --------------------------------------------------------------------
 
-			if (Grounded || Grounded)
+			if (Grounded)
 			{
 				hipRb.AddForce(hipForce * Vector3.up);
 
@@ -287,20 +269,20 @@ public class RagdollRig : MonoBehaviour
 		else
 		{
 			hipRb.freezeRotation = false;
+
+			// leftGrab.SetGrab(false);
+			// rightGrab.SetGrab(false);
 		}
+
+		leftGrab.SetGrab (isControlled && CanGrab && ControlLeftHand);
+		rightGrab.SetGrab (isControlled && CanGrab && ControlRightHand);
+
 
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
 		transform.position = Vector3.Lerp (transform.position, hipHitPosition, 0.5f);
 	}
 
-	private static JointType CreateJointController<JointType>(string name, bool setActive) where JointType : Joint
-	{
-		JointType joint = new GameObject(name).AddComponent<JointType>();
-		joint.GetComponent<Rigidbody>().isKinematic = true;
-		joint.gameObject.SetActive(setActive);
-		return joint;
-	}
 
 
 	// Move character to direction, do this in fixed update only.
@@ -392,10 +374,30 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
+	private static SpringJoint CreateHandControlJoint(string name, Rigidbody controlledBody, Transform parent, Vector3 localPosition)
+	{
+		var joint = new GameObject(name).AddComponent<SpringJoint>();
+		joint.GetComponent<Rigidbody>().isKinematic = true;
 
-	///////////////////////////////////////
-	/// Utilities, helpers, etc.		///
-	///////////////////////////////////////
+		joint.gameObject.SetActive(false);
+		joint.transform.position = controlledBody.transform.position;
+		joint.transform.rotation = controlledBody.transform.rotation;
+		joint.connectedBody = controlledBody;
+		joint.gameObject.SetActive(true);
+		joint.transform.position = parent.TransformPoint(localPosition);
+
+		joint.transform.SetParent(parent);
+
+		return joint;
+	}
+
+	/*
+	Utilities, helpers, etc.
+
+	These are not neede in game at all, they kinda help build stuff in editor
+	*/	
+
+	#if UNITY_EDITOR
 
 	public void OnDrawGizmosSelected()
 	{
@@ -508,4 +510,6 @@ public class RagdollRig : MonoBehaviour
 
 		return part;
 	}
+
+	#endif
 }

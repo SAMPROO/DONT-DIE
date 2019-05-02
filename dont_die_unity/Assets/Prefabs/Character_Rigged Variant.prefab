@@ -108,7 +108,9 @@ MonoBehaviour:
   maxHitpoints: 10000
   rightHandTransform: {fileID: 0}
   leftHandTransform: {fileID: 0}
-  handAimMultiplier: -1
+  handAimMultiplier: 2
+  minHandsAngle: -45
+  maxHandsAngle: 45
 --- !u!114 &8743616907954168792
 MonoBehaviour:
   m_ObjectHideFlags: 0
