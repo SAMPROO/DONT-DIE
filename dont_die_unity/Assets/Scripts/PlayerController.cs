@@ -94,8 +94,12 @@ public class PlayerController : MonoBehaviour
 	private void Update() 
 	{
 		input.UpdateController();
+		
 		ragdoll.ControlLeftHand = input.ActivateLeftHand;
 		ragdoll.ControlRightHand = input.ActivateRightHand;
+
+		// Only grab if we are not carrying gun
+		ragdoll.CanGrab = gun == null;
 	}
 
 	private Vector3 lastMoveDirection = Vector3.forward;

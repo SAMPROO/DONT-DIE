@@ -89,10 +89,10 @@ MonoBehaviour:
   anchor: {fileID: 0}
   normalLookOffset: {x: 1, y: 1.5}
   focusLookOffset: {x: 1, y: 2}
-  sensitivity: {x: 1, y: 1}
   cameraDistanceMax: 8
   cameraDistanceMin: 4
+  sensitivity: {x: 1, y: 1}
   clippingRayMask:
     serializedVersion: 2
-    m_Bits: 262144
+    m_Bits: 1835008
   cameraColliderRadius: 0.4

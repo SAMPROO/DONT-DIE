@@ -127,6 +127,7 @@ public class RagdollRig : MonoBehaviour
 
 	public bool ControlLeftHand { get; set; }
 	public bool ControlRightHand { get; set; }
+	public bool CanGrab { get; set; }
 
 	[Header("Head and Concussion")]
 	public float concussionVelocityThreshold;
@@ -161,7 +162,6 @@ public class RagdollRig : MonoBehaviour
 	private void Start()
 	{
 		sqrHorizontalSpeedThreshold = horizontalSpeedThreshold * horizontalSpeedThreshold;
-
 		hasControl = startWithControl;
 
 		foreach (var item in GetComponentsInChildren<RagdollHeadPiece>())
@@ -209,7 +209,6 @@ public class RagdollRig : MonoBehaviour
 		}
 		else
 		{
-
 			Grounded = false;
 			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
 		}
@@ -241,8 +240,8 @@ public class RagdollRig : MonoBehaviour
 				handForce
 			);
 
-			leftGrab.SetGrab(ControlLeftHand);
-			rightGrab.SetGrab(ControlRightHand);
+			// leftGrab.SetGrab(ControlLeftHand);
+			// rightGrab.SetGrab(ControlRightHand);
 
 			// Control hips etc. --------------------------------------------------------------------
 
@@ -271,9 +270,13 @@ public class RagdollRig : MonoBehaviour
 		{
 			hipRb.freezeRotation = false;
 
-			leftGrab.SetGrab(false);
-			rightGrab.SetGrab(false);
+			// leftGrab.SetGrab(false);
+			// rightGrab.SetGrab(false);
 		}
+
+		leftGrab.SetGrab (isControlled && CanGrab && ControlLeftHand);
+		rightGrab.SetGrab (isControlled && CanGrab && ControlRightHand);
+
 
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
