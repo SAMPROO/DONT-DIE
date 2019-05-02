@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7122823402301323834}
   - component: {fileID: 2598087007821929707}
   m_Layer: 0
-  m_Name: JumpPad
+  m_Name: ExpandingMattressBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b15e64df10ca645b9e369d5cb9dba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 10
+  force: 7
 --- !u!114 &2598087007821929707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 2
   scaleOnCollision: 1
-  destoyAfterSeconds: 0
+  destoyAfterSeconds: 1
   secondsToDestroy: 10
-  scaleMultiplier: 10
+  scaleMultiplier: 7
   timeToScale: 2
