@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
 	public event Action<PlayerHandle> OnDie;
 
+	// This is used to access characters instantiated material and set color
 	public Renderer characterRenderer;
 
 	[SerializeField] private Equipment gun;
@@ -39,7 +40,6 @@ public class PlayerController : MonoBehaviour
 	public float handAimMultiplier = 1f;
 	public float minHandsAngle = -45f;
 	public float maxHandsAngle = 45f;
-
 
 	public bool Grounded => ragdoll.Grounded;
 
@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
 		if (gun != null)
 		{
 			gun.Use();
+			hud.SetAmmo(gun.Ammo);
 		}
 		else
 		{
@@ -146,7 +147,7 @@ public class PlayerController : MonoBehaviour
 	public void Hurt(float damage)
 	{
 		hitpoints -= Mathf.RoundToInt(damage);
-		hud.Hp = hitpoints;
+		hud.SetHp(hitpoints);
 
 		if (hitpoints <= 0)
 		{
@@ -159,6 +160,8 @@ public class PlayerController : MonoBehaviour
 		ragdoll.hasControl = !ragdoll.hasControl;
 	}
 
+	public Sprite TESTGunSprite; // TEST GUNS
+
     private void ToggleCarryGun()
 	{
 		// Drop if we have gun
@@ -166,6 +169,8 @@ public class PlayerController : MonoBehaviour
 		{
 			gun?.StopCarrying();
 			gun = null;
+
+			hud.SetAmmoSprite(null);
 
 			return;
 		}
