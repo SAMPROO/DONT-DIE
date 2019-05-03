@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ProjectileAttacher : MonoBehaviour
 {
+    public int effectTicks = 5;
+    public float effectPower = 20;
+    [SerializeField]
+    private Effects.Type myType;
     private bool isAttached;
     private bool ready;
     public float primeTime=0.3f;
     public AudioClip sound;
-    public GameObject go;
+    private GameObject go;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,7 +26,25 @@ public class ProjectileAttacher : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(sound);
         if(go.GetComponentInParent<StatusHelper>())
         {
-            go.GetComponentInParent<StatusHelper>().rr.OnStatusHeal(5, 20, true);
+            switch (myType)
+            {
+                case Effects.Type.Heal:
+                    go.GetComponentInParent<StatusHelper>().rr.OnStatusHeal(effectTicks, effectPower, true);
+                    break;
+
+                case Effects.Type.Damage:
+                    go.GetComponentInParent<StatusHelper>().rr.OnStatusDamage(effectTicks, effectPower, true);
+                    break;
+
+                case Effects.Type.Slow:
+                    go.GetComponentInParent<StatusHelper>().rr.OnStatusSlow(effectTicks, effectPower, true);
+                    break;
+
+                case Effects.Type.Stun:
+                    go.GetComponentInParent<StatusHelper>().rr.OnStatusStun(effectTicks, true);
+                    break;
+            }
+            
         }
 
         FixedJoint instance = gameObject.AddComponent<FixedJoint>();

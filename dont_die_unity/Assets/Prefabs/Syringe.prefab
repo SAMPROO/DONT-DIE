@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7af66a7b2baed4e86e8efa3d569982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectTicks: 5
+  effectPower: 40
+  myType: 1
   primeTime: 2
   sound: {fileID: 8300000, guid: 073e6b883355d564daaa91093387a779, type: 3}
-  go: {fileID: 0}
 --- !u!82 &5351538042033358834
 AudioSource:
   m_ObjectHideFlags: 0
