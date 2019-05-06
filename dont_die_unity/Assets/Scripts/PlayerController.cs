@@ -83,11 +83,6 @@ public class PlayerController : MonoBehaviour
         
 	}
 
-	private void OnDestroy()
-	{
-		Destroy(cameraRig.gameObject);
-	}
-
 	private void Update() 
 	{
 		input.UpdateController();

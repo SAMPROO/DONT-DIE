@@ -20,12 +20,12 @@ public class Syringe : MonoBehaviour
 	public Transform pressTransform;
 	public float maxPressMovement;
 
-	private void Awake()
+	private void Start()
 	{
 		fillRenderer = fillTransform.GetComponent<Renderer>();
 		SetFillDisplay();
 	}
-
+	
 	private void SetFillDisplay()
 	{
 		var fillScale = fillTransform.localScale;
@@ -37,11 +37,5 @@ public class Syringe : MonoBehaviour
 		var pressPosition = pressTransform.localPosition;
 		pressPosition.z = -1 * maxPressMovement * fill;
 		pressTransform.localPosition = pressPosition;
-	}
-
-	private void OnValidate()
-	{
-		fillRenderer = fillTransform.GetComponent<Renderer>();
-		SetFillDisplay();
 	}
 }

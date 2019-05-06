@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 6297181081290951955}
   - component: {fileID: 6297181081290951964}
   - component: {fileID: 6297181081290951953}
+  - component: {fileID: 7553413478931921539}
   m_Layer: 10
   m_Name: SyringeProjectile
   m_TagString: Untagged
@@ -284,6 +285,19 @@ CapsuleCollider:
   m_Height: 0.88
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -0.06}
+--- !u!114 &7553413478931921539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297181081290951965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffe5efebfec78247a38257282d95bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!1 &6297181081290951967
 GameObject:
   m_ObjectHideFlags: 0
