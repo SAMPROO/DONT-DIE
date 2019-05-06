@@ -37,19 +37,12 @@ public class PlayerSpawner : MonoBehaviour
 
 		var player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
 
-		// if we have canvas to display hud, instantiate it
-		if (hudCanvas == null)
-		{
-			player.Initialize(new PlayerHandle(0), cameraRig, controller);
-		}
-		else 
-		{
-			var hud = Instantiate(hudPrefab, hudCanvas.transform);
-			hud.viewportRect = new Rect(0, 0, 1, 1);
-			hud.Rebuild();
-			
-			player.Initialize(new PlayerHandle(0), cameraRig, controller, hud);
-		}
+		// Hud won't show without canvas
+		var hud = Instantiate(hudPrefab, hudCanvas != null ? hudCanvas.transform : null);
+		hud.viewportRect = new Rect(0, 0, 1, 1);
+		hud.Rebuild();
+		
+		player.Initialize(new PlayerHandle(0), cameraRig, controller, Color.clear, hud);
 
 
 		if (disableOnStart)
