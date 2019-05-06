@@ -45,21 +45,11 @@ public class Gun : Equipment
             );
             // projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
             // projectile.Launch();
+            projectile.GetComponent<Projectile>()?.Launch();
             lastFiredTime = Time.time;
             Ammo--;
 
-            //isReeling = reuseable;
-
-            // Debug.Log("Gun says \"Bang!\"");
         }
-        //else if (reuseable && isReeling && projectile != null)
-        //{
-            
-        //}
-        // else
-        // {
-        //     Debug.Log("Gun says \"Click!\"");
-        // }
     }
 
     protected override void OnDrawGizmosSelected()

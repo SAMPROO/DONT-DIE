@@ -2,7 +2,16 @@ using UnityEngine;
 
 public class Syringe : MonoBehaviour
 {
-	[Range(0,1)]public float fill;
+	[Range(0,1), SerializeField] private float fill;
+	public float Fill
+	{
+		get => fill;
+		set
+		{
+			fill = value;
+			SetFillDisplay();
+		}
+	}
 	public float maxFill;
 
 	// public Color fillColor;
@@ -11,7 +20,6 @@ public class Syringe : MonoBehaviour
 	private Renderer fillRenderer;
 
 	public Transform pressTransform;
-
 
 	private void SetFillDisplay()
 	{
@@ -22,7 +30,7 @@ public class Syringe : MonoBehaviour
 		fillRenderer.material.color = fillColor.Evaluate(fill);
 
 		var pressPosition = pressTransform.localPosition;
-		pressPosition.z = maxFill * fill;
+		pressPosition.z = -1 * maxFill * fill;
 		pressTransform.localPosition = pressPosition;
 	}
 

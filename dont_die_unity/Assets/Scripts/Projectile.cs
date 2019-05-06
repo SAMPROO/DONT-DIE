@@ -1,17 +1,18 @@
-// using UnityEngine;
+using UnityEngine;
+using UnityEngine.Events;
 
-// public class Projectile : MonoBehaviour
-// {
-// 	public float speed;
-// 	public bool explodeSometimes;
+[RequireComponent(typeof(Rigidbody))]
+public class Projectile : MonoBehaviour
+{
+	public float lauchSpeed = 5f;
 
-// 	public void Launch()
-// 	{
-// 		GetComponent<Rigidbody>() /// add force....
-// 	}
+	public void Launch()
+	{
+		GetComponent<Rigidbody>().AddForce(transform.forward * lauchSpeed, ForceMode.VelocityChange);
+	}
 
-// 	public event UnityEvent OnLaunch;
-// }
+	public UnityEvent OnLaunch;
+}
 
 // [RequireComponent(typeof(Projectile))]
 // public class GrowingDuck : MonoBehaviour
