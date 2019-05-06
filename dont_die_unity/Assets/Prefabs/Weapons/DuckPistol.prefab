@@ -12,6 +12,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DuckPistol
       objectReference: {fileID: 0}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 4337601339283480907, guid: b60749cdc9a0f454d908851ff6a51c77,
+        type: 3}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,11 +73,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+    - target: {fileID: 4359706797336605278, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
-      propertyPath: projectilePrefab
+      propertyPath: gunInfo
       value: 
-      objectReference: {fileID: 4337601339283480907, guid: b60749cdc9a0f454d908851ff6a51c77,
-        type: 3}
+      objectReference: {fileID: 11400000, guid: eb876f50aa01194428148e6658a8c3ed,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04529e734994eff45bdacddcd9e32f19, type: 3}

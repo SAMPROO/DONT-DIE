@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private IInputController input;
 
     // This is really not serializable thing, but it is injected from hudmanager or similar
-    [SerializeField] private PlayerHUD hud;
+    [SerializeField] private PlayerHud hud;
 
 	private RagdollRig ragdoll;
 	private DamageController damageController;
@@ -56,9 +56,11 @@ public class PlayerController : MonoBehaviour
     	PlayerHandle handle, 
     	OrbitCameraTP camera, 
     	IInputController inputCnt,
-    	Color color
+    	Color color,
+    	PlayerHud hud
 	){
 		characterRenderer.material.color = color;
+		this.hud = hud;
 		Initialize(handle, camera, inputCnt);
 	}
 
@@ -85,6 +87,15 @@ public class PlayerController : MonoBehaviour
 		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
 	}
 
+	public void Initialize(
+    	PlayerHandle handle,
+    	OrbitCameraTP cameraRig,
+    	IInputController input,
+    	PlayerHud hud
+	){
+		this.hud = hud;
+		Initialize(handle, cameraRig, input);
+	}
 
 	private void OnDestroy()
 	{
@@ -160,7 +171,8 @@ public class PlayerController : MonoBehaviour
 		ragdoll.hasControl = !ragdoll.hasControl;
 	}
 
-	public Sprite TESTGunSprite; // TEST GUNS
+	// Use until GunInfo gets properly implemented
+	public GunInfo BACKUPGunInfo;
 
     private void ToggleCarryGun()
 	{
@@ -170,7 +182,7 @@ public class PlayerController : MonoBehaviour
 			gun?.StopCarrying();
 			gun = null;
 
-			hud.SetAmmoSprite(null);
+			hud.SetEquipped(null);
 
 			return;
 		}
@@ -187,9 +199,6 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
-        	Debug.Log(hitColliders[i].name);
-
-
             float distanceToGun = Vector3.Distance(
             	hitColliders[i].transform.position,
             	handPosition
@@ -202,6 +211,19 @@ public class PlayerController : MonoBehaviour
                	if (gun != null)
                	{
 	            	gun.StartCarrying(gunParent.GetComponent<Rigidbody>(), -90);
+
+	            	var gunInfoObject = gun.GetComponent<GunInfoObject>();
+	            	if (gunInfoObject != null)
+					{
+						hud.SetEquipped(gunInfoObject.gunInfo);
+					}	
+					else 
+					{
+						hud.SetEquipped(BACKUPGunInfo);
+					}
+
+					hud.SetAmmo(gun.Ammo);
+
 	            	return;
                	}
             }

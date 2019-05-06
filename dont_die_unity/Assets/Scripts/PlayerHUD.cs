@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHUD : MonoBehaviour
+public class PlayerHud : MonoBehaviour
 {
 	public enum Alignment { TopLeft, TopRight, BottomLeft, BottomRight }
 	public Alignment alignment;
@@ -16,28 +16,65 @@ public class PlayerHUD : MonoBehaviour
 	[SerializeField] private Text ammoText;
 	[SerializeField] private Image ammoImage;
 
-	public Sprite emptyGunSprite;
+	public Sprite emptyGunHudIcon;
 
 	public void SetHp(int value) => hpText.text = value.ToString();
 	public void SetAmmo(int value) => ammoText.text = value.ToString();
-	public void SetAmmoSprite(Sprite sprite)
+
+	public void SetEquipped(GunInfo gunInfo)
 	{
-		ammoImage.sprite = sprite ?? emptyGunSprite;
+		bool hasEquipped = gunInfo != null;
+		ammoImage.sprite = hasEquipped ? gunInfo.hudIcon : emptyGunHudIcon;
+		
+		Debug.Log($"gun info is null: {gunInfo == null}");
+
+		ammoText.gameObject.SetActive(hasEquipped);
 	}
 
+	public Rect viewportRect;
 	public Color color = Color.white;
 	public int rowHeight = 40;
 	public int textLength = 60;
 	public Vector2Int spacing = new Vector2Int (5, 5);
 	public Vector2Int padding = new Vector2Int (10, 10);
 
-	/// Testing
-	public int hp;
-	public int ammo;
+	private void OnEnable()
+	{
+		BuildLayout();
+	}
 
-	public RectOffset DEBUGRectOffset;
+	public void Rebuild()
+	{
+		BuildLayout();
+	}
 
-	private void SetStuff(HorizontalLayoutGroup panel, Text text, Image image)
+	private void BuildLayout()
+	{
+		// Set root hud object (not actual root transform necessarily)
+		mainPanel.spacing = spacing.y;
+		mainPanel.childAlignment = GetMainAlignment(alignment);
+		
+		mainPanel.padding.left 		= padding.x;
+		mainPanel.padding.right 	= padding.x;
+		mainPanel.padding.top 		= padding.y;
+		mainPanel.padding.bottom 	= padding.y;
+
+		// this is needed to immediately update new padding to layoutgroups
+		LayoutRebuilder.ForceRebuildLayoutImmediate(transform as RectTransform);
+
+		var rectTransform = transform as RectTransform;
+		rectTransform.anchorMin = viewportRect.position;
+		rectTransform.anchorMax = viewportRect.position + viewportRect.size;
+		rectTransform.offsetMin = Vector2Int.zero;
+		rectTransform.offsetMax = Vector2Int.zero;
+
+		// Set child component positions
+		SetComponentLayout(hpPanel, hpText, hpImage);
+		SetComponentLayout(ammoPanel, ammoText, ammoImage);
+	}
+
+
+	private void SetComponentLayout(HorizontalLayoutGroup panel, Text text, Image image)
 	{
 		panel.spacing = spacing.x;
 		var panelTransform = panel.transform as RectTransform;
@@ -60,8 +97,8 @@ public class PlayerHUD : MonoBehaviour
 		{
 			case Alignment.BottomLeft: 	return TextAnchor.LowerLeft;
 			case Alignment.BottomRight:	return TextAnchor.LowerRight;
-			case Alignment.TopLeft: 		return TextAnchor.UpperLeft;
-			case Alignment.TopRight:		return TextAnchor.UpperRight;
+			case Alignment.TopLeft: 	return TextAnchor.UpperLeft;
+			case Alignment.TopRight:	return TextAnchor.UpperRight;
 		}
 
 		// return default
@@ -84,38 +121,9 @@ public class PlayerHUD : MonoBehaviour
 		return TextAnchor.MiddleLeft;
 	}
 
-	private void SetPosition()
-	{
-		var rectTransform = transform as RectTransform;
-
-		rectTransform.anchorMin = viewportRect.position;
-		rectTransform.anchorMax = viewportRect.position + viewportRect.size;
-
-		rectTransform.offsetMin = Vector2Int.zero;
-		rectTransform.offsetMax = Vector2Int.zero;
-	}
-
-	public Rect viewportRect;
 
 	private void OnValidate()
 	{
-		mainPanel.spacing = spacing.y;
-		mainPanel.childAlignment = GetMainAlignment(alignment);
-		
-		mainPanel.padding.left 		= padding.x;
-		mainPanel.padding.right 	= padding.x;
-		mainPanel.padding.top 		= padding.y;
-		mainPanel.padding.bottom 	= padding.y;
-
-		LayoutRebuilder.ForceRebuildLayoutImmediate(transform as RectTransform);
-
-		SetPosition();
-
-		SetStuff(hpPanel, hpText, hpImage);
-		SetStuff(ammoPanel, ammoText, ammoImage);
-
-		// Testing
-		SetHp(hp);
-		SetAmmo(ammo);
+		BuildLayout();
 	}
 }

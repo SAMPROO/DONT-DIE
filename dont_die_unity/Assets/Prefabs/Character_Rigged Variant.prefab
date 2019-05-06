@@ -82,8 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55058088d03a7e4ba305f52b1cce034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud:
-    hpText: {fileID: 5617946985990840500}
+  hud: {fileID: 0}
   characterRenderer: {fileID: 8655569548015356084}
   gun: {fileID: 0}
   gunParent: {fileID: 8655569548028926350}
@@ -97,6 +96,7 @@ MonoBehaviour:
   handAimMultiplier: 2.5
   minHandsAngle: -45
   maxHandsAngle: 45
+  BACKUPGunInfo: {fileID: 11400000, guid: 48049c2211ad87645a9a303ead33b5a0, type: 2}
 --- !u!114 &8743616907954168792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,18 +329,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 942af000e79fda0499df66ec7720805b, type: 3}
---- !u!114 &5617946985990840500 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6058805225959033731, guid: 942af000e79fda0499df66ec7720805b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1865552667269688119}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5113794738898869027
 PrefabInstance:
   m_ObjectHideFlags: 0

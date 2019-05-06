@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1213279231787973349}
   - component: {fileID: 5529038683441462017}
   - component: {fileID: 3038421875392893227}
+  - component: {fileID: 4359706797336605278}
   m_Layer: 9
   m_Name: Pistol
   m_TagString: Untagged
@@ -178,3 +179,16 @@ MonoBehaviour:
   startSpeed: 10
   startAngle: 0
   roundPerSecond: 3
+--- !u!114 &4359706797336605278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154440989237498906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb0db5c36b8b85429678bfdfb56ca05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunInfo: {fileID: 11400000, guid: e5eb321e414f4fc438e8879869533063, type: 2}

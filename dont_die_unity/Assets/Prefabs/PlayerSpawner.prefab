@@ -125,4 +125,9 @@ MonoBehaviour:
     type: 3}
   cameraRigPrefab: {fileID: 7755439791233267441, guid: a8a7639b5ea71c946a0b7c1858c9d3ae,
     type: 3}
+  hudPrefab: {fileID: 2837501046699104648, guid: 0c92ebac394cf844ab212ffd71b78422,
+    type: 3}
   disableOnStart: 1
+  controllerIndex: 1
+  hudCanvas: {fileID: 0}
+  controllerType: 0
