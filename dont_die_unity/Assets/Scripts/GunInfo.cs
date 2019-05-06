@@ -8,5 +8,5 @@ public class GunInfo : ScriptableObject
 
 	// These will be something other than GameObjects...
 	public GameObject projectilePrefab;
-	public GameObject projectileGhostPrefab;
+	// public GameObject projectileGhostPrefab;
 }

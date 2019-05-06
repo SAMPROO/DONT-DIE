@@ -2,6 +2,12 @@
 
 public class Gun : Equipment
 {
+    /*
+    TODO
+    Display projectile before shoot
+    Click sound
+    */
+
     public GameObject projectilePrefab;
     public Vector3 spawnOffset;
 
@@ -18,9 +24,10 @@ public class Gun : Equipment
     //private bool isReeling;
 
     private float secondsPerRound;
-    private float time;
+    private float lastFiredTime;
 
     private GameObject projectile;
+    // private Projectile projectile;
 
     private void Start()
     {
@@ -29,16 +36,16 @@ public class Gun : Equipment
 
     public override void Use()
     {
-        if (Ammo > 0 && secondsPerRound - (Time.time - time) <= 0/* && !isReeling*/)
+        if (Ammo > 0 && secondsPerRound - (Time.time - lastFiredTime) <= 0/* && !isReeling*/)
         {
             projectile = Instantiate(
                 projectilePrefab,
                 transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset,
                 transform.rotation
             );
-            projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
-
-            time = Time.time;
+            // projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
+            // projectile.Launch();
+            lastFiredTime = Time.time;
             Ammo--;
 
             //isReeling = reuseable;

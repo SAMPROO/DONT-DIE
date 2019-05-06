@@ -45,6 +45,9 @@ public class PlayerSpawner : MonoBehaviour
 		else 
 		{
 			var hud = Instantiate(hudPrefab, hudCanvas.transform);
+			hud.viewportRect = new Rect(0, 0, 1, 1);
+			hud.Rebuild();
+			
 			player.Initialize(new PlayerHandle(0), cameraRig, controller, hud);
 		}
 

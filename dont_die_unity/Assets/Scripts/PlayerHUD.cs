@@ -21,14 +21,10 @@ public class PlayerHud : MonoBehaviour
 	public void SetHp(int value) => hpText.text = value.ToString();
 	public void SetAmmo(int value) => ammoText.text = value.ToString();
 
-	public void SetEquipped(GunInfo gunInfo)
+	public void SetEquippedIcon(Sprite icon)
 	{
-		bool hasEquipped = gunInfo != null;
-		ammoImage.sprite = hasEquipped ? gunInfo.hudIcon : emptyGunHudIcon;
-		
-		Debug.Log($"gun info is null: {gunInfo == null}");
-
-		ammoText.gameObject.SetActive(hasEquipped);
+		bool hasEquipped = icon != null;
+		ammoImage.sprite = icon ?? emptyGunHudIcon;
 	}
 
 	public Rect viewportRect;

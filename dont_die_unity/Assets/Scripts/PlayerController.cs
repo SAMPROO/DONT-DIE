@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 			gun?.StopCarrying();
 			gun = null;
 
-			hud.SetEquipped(null);
+			hud.SetEquippedIcon(null);
 
 			return;
 		}
@@ -211,17 +211,7 @@ public class PlayerController : MonoBehaviour
                	if (gun != null)
                	{
 	            	gun.StartCarrying(gunParent.GetComponent<Rigidbody>(), -90);
-
-	            	var gunInfoObject = gun.GetComponent<GunInfoObject>();
-	            	if (gunInfoObject != null)
-					{
-						hud.SetEquipped(gunInfoObject.gunInfo);
-					}	
-					else 
-					{
-						hud.SetEquipped(BACKUPGunInfo);
-					}
-
+					hud.SetEquippedIcon(gun.HudIcon);
 					hud.SetAmmo(gun.Ammo);
 
 	            	return;

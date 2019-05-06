@@ -3,10 +3,25 @@
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Equipment : MonoBehaviour
 {
+    /*
+    TODO
+    KummitusAsia
+    Hud Icon
+    */
+
     public bool testFire;
     public Vector3 holdPosition;
 
-    public float fiveSecondRule = 5;
+    // Transparent representation of ammunition used in this gun
+    [SerializeField] private GunTypeGhostDisplay ghostDisplay;
+
+    // Image to display in icon and other places. Expose publicly
+    // as get-only field
+    [SerializeField] private Sprite hudIcon;
+    public Sprite HudIcon => hudIcon;
+
+    // How long to wait before destroyed when dropped and no ammo.
+    private const float fiveSecondRule = 5;
     public bool infiniteAmmo;
 
     [SerializeField] private int ammo = 0;
@@ -71,6 +86,8 @@ public abstract class Equipment : MonoBehaviour
         joint.connectedBody = connectedBody;
 
         isCarried = true;
+
+        ghostDisplay.gameObject.SetActive(false);
     }
 
     public virtual void StopCarrying()
@@ -80,7 +97,7 @@ public abstract class Equipment : MonoBehaviour
 
         isCarried = false;
 
-        Debug.Log("Gun thrown away");
+        ghostDisplay.gameObject.SetActive(true); 
     }
 
     public virtual void Destroy()
