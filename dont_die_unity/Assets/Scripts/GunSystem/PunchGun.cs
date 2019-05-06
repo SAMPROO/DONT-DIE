@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PunchGun : Equipment
+public class PunchGun : BaseGun
 {
     public float initialSpeed, waitTime, reelSpeed, minReelDistance;
     public Rigidbody boxingGlove;
@@ -123,7 +123,7 @@ public class PunchGun : Equipment
         // destroy the boxing glove
         Destroy(boxingGlove.gameObject);
 
-        // continue with the base destroy funtion from Equipment
+        // continue with the base destroy funtion from BaseGun
         base.Destroy();
     }
 }

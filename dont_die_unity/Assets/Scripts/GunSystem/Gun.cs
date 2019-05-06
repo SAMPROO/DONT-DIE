@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Gun : Equipment
+public class Gun : BaseGun
 {
     public Projectile projectilePrefab;
     public Vector3 spawnOffset;

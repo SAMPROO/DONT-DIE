@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 	// This is used to access character model's instantiated material and set color
 	public Renderer characterRenderer;
 
-	[SerializeField] private Equipment gun;
+	[SerializeField] private BaseGun gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
 
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
             if (distanceToGun < pickUpRange)
             {
             	// TODO: not likey this at all. Things in gun (or rather pickup) layer should have right component in itself and not parent
-               	gun = hitColliders[i].GetComponentInParent<Equipment>();
+               	gun = hitColliders[i].GetComponentInParent<BaseGun>();
                	if (gun != null)
                	{
 	            	gun.StartCarrying(gunParent.GetComponent<Rigidbody>(), -90);

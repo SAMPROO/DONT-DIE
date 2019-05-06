@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class Equipment : MonoBehaviour
+public abstract class BaseGun : MonoBehaviour
 {
     public bool testFire;
     public Vector3 holdPosition;
