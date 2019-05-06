@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: 1
-  maxFill: 0.38
   fillColor:
     serializedVersion: 2
     key0: {r: 0.9716981, g: 0.16042183, b: 0.813354, a: 1}
@@ -236,6 +235,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   fillTransform: {fileID: 6297181081291444537}
   pressTransform: {fileID: 6297181081291444543}
+  maxPressMovement: 0.38
 --- !u!54 &6297181081290951955
 Rigidbody:
   m_ObjectHideFlags: 0

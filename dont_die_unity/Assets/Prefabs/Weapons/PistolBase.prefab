@@ -172,7 +172,7 @@ MonoBehaviour:
   ghostDisplay: {fileID: 0}
   hudIcon: {fileID: 0}
   infiniteAmmo: 0
-  ammo: 1000
+  ammo: 10
   projectilePrefab: {fileID: 7087827899675200820, guid: 8c7622abf2d5ca246a9baf21dda11cbf,
     type: 3}
   spawnOffset: {x: 0, y: 0.2, z: 1.31}

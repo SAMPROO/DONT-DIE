@@ -8,18 +8,23 @@ public class Syringe : MonoBehaviour
 		get => fill;
 		set
 		{
-			fill = value;
+			fill = Mathf.Clamp01(value);
 			SetFillDisplay();
 		}
 	}
-	public float maxFill;
 
-	// public Color fillColor;
 	public Gradient fillColor;
 	public Transform fillTransform;
 	private Renderer fillRenderer;
 
 	public Transform pressTransform;
+	public float maxPressMovement;
+
+	private void Awake()
+	{
+		fillRenderer = fillTransform.GetComponent<Renderer>();
+		SetFillDisplay();
+	}
 
 	private void SetFillDisplay()
 	{
@@ -30,7 +35,7 @@ public class Syringe : MonoBehaviour
 		fillRenderer.material.color = fillColor.Evaluate(fill);
 
 		var pressPosition = pressTransform.localPosition;
-		pressPosition.z = -1 * maxFill * fill;
+		pressPosition.z = -1 * maxPressMovement * fill;
 		pressTransform.localPosition = pressPosition;
 	}
 

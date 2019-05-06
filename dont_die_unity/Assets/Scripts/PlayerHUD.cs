@@ -19,12 +19,21 @@ public class PlayerHud : MonoBehaviour
 	public Sprite emptyGunHudIcon;
 
 	public void SetHp(int value) => hpText.text = value.ToString();
-	public void SetAmmo(int value) => ammoText.text = value.ToString();
+	public void SetAmmo(int value)
+	{
+		if (value == int.MaxValue)
+			ammoText.text = "Inf.";
+		else
+			ammoText.text = value.ToString();
+	}
 
+	// Set equipped gun icon. Setting null changes to default icon and
+	// hides ammo count display
 	public void SetEquippedIcon(Sprite icon)
 	{
 		bool hasEquipped = icon != null;
-		ammoImage.sprite = icon ?? emptyGunHudIcon;
+		ammoImage.sprite = hasEquipped ? icon : emptyGunHudIcon;
+		ammoText.gameObject.SetActive(hasEquipped);
 	}
 
 	public Rect viewportRect;

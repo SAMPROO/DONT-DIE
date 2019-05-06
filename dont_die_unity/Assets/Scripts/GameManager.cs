@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
 
 	private void OnPlayerDie(PlayerHandle handle)
 	{
-        // unspawn player
+        // unspawn players
         // if enough players (1) has died, end match, and someone wins
 
         for (int i = 0; i < configuration.playerCount; i++)
@@ -171,7 +171,6 @@ public class GameManager : MonoBehaviour
     }
 }
 
-// [System.Serializable]
 public class GameConfiguration
 {
     public int playerCount;

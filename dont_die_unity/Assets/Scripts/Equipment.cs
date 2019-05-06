@@ -3,12 +3,6 @@
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Equipment : MonoBehaviour
 {
-    /*
-    TODO
-    KummitusAsia
-    Hud Icon
-    */
-
     public bool testFire;
     public Vector3 holdPosition;
 
@@ -87,6 +81,7 @@ public abstract class Equipment : MonoBehaviour
 
         isCarried = true;
 
+        // Hide ghost when being carried
         ghostDisplay.gameObject.SetActive(false);
     }
 
@@ -97,7 +92,8 @@ public abstract class Equipment : MonoBehaviour
 
         isCarried = false;
 
-        ghostDisplay.gameObject.SetActive(true); 
+        // Show this only if we have ammo left
+        ghostDisplay.gameObject.SetActive(Ammo > 0); 
     }
 
     public virtual void Destroy()
