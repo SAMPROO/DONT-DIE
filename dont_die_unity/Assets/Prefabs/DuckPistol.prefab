@@ -13,7 +13,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -86,7 +86,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -108,20 +108,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: DuckPistol
       objectReference: {fileID: 0}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: gunSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 4337601339283480907, guid: b60749cdc9a0f454d908851ff6a51c77,
+        type: 3}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: gunSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe808c9485015f144ac0a42e2daa5403, type: 3}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.727508
+      value: 28.253117
       objectReference: {fileID: 0}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 25.99
       objectReference: {fileID: 0}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.426571
+      value: -168.56009
       objectReference: {fileID: 0}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
@@ -163,22 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: gunSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 4337601339283480907, guid: b60749cdc9a0f454d908851ff6a51c77,
-        type: 3}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: gunSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: fe808c9485015f144ac0a42e2daa5403, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04529e734994eff45bdacddcd9e32f19, type: 3}
 --- !u!1 &8159832202605924343 stripped

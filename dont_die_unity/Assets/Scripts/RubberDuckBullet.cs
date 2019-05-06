@@ -53,7 +53,7 @@ public class RubberDuckBullet : MonoBehaviour
 
         if (explosionEffect != null)
         {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(Instantiate(explosionEffect, transform.position, Quaternion.identity),3f);
         }
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
