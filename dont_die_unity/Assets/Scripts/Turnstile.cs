@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(HingeJoint))]
 public class Turnstile : MonoBehaviour
 {
     public float force;
