@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 1873597482105306742}
   - component: {fileID: 7122823402301323834}
   - component: {fileID: 2598087007821929707}
+  - component: {fileID: 8886243473108131800}
   m_Layer: 0
-  m_Name: ExpandingMattressBullet
+  m_Name: ExpandingMattressProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +154,24 @@ MonoBehaviour:
   scaleOnCollision: 1
   destoyAfterSeconds: 1
   secondsToDestroy: 10
-  scaleMultiplier: 7
   timeToScale: 2
   startScale: 0.1
   endScale: 5
+--- !u!114 &8886243473108131800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343717831145057858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89f20cde6207d941a9caa7c0fbe7ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lauchSpeed: 10
+  OnLaunch:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

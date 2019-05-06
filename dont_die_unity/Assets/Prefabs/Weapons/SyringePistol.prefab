@@ -292,23 +292,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SyringePistol
       objectReference: {fileID: 0}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: ghostDisplay
-      value: 
-      objectReference: {fileID: 1729920962591490041}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: hudIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 364fe35e8f6181e4b91f7ce2cafe8494,
-        type: 3}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 6297181081290951965, guid: e416b451ad0ea994bbcff558f56dde5d,
-        type: 3}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -364,6 +347,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: ghostDisplay
+      value: 
+      objectReference: {fileID: 1729920962591490041}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: hudIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 364fe35e8f6181e4b91f7ce2cafe8494,
+        type: 3}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6297181081290951964, guid: e416b451ad0ea994bbcff558f56dde5d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04529e734994eff45bdacddcd9e32f19, type: 3}
 --- !u!4 &7879272413406224425 stripped

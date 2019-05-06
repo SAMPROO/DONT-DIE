@@ -171,9 +171,6 @@ public class PlayerController : MonoBehaviour
 		ragdoll.hasControl = !ragdoll.hasControl;
 	}
 
-	// Use until GunInfo gets properly implemented
-	public GunInfo BACKUPGunInfo;
-
     private void ToggleCarryGun()
 	{
 		// Drop if we have gun

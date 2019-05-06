@@ -108,23 +108,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DuckPistol
       objectReference: {fileID: 0}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: ghostDisplay
-      value: 
-      objectReference: {fileID: 2112265269003247806}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: hudIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 8ff4668c4c04aa949bf63f4f8ef05be0,
-        type: 3}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 4534474816848851199, guid: 330b08c5f8dcb52439861dbf0ba4d63c,
-        type: 3}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -180,6 +163,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: ghostDisplay
+      value: 
+      objectReference: {fileID: 2112265269003247806}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: hudIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ff4668c4c04aa949bf63f4f8ef05be0,
+        type: 3}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 879084891928060989, guid: 330b08c5f8dcb52439861dbf0ba4d63c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04529e734994eff45bdacddcd9e32f19, type: 3}
 --- !u!4 &3913421427930077821 stripped

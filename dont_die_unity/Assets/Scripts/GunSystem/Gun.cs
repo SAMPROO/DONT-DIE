@@ -2,13 +2,7 @@
 
 public class Gun : Equipment
 {
-    /*
-    TODO
-    Display projectile before shoot
-    Click sound
-    */
-
-    public GameObject projectilePrefab;
+    public Projectile projectilePrefab;
     public Vector3 spawnOffset;
 
     public float startSpeed = 10;
@@ -16,18 +10,8 @@ public class Gun : Equipment
 
     // Used to limit the firerate so player can't spam fire
     public float roundPerSecond = 3;
-
-    //[Header("Reuseable aka projectiles are reeled back in")]
-    //public bool reuseable;
-    //public int maxNodeCount;
-    //private int nodeCount;
-    //private bool isReeling;
-
     private float secondsPerRound;
     private float lastFiredTime;
-
-    private GameObject projectile;
-    // private Projectile projectile;
 
     private void Start()
     {
@@ -38,17 +22,14 @@ public class Gun : Equipment
     {
         if (Ammo > 0 && secondsPerRound - (Time.time - lastFiredTime) <= 0/* && !isReeling*/)
         {
-            projectile = Instantiate(
+            var projectile = Instantiate(
                 projectilePrefab,
                 transform.position + Quaternion.LookRotation(transform.forward, transform.up) * spawnOffset,
                 transform.rotation
             );
-            // projectile.GetComponent<Rigidbody>().velocity = Quaternion.AngleAxis(startAngle, transform.right) * transform.forward * startSpeed;
-            // projectile.Launch();
-            projectile.GetComponent<Projectile>()?.Launch();
+            projectile.Launch();
             lastFiredTime = Time.time;
             Ammo--;
-
         }
     }
 

@@ -105,23 +105,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MatressPistol
       objectReference: {fileID: 0}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: ghostDisplay
-      value: 
-      objectReference: {fileID: 3515615995056408168}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: hudIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 38750e7aa2762a3439be9ad6c7f8f031,
-        type: 3}
-    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
-        type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 343717831145057858, guid: 4207af1e46fa29b4198b40765448db59,
-        type: 3}
     - target: {fileID: 5154440989237135418, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,6 +160,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: ghostDisplay
+      value: 
+      objectReference: {fileID: 3515615995056408168}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: hudIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 38750e7aa2762a3439be9ad6c7f8f031,
+        type: 3}
+    - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 8886243473108131800, guid: 4207af1e46fa29b4198b40765448db59,
+        type: 3}
     - target: {fileID: 8027411648153945436, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: m_LocalRotation.x
