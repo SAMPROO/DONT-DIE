@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController   playerPrefab;
     [SerializeField] private OrbitCameraTP      orbitCameraPrefab;
-    [SerializeField] private PlayerHud          hudPrefab;
+    [SerializeField] private PlayerHudScript          hudPrefab;
 
     private PlayerController[] players;
     private GameConfiguration configuration;
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
             orbitCamera.SetInputController(inputControllers[i]);
             orbitCamera.GetCamera().rect = viewRects[i];
 
-            PlayerHud hud = Instantiate(
+            PlayerHudScript hud = Instantiate(
                 hudPrefab,
                 hudCanvas.transform
             );

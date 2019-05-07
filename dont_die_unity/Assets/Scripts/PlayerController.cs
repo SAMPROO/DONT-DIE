@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	private PlayerHandle handle;
 	private OrbitCameraTP cameraRig;
     private IInputController input;
-    private PlayerHud hud;
+    private PlayerHudScript hud;
 
     // These are fetched with GetComponent family
 	private RagdollRig ragdoll;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     	OrbitCameraTP cameraRig, 
     	IInputController input,
     	Color color,
-    	PlayerHud hud
+    	PlayerHudScript hud
 	){
         this.handle = handle;
 		this.hud 	= hud;

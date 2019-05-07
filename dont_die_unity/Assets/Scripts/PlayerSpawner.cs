@@ -5,7 +5,7 @@ public class PlayerSpawner : MonoBehaviour
 	[Header("Set in prefab")]
 	public PlayerController playerPrefab;
 	public OrbitCameraTP	cameraRigPrefab;
-	public PlayerHud		hudPrefab;
+	public PlayerHudScript		hudPrefab;
 
 	public bool 			disableOnStart =  true;
 	public int 				controllerIndex = 1;
