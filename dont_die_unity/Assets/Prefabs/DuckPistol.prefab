@@ -108,6 +108,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DuckPistol
       objectReference: {fileID: 0}
+    - target: {fileID: 5154440989237498906, guid: 04529e734994eff45bdacddcd9e32f19,
+        type: 3}
+      propertyPath: m_TagString
+      value: weapon
+      objectReference: {fileID: 0}
     - target: {fileID: 3038421875392893227, guid: 04529e734994eff45bdacddcd9e32f19,
         type: 3}
       propertyPath: gunSounds.Array.size
