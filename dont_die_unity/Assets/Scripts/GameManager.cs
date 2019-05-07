@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerPrefab;
-    [SerializeField] private OrbitCameraTP orbitCameraPrefab;
+    [SerializeField] private PlayerController   playerPrefab;
+    [SerializeField] private OrbitCameraTP      orbitCameraPrefab;
+    [SerializeField] private PlayerHud          hudPrefab;
 
     private PlayerController[] players;
     private GameConfiguration configuration;
 
     [SerializeField] private Color [] playerColors;
+    [SerializeField] private Canvas hudCanvas;
 
     private MenuSystem menuSystem;
     private const string menuSceneName = "MenuViewer";
@@ -71,6 +73,14 @@ public class GameManager : MonoBehaviour
             orbitCamera.SetInputController(inputControllers[i]);
             orbitCamera.GetCamera().rect = viewRects[i];
 
+            PlayerHud hud = Instantiate(
+                hudPrefab,
+                hudCanvas.transform
+            );
+
+            hud.viewportRect = viewRects[i];
+            hud.Rebuild();
+
             players[i] = Instantiate (
                 playerPrefab, 
                 spawnPoints[i].Position, 
@@ -82,7 +92,8 @@ public class GameManager : MonoBehaviour
                 new PlayerHandle (i), 
                 orbitCamera,
                 inputControllers[i],
-                playerColors [i]
+                playerColors [i],
+                hud
             );
 
 			players[i].OnDie += OnPlayerDie;
@@ -91,7 +102,7 @@ public class GameManager : MonoBehaviour
 
 	private void OnPlayerDie(PlayerHandle handle)
 	{
-        // unspawn player
+        // unspawn players
         // if enough players (1) has died, end match, and someone wins
 
         for (int i = 0; i < configuration.playerCount; i++)
@@ -160,7 +171,6 @@ public class GameManager : MonoBehaviour
     }
 }
 
-// [System.Serializable]
 public class GameConfiguration
 {
     public int playerCount;

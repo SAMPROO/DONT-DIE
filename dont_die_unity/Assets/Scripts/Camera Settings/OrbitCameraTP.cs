@@ -56,13 +56,6 @@ public class OrbitCameraTP : MonoBehaviour
         smoothFocus.Put(aim ? 1f : 0f);
 
         /// Aim stuff ---------------------------------------------------------
-        
-        // TODO: what do these numbers do? Commented line below yields same result
-        // float angle;
-        // angle = ((yAngle + 10) * 3f) / 300;
-        // angle -= 0.2f;
-        // angle = Mathf.Clamp(angle, 0, 1);
-
         // Tested values, do not change if you are not Iiro Pelttari ¤#"¤!(¤"!
         float angle = Mathf.Clamp01((yAngle + 10) / 100f - 0.2f);
 
