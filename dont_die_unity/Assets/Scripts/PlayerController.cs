@@ -13,19 +13,18 @@ public class PlayerController : MonoBehaviour
 	private PlayerHandle handle;
 	private OrbitCameraTP cameraRig;
     private IInputController input;
-    private PlayerHud hud;
 
-    // These are fetched with GetComponent family
+    // This is really not serializable thing, but it is injected from hudmanager or similar
+    [SerializeField] private PlayerHUD hud;
+
 	private RagdollRig ragdoll;
 	private DamageController damageController;
 
-	// This is called when player dies
 	public event Action<PlayerHandle> OnDie;
 
-	// This is used to access character model's instantiated material and set color
 	public Renderer characterRenderer;
 
-	[SerializeField] private BaseGun gun;
+	[SerializeField] private Equipment gun;
 	[SerializeField] private Transform gunParent;
     [SerializeField] private LayerMask gunLayer;
 
@@ -41,6 +40,7 @@ public class PlayerController : MonoBehaviour
 	public float minHandsAngle = -45f;
 	public float maxHandsAngle = 45f;
 
+
 	public bool Grounded => ragdoll.Grounded;
 
 	private void Awake()
@@ -51,29 +51,28 @@ public class PlayerController : MonoBehaviour
 		damageController = GetComponent<DamageController>();
 	}
 
-	// Set mandatory values to playercontroller
+	// This version also sets color.
     public void Initialize(
     	PlayerHandle handle, 
-    	OrbitCameraTP cameraRig, 
-    	IInputController input,
-    	Color color,
-    	PlayerHud hud
+    	OrbitCameraTP camera, 
+    	IInputController inputCnt,
+    	Color color
 	){
+		characterRenderer.material.color = color;
+		Initialize(handle, camera, inputCnt);
+	}
+
+    public void Initialize(
+    	PlayerHandle handle,
+    	OrbitCameraTP camera,
+    	IInputController inputCnt
+	){
+        input = inputCnt;
+
         this.handle = handle;
-		this.hud 	= hud;
-        this.input 	= input;
 
-        this.cameraRig = cameraRig;
+        cameraRig = camera;
         cameraRig.anchor = transform;
-
-        // Color clear designates no change
-		if (color != Color.clear)
-			characterRenderer.material.color = color;
-		
-        // Initialize health systems
-        hitpoints = maxHitpoints;
-		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
-		hud.SetHp(maxHitpoints);
 
         // Subscribe input events
         input.Fire += Fire;
@@ -81,6 +80,15 @@ public class PlayerController : MonoBehaviour
 		input.PickUp += ToggleCarryGun;
 		input.ToggleRagdoll += ToggleRagdoll;
         
+        // Initialize health systems
+        hitpoints = maxHitpoints;
+		damageController.TakeDamage.AddListener((damage) => Hurt((int)damage)); 
+	}
+
+
+	private void OnDestroy()
+	{
+		Destroy(cameraRig.gameObject);
 	}
 
 	private void Update() 
@@ -128,14 +136,17 @@ public class PlayerController : MonoBehaviour
 		if (gun != null)
 		{
 			gun.Use();
-			hud.SetAmmo(gun.Ammo);
+		}
+		else
+		{
+			// 'try-shoot-with-empty-hands' animation. Surprise: nothing happens
 		}
 	}
 
 	public void Hurt(float damage)
 	{
 		hitpoints -= Mathf.RoundToInt(damage);
-		hud.SetHp(hitpoints);
+		hud.Hp = hitpoints;
 
 		if (hitpoints <= 0)
 		{
@@ -156,8 +167,6 @@ public class PlayerController : MonoBehaviour
 			gun?.StopCarrying();
 			gun = null;
 
-			hud.SetEquippedIcon(null);
-
 			return;
 		}
 
@@ -173,6 +182,9 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
+        	Debug.Log(hitColliders[i].name);
+
+
             float distanceToGun = Vector3.Distance(
             	hitColliders[i].transform.position,
             	handPosition
@@ -181,13 +193,10 @@ public class PlayerController : MonoBehaviour
             if (distanceToGun < pickUpRange)
             {
             	// TODO: not likey this at all. Things in gun (or rather pickup) layer should have right component in itself and not parent
-               	gun = hitColliders[i].GetComponentInParent<BaseGun>();
+               	gun = hitColliders[i].GetComponentInParent<Equipment>();
                	if (gun != null)
                	{
 	            	gun.StartCarrying(gunParent.GetComponent<Rigidbody>(), -90);
-					hud.SetEquippedIcon(gun.HudIcon);
-					hud.SetAmmo(gun.Ammo);
-
 	            	return;
                	}
             }

@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-	[Header("Set in prefab")]
 	public PlayerController playerPrefab;
 	public OrbitCameraTP	cameraRigPrefab;
-	public PlayerHud		hudPrefab;
-
 	public bool 			disableOnStart =  true;
 	public int 				controllerIndex = 1;
-
-	[Header("Set in scene")]
-	public Canvas 			hudCanvas = null;
 
 	public enum ControllerType
 	{
@@ -37,13 +31,7 @@ public class PlayerSpawner : MonoBehaviour
 
 		var player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
 
-		// Hud won't show without canvas
-		var hud = Instantiate(hudPrefab, hudCanvas != null ? hudCanvas.transform : null);
-		hud.viewportRect = new Rect(0, 0, 1, 1);
-		hud.Rebuild();
-		
-		player.Initialize(new PlayerHandle(0), cameraRig, controller, Color.clear, hud);
-
+		player.Initialize(new PlayerHandle(0), cameraRig, controller);
 
 		if (disableOnStart)
 			gameObject.SetActive(false);

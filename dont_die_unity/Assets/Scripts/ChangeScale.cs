@@ -10,15 +10,18 @@ public class ChangeScale : MonoBehaviour
     public float secondsToDestroy = 0f;
 
     [Header("Scale")] 
+    public float scaleMultiplier = 1f;
     public float timeToScale = 1f;
-
-    public float startScale = 0.1f;
-    public float endScale = 2.0f;
     
+    private Vector3 startScale;
+    private Vector3 endScale;
     private bool hasCollided = false;    
 
     private void Start()
     {
+        startScale = transform.localScale;
+        endScale = startScale * scaleMultiplier;
+        
         if (scaleOnCollision == false)
             StartCoroutine(Expload(delay));
     }
@@ -34,8 +37,7 @@ public class ChangeScale : MonoBehaviour
         while (i < timeToScale)
         {
             i += Time.deltaTime;
-            // transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
-            transform.localScale = Mathf.Lerp(startScale, endScale, i / timeToScale) * Vector3.one;
+            transform.localScale = Vector3.Lerp(startScale, endScale, i / timeToScale);
             yield return null;
         }
 
