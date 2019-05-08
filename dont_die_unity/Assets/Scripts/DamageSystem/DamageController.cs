@@ -44,7 +44,7 @@ public class DamageController : MonoBehaviour
         // compare impact velocity to childs minimum impact velocity
         if (impactVelocity > (child.minimumFallHeight < 0 ? minimumVelocity : child.minimumVelocity))
         {
-            Debug.Log(collision.GetContact(0).thisCollider.gameObject.name + " -> " + collision.gameObject.name);
+            //Debug.Log(collision.GetContact(0).thisCollider.gameObject.name + " -> " + collision.gameObject.name);
 
             float impactDamage = 1;
 
