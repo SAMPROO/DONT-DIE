@@ -4164,7 +4164,7 @@ PrefabInstance:
     - target: {fileID: 1567859209770627416, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
       propertyPath: m_Name
-      value: Crane 1
+      value: Crane
       objectReference: {fileID: 0}
     - target: {fileID: 1567859209770627367, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
@@ -4204,7 +4204,7 @@ PrefabInstance:
     - target: {fileID: 1567859209770627367, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1567859209770627367, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
@@ -4220,6 +4220,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 968730360, guid: f7ea055c9e2579c4faefb60680ee18fe, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1567859209837498869, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
@@ -4275,6 +4279,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000047683716
       objectReference: {fileID: 0}
+    - target: {fileID: 6195613429761490754, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularXLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195613429761490754, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularYZLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5469497422483129057, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -4284,6 +4298,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469497422483129057, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularXLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469497422483129057, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularYZLimitSpring.damper
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5216482238226255822, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
@@ -4295,6 +4319,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000047683716
       objectReference: {fileID: 0}
+    - target: {fileID: 5216482238226255822, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularXLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216482238226255822, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularYZLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2411572496570994096, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -4305,6 +4339,21 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000047683716
       objectReference: {fileID: 0}
+    - target: {fileID: 2411572496570994096, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularYMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411572496570994096, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularXLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2411572496570994096, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularYZLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6420683177732952676, guid: f7ea055c9e2579c4faefb60680ee18fe,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -4314,6 +4363,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420683177732952676, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularXLimitSpring.damper
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6420683177732952676, guid: f7ea055c9e2579c4faefb60680ee18fe,
+        type: 3}
+      propertyPath: m_AngularYZLimitSpring.damper
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7ea055c9e2579c4faefb60680ee18fe, type: 3}
@@ -6927,7 +6986,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-48776
+  m_Name: pb_Mesh-82296
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10341,12 +10400,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &1689390272 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-    type: 3}
-  m_PrefabInstance: {fileID: 1567859208232238567}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1738565716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12543,7 +12596,6 @@ Transform:
   - {fileID: 1110342171}
   - {fileID: 256975652}
   - {fileID: 647901986}
-  - {fileID: 1689390272}
   - {fileID: 695688935}
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -13356,75 +13408,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1001 &1567859208232238567
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2085365612}
-    m_Modifications:
-    - target: {fileID: 1567859209770627416, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_Name
-      value: Crane
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -25.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567859209770627367, guid: c8feaeeaaa48f6b42a70f3b039981587,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c8feaeeaaa48f6b42a70f3b039981587, type: 3}
 --- !u!1001 &2049659047697938351
 PrefabInstance:
   m_ObjectHideFlags: 0

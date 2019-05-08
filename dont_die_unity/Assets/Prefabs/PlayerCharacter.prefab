@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &7401543352571510456
 MonoBehaviour:
@@ -72,6 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &6398239578881453310
 MonoBehaviour:
@@ -86,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 5
+  minimumFallHeight: -1
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &6328432125730515045
 MonoBehaviour:
@@ -100,6 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &65967137481234939
 MonoBehaviour:
@@ -114,6 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &732699078302934972
 MonoBehaviour:
@@ -150,7 +160,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   pickUpRange: 1
-  maxHitpoints: 10000
+  maxHitpoints: 100
   rightHandTransform: {fileID: 0}
   leftHandTransform: {fileID: 0}
   handAimMultiplier: 2.5
@@ -187,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: -1
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &4451822257311006082
 MonoBehaviour:
@@ -201,6 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &6101029733824970635
 MonoBehaviour:
@@ -215,6 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: -1
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &3784443253379104209
 MonoBehaviour:
@@ -229,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &1942273636468139413
 MonoBehaviour:
@@ -243,6 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: -1
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &4513017214815242192
 MonoBehaviour:
@@ -257,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &415933103694739968
 MonoBehaviour:
@@ -271,6 +293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &7639640596390336905
 MonoBehaviour:
@@ -285,6 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 2
+  minimumFallHeight: -1
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &1557890947548947427
 MonoBehaviour:
@@ -312,6 +338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!114 &6687164490680781969
 MonoBehaviour:
@@ -326,6 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  minimumFallHeight: 10
+  minimumVelocity: -1
   damageController: {fileID: 0}
 --- !u!1001 &5113794738898869027
 PrefabInstance:
@@ -635,6 +665,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 05c8f2585651621439b4f0e817dc3c2c, type: 2}
+    - target: {fileID: 8409200768760336131, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
 --- !u!1 &8655569548028954016 stripped

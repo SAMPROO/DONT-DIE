@@ -42,7 +42,7 @@ public class DamageController : MonoBehaviour
         float impactVelocity = collision.relativeVelocity.magnitude;
 
         // compare impact velocity to childs minimum impact velocity
-        if (impactVelocity > (child.minimumVelocity < 0 ? minimumVelocity : child.minimumVelocity))
+        if (impactVelocity > (child.minimumFallHeight < 0 ? minimumVelocity : child.minimumVelocity))
         {
             Debug.Log(collision.GetContact(0).thisCollider.gameObject.name + " -> " + collision.gameObject.name);
 
