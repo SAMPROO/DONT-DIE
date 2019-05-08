@@ -12,7 +12,6 @@ public class Turnstile : MonoBehaviour
     public float turnstileForce;
     public int timeUntilJointForceDisable = 3;
 
-
     private HingeJoint hingeJoint;
     private Rigidbody turnstileRigidbody;
     private float tolerance = 10f;
@@ -22,6 +21,7 @@ public class Turnstile : MonoBehaviour
         hingeJoint = GetComponent<HingeJoint>();
         turnstileRigidbody = GetComponent<Rigidbody>();
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
@@ -48,7 +48,6 @@ public class Turnstile : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         var difference = Mathf.Abs(turnstileTargetVelocity - hingeJoint.velocity);
         if (difference < tolerance)
             StartCoroutine(DisableHingejointMotor());

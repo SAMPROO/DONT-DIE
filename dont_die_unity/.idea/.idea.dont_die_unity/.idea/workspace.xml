@@ -13,37 +13,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Turnstile.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="368">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
-                <marker date="1557336836466" expanded="true" signature="6:127" ph="..." />
-                <marker date="1557336836466" expanded="true" signature="206:2050" ph="{...}" />
-                <marker date="1557336836466" expanded="true" signature="494:611" ph="{...}" />
-                <marker date="1557336836466" expanded="true" signature="666:1662" ph="{...}" />
-                <marker date="1557336836466" expanded="true" signature="733:1656" ph="{...}" />
-                <marker date="1557336836466" expanded="true" signature="1694:1880" ph="{...}" />
-                <marker date="1557336836466" expanded="true" signature="1930:2048" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Switch_Lever_v2.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <marker date="1557334840721" expanded="false" signature="6:32" ph="..." />
-                <marker date="1557334840721" expanded="true" signature="87:2187" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="135:208" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="257:330" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="609:859" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="891:2185" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="1247:1689" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="1573:1667" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="1747:2179" ph="{...}" />
-                <marker date="1557334840721" expanded="true" signature="2073:2169" ph="{...}" />
+                <marker date="1557349538747" expanded="true" signature="6:127" ph="..." />
+                <marker date="1557349538747" expanded="true" signature="206:2049" ph="{...}" />
+                <marker date="1557349538747" expanded="true" signature="493:610" ph="{...}" />
+                <marker date="1557349538747" expanded="true" signature="666:1662" ph="{...}" />
+                <marker date="1557349538747" expanded="true" signature="733:1656" ph="{...}" />
+                <marker date="1557349538747" expanded="true" signature="1694:1879" ph="{...}" />
+                <marker date="1557349538747" expanded="true" signature="1929:2047" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -81,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="48">
-              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
               <folding>
                 <marker date="1555582276889" expanded="true" signature="75:136" ph="{...}" />
               </folding>
@@ -140,33 +119,27 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FallDamageTester.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Explosion.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DamageChild.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/RubberDuck.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LifeTime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LifeTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollRig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Switch_Lever_v2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/GamepadController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/IInputController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/InputControllerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/645B5729-CB30-4920-886A-95AAF544DA6F/21/7fbf5af5/ScriptableBakedReflectionSystemWrapper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollFootControl.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Turnstile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8D2DEAE-EB3A-4471-B3E2-24C2A136823A/80/069efecc/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Turnstile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C8D2DEAE-EB3A-4471-B3E2-24C2A136823A/80/069efecc/Vector3.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/VelocityBasedJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JumpPad.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EditorUtilities/KeepSceneViewActive.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/IJumpBonus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LinearDrive.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollArmatureRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ragdoll/RagdollArmatureRoot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Orbit Camera.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TouchDamage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChangeScale.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/OrbitCameraTP.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ImpactDamage.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -287,12 +260,12 @@
       <workItem from="1555495646575" duration="2590000" />
       <workItem from="1556093641863" duration="8564000" />
       <workItem from="1556286556655" duration="6871000" />
-      <workItem from="1557333222817" duration="4563000" />
+      <workItem from="1557333222817" duration="5189000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5112000" />
+    <option name="totallyTimeSpent" value="5738000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -499,7 +472,7 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/FixedJumpBonus.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
-          <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding>
             <marker date="1555582276889" expanded="true" signature="75:136" ph="{...}" />
           </folding>
@@ -551,33 +524,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <marker date="1557334840721" expanded="false" signature="6:32" ph="..." />
-            <marker date="1557334840721" expanded="true" signature="87:2187" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="135:208" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="257:330" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="609:859" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="891:2185" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="1247:1689" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="1573:1667" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="1747:2179" ph="{...}" />
-            <marker date="1557334840721" expanded="true" signature="2073:2169" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Turnstile.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        <state relative-caret-position="368">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
           <folding>
-            <marker date="1557336836466" expanded="true" signature="6:127" ph="..." />
-            <marker date="1557336836466" expanded="true" signature="206:2050" ph="{...}" />
-            <marker date="1557336836466" expanded="true" signature="494:611" ph="{...}" />
-            <marker date="1557336836466" expanded="true" signature="666:1662" ph="{...}" />
-            <marker date="1557336836466" expanded="true" signature="733:1656" ph="{...}" />
-            <marker date="1557336836466" expanded="true" signature="1694:1880" ph="{...}" />
-            <marker date="1557336836466" expanded="true" signature="1930:2048" ph="{...}" />
+            <marker date="1557349538747" expanded="true" signature="6:127" ph="..." />
+            <marker date="1557349538747" expanded="true" signature="206:2049" ph="{...}" />
+            <marker date="1557349538747" expanded="true" signature="493:610" ph="{...}" />
+            <marker date="1557349538747" expanded="true" signature="666:1662" ph="{...}" />
+            <marker date="1557349538747" expanded="true" signature="733:1656" ph="{...}" />
+            <marker date="1557349538747" expanded="true" signature="1694:1879" ph="{...}" />
+            <marker date="1557349538747" expanded="true" signature="1929:2047" ph="{...}" />
           </folding>
         </state>
       </provider>
