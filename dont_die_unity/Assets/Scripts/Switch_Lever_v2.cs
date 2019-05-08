@@ -39,7 +39,6 @@ public class Switch_Lever_v2 : MonoBehaviour, ISwitch
     {
         // keep track of current angle
         currentAngle += Mathf.DeltaAngle(currentAngle, -movingPart.transform.localRotation.eulerAngles.y);
-        Debug.Log("CurrentAngle: " + currentAngle);
         // set range output
         Range = (currentAngle + (minAngle < 0 ? -minAngle : 0)) / angularRange;
         Range = Mathf.Clamp(Range, 0, 1);
