@@ -4,23 +4,73 @@ using UnityEngine;
 
 public class GameArea : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    public Transform[] spawnPositions;
+    public List<Transform> playersOutOfBounds;
+    public List<int> playersOutOfBoundsTime;
+    public int timeAllowed;
+    public float currentTime;
+
+
     void Update()
     {
-        
+        if (currentTime >= 1f)
+        {
+            currentTime = 0f;
+
+            if (playersOutOfBounds.Count > 0)
+            {
+                CheckPlayers();
+            }
+        }
+        else
+        {
+            currentTime += 1f * Time.deltaTime;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            other.transform.parent.transform.position = Vector3.zero;
+            playersOutOfBounds.Add(other.transform.parent.transform);
+            playersOutOfBoundsTime.Add(timeAllowed);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            for (int i = 0; i < playersOutOfBounds.Count; i++)
+            {
+                if (playersOutOfBounds[i] == other.transform.parent.transform)
+                {
+                    playersOutOfBounds.RemoveAt(i);
+                    playersOutOfBoundsTime.RemoveAt(i);
+                }
+                
+            }
+            
+        }
+    }
+
+    private void ReturnPlayer(Transform _player)
+    {
+        _player.position = spawnPositions[Random.Range(0, spawnPositions.Length)].position + new Vector3(0, 3, 0);
+    }
+
+    private void CheckPlayers()
+    {
+        for(int i=0;i<playersOutOfBounds.Count;i++)
+        {
+            playersOutOfBoundsTime[i] -= 1;
+            Debug.Log(playersOutOfBounds + " " + playersOutOfBoundsTime);
+            if(playersOutOfBoundsTime[i]<=0)
+            {
+                ReturnPlayer(playersOutOfBounds[i]);
+                playersOutOfBounds.RemoveAt(i);
+                playersOutOfBoundsTime.RemoveAt(i);
+            }
         }
     }
 }

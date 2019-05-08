@@ -82,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55058088d03a7e4ba305f52b1cce034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 0}
   characterRenderer: {fileID: 8655569548015356084}
   gun: {fileID: 0}
   gunParent: {fileID: 8655569548028926350}
@@ -537,6 +536,31 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.000000022351742
       objectReference: {fileID: 0}
+    - target: {fileID: 6488369753661336276, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781143496705989629, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382094407708248173, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ef1ec06d4d0328409a4ae2958c41e21, type: 2}
+    - target: {fileID: 2120191983082503568, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914076012496587877, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05c8f2585651621439b4f0e817dc3c2c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
 --- !u!1 &8655569548028954038 stripped
