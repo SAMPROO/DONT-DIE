@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
+	[Header("Set in prefab")]
 	public PlayerController playerPrefab;
 	public OrbitCameraTP	cameraRigPrefab;
-	public bool 			disableOnStart =  true;
+	public PlayerHudScript	hudPrefab;
+	public Canvas 			hudCanvas;
+	public GameObject 		displayObject;
+
 	public int 				controllerIndex = 1;
+
 
 	public enum ControllerType
 	{
@@ -31,10 +36,14 @@ public class PlayerSpawner : MonoBehaviour
 
 		var player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
 
-		player.Initialize(new PlayerHandle(0), cameraRig, controller);
+		// Hud won't show without canvas
+		var hud = Instantiate(hudPrefab, hudCanvas.transform);
+		hud.viewportRect = new Rect(0, 0, 1, 1);
+		hud.Rebuild();
+		
+		player.Initialize(new PlayerHandle(0), cameraRig, controller, Color.clear, hud);
 
-		if (disableOnStart)
-			gameObject.SetActive(false);
+		displayObject.SetActive(false);
 	}	
 
 	private void OnDrawGizmosSelected()
