@@ -16,6 +16,7 @@ public class ProjectileAttacher : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject);
     	// No need to check tags: Projectiles are on layer that doesn't hit weapons or projectiles anyway
         if(isAttached == false && ready)// && !collision.gameObject.CompareTag("weapon") && !collision.gameObject.CompareTag("projectile"))
             DoAttach(collision.gameObject, collision.GetContact(0).point);
