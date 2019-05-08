@@ -44,7 +44,7 @@ public class WeaponSpawner : MonoBehaviour
                 currentDelay -= 1 * Time.deltaTime;
                 holoAxis.transform.Rotate(0, spinRate*Time.deltaTime, 0);
                 spawnTimerText.text = ((int)currentDelay).ToString();
-                Debug.Log((respawnDelay - currentDelay) / respawnDelay);
+
                 timerCircle.fillAmount = (respawnDelay - currentDelay) / respawnDelay;
             }
         }

@@ -55,7 +55,6 @@ public class StatusController : MonoBehaviour
 
         else
         {
-            Debug.Log(statusEffects.Count+ "this many status effetcs");
             for (int i = statusEffects.Count - 1; i >= 0; i--)
             {
                 if(statusEffects[i]!=null)

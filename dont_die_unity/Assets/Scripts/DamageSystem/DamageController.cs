@@ -36,13 +36,16 @@ public class DamageController : MonoBehaviour
         minimumVelocity = Mathf.Sqrt(2 * Physics.gravity.magnitude * minimumFallHeight);
     }
 
-    public void CalculateImpactDamage(Collision collision, float damageMultiplier)
+    public void CalculateImpactDamage(Collision collision, DamageChild child)
     {
         // velocity relative to other gameobject at the time of the collision
         float impactVelocity = collision.relativeVelocity.magnitude;
 
-        if (impactVelocity > minimumVelocity)
+        // compare impact velocity to childs minimum impact velocity
+        if (impactVelocity > (child.minimumFallHeight < 0 ? minimumVelocity : child.minimumVelocity))
         {
+            //Debug.Log(collision.GetContact(0).thisCollider.gameObject.name + " -> " + collision.gameObject.name);
+
             float impactDamage = 1;
 
             int impactDamageType = 1;
@@ -61,7 +64,7 @@ public class DamageController : MonoBehaviour
             }
 
             // multiply damage depending on which part got hit
-            impactDamage *= damageMultiplier;
+            impactDamage *= child.damageMultiplier;
 
             // if there is any damage. Invoke custom unityEvent "FloatEvent" and pass damage (float) as an argument
             if (impactDamage > 0)

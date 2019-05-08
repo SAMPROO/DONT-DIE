@@ -8,8 +8,21 @@ public class DamageChild : MonoBehaviour
     // multiply all damage done to this specific part
     public float damageMultiplier = 1;
 
+    // if negative use default in DamageController
+    public float minimumFallHeight = -1;
+
+    // velocity at which this specific part needs to hit something to take damage calculated from fall height
+    [HideInInspector] public float minimumVelocity;
+
     [HideInInspector]
     public DamageController damageController;
+
+    private void Start()
+    {
+        // calculation to get minimumVelocity from minimumFallHeight
+        if (minimumFallHeight >= 0)
+            minimumVelocity = Mathf.Sqrt(2 * Physics.gravity.magnitude * minimumFallHeight);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,7 +30,7 @@ public class DamageChild : MonoBehaviour
         if (collision.collider.transform.root == transform.root)
             return;
 
-        damageController.CalculateImpactDamage(collision, damageMultiplier);
+        damageController.CalculateImpactDamage(collision, this);
 
         if (collision.gameObject.GetComponent<TouchDamage>())
         {
