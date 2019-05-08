@@ -4767,8 +4767,8 @@ MonoBehaviour:
     mapSceneName: Level
     locked: 0
   - button: {fileID: 2045726436}
-    mapSceneName: Graybox
-    locked: 1
+    mapSceneName: Don_Diego_Resort
+    locked: 0
   mapSelectBackButton: {fileID: 310099413}
   mapSelectPlayerCountText: {fileID: 218812010}
   endViewObject: {fileID: 1998857212}
