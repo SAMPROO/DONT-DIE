@@ -22,6 +22,7 @@ public class SoundMaker : MonoBehaviour
 
         if(sounds.Length==0)
         {
+            Debug.Log(sounds.Length);
             Debug.Log(gameObject + " I DONT HAVE ANY SOUNDS GOOD BYE");
             Destroy(this);
         }
@@ -31,11 +32,11 @@ public class SoundMaker : MonoBehaviour
     {
         float forceTotal = collision.relativeVelocity.x + collision.relativeVelocity.y + collision.relativeVelocity.z;
         forceTotal *= forceTotal;
-        Debug.Log(forceTotal+" potenssoitu");
+        //Debug.Log(forceTotal+" potenssoitu");
 
         forceTotal /= volumeSmooth;
         forceTotal = Mathf.Clamp(forceTotal, 0.01f, volumeMax);
-        Debug.Log(forceTotal);
+        //Debug.Log(forceTotal);
         PlaySound(forceTotal);
     }
 

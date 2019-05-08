@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 1830869738928308212}
   - component: {fileID: 6208742229976843315}
   - component: {fileID: 6328168699287769336}
-  - component: {fileID: 4230227581952656011}
   - component: {fileID: 4020814810316016245}
   - component: {fileID: 1458855386671332616}
   m_Layer: 0
-  m_Name: ChairPre
+  m_Name: PlasticChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +100,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 89d0eb1c41461e645a2befa06c405dc0, type: 3}
   - {fileID: 8300000, guid: b9e6502b0a5c5df469659961388b780f, type: 3}
   - {fileID: 8300000, guid: 95c78011404c5cb41b4058ac6d258a9b, type: 3}
-  volumeSmooth: 0
+  volumeSmooth: 800
   volumeMax: 0.2
 --- !u!82 &6328168699287769336
 AudioSource:
@@ -199,21 +198,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4230227581952656011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830869738930561332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccc188e40e21626439f65f5124d6ab69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds: []
-  volumeSmooth: 0
-  volumeMax: 1
 --- !u!65 &4020814810316016245
 BoxCollider:
   m_ObjectHideFlags: 0
