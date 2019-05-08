@@ -4,11 +4,13 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
-	public float lauchSpeed = 5f;
+	public float launchSpeed = 5f;
 
 	public void Launch()
 	{
-		GetComponent<Rigidbody>().AddForce(transform.forward * lauchSpeed, ForceMode.VelocityChange);
+        OnLaunch?.Invoke();
+
+        GetComponent<Rigidbody>().AddForce(transform.forward * launchSpeed, ForceMode.VelocityChange);
 	}
 
 	public UnityEvent OnLaunch;
