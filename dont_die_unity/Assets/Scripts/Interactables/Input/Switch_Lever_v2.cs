@@ -42,6 +42,9 @@ public class Switch_Lever_v2 : MonoBehaviour, ISwitch
         // set range output
         Range = (currentAngle + (minAngle < 0 ? -minAngle : 0)) / angularRange;
         Range = Mathf.Clamp(Range, 0, 1);
+        
+        Debug.Log("Current angle: " + currentAngle);
+        Debug.Log("maxAngle - triggerAngle: " + (maxAngle - triggerAngle));
 
         if (currentAngle >= maxAngle - triggerAngle)
         {
