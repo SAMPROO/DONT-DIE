@@ -168,6 +168,9 @@ GameObject:
   - component: {fileID: 6297181081290951964}
   - component: {fileID: 6297181081290951953}
   - component: {fileID: 7553413478931921539}
+  - component: {fileID: 3687807741809157111}
+  - component: {fileID: 5293319619315913298}
+  - component: {fileID: 3785348690672329743}
   m_Layer: 10
   m_Name: SyringeProjectile
   m_TagString: Untagged
@@ -265,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89f20cde6207d941a9caa7c0fbe7ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lauchSpeed: 10
+  lauchSpeed: 20
   OnLaunch:
     m_PersistentCalls:
       m_Calls: []
@@ -298,6 +301,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 2
+--- !u!114 &3687807741809157111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297181081290951965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38400af5abb6ee4c985a44fa025d5a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localPosition: {x: 0, y: 0, z: 0.23}
+--- !u!114 &5293319619315913298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297181081290951965}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8029946616b4c438f6162a02e3e9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedThreshold: 2
+--- !u!114 &3785348690672329743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297181081290951965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7af66a7b2baed4e86e8efa3d569982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectTicks: 5
+  effectPower: 20
+  myType: 1
+  primeTime: 2
+  sound: {fileID: 0}
 --- !u!1 &6297181081290951967
 GameObject:
   m_ObjectHideFlags: 0
