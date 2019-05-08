@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279b13d50a2a6cd40b1c28cc71cdb0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumFallHeight: 2.5
+  minimumFallHeight: 5
   tickRate: 1
   TakeDamage:
     m_PersistentCalls:

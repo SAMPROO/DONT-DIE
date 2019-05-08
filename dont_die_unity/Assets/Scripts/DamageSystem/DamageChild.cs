@@ -8,6 +8,10 @@ public class DamageChild : MonoBehaviour
     // multiply all damage done to this specific part
     public float damageMultiplier = 1;
 
+    // velocity at which this specific part needs to hit something to take damage
+    // if negative use default in DamageController
+    public float minimumVelocity = -1;
+
     [HideInInspector]
     public DamageController damageController;
 
@@ -17,7 +21,7 @@ public class DamageChild : MonoBehaviour
         if (collision.collider.transform.root == transform.root)
             return;
 
-        damageController.CalculateImpactDamage(collision, damageMultiplier);
+        damageController.CalculateImpactDamage(collision, this);
 
         if (collision.gameObject.GetComponent<TouchDamage>())
         {
