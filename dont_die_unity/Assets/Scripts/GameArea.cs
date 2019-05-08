@@ -11,6 +11,15 @@ public class GameArea : MonoBehaviour
     public int timeAllowed;
     public float currentTime;
 
+    private void Start()
+    {
+        GameObject[] points = GameObject.FindGameObjectsWithTag("PlayerSpawnPoint");
+        spawnPositions = new Transform[points.Length];
+        for (int i = 0; i < points.Length; i++)
+        {
+            spawnPositions[i] = points[i].transform;
+        }
+    }
 
     void Update()
     {
