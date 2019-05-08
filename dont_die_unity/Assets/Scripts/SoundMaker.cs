@@ -14,6 +14,9 @@ public class SoundMaker : MonoBehaviour
     [Range(0.1f,1f)]
     private float volumeMax = 1f;
 
+    [Header("Manual mode")]
+    public bool manualMode = false;
+
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
@@ -30,7 +33,24 @@ public class SoundMaker : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        float forceTotal = collision.relativeVelocity.x + collision.relativeVelocity.y + collision.relativeVelocity.z;
+        if(manualMode==false)
+        {
+            CalculateImpact(collision.relativeVelocity);
+        }
+        
+    }
+
+    private void PlaySound(float _hitStrength)
+    {
+
+        AudioClip selectedClip=sounds[Random.Range(0,sounds.Length)];
+        audioSrc.PlayOneShot(selectedClip,_hitStrength);
+
+    }
+
+    public void CalculateImpact(Vector3 impact)
+    {
+        float forceTotal = impact.x + impact.y + impact.z;
         forceTotal *= forceTotal;
         //Debug.Log(forceTotal+" potenssoitu");
 
@@ -39,11 +59,15 @@ public class SoundMaker : MonoBehaviour
         //Debug.Log(forceTotal);
         PlaySound(forceTotal);
     }
-
-    public void PlaySound(float _hitStrength)
+    public void CalculateImpactSimple(float impact)
     {
+        float forceTotal = impact;
+        forceTotal *= forceTotal;
+        //Debug.Log(forceTotal+" potenssoitu");
 
-        AudioClip selectedClip=sounds[Random.Range(0,sounds.Length)];
-        audioSrc.PlayOneShot(selectedClip,_hitStrength);
+        forceTotal /= volumeSmooth;
+        forceTotal = Mathf.Clamp(forceTotal, 0.01f, volumeMax);
+        //Debug.Log(forceTotal);
+        PlaySound(forceTotal);
     }
 }
