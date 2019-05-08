@@ -40,7 +40,7 @@ public class SoundMaker : MonoBehaviour
         PlaySound(forceTotal);
     }
 
-    private void PlaySound(float _hitStrength)
+    public void PlaySound(float _hitStrength)
     {
 
         AudioClip selectedClip=sounds[Random.Range(0,sounds.Length)];
