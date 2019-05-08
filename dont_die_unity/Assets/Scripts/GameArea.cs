@@ -9,12 +9,14 @@ public class GameArea : MonoBehaviour
     public List<Transform> playersOutOfBounds;
     public List<int> playersOutOfBoundsTime;
     public int timeAllowed;
+    private int positionsAmount; 
     public float currentTime;
 
-    private void Start()
+    private void Awake()
     {
         GameObject[] points = GameObject.FindGameObjectsWithTag("PlayerSpawnPoint");
         spawnPositions = new Transform[points.Length];
+        positionsAmount = points.Length;
         for (int i = 0; i < points.Length; i++)
         {
             spawnPositions[i] = points[i].transform;
@@ -65,7 +67,8 @@ public class GameArea : MonoBehaviour
 
     private void ReturnPlayer(Transform _player)
     {
-        _player.position = spawnPositions[Random.Range(0, spawnPositions.Length)].position + new Vector3(0, 3, 0);
+        Debug.Log(positionsAmount);
+        _player.position = spawnPositions[Random.Range(0, positionsAmount)].position + new Vector3(0, 3, 0);
     }
 
     private void CheckPlayers()
