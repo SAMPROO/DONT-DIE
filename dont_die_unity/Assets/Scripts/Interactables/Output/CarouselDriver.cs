@@ -7,36 +7,26 @@ public class CarouselDriver : MonoBehaviour
     public GameObject switchGameObject;
     private ISwitch iSwitch;
 
-    public Rigidbody movingPart;
-    public float maxSpeed = 500, duration = 1;
-    private float startSpeed, targetSpeed, startTime, currentAngle;
+    public HingeJoint joint;
 
-    private void Start()
+    public bool state;
+
+    private void OnValidate()
     {
         iSwitch = switchGameObject.GetComponent<ISwitch>();
 
-        iSwitch.OnTurnOn += Toggle;
-        iSwitch.OnTurnOff += Toggle;
-
-        startSpeed = maxSpeed;
-        targetSpeed = 0;
+        joint.useMotor = state;
     }
 
-    private void Update()
+    private void Start()
     {
-        float t = (Time.time - startTime) / duration;
-
-        currentAngle += Mathf.SmoothStep(startSpeed, targetSpeed, t);
-
-        movingPart.MoveRotation(Quaternion.AngleAxis(currentAngle, transform.up));
+        iSwitch.OnTurnOn += Toggle;
+        iSwitch.OnTurnOff += Toggle;
     }
 
     private void Toggle()
     {
-        startTime = Time.time;
-
-        float temp = targetSpeed;
-        targetSpeed = startSpeed;
-        startSpeed = temp;
+        state = !state;
+        joint.useMotor = state;
     }
 }
