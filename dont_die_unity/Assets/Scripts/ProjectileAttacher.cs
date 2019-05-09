@@ -59,6 +59,7 @@ public class ProjectileAttacher : MonoBehaviour
             instance.connectedAnchor = hitPos;
         }
         isAttached = true;
+        Destroy(gameObject, 3);
         
     }
 
