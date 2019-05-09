@@ -3416,6 +3416,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.1000003
       objectReference: {fileID: 0}
+    - target: {fileID: 4956938408937859970, guid: 71d6aeb6b73c73346ae1090c40c621cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8388702248912571092, guid: 71d6aeb6b73c73346ae1090c40c621cf,
         type: 3}
       propertyPath: m_LinearLimit.limit
@@ -3425,11 +3430,6 @@ PrefabInstance:
         type: 3}
       propertyPath: state
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956938408937859970, guid: 71d6aeb6b73c73346ae1090c40c621cf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613941142538521153, guid: 71d6aeb6b73c73346ae1090c40c621cf,
         type: 3}
