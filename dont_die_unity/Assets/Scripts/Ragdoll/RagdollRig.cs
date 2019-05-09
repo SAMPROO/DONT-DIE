@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RagdollRig : MonoBehaviour
 {
@@ -47,6 +48,12 @@ public class RagdollRig : MonoBehaviour
 	private Vector3 leftFootPosition;
 	private Vector3 rightFootPosition;
 
+	// This is called when one step is taken
+	public UnityEvent OnTakeStep;
+	private bool tookStep;
+	private const float footLerpStepThreshold = 0.95f;
+	private const float footLerpStepResetThreshold = 0.05f;
+
 	private void ComputeFootPositions()
 	{
 		Vector3 forward = hipRb.transform.forward;
@@ -60,6 +67,23 @@ public class RagdollRig : MonoBehaviour
 		float footLerp = doWalk ?
 			Mathf.PingPong(footSpeed * Time.time, 1f) * 2f - 1f:
 			0f;
+
+		// Two if clauses to track steps
+		float absFootLerp = Mathf.Abs(footLerp);
+		if (tookStep == false && absFootLerp > footLerpStepThreshold)
+		{
+			// This is used for sounds now, so only call when grounded.
+			// For other stuff this may not be valid
+			if (Grounded)
+				OnTakeStep?.Invoke();
+			tookStep = true;
+		}
+
+		if (tookStep == true && absFootLerp < footLerpStepResetThreshold)
+		{
+			tookStep = false;
+		}
+
 
 		// foot targets in local space
 		Vector3 leftFootTarget = new Vector3(-feetWidth, 0f, stepLength * footLerp);
