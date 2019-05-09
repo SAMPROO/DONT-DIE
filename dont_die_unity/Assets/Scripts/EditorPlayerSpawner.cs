@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+public class EditorPlayerSpawner : MonoBehaviour
 {
+	public static bool CanSpawn = true;
+
 	[Header("Set in prefab")]
 	public PlayerController playerPrefab;
 	public OrbitCameraTP	cameraRigPrefab;
@@ -20,6 +22,14 @@ public class PlayerSpawner : MonoBehaviour
 	public ControllerType controllerType;
 
 	private void Start()
+	{
+		if (CanSpawn)
+			Spawn();
+		else 
+			Destroy(gameObject);
+	}
+
+	private void Spawn()
 	{
 		IInputController controller;
 

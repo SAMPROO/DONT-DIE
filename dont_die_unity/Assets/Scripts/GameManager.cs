@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         menuSystem = GetComponent<MenuSystem>();
+
+        EditorPlayerSpawner.CanSpawn = false;
     }
 
     private void Start()
