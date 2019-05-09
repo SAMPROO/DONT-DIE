@@ -257,6 +257,23 @@ MonoBehaviour:
   currentTickTime: 0
   pc: {fileID: 0}
   rr: {fileID: 0}
+--- !u!114 &5475433259091001981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655569548028954036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c659a1585206f4542b866b63b034d81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 9038872643cee4c4eb7b69673d6ac05e, type: 3}
+  - {fileID: 8300000, guid: e6a92447da978ba43924100a77c900e6, type: 3}
+  - {fileID: 8300000, guid: d4f5e0f445f0de6478812431671ce3e2, type: 3}
+  - {fileID: 8300000, guid: daf96488e594f9148b8151fd2f8f2c54, type: 3}
 --- !u!114 &8246959185096119745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,7 +294,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   pickUpRange: 1
-  maxHitpoints: 100
+  maxHitpoints: 300
   rightHandTransform: {fileID: 0}
   leftHandTransform: {fileID: 0}
   handAimMultiplier: 2.5
@@ -312,23 +329,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: FloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &5475433259091001981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655569548028954036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c659a1585206f4542b866b63b034d81b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - {fileID: 8300000, guid: 9038872643cee4c4eb7b69673d6ac05e, type: 3}
-  - {fileID: 8300000, guid: e6a92447da978ba43924100a77c900e6, type: 3}
-  - {fileID: 8300000, guid: d4f5e0f445f0de6478812431671ce3e2, type: 3}
-  - {fileID: 8300000, guid: daf96488e594f9148b8151fd2f8f2c54, type: 3}
 --- !u!114 &3418976754278881038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OnTakeStep.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: jumpVelocity
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6781143496705989629, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}

@@ -8,6 +8,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip menuMusic;
     public AudioClip gameMusic;
     public AudioClip victorySound;
+    public AudioClip click;
     public float baseVolume=0.4f;
 
     public void PlayMenu(float _volume = 0.4f)
@@ -37,5 +38,10 @@ public class MusicManager : MonoBehaviour
         GetComponent<AudioSource>().clip = victorySound;
         GetComponent<AudioSource>().loop = false;
         GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayClick()
+    {
+        GetComponent<AudioSource>().PlayOneShot(click,0.8f);
     }
 }

@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         {
             OrbitCameraTP orbitCamera = Instantiate(
                 orbitCameraPrefab,
-                spawnPoints[i].Position,
+                spawnPoints[i].Position + Vector3.left*200f,
                 spawnPoints[i].Orientation
             );
             

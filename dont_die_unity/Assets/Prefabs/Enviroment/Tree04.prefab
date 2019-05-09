@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 282887016899926321}
   - component: {fileID: 1184195439381062967}
   - component: {fileID: 3987117659838245865}
+  - component: {fileID: 4994402640638094610}
   m_Layer: 0
   m_Name: TreeTrunk_002
   m_TagString: Untagged
@@ -787,6 +788,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4994402640638094610
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585445066801190205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300010, guid: 80949f7e23e20b345a4ec57167149205, type: 3}
 --- !u!1 &3077440138403215487
 GameObject:
   m_ObjectHideFlags: 0
