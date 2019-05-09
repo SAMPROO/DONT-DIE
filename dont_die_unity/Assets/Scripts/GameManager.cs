@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public string loseText = "Defeat";
     public Color loseColor = Color.red;
 
+    [SerializeField] private MusicManager musicManager;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         menuSystem.SetMainMenu();
         SceneManager.LoadScene(menuSceneName);
+        musicManager.PlayMenu();
     }
 
     // Use this from menu system to start correct level etc.
@@ -110,6 +113,8 @@ public class GameManager : MonoBehaviour
             // Start end display routine
 			players[i].OnDie += StartPlayerDieRoutine;
 		}
+
+        musicManager.PlayStart();
 	}
 
     // Start routine in method so we can also unsubscribe this
@@ -118,6 +123,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlayerDieRoutine(PlayerHandle winnerHandle)
     {
+        musicManager.PlayEnd();
         for (int i = 0; i < configuration.playerCount; i++)
         {
             players[i].OnDie -= StartPlayerDieRoutine;
@@ -156,8 +162,9 @@ public class GameManager : MonoBehaviour
             winnerNumber = handle.index + 1
         };
 
-        menuSystem.SetEndView(endStatus);   
+        menuSystem.SetEndView(endStatus);
         SceneManager.LoadScene(menuSceneName);
+        musicManager.PlayMenu();
     }
 
     // Get viweport rect array depending on number of players
