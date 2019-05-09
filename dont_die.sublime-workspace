@@ -1,0 +1,1533 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"p",
+				"public"
+			],
+			[
+				"ma",
+				"maxHitpoints"
+			],
+			[
+				"fil",
+				"fillTransform"
+			],
+			[
+				"amm",
+				"ammoImage"
+			],
+			[
+				"To",
+				"ToString"
+			],
+			[
+				"t",
+				"text"
+			],
+			[
+				"am",
+				"ammoText"
+			],
+			[
+				"Se",
+				"SetFillDisplay"
+			],
+			[
+				"fill",
+				"fillRenderer"
+			],
+			[
+				"au",
+				"audioSettings"
+			],
+			[
+				"Set",
+				"SetAmmo"
+			],
+			[
+				"gun",
+				"gunInfo"
+			],
+			[
+				"ammo",
+				"ammoText"
+			],
+			[
+				"em",
+				"emptyGunSprite"
+			],
+			[
+				"B",
+				"BACKUPGunInfo"
+			],
+			[
+				"view",
+				"viewRects"
+			],
+			[
+				"ve",
+				"viewport"
+			],
+			[
+				"hud",
+				"hudPrefab"
+			],
+			[
+				"Pl",
+				"PlayerHud"
+			],
+			[
+				"co",
+				"controller"
+			],
+			[
+				"Int",
+				"Initialize"
+			],
+			[
+				"hu",
+				"hudCanvas"
+			],
+			[
+				"In",
+				"Instantiate"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"Re",
+				"RectTransform"
+			],
+			[
+				"Ve",
+				"Vector2Int"
+			],
+			[
+				"vei",
+				"viewportRect"
+			],
+			[
+				"vi",
+				"viewportRect"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"re",
+				"rectTransform"
+			],
+			[
+				"Bo",
+				"BottomLeft"
+			],
+			[
+				"SEt",
+				"SetAnchors"
+			],
+			[
+				"an",
+				"anchor"
+			],
+			[
+				"te",
+				"textLength"
+			],
+			[
+				"Get",
+				"GetChildAlignment"
+			],
+			[
+				"M",
+				"MiddleLeft"
+			],
+			[
+				"TE",
+				"TextAnchor"
+			],
+			[
+				"Tp",
+				"TopRight"
+			],
+			[
+				"Top",
+				"TopRight"
+			],
+			[
+				"Te",
+				"TextAnchor"
+			],
+			[
+				"S",
+				"SerializeField"
+			],
+			[
+				"hp",
+				"hpImage"
+			],
+			[
+				"r",
+				"rectTransform"
+			],
+			[
+				"Serializ",
+				"SerializeField"
+			],
+			[
+				"Do",
+				"DoConcussion"
+			],
+			[
+				"Con",
+				"ControlLeftHand"
+			],
+			[
+				"is",
+				"isControlled"
+			],
+			[
+				"cli",
+				"clippingRayMask"
+			],
+			[
+				"Put",
+				"PutFunction"
+			],
+			[
+				"no",
+				"noAimTargetDistance"
+			],
+			[
+				"camera",
+				"cameraDistanceCurrent"
+			],
+			[
+				"cam",
+				"cameraDistanceMin"
+			],
+			[
+				"camer",
+				"cameraTargetDistance"
+			],
+			[
+				"cameraDit",
+				"cameraDistanceMin"
+			],
+			[
+				"smoo",
+				"smoothFocus"
+			],
+			[
+				"fo",
+				"focusLerp"
+			],
+			[
+				"ca",
+				"cameraDistanceCurrent"
+			],
+			[
+				"hit",
+				"hitInfo"
+			],
+			[
+				"ba",
+				"backDir"
+			],
+			[
+				"back",
+				"backPoint"
+			],
+			[
+				"hi",
+				"hitInfo"
+			],
+			[
+				"rig",
+				"rightDir"
+			],
+			[
+				"up",
+				"upPoint"
+			],
+			[
+				"ri",
+				"rightPoint"
+			],
+			[
+				"hands",
+				"handsAngle"
+			],
+			[
+				"han",
+				"handAimMultiplier"
+			],
+			[
+				"pos",
+				"posRotation"
+			],
+			[
+				"inp",
+				"inputY"
+			],
+			[
+				"Sta",
+				"StartCoroutine"
+			],
+			[
+				"righ",
+				"rightHandPosition"
+			],
+			[
+				"Cre",
+				"CreateHandControlJoint"
+			],
+			[
+				"local",
+				"localPosition"
+			],
+			[
+				"cont",
+				"controlledBody"
+			],
+			[
+				"ta",
+				"targetPosition"
+			],
+			[
+				"di",
+				"distance"
+			],
+			[
+				"poin",
+				"point1"
+			],
+			[
+				"h",
+				"horizontalVector"
+			],
+			[
+				"came",
+				"cameraColliderRadius"
+			],
+			[
+				"point",
+				"point2"
+			],
+			[
+				"DE",
+				"DEBUGRayPoints"
+			],
+			[
+				"ray",
+				"rayDirection"
+			],
+			[
+				"Dr",
+				"DrawWireSphere"
+			],
+			[
+				"ra",
+				"rayDirection"
+			],
+			[
+				"con",
+				"controllerIndex"
+			],
+			[
+				"coon",
+				"ControllerType"
+			],
+			[
+				"input",
+				"inputX"
+			],
+			[
+				"gr",
+				"grabJoint"
+			],
+			[
+				"o",
+				"offset"
+			],
+			[
+				"Rag",
+				"RagdollRig"
+			],
+			[
+				"gra",
+				"grabTrigger"
+			],
+			[
+				"g",
+				"grabTrigger"
+			],
+			[
+				"f",
+				"firstControllerPS4"
+			],
+			[
+				"menu",
+				"menuInputSetter"
+			],
+			[
+				"dua",
+				"dualShockName"
+			],
+			[
+				"pl",
+				"players"
+			],
+			[
+				"si",
+				"sizeY"
+			],
+			[
+				"siz",
+				"sizeX"
+			],
+			[
+				"rect",
+				"rects"
+			],
+			[
+				"size",
+				"sizeY"
+			],
+			[
+				"pla",
+				"playerCameras"
+			],
+			[
+				"P",
+				"Position"
+			],
+			[
+				"Pla",
+				"PlayerSpawnPoint"
+			],
+			[
+				"spaw",
+				"spawnpoints"
+			],
+			[
+				"sp",
+				"spawnPointTransforms"
+			],
+			[
+				"Game",
+				"GameConfiguration"
+			],
+			[
+				"en",
+				"endGoToMainButton"
+			],
+			[
+				"game",
+				"gameObject"
+			],
+			[
+				"cred",
+				"creditsBackButton"
+			],
+			[
+				"Sera",
+				"SerializeField"
+			],
+			[
+				"Add",
+				"AddListener"
+			],
+			[
+				"c",
+				"creditsViewObject"
+			],
+			[
+				"text",
+				"textObject"
+			],
+			[
+				"tex",
+				"textObject"
+			],
+			[
+				"ent",
+				"entries"
+			],
+			[
+				"fon",
+				"fontStyle"
+			],
+			[
+				"C",
+				"CreateTextObjectWithSettings"
+			],
+			[
+				"nw",
+				"newTextObjects"
+			],
+			[
+				"entr",
+				"entryCount"
+			],
+			[
+				"Ser",
+				"SerializeField"
+			],
+			[
+				"new",
+				"newTextObjects"
+			],
+			[
+				"main",
+				"mainViewObject"
+			],
+			[
+				"Gam",
+				"GameObject"
+			],
+			[
+				"map",
+				"mapButtonInfos"
+			],
+			[
+				"E",
+				"EventSystem"
+			],
+			[
+				"end",
+				"endStatus"
+			],
+			[
+				"gamee",
+				"gameManager"
+			],
+			[
+				"Srialie",
+				"SerializeField"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/CenterOfMass.cs",
+			"settings":
+			{
+				"buffer_size": 432,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/FlyInArch.cs",
+			"settings":
+			{
+				"buffer_size": 646,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "using UnityEngine;"
+			}
+		},
+		{
+			"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/BaseGun.cs",
+			"settings":
+			{
+				"buffer_size": 2763,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/ProjectileAttacher.cs",
+			"settings":
+			{
+				"buffer_size": 2276,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerSpawner.cs",
+			"settings":
+			{
+				"buffer_size": 1353,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "                                                                                                   \nC:\\Users\\Leo                                                                                       \nλ cd Documents\\                                                                                    \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents                                                               \n                                                                                                   \n08/05/2019  12.04    <DIR>          .                                                              \n08/05/2019  12.04    <DIR>          ..                                                             \n12/04/2019  00.31    <DIR>          Astrobot                                                       \n12/04/2019  12.57    <DIR>          Backup                                                         \n29/03/2019  22.45    <DIR>          Bayonetta                                                      \n11/04/2019  20.17    <DIR>          Blender                                                        \n05/05/2019  23.45    <DIR>          BossGame                                                       \n07/05/2019  13.06    <DIR>          DONT-DIE                                                       \n08/05/2019  13.19    <DIR>          dont-die-new                                                   \n07/05/2019  15.37    <DIR>          DONT-DIE-resort                                                \n13/04/2019  23.49               465 DONT-DIE.sublime-project                                       \n08/05/2019  12.56            27 130 DONT-DIE.sublime-workspace                                     \n07/05/2019  15.17    <DIR>          DONT-DIE2                                                      \n18/04/2019  11.41    <DIR>          DontDieGuys                                                    \n17/04/2019  23.32           896 688 DontDieGuys.blend1                                             \n12/04/2019  12.41             3 911 Game Ideas for Vastness                                        \n14/04/2019  20.58    <DIR>          GameOfLies                                                     \n02/04/2019  13.55             2 875 GDD-text-only-mode.txt                                         \n02/04/2019  21.11    <DIR>          IMPORTANT                                                      \n07/04/2019  17.42    <DIR>          Libraries                                                      \n19/04/2019  14.59    <DIR>          LLVM                                                           \n21/04/2019  10.30    <DIR>          ninja-build                                                    \n07/05/2019  13.28    <DIR>          OldGunScripts                                                  \n20/04/2019  16.40            15 398 ragdoll backup.cs                                              \n05/05/2019  23.58    <DIR>          sources                                                        \n07/04/2019  21.27    <DIR>          TempBuilds                                                     \n28/04/2019  02.00    <DIR>          Tests                                                          \n07/04/2019  11.19    <DIR>          Vastness                                                       \n07/04/2019  18.56    <DIR>          Visual Studio 2017                                             \n               6 File(s)        946 467 bytes                                                      \n              23 Dir(s)  330 138 476 544 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ rmdir --help                                                                                     \nThe system cannot find the file specified.                                                         \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ rmdir /q /s DONT-DIE                                                                             \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents                                                               \n                                                                                                   \n08/05/2019  14.40    <DIR>          .                                                              \n08/05/2019  14.40    <DIR>          ..                                                             \n12/04/2019  00.31    <DIR>          Astrobot                                                       \n12/04/2019  12.57    <DIR>          Backup                                                         \n29/03/2019  22.45    <DIR>          Bayonetta                                                      \n11/04/2019  20.17    <DIR>          Blender                                                        \n05/05/2019  23.45    <DIR>          BossGame                                                       \n08/05/2019  13.19    <DIR>          dont-die-new                                                   \n07/05/2019  15.37    <DIR>          DONT-DIE-resort                                                \n13/04/2019  23.49               465 DONT-DIE.sublime-project                                       \n08/05/2019  12.56            27 130 DONT-DIE.sublime-workspace                                     \n07/05/2019  15.17    <DIR>          DONT-DIE2                                                      \n18/04/2019  11.41    <DIR>          DontDieGuys                                                    \n17/04/2019  23.32           896 688 DontDieGuys.blend1                                             \n12/04/2019  12.41             3 911 Game Ideas for Vastness                                        \n14/04/2019  20.58    <DIR>          GameOfLies                                                     \n02/04/2019  13.55             2 875 GDD-text-only-mode.txt                                         \n02/04/2019  21.11    <DIR>          IMPORTANT                                                      \n07/04/2019  17.42    <DIR>          Libraries                                                      \n19/04/2019  14.59    <DIR>          LLVM                                                           \n21/04/2019  10.30    <DIR>          ninja-build                                                    \n07/05/2019  13.28    <DIR>          OldGunScripts                                                  \n20/04/2019  16.40            15 398 ragdoll backup.cs                                              \n05/05/2019  23.58    <DIR>          sources                                                        \n07/04/2019  21.27    <DIR>          TempBuilds                                                     \n28/04/2019  02.00    <DIR>          Tests                                                          \n07/04/2019  11.19    <DIR>          Vastness                                                       \n07/04/2019  18.56    <DIR>          Visual Studio 2017                                             \n               6 File(s)        946 467 bytes                                                      \n              22 Dir(s)  330 743 164 928 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ git clone https://github.com/SAMPROO/DONT-DIE.git                                                \nCloning into 'DONT-DIE'...                                                                         \nremote: Enumerating objects: 492, done.                                                            \nremote: Counting objects: 100% (492/492), done.                                                    \nremote: Compressing objects: 100% (307/307), done.                                                 \nremote: Total 9433 (delta 342), reused 312 (delta 185), pack-reused 8941                           \nReceiving objects: 100% (9433/9433), 70.47 MiB | 2.36 MiB/s, done.                                 \nResolving deltas: 100% (6106/6106), done.                                                          \nChecking out files: 100% (611/611), done.                                                          \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ cd DONT-DIE                                                                                      \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add <file>...\" to update what will be committed)                                       \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        modified:   dont_die_unity/Assets/Scenes/Loader.unity                                      \n        modified:   dont_die_unity/Assets/Scenes/Maps/Don_Diego_Resort.unity                       \n        modified:   dont_die_unity/Assets/Scripts/Ragdoll/RagdollRig.cs                            \n        modified:   dont_die_unity/ProjectSettings/EditorBuildSettings.asset                       \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git commit -a                                                                                    \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Scenes/Loader.unity.                 \nThe file will have its original line endings in your working directory                             \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Scenes/Maps/Don_Diego_Resort.unity.  \nThe file will have its original line endings in your working directory                             \nwarning: LF will be replaced by CRLF in dont_die_unity/ProjectSettings/EditorBuildSettings.asset.  \nThe file will have its original line endings in your working directory                             \nhint: Waiting for your editor to close the file...                                                 \n                                                                                                   \nC:\\Users\\Leo                                                                                       \nλ cd Documents\\                                                                                    \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents                                                               \n                                                                                                   \n08/05/2019  12.04    <DIR>          .                                                              \n08/05/2019  12.04    <DIR>          ..                                                             \n12/04/2019  00.31    <DIR>          Astrobot                                                       \n12/04/2019  12.57    <DIR>          Backup                                                         \n29/03/2019  22.45    <DIR>          Bayonetta                                                      \n11/04/2019  20.17    <DIR>          Blender                                                        \n05/05/2019  23.45    <DIR>          BossGame                                                       \n07/05/2019  13.06    <DIR>          DONT-DIE                                                       \n08/05/2019  13.19    <DIR>          dont-die-new                                                   \n07/05/2019  15.37    <DIR>          DONT-DIE-resort                                                \n13/04/2019  23.49               465 DONT-DIE.sublime-project                                       \n08/05/2019  12.56            27 130 DONT-DIE.sublime-workspace                                     \n07/05/2019  15.17    <DIR>          DONT-DIE2                                                      \n18/04/2019  11.41    <DIR>          DontDieGuys                                                    \n17/04/2019  23.32           896 688 DontDieGuys.blend1                                             \n12/04/2019  12.41             3 911 Game Ideas for Vastness                                        \n14/04/2019  20.58    <DIR>          GameOfLies                                                     \n02/04/2019  13.55             2 875 GDD-text-only-mode.txt                                         \n02/04/2019  21.11    <DIR>          IMPORTANT                                                      \n07/04/2019  17.42    <DIR>          Libraries                                                      \n19/04/2019  14.59    <DIR>          LLVM                                                           \n21/04/2019  10.30    <DIR>          ninja-build                                                    \n07/05/2019  13.28    <DIR>          OldGunScripts                                                  \n20/04/2019  16.40            15 398 ragdoll backup.cs                                              \n05/05/2019  23.58    <DIR>          sources                                                        \n07/04/2019  21.27    <DIR>          TempBuilds                                                     \n28/04/2019  02.00    <DIR>          Tests                                                          \n07/04/2019  11.19    <DIR>          Vastness                                                       \n07/04/2019  18.56    <DIR>          Visual Studio 2017                                             \n               6 File(s)        946 467 bytes                                                      \n              23 Dir(s)  330 138 476 544 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ rmdir --help                                                                                     \nThe system cannot find the file specified.                                                         \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ rmdir /q /s DONT-DIE                                                                             \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents                                                               \n                                                                                                   \n08/05/2019  14.40    <DIR>          .                                                              \n08/05/2019  14.40    <DIR>          ..                                                             \n12/04/2019  00.31    <DIR>          Astrobot                                                       \n12/04/2019  12.57    <DIR>          Backup                                                         \n29/03/2019  22.45    <DIR>          Bayonetta                                                      \n11/04/2019  20.17    <DIR>          Blender                                                        \n05/05/2019  23.45    <DIR>          BossGame                                                       \n08/05/2019  13.19    <DIR>          dont-die-new                                                   \n07/05/2019  15.37    <DIR>          DONT-DIE-resort                                                \n13/04/2019  23.49               465 DONT-DIE.sublime-project                                       \n08/05/2019  12.56            27 130 DONT-DIE.sublime-workspace                                     \n07/05/2019  15.17    <DIR>          DONT-DIE2                                                      \n18/04/2019  11.41    <DIR>          DontDieGuys                                                    \n17/04/2019  23.32           896 688 DontDieGuys.blend1                                             \n12/04/2019  12.41             3 911 Game Ideas for Vastness                                        \n14/04/2019  20.58    <DIR>          GameOfLies                                                     \n02/04/2019  13.55             2 875 GDD-text-only-mode.txt                                         \n02/04/2019  21.11    <DIR>          IMPORTANT                                                      \n07/04/2019  17.42    <DIR>          Libraries                                                      \n19/04/2019  14.59    <DIR>          LLVM                                                           \n21/04/2019  10.30    <DIR>          ninja-build                                                    \n07/05/2019  13.28    <DIR>          OldGunScripts                                                  \n20/04/2019  16.40            15 398 ragdoll backup.cs                                              \n05/05/2019  23.58    <DIR>          sources                                                        \n07/04/2019  21.27    <DIR>          TempBuilds                                                     \n28/04/2019  02.00    <DIR>          Tests                                                          \n07/04/2019  11.19    <DIR>          Vastness                                                       \n07/04/2019  18.56    <DIR>          Visual Studio 2017                                             \n               6 File(s)        946 467 bytes                                                      \n              22 Dir(s)  330 743 164 928 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ git clone https://github.com/SAMPROO/DONT-DIE.git                                                \nCloning into 'DONT-DIE'...                                                                         \nremote: Enumerating objects: 492, done.                                                            \nremote: Counting objects: 100% (492/492), done.                                                    \nremote: Compressing objects: 100% (307/307), done.                                                 \nremote: Total 9433 (delta 342), reused 312 (delta 185), pack-reused 8941                           \nReceiving objects: 100% (9433/9433), 70.47 MiB | 2.36 MiB/s, done.                                 \nResolving deltas: 100% (6106/6106), done.                                                          \nChecking out files: 100% (611/611), done.                                                          \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ cd DONT-DIE                                                                                      \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add <file>...\" to update what will be committed)                                       \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        modified:   dont_die_unity/Assets/Scenes/Loader.unity                                      \n        modified:   dont_die_unity/Assets/Scenes/Maps/Don_Diego_Resort.unity                       \n        modified:   dont_die_unity/Assets/Scripts/Ragdoll/RagdollRig.cs                            \n        modified:   dont_die_unity/ProjectSettings/EditorBuildSettings.asset                       \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git commit -a                                                                                    \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Scenes/Loader.unity.                 \nThe file will have its original line endings in your working directory                             \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Scenes/Maps/Don_Diego_Resort.unity.  \nThe file will have its original line endings in your working directory                             \nwarning: LF will be replaced by CRLF in dont_die_unity/ProjectSettings/EditorBuildSettings.asset.  \nThe file will have its original line endings in your working directory                             \n[master bb71f14] Added Don Diego Resort to playable level                                          \n 4 files changed, 1322 insertions(+), 3674 deletions(-)                                            \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git push                                                                                         \nEnumerating objects: 25, done.                                                                     \nCounting objects: 100% (25/25), done.                                                              \nDelta compression using up to 12 threads                                                           \nCompressing objects: 100% (13/13), done.                                                           \nWriting objects: 100% (13/13), 6.48 KiB | 6.48 MiB/s, done.                                        \nTotal 13 (delta 11), reused 0 (delta 0)                                                            \nremote: Resolving deltas: 100% (11/11), completed with 11 local objects.                           \nTo https://github.com/SAMPROO/DONT-DIE.git                                                         \n   345eba0..bb71f14  master -> master                                                              \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add/rm <file>...\" to update what will be committed)                                    \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        deleted:    dont_die_unity/Assets/Models/dummyGuy_proto.blend                              \n        deleted:    dont_die_unity/Assets/Models/dummyGuy_proto.blend.meta                         \n        deleted:    dont_die_unity/Assets/Models/rig_wip.blend                                     \n        deleted:    dont_die_unity/Assets/Models/rig_wip.blend.meta                                \n        deleted:    dont_die_unity/Assets/Models/rig_wip.fbx                                       \n        deleted:    dont_die_unity/Assets/Models/rig_wip.fbx.meta                                  \n                                                                                                   \nUntracked files:                                                                                   \n  (use \"git add <file>...\" to include in what will be committed)                                   \n                                                                                                   \n        dont_die_unity/Assets/Models/tiles.fbx                                                     \n        dont_die_unity/Assets/Models/tiles.fbx.meta                                                \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git add -A                                                                                       \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Models/tiles.fbx.meta.               \nThe file will have its original line endings in your working directory                             \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git commit                                                                                       \nhint: Waiting for your editor to close the file...                                                 \n                                                                                                   \nC:\\Users\\Leo                                                                                       \nλ cd Documents\\                                                                                    \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents                                                               \n                                                                                                   \n08/05/2019  12.04    <DIR>          .                                                              \n08/05/2019  12.04    <DIR>          ..                                                             \n12/04/2019  00.31    <DIR>          Astrobot                                                       \n12/04/2019  12.57    <DIR>          Backup                                                         \n29/03/2019  22.45    <DIR>          Bayonetta                                                      \n11/04/2019  20.17    <DIR>          Blender                                                        \n05/05/2019  23.45    <DIR>          BossGame                                                       \n07/05/2019  13.06    <DIR>          DONT-DIE                                                       \n08/05/2019  13.19    <DIR>          dont-die-new                                                   \n07/05/2019  15.37    <DIR>          DONT-DIE-resort                                                \n13/04/2019  23.49               465 DONT-DIE.sublime-project                                       \n08/05/2019  12.56            27 130 DONT-DIE.sublime-workspace                                     \n07/05/2019  15.17    <DIR>          DONT-DIE2                                                      \n18/04/2019  11.41    <DIR>          DontDieGuys                                                    \n17/04/2019  23.32           896 688 DontDieGuys.blend1                                             \n12/04/2019  12.41             3 911 Game Ideas for Vastness                                        \n14/04/2019  20.58    <DIR>          GameOfLies                                                     \n02/04/2019  13.55             2 875 GDD-text-only-mode.txt                                         \n02/04/2019  21.11    <DIR>          IMPORTANT                                                      \n07/04/2019  17.42    <DIR>          Libraries                                                      \n19/04/2019  14.59    <DIR>          LLVM                                                           \n21/04/2019  10.30    <DIR>          ninja-build                                                    \n07/05/2019  13.28    <DIR>          OldGunScripts                                                  \n20/04/2019  16.40            15 398 ragdoll backup.cs                                              \n05/05/2019  23.58    <DIR>          sources                                                        \n07/04/2019  21.27    <DIR>          TempBuilds                                                     \n28/04/2019  02.00    <DIR>          Tests                                                          \n07/04/2019  11.19    <DIR>          Vastness                                                       \n07/04/2019  18.56    <DIR>          Visual Studio 2017                                             \n               6 File(s)        946 467 bytes                                                      \n              23 Dir(s)  330 138 476 544 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ rmdir --help                                                                                     \nThe system cannot find the file specified.                                                         \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ rmdir /q /s DONT-DIE                                                                             \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents                                                               \n                                                                                                   \n08/05/2019  14.40    <DIR>          .                                                              \n08/05/2019  14.40    <DIR>          ..                                                             \n12/04/2019  00.31    <DIR>          Astrobot                                                       \n12/04/2019  12.57    <DIR>          Backup                                                         \n29/03/2019  22.45    <DIR>          Bayonetta                                                      \n11/04/2019  20.17    <DIR>          Blender                                                        \n05/05/2019  23.45    <DIR>          BossGame                                                       \n08/05/2019  13.19    <DIR>          dont-die-new                                                   \n07/05/2019  15.37    <DIR>          DONT-DIE-resort                                                \n13/04/2019  23.49               465 DONT-DIE.sublime-project                                       \n08/05/2019  12.56            27 130 DONT-DIE.sublime-workspace                                     \n07/05/2019  15.17    <DIR>          DONT-DIE2                                                      \n18/04/2019  11.41    <DIR>          DontDieGuys                                                    \n17/04/2019  23.32           896 688 DontDieGuys.blend1                                             \n12/04/2019  12.41             3 911 Game Ideas for Vastness                                        \n14/04/2019  20.58    <DIR>          GameOfLies                                                     \n02/04/2019  13.55             2 875 GDD-text-only-mode.txt                                         \n02/04/2019  21.11    <DIR>          IMPORTANT                                                      \n07/04/2019  17.42    <DIR>          Libraries                                                      \n19/04/2019  14.59    <DIR>          LLVM                                                           \n21/04/2019  10.30    <DIR>          ninja-build                                                    \n07/05/2019  13.28    <DIR>          OldGunScripts                                                  \n20/04/2019  16.40            15 398 ragdoll backup.cs                                              \n05/05/2019  23.58    <DIR>          sources                                                        \n07/04/2019  21.27    <DIR>          TempBuilds                                                     \n28/04/2019  02.00    <DIR>          Tests                                                          \n07/04/2019  11.19    <DIR>          Vastness                                                       \n07/04/2019  18.56    <DIR>          Visual Studio 2017                                             \n               6 File(s)        946 467 bytes                                                      \n              22 Dir(s)  330 743 164 928 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ git clone https://github.com/SAMPROO/DONT-DIE.git                                                \nCloning into 'DONT-DIE'...                                                                         \nremote: Enumerating objects: 492, done.                                                            \nremote: Counting objects: 100% (492/492), done.                                                    \nremote: Compressing objects: 100% (307/307), done.                                                 \nremote: Total 9433 (delta 342), reused 312 (delta 185), pack-reused 8941                           \nReceiving objects: 100% (9433/9433), 70.47 MiB | 2.36 MiB/s, done.                                 \nResolving deltas: 100% (6106/6106), done.                                                          \nChecking out files: 100% (611/611), done.                                                          \n                                                                                                   \nC:\\Users\\Leo\\Documents                                                                             \nλ cd DONT-DIE                                                                                      \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add <file>...\" to update what will be committed)                                       \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        modified:   dont_die_unity/Assets/Scenes/Loader.unity                                      \n        modified:   dont_die_unity/Assets/Scenes/Maps/Don_Diego_Resort.unity                       \n        modified:   dont_die_unity/Assets/Scripts/Ragdoll/RagdollRig.cs                            \n        modified:   dont_die_unity/ProjectSettings/EditorBuildSettings.asset                       \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git commit -a                                                                                    \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Scenes/Loader.unity.                 \nThe file will have its original line endings in your working directory                             \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Scenes/Maps/Don_Diego_Resort.unity.  \nThe file will have its original line endings in your working directory                             \nwarning: LF will be replaced by CRLF in dont_die_unity/ProjectSettings/EditorBuildSettings.asset.  \nThe file will have its original line endings in your working directory                             \n[master bb71f14] Added Don Diego Resort to playable level                                          \n 4 files changed, 1322 insertions(+), 3674 deletions(-)                                            \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git push                                                                                         \nEnumerating objects: 25, done.                                                                     \nCounting objects: 100% (25/25), done.                                                              \nDelta compression using up to 12 threads                                                           \nCompressing objects: 100% (13/13), done.                                                           \nWriting objects: 100% (13/13), 6.48 KiB | 6.48 MiB/s, done.                                        \nTotal 13 (delta 11), reused 0 (delta 0)                                                            \nremote: Resolving deltas: 100% (11/11), completed with 11 local objects.                           \nTo https://github.com/SAMPROO/DONT-DIE.git                                                         \n   345eba0..bb71f14  master -> master                                                              \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add/rm <file>...\" to update what will be committed)                                    \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        deleted:    dont_die_unity/Assets/Models/dummyGuy_proto.blend                              \n        deleted:    dont_die_unity/Assets/Models/dummyGuy_proto.blend.meta                         \n        deleted:    dont_die_unity/Assets/Models/rig_wip.blend                                     \n        deleted:    dont_die_unity/Assets/Models/rig_wip.blend.meta                                \n        deleted:    dont_die_unity/Assets/Models/rig_wip.fbx                                       \n        deleted:    dont_die_unity/Assets/Models/rig_wip.fbx.meta                                  \n                                                                                                   \nUntracked files:                                                                                   \n  (use \"git add <file>...\" to include in what will be committed)                                   \n                                                                                                   \n        dont_die_unity/Assets/Models/tiles.fbx                                                     \n        dont_die_unity/Assets/Models/tiles.fbx.meta                                                \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git add -A                                                                                       \nwarning: LF will be replaced by CRLF in dont_die_unity/Assets/Models/tiles.fbx.meta.               \nThe file will have its original line endings in your working directory                             \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git commit                                                                                       \n[master 80c546c] Added tiles models and removed old proto models                                   \n 7 files changed, 33 insertions(+), 611 deletions(-)                                               \n delete mode 100644 dont_die_unity/Assets/Models/dummyGuy_proto.blend                              \n delete mode 100644 dont_die_unity/Assets/Models/dummyGuy_proto.blend.meta                         \n delete mode 100644 dont_die_unity/Assets/Models/rig_wip.blend                                     \n delete mode 100644 dont_die_unity/Assets/Models/rig_wip.blend.meta                                \n delete mode 100644 dont_die_unity/Assets/Models/rig_wip.fbx                                       \n create mode 100644 dont_die_unity/Assets/Models/tiles.fbx                                         \n rename dont_die_unity/Assets/Models/{rig_wip.fbx.meta => tiles.fbx.meta} (51%)                    \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git push                                                                                         \nEnumerating objects: 11, done.                                                                     \nCounting objects: 100% (11/11), done.                                                              \nDelta compression using up to 12 threads                                                           \nCompressing objects: 100% (7/7), done.                                                             \nWriting objects: 100% (7/7), 8.34 KiB | 8.34 MiB/s, done.                                          \nTotal 7 (delta 4), reused 0 (delta 0)                                                              \nremote: Resolving deltas: 100% (4/4), completed with 4 local objects.                              \nTo https://github.com/SAMPROO/DONT-DIE.git                                                         \n   bb71f14..80c546c  master -> master                                                              \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ \n                                                                                                   \nC:\\Users\\Leo                                                                                       \nλ cd Documents\\DONT-DIE                                                                            \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add <file>...\" to update what will be committed)                                       \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        modified:   dont_die_unity/ProjectSettings/UnityConnectSettings.asset                      \n                                                                                                   \nUntracked files:                                                                                   \n  (use \"git add <file>...\" to include in what will be committed)                                   \n                                                                                                   \n        dont_die_unity/Builds/                                                                     \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ mv dont_die_unity\\Builds\\ Builds                                                                 \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ dir                                                                                              \n Volume in drive C is Windows-SSD                                                                  \n Volume Serial Number is AA81-D55F                                                                 \n                                                                                                   \n Directory of C:\\Users\\Leo\\Documents\\DONT-DIE                                                      \n                                                                                                   \n08/05/2019  22.56    <DIR>          .                                                              \n08/05/2019  22.56    <DIR>          ..                                                             \n08/05/2019  14.40             1 107 .gitignore                                                     \n08/05/2019  15.15    <DIR>          Builds                                                         \n08/05/2019  22.56    <DIR>          dont_die_unity                                                 \n08/05/2019  14.40               306 README.md                                                      \n               2 File(s)          1 413 bytes                                                      \n               4 Dir(s)  329 984 368 640 bytes free                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git status                                                                                       \nOn branch master                                                                                   \nYour branch is up to date with 'origin/master'.                                                    \n                                                                                                   \nChanges not staged for commit:                                                                     \n  (use \"git add <file>...\" to update what will be committed)                                       \n  (use \"git checkout -- <file>...\" to discard changes in working directory)                        \n                                                                                                   \n        modified:   dont_die_unity/ProjectSettings/UnityConnectSettings.asset                      \n                                                                                                   \nno changes added to commit (use \"git add\" and/or \"git commit -a\")                                  \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git checkout -- .                                                                                \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ git pull                                                                                         \nremote: Enumerating objects: 204, done.                                                            \nremote: Counting objects: 100% (204/204), done.                                                    \nremote: Compressing objects: 100% (73/73), done.                                                   \nremote: Total 210 (delta 146), reused 189 (delta 131), pack-reused 6 eceiving objects:  91% (192/21​‌​\nReceiving objects: 100% (210/210), 85.21 KiB | 269.00 KiB/s, done.                                 \n                                                                                                   \nResolving deltas: 100% (146/146), completed with 44 local objects.                                 \nFrom https://github.com/SAMPROO/DONT-DIE                                                           \n   80c546c..be56ef7  master     -> origin/master                                                   \n   17b232f..c533b58  Crane-and-Damage-balance -> origin/Crane-and-Damage-balance                   \n * [new branch]      new-crane-and-damage-balance-branch-because-mergeing-the-old-was-impossible ->​‌​\n origin/new-crane-and-damage-balance-branch-because-mergeing-the-old-was-impossible                \n   bee8cde..1c0cab2  turnstile  -> origin/turnstile                                                \nUpdating 80c546c..be56ef7                                                                          \nFast-forward                                                                                       \n dont_die_unity/Assets/Materials/Cloud.mat          |    77 +                                      \n dont_die_unity/Assets/Materials/Cloud.mat.meta     |     8 +                                      \n dont_die_unity/Assets/Materials/Concrete.mat       |    77 +                                      \n dont_die_unity/Assets/Materials/Concrete.mat.meta  |     8 +                                      \n dont_die_unity/Assets/Materials/Damage.mat         |    98 +                                      \n dont_die_unity/Assets/Materials/Damage.mat.meta    |     8 +                                      \n .../Assets/Materials/GrayboxMats/Skybox.mat        |     4 +-                                     \n dont_die_unity/Assets/Materials/Heal.mat           |    98 +                                      \n dont_die_unity/Assets/Materials/Heal.mat.meta      |     8 +                                      \n dont_die_unity/Assets/Materials/Smoke.mat          |    98 +                                      \n dont_die_unity/Assets/Materials/Smoke.mat.meta     |     8 +                                      \n dont_die_unity/Assets/Materials/Tiles.mat          |    77 +                                      \n dont_die_unity/Assets/Materials/Tiles.mat.meta     |     8 +                                      \n dont_die_unity/Assets/Models/tile_1x1.prefab       |    79 +                                      \n dont_die_unity/Assets/Models/tile_1x1.prefab.meta  |     7 +                                      \n dont_die_unity/Assets/Models/tile_2x1.prefab       |    79 +                                      \n dont_die_unity/Assets/Models/tile_2x1.prefab.meta  |     7 +                                      \n dont_die_unity/Assets/Models/tile_2x2.prefab       |    79 +                                      \n dont_die_unity/Assets/Models/tile_2x2.prefab.meta  |     7 +                                      \n dont_die_unity/Assets/Models/tile_4x4.prefab       |    79 +                                      \n dont_die_unity/Assets/Models/tile_4x4.prefab.meta  |     7 +                                      \n dont_die_unity/Assets/PP.meta                      |     8 +                                      \n dont_die_unity/Assets/PP/DonDiego.asset            |  1377 ++                                     \n dont_die_unity/Assets/PP/DonDiego.asset.meta       |     8 +                                      \n .../Assets/Prefabs/Enviroment/Barrel.prefab        |   230 +                                      \n .../Assets/Prefabs/Enviroment/Barrel.prefab.meta   |     7 +                                      \n .../Assets/Prefabs/Enviroment/PlasticChair.prefab  |   229 +                                      \n .../Prefabs/Enviroment/PlasticChair.prefab.meta    |     7 +                                      \n dont_die_unity/Assets/Prefabs/Explosion.prefab     |  4797 ++++                                   \n .../Assets/Prefabs/Explosion.prefab.meta           |     7 +                                      \n .../Assets/Prefabs/Interactables/Input.meta        |     8 +                                      \n .../Interactables/{ => Input}/Button.prefab        |     0                                        \n .../Interactables/{ => Input}/Button.prefab.meta   |     0                                        \n .../{ => Input}/InspectorSwitch.prefab             |     0                                        \n .../{ => Input}/InspectorSwitch.prefab.meta        |     0                                        \n .../Prefabs/Interactables/{ => Input}/Lever.prefab |     0                                        \n .../Interactables/{ => Input}/Lever.prefab.meta    |     0                                        \n .../Assets/Prefabs/Interactables/Output.meta       |     8 +                                      \n .../Prefabs/Interactables/Output/Crane 1.prefab    |  3458 +++                                    \n .../Interactables/Output/Crane 1.prefab.meta       |     7 +                                      \n .../Interactables/{ => Output}/Crane.prefab        |     0                                        \n .../Interactables/{ => Output}/Crane.prefab.meta   |     0                                        \n .../{ => Output}/SpikeTrap (Lerp).prefab           |     0                                        \n .../{ => Output}/SpikeTrap (Lerp).prefab.meta      |     0                                        \n .../Interactables/{ => Output}/SpikeTrap.prefab    |     0                                        \n .../{ => Output}/SpikeTrap.prefab.meta             |     0                                        \n .../Interactables/{ => Output}/SwitchTest.prefab   |     0                                        \n .../{ => Output}/SwitchTest.prefab.meta            |     0                                        \n dont_die_unity/Assets/Prefabs/Orbit Camera.prefab  |    63 +-                                     \n .../Assets/Prefabs/PlayerCharacter.prefab          |   199 +-                                     \n .../Assets/Prefabs/PlayerSpawnPoint.prefab         |     2 +-                                     \n dont_die_unity/Assets/Prefabs/WeaponSpawner.prefab |    15 +                                      \n .../Weapons/Projectiles/DuckProjectile.prefab      |     3 +-                                     \n .../Weapons/Projectiles/SyringeProjectile.prefab   |   109 +-                                     \n dont_die_unity/Assets/Scenes/Level.unity           |   506 +-                                     \n .../Assets/Scenes/Maps/Don_Diego_Resort.unity      | 23085 +++++++++++++++----                    \n dont_die_unity/Assets/Scripts/DamageSystem.meta    |     8 +                                      \n .../Scripts/{ => DamageSystem}/DamageChild.cs      |    15 +-                                     \n .../Scripts/{ => DamageSystem}/DamageChild.cs.meta |     0                                        \n .../Scripts/{ => DamageSystem}/DamageController.cs |     9 +-                                     \n .../{ => DamageSystem}/DamageController.cs.meta    |     0                                        \n .../Scripts/{ => DamageSystem}/FallDamageTester.cs |     0                                        \n .../{ => DamageSystem}/FallDamageTester.cs.meta    |     0                                        \n .../Scripts/{ => DamageSystem}/ImpactDamage.cs     |     0                                        \n .../{ => DamageSystem}/ImpactDamage.cs.meta        |     0                                        \n .../Scripts/{ => DamageSystem}/TouchDamage.cs      |     0                                        \n .../Scripts/{ => DamageSystem}/TouchDamage.cs.meta |     0                                        \n dont_die_unity/Assets/Scripts/GameArea.cs          |    71 +-                                     \n dont_die_unity/Assets/Scripts/GameArea.cs.meta     |     2 +-                                     \n dont_die_unity/Assets/Scripts/Interactables.meta   |     8 +                                      \n .../Assets/Scripts/{ => Interactables}/ISwitch.cs  |     0                                        \n .../Scripts/{ => Interactables}/ISwitch.cs.meta    |     0                                        \n .../Assets/Scripts/Interactables/Input.meta        |     8 +                                      \n .../{ => Interactables/Input}/Switch_Button.cs     |     0                                        \n .../Input}/Switch_Button.cs.meta                   |     0                                        \n .../{ => Interactables/Input}/Switch_Inspector.cs  |     0                                        \n .../Input}/Switch_Inspector.cs.meta                |     0                                        \n .../{ => Interactables/Input}/Switch_Lever_v2.cs   |     0                                        \n .../Input}/Switch_Lever_v2.cs.meta                 |     0                                        \n .../Assets/Scripts/Interactables/Output.meta       |     8 +                                      \n .../{ => Interactables/Output}/AngularDrive.cs     |     0                                        \n .../Output}/AngularDrive.cs.meta                   |     0                                        \n .../{ => Interactables/Output}/CarouselDriver.cs   |     0                                        \n .../Output}/CarouselDriver.cs.meta                 |     0                                        \n .../Scripts/Interactables/Output/JointBreaker.cs   |    29 +                                      \n .../Interactables/Output/JointBreaker.cs.meta      |    11 +                                      \n .../{ => Interactables/Output}/LerpDrive.cs        |     0                                        \n .../{ => Interactables/Output}/LerpDrive.cs.meta   |     0                                        \n .../{ => Interactables/Output}/LinearDrive.cs      |     0                                        \n .../{ => Interactables/Output}/LinearDrive.cs.meta |     0                                        \n .../{ => Interactables/Output}/SwitchTest.cs       |     0                                        \n .../{ => Interactables/Output}/SwitchTest.cs.meta  |     0                                        \n dont_die_unity/Assets/Scripts/MuzzleEffect.cs      |    21 +                                      \n dont_die_unity/Assets/Scripts/MuzzleEffect.cs.meta |    11 +                                      \n .../Assets/Scripts/ProjectileAttacher.cs           |     1 +                                      \n dont_die_unity/Assets/Scripts/SoundMaker.cs        |    49 +                                      \n dont_die_unity/Assets/Scripts/SoundMaker.cs.meta   |    11 +                                      \n dont_die_unity/Assets/Scripts/SoundMakerTrigger.cs |    26 +                                      \n .../Assets/Scripts/SoundMakerTrigger.cs.meta       |    11 +                                      \n dont_die_unity/Assets/Scripts/StatusController.cs  |     1 -                                      \n dont_die_unity/Assets/Scripts/WeaponSpawner.cs     |     2 +-                                     \n dont_die_unity/Assets/Textures/Damage.png          |   Bin 0 -> 1273 bytes                        \n dont_die_unity/Assets/Textures/Damage.png.meta     |    99 +                                      \n dont_die_unity/Assets/Textures/Heal.png            |   Bin 0 -> 1805 bytes                        \n dont_die_unity/Assets/Textures/Heal.png.meta       |    99 +                                      \n dont_die_unity/Assets/Textures/Smoke.png           |   Bin 0 -> 33101 bytes                       \n dont_die_unity/Assets/Textures/Smoke.png.meta      |    99 +                                      \n dont_die_unity/Assets/Textures/cloud1.png          |   Bin 0 -> 60037 bytes                       \n dont_die_unity/Assets/Textures/cloud1.png.meta     |    99 +                                      \n dont_die_unity/Packages/manifest.json              |     1 +                                      \n .../ProjectSettings/DynamicsManager.asset          |     2 +-                                     \n .../ProjectSettings/ProjectSettings.asset          |    11 +-                                     \n dont_die_unity/ProjectSettings/TagManager.asset    |     8 +-                                     \n dont_die_unity/dont_die_unity.sln                  |     7 +-                                     \n 114 files changed, 31290 insertions(+), 4491 deletions(-)                                         \n create mode 100644 dont_die_unity/Assets/Materials/Cloud.mat                                      \n create mode 100644 dont_die_unity/Assets/Materials/Cloud.mat.meta                                 \n create mode 100644 dont_die_unity/Assets/Materials/Concrete.mat                                   \n create mode 100644 dont_die_unity/Assets/Materials/Concrete.mat.meta                              \n create mode 100644 dont_die_unity/Assets/Materials/Damage.mat                                     \n create mode 100644 dont_die_unity/Assets/Materials/Damage.mat.meta                                \n create mode 100644 dont_die_unity/Assets/Materials/Heal.mat                                       \n create mode 100644 dont_die_unity/Assets/Materials/Heal.mat.meta                                  \n create mode 100644 dont_die_unity/Assets/Materials/Smoke.mat                                      \n create mode 100644 dont_die_unity/Assets/Materials/Smoke.mat.meta                                 \n create mode 100644 dont_die_unity/Assets/Materials/Tiles.mat                                      \n create mode 100644 dont_die_unity/Assets/Materials/Tiles.mat.meta                                 \n create mode 100644 dont_die_unity/Assets/Models/tile_1x1.prefab                                   \n create mode 100644 dont_die_unity/Assets/Models/tile_1x1.prefab.meta                              \n create mode 100644 dont_die_unity/Assets/Models/tile_2x1.prefab                                   \n create mode 100644 dont_die_unity/Assets/Models/tile_2x1.prefab.meta                              \n create mode 100644 dont_die_unity/Assets/Models/tile_2x2.prefab                                   \n create mode 100644 dont_die_unity/Assets/Models/tile_2x2.prefab.meta                              \n create mode 100644 dont_die_unity/Assets/Models/tile_4x4.prefab                                   \n create mode 100644 dont_die_unity/Assets/Models/tile_4x4.prefab.meta                              \n create mode 100644 dont_die_unity/Assets/PP.meta                                                  \n create mode 100644 dont_die_unity/Assets/PP/DonDiego.asset                                        \n create mode 100644 dont_die_unity/Assets/PP/DonDiego.asset.meta                                   \n create mode 100644 dont_die_unity/Assets/Prefabs/Enviroment/Barrel.prefab                         \n create mode 100644 dont_die_unity/Assets/Prefabs/Enviroment/Barrel.prefab.meta                    \n create mode 100644 dont_die_unity/Assets/Prefabs/Enviroment/PlasticChair.prefab                   \n create mode 100644 dont_die_unity/Assets/Prefabs/Enviroment/PlasticChair.prefab.meta              \n create mode 100644 dont_die_unity/Assets/Prefabs/Explosion.prefab                                 \n create mode 100644 dont_die_unity/Assets/Prefabs/Explosion.prefab.meta                            \n create mode 100644 dont_die_unity/Assets/Prefabs/Interactables/Input.meta                         \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Input}/Button.prefab (100%)               \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Input}/Button.prefab.meta (100%)          \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Input}/InspectorSwitch.prefab (100%)      \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Input}/InspectorSwitch.prefab.meta (100%) \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Input}/Lever.prefab (100%)                \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Input}/Lever.prefab.meta (100%)           \n create mode 100644 dont_die_unity/Assets/Prefabs/Interactables/Output.meta                        \n create mode 100644 dont_die_unity/Assets/Prefabs/Interactables/Output/Crane 1.prefab              \n create mode 100644 dont_die_unity/Assets/Prefabs/Interactables/Output/Crane 1.prefab.meta         \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/Crane.prefab (100%)               \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/Crane.prefab.meta (100%)          \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/SpikeTrap (Lerp).prefab (100%)    \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/SpikeTrap (Lerp).prefab.meta (100%​‌​\n)                                                                                                  \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/SpikeTrap.prefab (100%)           \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/SpikeTrap.prefab.meta (100%)      \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/SwitchTest.prefab (100%)          \n rename dont_die_unity/Assets/Prefabs/Interactables/{ => Output}/SwitchTest.prefab.meta (100%)     \n create mode 100644 dont_die_unity/Assets/Scripts/DamageSystem.meta                                \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/DamageChild.cs (70%)                      \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/DamageChild.cs.meta (100%)                \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/DamageController.cs (88%)                 \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/DamageController.cs.meta (100%)           \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/FallDamageTester.cs (100%)                \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/FallDamageTester.cs.meta (100%)           \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/ImpactDamage.cs (100%)                    \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/ImpactDamage.cs.meta (100%)               \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/TouchDamage.cs (100%)                     \n rename dont_die_unity/Assets/Scripts/{ => DamageSystem}/TouchDamage.cs.meta (100%)                \n create mode 100644 dont_die_unity/Assets/Scripts/Interactables.meta                               \n rename dont_die_unity/Assets/Scripts/{ => Interactables}/ISwitch.cs (100%)                        \n rename dont_die_unity/Assets/Scripts/{ => Interactables}/ISwitch.cs.meta (100%)                   \n create mode 100644 dont_die_unity/Assets/Scripts/Interactables/Input.meta                         \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Input}/Switch_Button.cs (100%)            \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Input}/Switch_Button.cs.meta (100%)       \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Input}/Switch_Inspector.cs (100%)         \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Input}/Switch_Inspector.cs.meta (100%)    \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Input}/Switch_Lever_v2.cs (100%)          \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Input}/Switch_Lever_v2.cs.meta (100%)     \n create mode 100644 dont_die_unity/Assets/Scripts/Interactables/Output.meta                        \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/AngularDrive.cs (100%)            \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/AngularDrive.cs.meta (100%)       \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/CarouselDriver.cs (100%)          \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/CarouselDriver.cs.meta (100%)     \n create mode 100644 dont_die_unity/Assets/Scripts/Interactables/Output/JointBreaker.cs             \n create mode 100644 dont_die_unity/Assets/Scripts/Interactables/Output/JointBreaker.cs.meta        \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/LerpDrive.cs (100%)               \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/LerpDrive.cs.meta (100%)          \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/LinearDrive.cs (100%)             \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/LinearDrive.cs.meta (100%)        \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/SwitchTest.cs (100%)              \n rename dont_die_unity/Assets/Scripts/{ => Interactables/Output}/SwitchTest.cs.meta (100%)         \n create mode 100644 dont_die_unity/Assets/Scripts/MuzzleEffect.cs                                  \n create mode 100644 dont_die_unity/Assets/Scripts/MuzzleEffect.cs.meta                             \n create mode 100644 dont_die_unity/Assets/Scripts/SoundMaker.cs                                    \n create mode 100644 dont_die_unity/Assets/Scripts/SoundMaker.cs.meta                               \n create mode 100644 dont_die_unity/Assets/Scripts/SoundMakerTrigger.cs                             \n create mode 100644 dont_die_unity/Assets/Scripts/SoundMakerTrigger.cs.meta                        \n create mode 100644 dont_die_unity/Assets/Textures/Damage.png                                      \n create mode 100644 dont_die_unity/Assets/Textures/Damage.png.meta                                 \n create mode 100644 dont_die_unity/Assets/Textures/Heal.png                                        \n create mode 100644 dont_die_unity/Assets/Textures/Heal.png.meta                                   \n create mode 100644 dont_die_unity/Assets/Textures/Smoke.png                                       \n create mode 100644 dont_die_unity/Assets/Textures/Smoke.png.meta                                  \n create mode 100644 dont_die_unity/Assets/Textures/cloud1.png                                      \n create mode 100644 dont_die_unity/Assets/Textures/cloud1.png.meta                                 \n                                                                                                   \nC:\\Users\\Leo\\Documents\\DONT-DIE (master -> origin)                                                 \nλ ",
+			"settings":
+			{
+				"buffer_size": 78214,
+				"line_ending": "Windows",
+				"name": " ",
+				"scratch": true
+			}
+		},
+		{
+			"file": "dont_die_unity/Assets/Scripts/Ragdoll/RagdollRig.cs",
+			"settings":
+			{
+				"buffer_size": 14485,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "dont_die.sublime-project",
+			"settings":
+			{
+				"buffer_size": 114,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ter",
+				"Terminus: Open Default Shell in View"
+			],
+			[
+				"termin",
+				"Terminus: Open Default Shell in View"
+			],
+			[
+				"ter re",
+				"Terminus: Reset"
+			],
+			[
+				"te",
+				"Terminus: Open Default Shell in View"
+			],
+			[
+				" ter",
+				"Terminus: Close"
+			],
+			[
+				" ter\tc",
+				"Terminus: Close All"
+			],
+			[
+				"res",
+				"Terminus: Reset"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 178.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/C/Users/Leo/Documents/DONT-DIE-resort/dont_die_unity/Assets/Scripts/Equipment.cs",
+		"/C/Users/Leo/Documents/DONT-DIE-resort/dont_die_unity/Assets/Scripts/Gun.cs",
+		"/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerSpawnPoint.cs",
+		"/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/Editor/Checkings.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerSpawner.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GameManager.cs",
+		"/C/Users/Leo/Documents/DONT-DIE-resort/dont_die_unity/Assets/Prefabs/WeaponSpawner.prefab",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerHudScript.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerController.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerHUD.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Prefabs/duck Variant.prefab",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Prefabs/Weapons/Projectiles/DuckProjectile.prefab",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/ChangeScale.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/Gun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerHud.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/.gitignore",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/MenuSystem.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/Syringe.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/SyringeTest.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/PunchGun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/BaseGun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PunchGun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/StickyProjectile.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Syringe.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Gun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Projectile.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunTypeGhostDisplay.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Equipment.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunInfoObject.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/GunInfo.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Audio/AudioSourceSettings.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Ragdoll/RagdollRig.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/OrbitCameraTP.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Utilities/SmoothFloat.cs",
+		"/C/Users/Leo/Desktop/backupcamera.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Ragdoll/RagdollHandGrab.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Camera3rdPerson.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Input/InputControllerManager.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuInputSetter.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/CancelEvent.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scenes/Level.unity",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/LevelInfo.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerSpawnPoint.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Editor/Checkings.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Checkings",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/CreditsFormatter.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/LevelInfo",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/GlobalCancelEvent.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/MenuView.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/PlayerCountButtons.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/EndViewButtons.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MenuSystem/MapSelectButtons.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/DamageController.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/TestComponent.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/DamageChild.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/TouchDamage.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Input/GamepadController.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Input/IInputController.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/TestBomb.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Ragdoll/RagdollFootControl.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/SingletonGameManager.cs",
+		"/C/Users/Leo/Documents/ragdoll backup.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Audio/ConfiguredAudioSource.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Ragdoll/RagdollHeadPiece.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Materials/CharacterShader.shader",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/EditorUtilities/VelocityDetector.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/EditorUtilities/AxisGizmo.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/VelocityBasedJumpBonus.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/ProjectSettings/EditorBuildSettings.asset",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scenes/Start.unity",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scenes/Start.unity.meta",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Audio/AudioManager.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Audio/MeanAudioListener.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/ProjectSettings/ProBuilderSettings.json",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Audio/EffectSettings.asset",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Utilities/ArrayExtensions",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Materials/JumpBonus.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/DrawAxes",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Editor/RagdollEditor.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Prefabs/PlayerCharacter.prefab",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/EditorUtilities/SetTimeScale.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Ragdoll/RagdollCreator.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Shaders/Character.shader",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Shaders/Character++.shader",
+		"/C/Users/Leo/Downloads/character_wip.fbx",
+		"/C/Users/Leo/Downloads/DONTDIECHARACTER2.fbx",
+		"/C/Users/Leo/Downloads/DontDIehahmo2.fbx",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MapLinker.cs",
+		"/C/Users/Leo/Documents/Game Ideas for Vastness",
+		"/C/Users/Leo/Documents/Astrobot/Assets/Rotation.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/ProjectSettings/DynamicsManager.asset",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/NextUpLeo.txt",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PhysicsTestGun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/ProjectileLauncher.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/RagdollRig.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/InputController.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MathUtils.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Interfaces.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PhysicsTestGun",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/RagdollTestController.cs",
+		"/C/Users/Leo/Documents/Vastness/vastness-game-and-engine/generate-cmakelists.py",
+		"/C/Users/Leo/Documents/Vastness/vastness-game-and-engine/CMakeLists.txt",
+		"/C/Users/Leo/Documents/sources/SOIL/projects/makefile/alternate Makefile.txt",
+		"/C/Users/Leo/Documents/LLVM/llvm-project/llvm/lib/Support/CachePruning.cpp",
+		"/C/Users/Leo/Documents/Vastness/vastness-game-and-engine/this_project.sublime-",
+		"/C/Users/Leo/Documents/ninja-build/ninja/README",
+		"/C/Users/Leo/Documents/Vastness/vastness-game-and-engine/build/Makefile",
+		"/C/Users/Leo/Documents/sources/glew-master/README.md",
+		"/C/Users/Leo/Documents/Vastness/vastness-game-and-engine/k",
+		"/C/Users/Leo/Documents/sources/glew-master/src/visualinfo.c",
+		"/C/Users/Leo/Documents/sources/glew/README.md",
+		"/C/Users/Leo/Documents/LLVM/llvm-project/llvm/include/llvm/Support/Errc.h",
+		"/C/Users/Leo/Documents/ninja-build/ninja/build.ninja",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/TestJointedGun.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerBuilder.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Prefabs/Orbit Camera.prefab",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Prefabs/Orbit Camera.prefab.meta",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/EditorInput.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/EditorInput",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/MathUtils",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/EditorUtilities/KeepSceneViewActive.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/ButtonLinker.cs",
+		"/C/Users/Leo/Documents/DONT-DIE.sublime-project",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/EditorUtilities/KeepSceneViewActive.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/Editor/KeepSceneViewActive.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/RagdollCharacterDriver.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerHandle.cs",
+		"/C/Users/Leo/Documents/DONT-DIE/dont_die_unity/Assets/Scripts/HealthBar.cs"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 173.0,
+		"where_history":
+		[
+			"<open folders>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"[\"*.",
+			"camera",
+			"PlayerHUD",
+			"Equipment",
+			"PlayerHud",
+			"Equipment",
+			"inputCnt",
+			"GameObject",
+			"projectile",
+			"hudPrefab",
+			"maxPressMovement",
+			"maxFill",
+			"renderer",
+			"startScale",
+			"endScale",
+			"startScale",
+			"scaleMultiplier",
+			"sprite",
+			" time",
+			"time",
+			"SetPosition",
+			"SetAmmoSprite",
+			"emptyGunSprite",
+			"gunInfo",
+			"TESTGunSprite",
+			"SetStuff",
+			"PlayerHUD",
+			"camera",
+			"DEBUGRectOffset",
+			"panel",
+			"Vector2",
+			"SetAnchors",
+			"Vector2",
+			"GetMainAlignement",
+			"n",
+			"ToTextAnchor",
+			"Alignement",
+			"alignement",
+			"emptyGunImage",
+			"ammoImage",
+			"verticalLayoutGroup",
+			"textPadding",
+			"rectTransform",
+			"RectTransform",
+			"SetSizes",
+			"characterRenderer",
+			"isControlled",
+			"leftGrab",
+			"cameraRayMask",
+			"backDir",
+			"rightDir",
+			"inputY",
+			"inputX",
+			"focusLerp",
+			"cameraDistanceCurrent",
+			"cameraTargetDistance",
+			"cameraDistanceCurrent",
+			"focusLerp",
+			"aim",
+			"input",
+			"cameraDistanceMin",
+			"cameraDistanceMax",
+			"sensitivity",
+			"focusLookOffset",
+			";\n",
+			"normalLookOffset",
+			"anchor",
+			"Y_ANGLE_MAX",
+			"Y_ANGLE_MIN",
+			"DEBUGRayDirection",
+			"offset",
+			"xLocal",
+			"yOffset",
+			"xOffset",
+			"offset.x",
+			"offset.y",
+			"x",
+			"offset",
+			"zPosition",
+			"xyPosition",
+			"hit",
+			"point2",
+			"point1",
+			"point0",
+			"posRotation",
+			"handAimMultiplier",
+			"m",
+			"handAimMultiplier",
+			"rotation",
+			"GetPartConditionally",
+			"FindParts",
+			"right",
+			"controller",
+			"EnableController",
+			"CreateJointController",
+			"EnableController",
+			"DisableController",
+			"upDirection",
+			"rightDirection",
+			"backDirection",
+			"dir2",
+			"dir1",
+			"dir0",
+			"0",
+			"sphereRadius",
+			"0",
+			"distance",
+			"ControlRightHand",
+			"rigidbody",
+			"joysticks",
+			"menuSystem",
+			"menusystem",
+			"6558976858007789970",
+			"HEAD",
+			"cam",
+			"camera",
+			"cam",
+			"configuration",
+			"players",
+			"maxPlayers",
+			"spawnpoints",
+			"playerCameras",
+			"spawnpoints",
+			"positions",
+			"spawnPoints",
+			"numberOfPlayers",
+			"SetViewports",
+			"numberOfPlayers"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"PlayerHudScript",
+			"BaseGun",
+			"GameManager",
+			"RagdollRig"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/CenterOfMass.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/FlyInArch.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 646,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								407,
+								407
+							]
+						],
+						"settings":
+						{
+							"auto_name": "using UnityEngine;",
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C#/C#.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/GunSystem/BaseGun.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2763,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								468,
+								468
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/ProjectileAttacher.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								599,
+								599
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Leo/Documents/dont-die-new/DONT-DIE/dont_die_unity/Assets/Scripts/PlayerSpawner.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1206,
+								1206
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 486.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 78214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78214,
+								78214
+							]
+						],
+						"settings":
+						{
+							"__vi_external_disable": true,
+							"auto_complete": false,
+							"auto_complete_commit_on_tab": false,
+							"bracket_highlighter.clone_locations":
+							{
+							},
+							"bracket_highlighter.ignore": true,
+							"caret_style": "blink",
+							"color_scheme": "Terminus.sublime-color-scheme",
+							"draw_centered": false,
+							"draw_indent_guides": false,
+							"draw_white_space": "none",
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"gutter": false,
+							"highlight_line": false,
+							"is_widget": true,
+							"scroll_past_end": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"terminus.highlight_counter": 250,
+							"terminus_view": true,
+							"terminus_view.args":
+							{
+								"auto_close": true,
+								"cmd":
+								[
+									"cmd.exe",
+									"/K",
+									"C:\\Programs\\cmder\\vendor\\init.bat"
+								],
+								"config_name": "Cmder",
+								"cwd": "C:\\Users\\Leo",
+								"env":
+								{
+									"TERMINUS_SUBLIME": "1",
+									"TERM_PROGRAM": "Terminus-Sublime"
+								},
+								"panel_name": null,
+								"tag": null,
+								"title": null
+							},
+							"terminus_view.key.ctrl+k": true,
+							"terminus_view.key.ctrl+p": true,
+							"terminus_view.natural_keyboard": true,
+							"terminus_view.panel_name": null,
+							"terminus_view.tag": null,
+							"terminus_view.viewport_y": 13212.0,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 13212.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "dont_die_unity/Assets/Scripts/Ragdoll/RagdollRig.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14485,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5297,
+								5297
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/C#/C#.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3024.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "dont_die.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								97,
+								97
+							]
+						],
+						"settings":
+						{
+							"glslvalidator_configured": true,
+							"glslvalidator_enabled": 1,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 59.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 258.0
+	},
+	"pinned_build_system": "",
+	"project": "dont_die.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"game",
+				"Scripts\\GameManager.cs"
+			],
+			[
+				"pl",
+				"Scripts\\PlayerController.cs"
+			],
+			[
+				"guin",
+				"Scripts\\GunInfoObject.cs"
+			],
+			[
+				"cha",
+				"Scripts\\ChangeScale.cs"
+			],
+			[
+				"pla",
+				"Scripts\\PlayerHud.cs"
+			],
+			[
+				"asu",
+				"Scripts\\Audio\\AudioSourceSettings.cs"
+			],
+			[
+				"guni",
+				"Scripts\\GunInfo.cs"
+			],
+			[
+				"eq",
+				"Scripts\\Equipment.cs"
+			],
+			[
+				"pu",
+				"Scripts\\PunchGun.cs"
+			],
+			[
+				"rag",
+				"Scripts\\Ragdoll\\RagdollRig.cs"
+			],
+			[
+				"gam",
+				"Scripts\\GameManager.cs"
+			],
+			[
+				"gun",
+				"Scripts\\Gun.cs"
+			],
+			[
+				"smoot",
+				"Scripts\\Utilities\\SmoothFloat.cs"
+			],
+			[
+				"han",
+				"Scripts\\Ragdoll\\RagdollHandGrab.cs"
+			],
+			[
+				"cam",
+				"Scripts\\OrbitCameraTP.cs"
+			],
+			[
+				"camr",
+				"Scripts\\Camera3rdPerson.cs"
+			],
+			[
+				"in",
+				"Scripts\\Input\\InputControllerManager.cs"
+			],
+			[
+				"hu",
+				"Scripts\\PlayerHUD.cs"
+			],
+			[
+				"can",
+				"Scripts\\MenuSystem\\CancelEvent.cs"
+			],
+			[
+				"play",
+				"Scripts\\PlayerSpawnPoint.cs"
+			],
+			[
+				"or",
+				"Scripts\\OrbitCameraTP.cs"
+			],
+			[
+				"dam",
+				"Scripts\\DamageController.cs"
+			],
+			[
+				"tou",
+				"Scripts\\TouchDamage.cs"
+			],
+			[
+				"sin",
+				"Scripts\\SingletonGameManager.cs"
+			],
+			[
+				"sti",
+				"Scripts\\StickyProjectile.cs"
+			],
+			[
+				"single",
+				"Scripts\\SingletonGameManager.cs"
+			],
+			[
+				"sim",
+				"Scripts\\SingletonGameManager.cs"
+			],
+			[
+				"came",
+				"Scripts\\OrbitCameraTP.cs"
+			],
+			[
+				"ragdolle",
+				"Scripts\\Editor\\RagdollEditor.cs"
+			],
+			[
+				"r",
+				"Scripts\\Ragdoll\\RagdollFootControl.cs"
+			],
+			[
+				"ra",
+				"Scripts\\Ragdoll\\RagdollFootControl.cs"
+			],
+			[
+				"damco",
+				"Scripts\\DamageController.cs"
+			],
+			[
+				"ii",
+				"Scripts\\Input\\IInputController.cs"
+			],
+			[
+				"inpo",
+				"Scripts\\Input\\InputControllerManager.cs"
+			],
+			[
+				"smoo",
+				"Scripts\\Utilities\\SmoothFloat.cs"
+			],
+			[
+				"ph",
+				"Scripts\\PhysicsTestGun.cs"
+			],
+			[
+				"phy",
+				"Scripts\\PhysicsTestGun"
+			],
+			[
+				"ca",
+				"Scripts\\OrbitCameraTP.cs"
+			],
+			[
+				"pun",
+				"Scripts\\PunchGun.cs"
+			],
+			[
+				"inpu",
+				"Scripts\\InputController.cs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\Leo\\Documents\\BossGame\\BossGame.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 253.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

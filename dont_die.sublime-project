@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "dont_die_unity\\Assets\\Scripts",
+			"file_exclude_patterns": ["*.meta"]
+		}
+	]
+}
