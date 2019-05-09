@@ -69,5 +69,6 @@ crashlytics-build.properties
 # Stupid probuilder settings
 dont_die_unity/ProjectSettings/ProbuilderSettings.json
 
-# Leo's personal items
-NextUpLeo.txt
+# Sublime text project files
+*.sublime-project
+*.sublime-workspace
