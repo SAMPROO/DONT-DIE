@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5865112041833540083}
   - component: {fileID: 2387246013444697929}
   - component: {fileID: 2830753471295515491}
+  - component: {fileID: 3579629512463286238}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -132,6 +133,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 95c78011404c5cb41b4058ac6d258a9b, type: 3}
   volumeSmooth: 800
   volumeMax: 0.5
+  manualMode: 0
 --- !u!82 &2830753471295515491
 AudioSource:
   m_ObjectHideFlags: 0
@@ -228,3 +230,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3579629512463286238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209297686107354299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7907f4b1bf594604aabe8b8941e55e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blastRadius: 5
+  blastForce: 100
+  upwardsModifier: 0
+  health: 1000
+  damageThreshold: 30
+  effect: {fileID: 6007026329325239831, guid: 0be36538bb5bba6498570115b87bd5ca, type: 3}
