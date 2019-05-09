@@ -14,7 +14,7 @@ public class PlayStepSound : MonoBehaviour
 
 	public void Play()
 	{
-		audioSource.clip = clips[Random.Range(0, clips.Length)];
-		audioSource.Play();
+        
+		audioSource.PlayOneShot(clips[Random.Range(0, clips.Length)],0.14f);
 	}
 }
