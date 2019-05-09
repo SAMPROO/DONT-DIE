@@ -74,7 +74,7 @@ ConfigurableJoint:
   m_AngularZMotion: 0
   m_LinearLimitSpring:
     spring: 0
-    damper: 0
+    damper: 100000
   m_LinearLimit:
     limit: 2.7
     bounciness: 0
@@ -322,7 +322,7 @@ HingeJoint:
   m_UseSpring: 0
   m_Spring:
     spring: 0
-    damper: 0
+    damper: 1000
     targetPosition: 0
   m_UseMotor: 1
   m_Motor:
@@ -360,7 +360,7 @@ MonoBehaviour:
   fromAngle: 0
   toAngle: 90
   mode: 1
-  deathSpot: 0.05
+  deathSpot: 0.1
 --- !u!1 &2591286400880115043
 GameObject:
   m_ObjectHideFlags: 0
