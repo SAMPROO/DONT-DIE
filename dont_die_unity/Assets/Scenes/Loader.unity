@@ -4709,6 +4709,11 @@ MonoBehaviour:
   - {r: 0.78823537, g: 0, b: 0.5254902, a: 1}
   - {r: 1, g: 0.36078432, b: 0.078431375, a: 1}
   hudCanvas: {fileID: 1033863996}
+  dieRoutineDuration: 4
+  winText: Triumph
+  winColor: {r: 0, g: 0.7176471, b: 0.32047054, a: 1}
+  loseText: Defeat
+  loseColor: {r: 0.8113208, g: 0, b: 0.27021214, a: 1}
 --- !u!4 &1931732103
 Transform:
   m_ObjectHideFlags: 0

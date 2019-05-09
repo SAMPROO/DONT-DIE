@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,14 @@ public class GameManager : MonoBehaviour
 
     private MenuSystem menuSystem;
     private const string menuSceneName = "MenuViewer";
+
+    // How long to wait before unloading after player dies
+    public float dieRoutineDuration = 4f;
+
+    public string winText = "Triumph";
+    public Color winColor = Color.green;
+    public string loseText = "Defeat";
+    public Color loseColor = Color.red;
 
     private void Awake()
     {
@@ -98,17 +107,45 @@ public class GameManager : MonoBehaviour
                 hud
             );
 
-			players[i].OnDie += OnPlayerDie;
+            // Start end display routine
+			players[i].OnDie += StartPlayerDieRoutine;
 		}
 	}
 
-	private void OnPlayerDie(PlayerHandle handle)
-	{
-        // unspawn players
-        // if enough players (1) has died, end match, and someone wins
+    // Start routine in method so we can also unsubscribe this
+    private void StartPlayerDieRoutine(PlayerHandle winnerHandle)
+        => StartCoroutine(PlayerDieRoutine(winnerHandle));
 
+    private IEnumerator PlayerDieRoutine(PlayerHandle winnerHandle)
+    {
         for (int i = 0; i < configuration.playerCount; i++)
         {
+            players[i].OnDie -= StartPlayerDieRoutine;
+            players[i].enabled = false;
+
+            if (winnerHandle.index == i)
+            {
+                players [i].hud.SetBigText(winText, winColor);
+            }
+            else
+            {
+                players [i].hud.SetBigText(loseText, loseColor);
+            }
+        }
+        yield return new WaitForSeconds(dieRoutineDuration);
+
+        UnloadLevel(winnerHandle);
+    }
+
+
+    // destroy stuff we need to explicitly, and let scenemanager do the rest
+	private void UnloadLevel(PlayerHandle handle)
+	{
+        for (int i = 0; i < configuration.playerCount; i++)
+        {
+            // hud must be explicitly destroyed because it is instantieated as child to 
+            // GameManager instance which doesn't destroy on load
+            Destroy(players[i].hud.gameObject);
             Destroy(players[i].gameObject);
         }
 		players = null;
@@ -123,6 +160,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(menuSceneName);
     }
 
+    // Get viweport rect array depending on number of players
     private static Rect [] GetViewRects (int count)
     {
         if (count < 1 || 4 < count)

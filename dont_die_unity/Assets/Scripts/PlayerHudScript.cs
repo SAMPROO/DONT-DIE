@@ -16,6 +16,8 @@ public class PlayerHudScript : MonoBehaviour
 	[SerializeField] private Text ammoText;
 	[SerializeField] private Image ammoImage;
 
+	[SerializeField] private Text bigTextInMiddle;
+
 	public Sprite emptyGunHudIcon;
 
 	public void SetHp(int value) => hpText.text = value.ToString();
@@ -34,6 +36,23 @@ public class PlayerHudScript : MonoBehaviour
 		bool hasEquipped = icon != null;
 		ammoImage.sprite = hasEquipped ? icon : emptyGunHudIcon;
 		ammoText.gameObject.SetActive(hasEquipped);
+	}
+
+	// Set text in middle of players hud view
+	public void SetBigText(string text, Color? color = null)
+	{
+		if (text == null)
+		{
+			bigTextInMiddle.gameObject.SetActive(false);
+			return;
+		}
+
+		bigTextInMiddle.gameObject.SetActive(true);
+		bigTextInMiddle.text = text;
+		if (color != null)
+		{
+			bigTextInMiddle.color = (Color)color;
+		}
 	}
 
 	public Rect viewportRect;

@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
 	private PlayerHandle handle;
 	private OrbitCameraTP cameraRig;
     private IInputController input;
-    private PlayerHudScript hud;
+    [NonSerialized] public PlayerHudScript hud;
 
     // These are fetched with GetComponent family
-	private RagdollRig ragdoll;
+	public RagdollRig ragdoll;
 	private DamageController damageController;
 
 	// This is called when player dies
@@ -140,7 +140,25 @@ public class PlayerController : MonoBehaviour
 		if (hitpoints <= 0)
 		{
 			OnDie?.Invoke(handle);
+
+			ragdoll.hasControl = false;
+			ragdoll.ControlRightHand = false;
+			ragdoll.ControlLeftHand = false;
+			ragdoll.Stop();
 		}
+	}
+
+	public void Stop()
+	{
+		ragdoll.ControlRightHand = false;
+		ragdoll.ControlLeftHand = false;
+		ragdoll.Stop();
+
+		// Unsubscribe events
+        input.Fire -= Fire;
+		input.Jump -= ragdoll.Jump;
+		input.PickUp -= ToggleCarryGun;
+		input.ToggleRagdoll -= ToggleRagdoll;
 	}
 
 	private void ToggleRagdoll()

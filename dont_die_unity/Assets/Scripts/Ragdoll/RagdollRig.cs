@@ -314,6 +314,13 @@ public class RagdollRig : MonoBehaviour
 		doWalk = isControlled && amount > 0.001f;
 	}
 	
+	// Stop all movement
+	public void Stop()
+	{
+		doWalk = false;
+		hipRb.velocity = Vector3.zero;
+	}
+
 	public void Jump()
 	{
 		if (isControlled && Grounded)
