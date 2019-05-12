@@ -19,11 +19,13 @@ public class PlayerController : MonoBehaviour
 	public RagdollRig ragdoll;
 	private DamageController damageController;
 
-	// This is called when player dies
+	// Scorable events
 	public event Action<PlayerHandle> OnDie;
+    public event Action<PlayerHandle, int> OnChangeHealth;
+    public event Action<PlayerHandle, int> OnAreaScore;
 
-	// This is used to access character model's instantiated material and set color
-	public Renderer characterRenderer;
+    // This is used to access character model's instantiated material and set color
+    public Renderer characterRenderer;
 
 	[SerializeField] private BaseGun gun;
 	[SerializeField] private Transform gunParent;
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Health")]
 	[SerializeField] private int maxHitpoints = 100;
-	private int hitpoints;
+    public int hitpoints { get; private set; }
 
 	[SerializeField] private Transform rightHandTransform;
 	[SerializeField] private Transform leftHandTransform;
@@ -44,7 +46,11 @@ public class PlayerController : MonoBehaviour
 	public bool Grounded => ragdoll.Grounded;
 
     //by irtsa
-    bool controlRightHand;
+    private bool controlRightHand;
+    public void SetImmortal(bool value) 
+        => immortalDamageMultiplier = value ? 0 : 1;
+
+    private float immortalDamageMultiplier;
     //by irtsa
 
     private void Awake()
@@ -121,7 +127,7 @@ public class PlayerController : MonoBehaviour
 		if (amount > 0)
 			lastMoveDirection = moveDirection;
 
-		bool doFocus = input.ActivateLeftHand || controlRightHand;
+		bool doFocus = input.ActivateLeftHand || controlRightHand; //right hand has a variable because left trigger works as ActivateRightHand too if carrying Gun
 		Vector3 lookDirection = 
 			doFocus ? 
 			cameraRig.BaseRotation * Vector3.forward : 
@@ -147,8 +153,11 @@ public class PlayerController : MonoBehaviour
 
 	public void Hurt(float damage)
 	{
+        damage *= immortalDamageMultiplier;
 		hitpoints -= Mathf.RoundToInt(damage);
 		hud.SetHp(hitpoints);
+
+        OnChangeHealth?.Invoke(handle, Mathf.RoundToInt(damage));
 
 		if (hitpoints <= 0)
 		{
@@ -160,6 +169,13 @@ public class PlayerController : MonoBehaviour
 			ragdoll.Stop();
 		}
 	}
+
+    // Use this to get points from Gameworld locations
+    // (e.g king of the hill)
+    public void GetAreaScore(int amount)
+    {
+        OnAreaScore?.Invoke(handle, amount);
+    }
 
 	public void Stop()
 	{

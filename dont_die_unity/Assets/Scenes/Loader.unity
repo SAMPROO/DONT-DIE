@@ -2778,7 +2778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &746703743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5127,6 +5127,7 @@ MonoBehaviour:
   loseText: Defeat
   loseColor: {r: 1, g: 0.25, b: 0.5000001, a: 1}
   musicManager: {fileID: 100067380}
+  rules: {fileID: 11400000, guid: e200403021d04284c8e546e6b5e0e3c8, type: 2}
 --- !u!4 &1931732103
 Transform:
   m_ObjectHideFlags: 0

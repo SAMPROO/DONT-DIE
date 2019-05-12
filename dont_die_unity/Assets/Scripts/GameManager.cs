@@ -27,8 +27,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private MusicManager musicManager;
 
+    private Judge judge;
+    public RuleSet rules;
+
+
     private void Awake()
     {
+        
         DontDestroyOnLoad(this);
         menuSystem = GetComponent<MenuSystem>();
 
@@ -63,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     private void InitializeLevel()
 	{
+
         IInputController[] inputControllers = InputControllerManager.CreateControllers(configuration.playerCount);
         players = new PlayerController[configuration.playerCount];
 
@@ -111,22 +117,25 @@ public class GameManager : MonoBehaviour
             );
 
             // Start end display routine
-			players[i].OnDie += StartPlayerDieRoutine;
+			//players[i].OnDie += StartPlayerWinRoutine;
 		}
 
         musicManager.PlayStart();
-	}
+
+        judge = new Judge(players, rules);
+        judge.OnPlayerWin += StartPlayerWinRoutine;
+    }
 
     // Start routine in method so we can also unsubscribe this
-    private void StartPlayerDieRoutine(PlayerHandle winnerHandle)
-        => StartCoroutine(PlayerDieRoutine(winnerHandle));
+    private void StartPlayerWinRoutine(PlayerHandle winnerHandle)
+        => StartCoroutine(PlayerWinRoutine(winnerHandle));
 
-    private IEnumerator PlayerDieRoutine(PlayerHandle winnerHandle)
+    private IEnumerator PlayerWinRoutine(PlayerHandle winnerHandle)
     {
         musicManager.PlayEnd();
         for (int i = 0; i < configuration.playerCount; i++)
         {
-            players[i].OnDie -= StartPlayerDieRoutine;
+            players[i].OnDie -= StartPlayerWinRoutine;
             players[i].enabled = false;
 
             if (winnerHandle.index == i)
@@ -216,6 +225,21 @@ public class GameManager : MonoBehaviour
         Application.Quit();
         #endif
     }
+
+    #if UNITY_EDITOR
+    public static void KillPlayers()
+    {
+        GameManager instance = FindObjectOfType<GameManager>();
+
+        if(instance != null && instance.players != null)
+        {
+            foreach(PlayerController player in instance.players)
+            {
+                player.Hurt(player.hitpoints);
+            }
+        }
+    }
+    #endif
 }
 
 public class GameConfiguration
