@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 1186899449158231851}
   - component: {fileID: 5048584112599176384}
   - component: {fileID: 8030473927094699045}
+  - component: {fileID: 626760369406580734}
   m_Layer: 9
   m_Name: PunchGun
   m_TagString: Untagged
@@ -381,7 +382,7 @@ MonoBehaviour:
   hudIcon: {fileID: 21300000, guid: 802e9e1514b4f3449babe490c688783f, type: 3}
   infiniteAmmo: 0
   ammo: 10
-  initialSpeed: 15
+  initialSpeed: 20
   waitTime: 1
   reelSpeed: 20
   minReelDistance: 0.2
@@ -490,11 +491,25 @@ CapsuleCollider:
   m_GameObject: {fileID: 1186899449158231850}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.14
   m_Height: 0.86
   m_Direction: 2
   m_Center: {x: 0, y: 0.2, z: 0.32}
+--- !u!64 &626760369406580734
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186899449158231850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: c2cc6c93a6db8e94898ef153724b97f2, type: 3}
 --- !u!1 &1186899449321079194
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +919,7 @@ BoxCollider:
   m_GameObject: {fileID: 6173550685171899908}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.18, z: 0.43}
   m_Center: {x: 0, y: 0, z: -0.03}

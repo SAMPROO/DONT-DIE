@@ -87,6 +87,8 @@ public abstract class BaseGun : MonoBehaviour
 
     public virtual void StopCarrying()
     {
+        SetColliders(true);
+
         Destroy(joint);
         joint = null;
 
@@ -99,6 +101,12 @@ public abstract class BaseGun : MonoBehaviour
     public virtual void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public virtual void SetColliders(bool state) // Used to prevent oscillation when aiming
+    {
+        GetComponent<MeshCollider>().isTrigger = state;
+        Debug.Log("collision thing HAPPENED");
     }
 
     protected virtual void OnDrawGizmosSelected()

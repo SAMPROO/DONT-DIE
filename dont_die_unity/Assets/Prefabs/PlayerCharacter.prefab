@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213da0a5a70d1de4bb11ac7fb881e7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rr: {fileID: 0}
+  rr: {fileID: 732699078302934972}
 --- !u!114 &1464772373398460042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,7 +602,12 @@ PrefabInstance:
     - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: jumpVelocity
-      value: 30
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
+        type: 3}
+      propertyPath: walkSpeed
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6781143496705989629, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
@@ -617,7 +622,7 @@ PrefabInstance:
     - target: {fileID: 6488369753661336276, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8409200768760336131, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
