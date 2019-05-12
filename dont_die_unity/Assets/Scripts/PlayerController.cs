@@ -43,7 +43,11 @@ public class PlayerController : MonoBehaviour
 
 	public bool Grounded => ragdoll.Grounded;
 
-	private void Awake()
+    //by irtsa
+    bool controlRightHand;
+    //by irtsa
+
+    private void Awake()
 	{
 		ragdoll = GetComponentInChildren<RagdollRig>();
 		ragdoll.transform.position = transform.position;
@@ -88,28 +92,16 @@ public class PlayerController : MonoBehaviour
         
         input.UpdateController();
 
-        if (gun != null)
-        {
-            if (ragdoll.ControlRightHand != input.ActivateRightHand)
-            {
-                gun.SetColliders(input.ActivateRightHand);
-            }
+        controlRightHand = input.ActivateRightHand || (gun != null && input.Focus);
 
-        }
-            
-            
+        if (gun != null && ragdoll.ControlRightHand != controlRightHand)
+            gun.SetColliders(input.ActivateRightHand);
 
 
-        ragdoll.ControlLeftHand = input.ActivateLeftHand;
-		ragdoll.ControlRightHand = input.ActivateRightHand;
+        ragdoll.ControlLeftHand = input.ActivateLeftHand;    
+        ragdoll.ControlRightHand = controlRightHand;
 
-        /*
-        if (gun != null && input.Focus)
-            ragdoll.ControlRightHand = input.Focus;
-        */
-
-
-
+        
 
         // Only grab if we are not carrying gun
         ragdoll.CanGrab = gun == null;
@@ -129,7 +121,7 @@ public class PlayerController : MonoBehaviour
 		if (amount > 0)
 			lastMoveDirection = moveDirection;
 
-		bool doFocus = input.ActivateLeftHand || input.ActivateRightHand;
+		bool doFocus = input.ActivateLeftHand || controlRightHand;
 		Vector3 lookDirection = 
 			doFocus ? 
 			cameraRig.BaseRotation * Vector3.forward : 
