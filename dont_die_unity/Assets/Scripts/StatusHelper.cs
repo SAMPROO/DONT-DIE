@@ -45,12 +45,16 @@ public class StatusHelper : MonoBehaviour
     {
         foreach(Rigidbody rb in rbs)
         {
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
+            rb.velocity = Vector3.zero;
         }
+        //GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-        StartCoroutine(ResetForces());
+        //StartCoroutine(ResetForces());
 
-        Debug.Log("Waiting for reset");
+        //Debug.Log("Waiting for reset");
+        Debug.Log("RB velocity reset");
     }
 
     private IEnumerator ResetForces()
@@ -62,6 +66,7 @@ public class StatusHelper : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+        GetComponent<Rigidbody>().isKinematic = false;
 
         Debug.Log("DONE");
         yield return null;

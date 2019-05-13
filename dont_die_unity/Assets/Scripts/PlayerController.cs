@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour
     public void SetImmortal(bool value) 
         => immortalDamageMultiplier = value ? 0 : 1;
 
-    private float immortalDamageMultiplier;
+    // 0 is immortal 1 is mortal, this float is a damage multiplier
+    private float immortalDamageMultiplier = 1;
     //by irtsa
 
     private void Awake()
