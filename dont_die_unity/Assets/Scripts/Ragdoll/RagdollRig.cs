@@ -161,6 +161,9 @@ public class RagdollRig : MonoBehaviour
 	private ConcussionState concussionState;
 	[SerializeField] private ParticleSystem concussionVFX;
 
+
+	private Rigidbody [] allRigidbodies = null;
+
     [Header("Other Status things")]
     public ParticleSystem healVFX;
     public ParticleSystem damageVFX;
@@ -191,9 +194,32 @@ public class RagdollRig : MonoBehaviour
 	public void SetPosition(Vector3 position)
 	{
 		hipRb.transform.position = position + Vector3.up * 3;
+		ResetVelocity();
 	}
 
-	public void SetActive(bool value) => hipRb.gameObject.SetActive(value);
+	// Reset velocities for all rigidbodies in ragdoll
+	public void ResetVelocity()
+	{
+		int count = allRigidbodies.Length;
+		for (int i = 0; i < count; i++)
+		{
+			allRigidbodies[i].velocity = Vector3.zero;
+		}
+	}
+
+	public void SetActive(bool value)
+		=> hipRb.gameObject.SetActive(value);
+
+	private void Awake()
+	{
+		var rigidbodiesInChildren = GetComponentsInChildren<Rigidbody>();
+		allRigidbodies = new Rigidbody[rigidbodiesInChildren.Length + 1];
+		allRigidbodies [0] = hipRb;
+		for (int i = 0; i < rigidbodiesInChildren.Length; i++)
+		{
+			allRigidbodies [i + 1] = rigidbodiesInChildren[i];
+		}
+	}
 
 	private void Start()
 	{
@@ -204,7 +230,7 @@ public class RagdollRig : MonoBehaviour
 		{
 			item.OnImpact += () => StartCoroutine(DoConcussion());
 		}
-	
+
 		hipRb.transform.SetParent(null);
 		hipRb.freezeRotation = true;
 		
@@ -270,9 +296,6 @@ public class RagdollRig : MonoBehaviour
 				handForce
 			);
 
-			// leftGrab.SetGrab(ControlLeftHand);
-			// rightGrab.SetGrab(ControlRightHand);
-
 			// Control hips etc. --------------------------------------------------------------------
 
 			if (Grounded)
@@ -299,9 +322,6 @@ public class RagdollRig : MonoBehaviour
 		else
 		{
 			hipRb.freezeRotation = false;
-
-			// leftGrab.SetGrab(false);
-			// rightGrab.SetGrab(false);
 		}
 
 		leftGrab.SetGrab (isControlled && CanGrab && ControlLeftHand);

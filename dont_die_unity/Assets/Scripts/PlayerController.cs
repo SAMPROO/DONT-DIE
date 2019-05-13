@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [NonSerialized] public PlayerHudScript hud;
 
     // These are fetched with GetComponent family
-	public RagdollRig ragdoll;
+	public RagdollRig ragdoll {get; private set;} 
 	private DamageController damageController;
 	private StatusController statusController;
 
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 	[Header("Health")]
 	[SerializeField] private int maxHitpoints = 100;
     public int hitpoints { get; private set; }
+
 
 	[SerializeField] private Transform rightHandTransform;
 	[SerializeField] private Transform leftHandTransform;
@@ -101,8 +102,9 @@ public class PlayerController : MonoBehaviour
 
 	public void ResetPlayer()
 	{
-		// hp to full
-		// reset statuses
+		hitpoints = maxHitpoints;
+		// TODO also reset damagecontroller 
+		statusController.ResetStatus();
 	}
 
 	public void Spawn(Vector3 position)
@@ -120,8 +122,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void Update() 
-	{
-        
+	{   
         input.UpdateController();
 
         controlRightHand = input.ActivateRightHand || (gun != null && input.Focus);
@@ -132,8 +133,6 @@ public class PlayerController : MonoBehaviour
 
         ragdoll.ControlLeftHand = input.ActivateLeftHand;    
         ragdoll.ControlRightHand = controlRightHand;
-
-        
 
         // Only grab if we are not carrying gun
         ragdoll.CanGrab = gun == null;

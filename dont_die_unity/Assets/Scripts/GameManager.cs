@@ -119,9 +119,6 @@ public class GameManager : MonoBehaviour
             );
 
             players[i].Spawn(spawnPoints[i].Position);
-
-            // Start end display routine
-			//players[i].OnDie += StartPlayerWinRoutine;
 		}
 
         musicManager.PlayStart();
