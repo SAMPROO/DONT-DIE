@@ -3,7 +3,8 @@ using UnityEngine;
 public class RagdollHandGrab : MonoBehaviour
 {
 	public float radius = 0.2f;
-	public Vector3 offset;
+    public float breakForce = 1000;
+    public Vector3 offset;
 
 	private FixedJoint grabJoint;
 	private SphereCollider grabTrigger;
@@ -37,6 +38,9 @@ public class RagdollHandGrab : MonoBehaviour
 		{
 			grabJoint = gameObject.AddComponent<FixedJoint>();
 			grabJoint.connectedBody = otherRigidbody;
+            grabJoint.breakForce = breakForce;
+            grabJoint.massScale = 1f / GetComponent<Rigidbody>().mass;
+            grabJoint.connectedMassScale = 1f / otherRigidbody.mass;
 		}
 	}
 

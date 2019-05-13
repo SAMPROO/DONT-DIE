@@ -13,7 +13,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // These are set on Inititialize()
-	private PlayerHandle handle;
+	public PlayerHandle handle;
 	private OrbitCameraTP cameraRig;
     private IInputController input;
     [NonSerialized] public PlayerHudScript hud;
@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
 
     // 0 is immortal 1 is mortal, this float is a damage multiplier
     private float immortalDamageMultiplier = 1;
+
+    private Vector3 mySpawnPoint;
+    private Vector3 mySpawnRot;
     //by irtsa
 
     private void Awake()
@@ -115,11 +118,16 @@ public class PlayerController : MonoBehaviour
 
 	public void Spawn(Vector3 position, Vector3 lookDirection)
 	{
+        mySpawnPoint = position;
+        mySpawnRot = lookDirection;
 		ragdoll.SetPosition (position);	
 		ragdoll.SetDirection(lookDirection);
 		// this needs to be set since stupid complications in move system
 		lastMoveDirection = lookDirection;
 		ragdoll.ResetPose();
+        // by irtsa
+        ragdoll.ResetVelocity();
+        //by irtsa
 
 		characterRenderer.enabled = true;
 		ragdoll.SetActive(true);
@@ -202,11 +210,14 @@ public class PlayerController : MonoBehaviour
 		if (hitpoints <= 0)
 		{
 			OnDie?.Invoke(handle);
-
+            Spawn(mySpawnPoint, mySpawnRot);
+            ResetPlayer();
+            /*
 			ragdoll.hasControl = false;
 			ragdoll.ControlRightHand = false;
 			ragdoll.ControlLeftHand = false;
 			ragdoll.Stop();
+            */
 		}
 	}
 

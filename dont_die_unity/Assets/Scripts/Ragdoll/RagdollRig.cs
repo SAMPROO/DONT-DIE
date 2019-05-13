@@ -356,14 +356,10 @@ public class RagdollRig : MonoBehaviour
 		{
 			hipRb.freezeRotation = false;
 		}
+        float grabWeightThreshold = 0.79f;
+		leftGrab.SetGrab (isControlled && CanGrab && leftHandControlWeight.Value > grabWeightThreshold);
+		rightGrab.SetGrab (isControlled && CanGrab && rightHandControlWeight.Value > grabWeightThreshold);
 
-		leftGrab.SetGrab (isControlled && CanGrab && ControlLeftHand);
-		rightGrab.SetGrab (isControlled && CanGrab && ControlRightHand);
-
-
-		// follow hipRb, it is different transform
-		// Hack, should be done in camera. Or should it?
-		// transform.position = Vector3.Lerp (transform.position, hipRayHitPosition, 0.5f);
 	}
 
 

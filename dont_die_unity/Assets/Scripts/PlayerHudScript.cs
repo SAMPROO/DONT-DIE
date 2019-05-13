@@ -16,6 +16,10 @@ public class PlayerHudScript : MonoBehaviour
 	[SerializeField] private Text ammoText;
 	[SerializeField] private Image ammoImage;
 
+    [SerializeField] private HorizontalLayoutGroup scorePanel;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Image scoreImage;
+
 	[SerializeField] private Text bigTextInMiddle;
 
 	public Sprite emptyGunHudIcon;
@@ -28,6 +32,7 @@ public class PlayerHudScript : MonoBehaviour
 		else
 			ammoText.text = value.ToString();
 	}
+    public void SetScore(int value) => scoreText.text = value.ToString();
 
 	// Set equipped gun icon. Setting null changes to default icon and
 	// hides ammo count display
@@ -95,6 +100,7 @@ public class PlayerHudScript : MonoBehaviour
 		// Set child component positions
 		SetComponentLayout(hpPanel, hpText, hpImage);
 		SetComponentLayout(ammoPanel, ammoText, ammoImage);
+        SetComponentLayout(scorePanel, scoreText, scoreImage);
 	}
 
 

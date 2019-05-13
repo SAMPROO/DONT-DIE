@@ -65,6 +65,11 @@ public class Judge
             callback(endStatus);
             callback = null;
 
-        }      
+        }
+        
+        foreach(PlayerController player in playerControllers)
+        {
+            player.hud.SetScore(playerScores[player.handle]);
+        }
     }
 }

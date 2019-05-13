@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Test1
   m_EditorClassIdentifier: 
   modeName: 
-  scoreLimit: 10
-  deathMultiplier: 0
-  damageMultiplier: 1
+  scoreLimit: 5
+  deathMultiplier: 1
+  damageMultiplier: 0
   areaMultiplier: 0
   immortalPlayers: 0
   playerRespawn: 0

@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55058088d03a7e4ba305f52b1cce034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdoll: {fileID: 0}
   characterRenderer: {fileID: 8655569548015356084}
   gun: {fileID: 0}
   gunParent: {fileID: 8655569548028926350}
@@ -621,6 +620,14 @@ PrefabInstance:
         type: 3}
       propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 79990566, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+      propertyPath: breakForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 259953832, guid: 9d83ac040f350ed46932fae2a64c4d51, type: 3}
+      propertyPath: breakForce
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2120191983082503568, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
