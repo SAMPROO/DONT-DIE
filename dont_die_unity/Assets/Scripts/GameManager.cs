@@ -118,23 +118,25 @@ public class GameManager : MonoBehaviour
 
         musicManager.PlayStart();
 
-        judge = new Judge(players, rules);
-        judge.OnPlayerWin += StartPlayerWinRoutine;
+      
+        judge = new Judge(players, rules, StartPlayerWinRoutine);
     }
 
     // Start routine in method so we can also unsubscribe this
-    private void StartPlayerWinRoutine(PlayerHandle winnerHandle)
-        => StartCoroutine(PlayerWinRoutine(winnerHandle));
+    private void StartPlayerWinRoutine(GameEndStatus endStatus)
+        => StartCoroutine(PlayerWinRoutine(endStatus));
 
-    private IEnumerator PlayerWinRoutine(PlayerHandle winnerHandle)
+    private IEnumerator PlayerWinRoutine(GameEndStatus endStatus)
     {
+        Debug.Log("I have been called by the gods of trading horn");
+        judge = null;
         musicManager.PlayEnd();
         for (int i = 0; i < configuration.playerCount; i++)
         {
-            players[i].OnDie -= StartPlayerWinRoutine;
+            players[i].Stop();
             players[i].enabled = false;
 
-            if (winnerHandle.index == i)
+            if (endStatus.winnerHandle == i)
             {
                 players [i].hud.SetBigText(winText, winColor);
             }
@@ -145,12 +147,12 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(dieRoutineDuration);
 
-        UnloadLevel(winnerHandle);
+        UnloadLevel(endStatus);
     }
 
 
     // destroy stuff we need to explicitly, and let scenemanager do the rest
-	private void UnloadLevel(PlayerHandle handle)
+	private void UnloadLevel(GameEndStatus endStatus)
 	{
         for (int i = 0; i < configuration.playerCount; i++)
         {
@@ -159,13 +161,7 @@ public class GameManager : MonoBehaviour
             Destroy(players[i].hud.gameObject);
             Destroy(players[i].gameObject);
         }
-		players = null;
-
-        var endStatus = new GameEndStatus
-        {
-            // Add 1 to make range [1 --> 4]
-            winnerNumber = handle.index + 1
-        };
+		players = null; 
 
         menuSystem.SetEndView(endStatus);
         SceneManager.LoadScene(menuSceneName);
@@ -298,5 +294,6 @@ public class GameConfiguration
 
 public class GameEndStatus
 {
-    public int winnerNumber;
+    public PlayerHandle winnerHandle;
+    public int[] playerScores;
 }

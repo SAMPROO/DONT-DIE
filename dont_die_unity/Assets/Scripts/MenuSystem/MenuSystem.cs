@@ -24,8 +24,9 @@ public class MenuSystem : MonoBehaviour
 	[SerializeField] private MapButtonInfo [] 	mapButtonInfos;
 	[SerializeField] private Button 			mapSelectBackButton;
 	[SerializeField] private Text 				mapSelectPlayerCountText;
+    [SerializeField] private int                defaultSelectedMapIndex;
 
-	[System.Serializable]
+    [System.Serializable]
 	private class MapButtonInfo
 	{
 	    public Button   button;
@@ -161,14 +162,14 @@ public class MenuSystem : MonoBehaviour
 		configuration.playerCount = count;
 		mapSelectPlayerCountText.text = count.ToString();
 		SetView(mapSelectViewObject);
-		eventSystem.SetSelectedGameObject(mapButtonInfos[0].button.gameObject);
+		eventSystem.SetSelectedGameObject(mapButtonInfos[defaultSelectedMapIndex].button.gameObject);
 	}
 
 	private void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
 		gameManager.StartGame(configuration);
-	}
+    }
 
 	///////////////////////////////////////
 	/// End view stuff                 	///
@@ -176,7 +177,7 @@ public class MenuSystem : MonoBehaviour
 
 	public void SetEndView(GameEndStatus endStatus)
 	{
-		endWinnerNumberText.text = $"#{endStatus.winnerNumber}";
+        endWinnerNumberText.text = $"#{endStatus.winnerHandle.index + 1}";
 		SetView(endViewObject);	
 		eventSystem.SetSelectedGameObject(endGoToMainButton.gameObject);
 	}

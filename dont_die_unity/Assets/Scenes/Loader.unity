@@ -2743,7 +2743,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Don Diego
+  m_Text: Don Diego Resort
 --- !u!222 &627461441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5533,12 +5533,13 @@ MonoBehaviour:
   mapButtonInfos:
   - button: {fileID: 770659432}
     mapSceneName: Level
-    locked: 0
+    locked: 1
   - button: {fileID: 2045726436}
     mapSceneName: Don_Diego_Resort
     locked: 0
   mapSelectBackButton: {fileID: 310099413}
   mapSelectPlayerCountText: {fileID: 218812010}
+  defaultSelectedMapIndex: 1
   endViewObject: {fileID: 1998857212}
   endGoToMainButton: {fileID: 1864433852}
   endWinnerNumberText: {fileID: 1238901279}

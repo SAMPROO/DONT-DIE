@@ -7,12 +7,15 @@ public class Judge
     private PlayerController[] playerControllers;
     private int[] playerScores;
     public RuleSet rules;
+    public delegate void PlayerWinCallback(GameEndStatus gameEndStatus);
+    private PlayerWinCallback callback;
 
-    public Judge(PlayerController[] _players, RuleSet _rules)
+    public Judge(PlayerController[] _players, RuleSet _rules, PlayerWinCallback _callback)
     {
         playerControllers = _players;
         playerScores = new int[_players.Length];
         rules = _rules;
+        callback = _callback;
 
         foreach(PlayerController player in playerControllers)
         {
@@ -43,7 +46,25 @@ public class Judge
 
     private void CheckScore(PlayerHandle handle)
     {
-            if(playerScores[handle] >= rules.scoreLimit)
-                OnPlayerWin?.Invoke(handle);
+        if(playerScores[handle] >= rules.scoreLimit)
+        {
+            //OnPlayerWin?.Invoke(handle);
+            //OnPlayerWin = null;
+            GameEndStatus endStatus = new GameEndStatus
+            {
+                playerScores = playerScores,
+                winnerHandle = handle
+            };
+
+            foreach (PlayerController player in playerControllers)
+            {
+                player.OnDie -= OnPlayerDie;
+                player.OnChangeHealth -= OnHealthChange;
+                player.OnAreaScore -= OnAreaScore;
+            }
+            callback(endStatus);
+            callback = null;
+
+        }      
     }
 }
