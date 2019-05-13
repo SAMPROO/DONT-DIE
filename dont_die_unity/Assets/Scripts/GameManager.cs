@@ -102,11 +102,7 @@ public class GameManager : MonoBehaviour
             hud.viewportRect = viewRects[i];
             hud.Rebuild();
 
-            players[i] = Instantiate (
-                playerPrefab
-                // spawnPoints[i].Position, 
-                // spawnPoints[i].Orientation 
-            );
+            players[i] = Instantiate (playerPrefab);
 
 			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(
