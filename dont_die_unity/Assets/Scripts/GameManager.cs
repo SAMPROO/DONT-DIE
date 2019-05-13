@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
         IInputController[] inputControllers = InputControllerManager.CreateControllers(configuration.playerCount);
         players = new PlayerController[configuration.playerCount];
 
-        // Get number of viewport rectangle sizes depending on player count
         var viewRects = GetViewRects(configuration.playerCount);
 
         // Find spawn points and hide them from view. We can't unactivate them from elsewhere before used here.
@@ -103,11 +102,7 @@ public class GameManager : MonoBehaviour
             hud.viewportRect = viewRects[i];
             hud.Rebuild();
 
-            players[i] = Instantiate (
-                playerPrefab, 
-                spawnPoints[i].Position, 
-                spawnPoints[i].Orientation 
-            );
+            players[i] = Instantiate (playerPrefab);
 
 			// Get controller, camera, hud, random color, etc
 			players[i].Initialize(
@@ -118,28 +113,30 @@ public class GameManager : MonoBehaviour
                 hud
             );
 
-            players[i].Spawn(spawnPoints[i].Position);
+            players[i].Spawn(spawnPoints[i].Position, spawnPoints[i].Forward);
 		}
 
         musicManager.PlayStart();
 
-        judge = new Judge(players, rules);
-        judge.OnPlayerWin += StartPlayerWinRoutine;
+      
+        judge = new Judge(players, rules, StartPlayerWinRoutine);
     }
 
     // Start routine in method so we can also unsubscribe this
-    private void StartPlayerWinRoutine(PlayerHandle winnerHandle)
-        => StartCoroutine(PlayerWinRoutine(winnerHandle));
+    private void StartPlayerWinRoutine(GameEndStatus endStatus)
+        => StartCoroutine(PlayerWinRoutine(endStatus));
 
-    private IEnumerator PlayerWinRoutine(PlayerHandle winnerHandle)
+    private IEnumerator PlayerWinRoutine(GameEndStatus endStatus)
     {
+        Debug.Log("I have been called by the gods of trading horn");
+        judge = null;
         musicManager.PlayEnd();
         for (int i = 0; i < configuration.playerCount; i++)
         {
-            players[i].OnDie -= StartPlayerWinRoutine;
+            players[i].Stop();
             players[i].enabled = false;
 
-            if (winnerHandle.index == i)
+            if (endStatus.winnerHandle == i)
             {
                 players [i].hud.SetBigText(winText, winColor);
             }
@@ -150,12 +147,12 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(dieRoutineDuration);
 
-        UnloadLevel(winnerHandle);
+        UnloadLevel(endStatus);
     }
 
 
     // destroy stuff we need to explicitly, and let scenemanager do the rest
-	private void UnloadLevel(PlayerHandle handle)
+	private void UnloadLevel(GameEndStatus endStatus)
 	{
         for (int i = 0; i < configuration.playerCount; i++)
         {
@@ -164,13 +161,7 @@ public class GameManager : MonoBehaviour
             Destroy(players[i].hud.gameObject);
             Destroy(players[i].gameObject);
         }
-		players = null;
-
-        var endStatus = new GameEndStatus
-        {
-            // Add 1 to make range [1 --> 4]
-            winnerNumber = handle.index + 1
-        };
+		players = null; 
 
         menuSystem.SetEndView(endStatus);
         SceneManager.LoadScene(menuSceneName);
@@ -237,7 +228,7 @@ public class GameManager : MonoBehaviour
         return FindObjectOfType<GameManager>();
     }
 
-    [UnityEditor.MenuItem("Dev Commands/Respawn")]
+    [UnityEditor.MenuItem("Dev Commands/Respawn All #R")]
     private static void EditorRespawnAllPlayers()
     {
         GameManager instance = GetInstance();
@@ -247,11 +238,39 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < instance.configuration.playerCount; i++)
         {
-            // instance.players[i].UnSpawn();
-            instance.players[i].Spawn(instance.spawnPoints[i].Position);
+            instance.players[i].Spawn(
+                instance.spawnPoints[i].Position,
+                instance.spawnPoints[i].Forward
+            );
         }
     }   
 
+    [UnityEditor.MenuItem("Dev Commands/Respawn 1")]
+    private static void EditorRespawnPlayer1() => EditorRespawnPlayer(0);
+
+    [UnityEditor.MenuItem("Dev Commands/Respawn 2")]
+    private static void EditorRespawnPlayer2() => EditorRespawnPlayer(1);
+    
+    [UnityEditor.MenuItem("Dev Commands/Respawn 3")]
+    private static void EditorRespawnPlayer3() => EditorRespawnPlayer(2);
+    
+    [UnityEditor.MenuItem("Dev Commands/Respawn 4")]
+    private static void EditorRespawnPlayer4() => EditorRespawnPlayer(3);
+
+    private static void EditorRespawnPlayer(int index)
+    {
+        GameManager instance = GetInstance();
+
+        if (instance == null)
+            return;   
+
+        instance.players[index].Spawn(
+            instance.spawnPoints[index].Position,
+            instance.spawnPoints[index].Forward
+        );
+    }
+
+    [UnityEditor.MenuItem("Dev Commands/Kill Players #K")]
     public static void KillPlayers()
     {
         GameManager instance = GetInstance();
@@ -275,5 +294,6 @@ public class GameConfiguration
 
 public class GameEndStatus
 {
-    public int winnerNumber;
+    public PlayerHandle winnerHandle;
+    public int[] playerScores;
 }
