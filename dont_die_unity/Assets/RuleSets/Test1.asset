@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a51d0d69e961048b5a96ca7792f7a7, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: 
-  scoreLimit: 200
+  scoreLimit: 10
   deathMultiplier: 0
   damageMultiplier: 1
   areaMultiplier: 0
+  immortalPlayers: 1
+  playerRespawn: 0

@@ -3,6 +3,9 @@
 [CreateAssetMenu]
 public class RuleSet : ScriptableObject
 {
+    //Mode Name
+    public string modeName;
+
     //Win Condition
     public int scoreLimit;
 
@@ -14,4 +17,5 @@ public class RuleSet : ScriptableObject
     //Others
     public bool immortalPlayers;
     public bool playerRespawn;
+
 }
