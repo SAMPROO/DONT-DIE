@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
     	SceneManager.sceneLoaded -= OnLevelSceneLoaded;
     }
 
+    private PlayerSpawnPoint [] spawnPoints;
+
     private void InitializeLevel()
 	{
 
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
         var viewRects = GetViewRects(configuration.playerCount);
 
         // Find spawn points and hide them from view. We can't unactivate them from elsewhere before used here.
-        var spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
+        spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             spawnPoints[i].gameObject.SetActive(false);
@@ -115,6 +117,8 @@ public class GameManager : MonoBehaviour
                 playerColors [i],
                 hud
             );
+
+            players[i].Spawn(spawnPoints[i].Position);
 
             // Start end display routine
 			//players[i].OnDie += StartPlayerWinRoutine;
@@ -227,9 +231,33 @@ public class GameManager : MonoBehaviour
     }
 
     #if UNITY_EDITOR
+
+    private static GameManager GetInstance()
+    {
+        if (Application.isPlaying == false)
+            return null;
+
+        return FindObjectOfType<GameManager>();
+    }
+
+    [UnityEditor.MenuItem("Dev Commands/Respawn")]
+    private static void EditorRespawnAllPlayers()
+    {
+        GameManager instance = GetInstance();
+
+        if (instance == null)
+            return;
+
+        for (int i = 0; i < instance.configuration.playerCount; i++)
+        {
+            // instance.players[i].UnSpawn();
+            instance.players[i].Spawn(instance.spawnPoints[i].Position);
+        }
+    }   
+
     public static void KillPlayers()
     {
-        GameManager instance = FindObjectOfType<GameManager>();
+        GameManager instance = GetInstance();
 
         if(instance != null && instance.players != null)
         {

@@ -6,7 +6,7 @@ Leo Tamminen
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(DamageController))]
+[RequireComponent(typeof(DamageController), typeof(StatusController))]
 public class PlayerController : MonoBehaviour
 {
     // These are set on Inititialize()
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // These are fetched with GetComponent family
 	public RagdollRig ragdoll;
 	private DamageController damageController;
+	private StatusController statusController;
 
 	// Scorable events
 	public event Action<PlayerHandle> OnDie;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
 		ragdoll.transform.position = transform.position;
 
 		damageController = GetComponent<DamageController>();
+		statusController = GetComponent<StatusController>();
 	}
 
 	// Set mandatory values to playercontroller
@@ -91,7 +93,30 @@ public class PlayerController : MonoBehaviour
 		input.Jump += ragdoll.Jump;
 		input.PickUp += ToggleCarryGun;
 		input.ToggleRagdoll += ToggleRagdoll;
-        
+
+		// These should be default values on instantiate instead of explicitly
+		// setting them here
+		UnSpawn();
+	}
+
+	public void ResetPlayer()
+	{
+		// hp to full
+		// reset statuses
+	}
+
+	public void Spawn(Vector3 position)
+	{
+		ragdoll.SetPosition (position);
+
+		characterRenderer.enabled = true;
+		ragdoll.SetActive(true);
+	}
+
+	public void UnSpawn()
+	{
+		characterRenderer.enabled = false;
+		ragdoll.SetActive(false);
 	}
 
 	private void Update() 

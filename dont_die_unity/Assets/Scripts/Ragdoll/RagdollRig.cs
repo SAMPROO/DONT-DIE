@@ -186,6 +186,15 @@ public class RagdollRig : MonoBehaviour
 		concussionState = ConcussionState.None;
 	}
 
+	// Sets ragdolls position so that given position is assumed ground level
+	// and hip (and other parts) are positioned accordinlgy
+	public void SetPosition(Vector3 position)
+	{
+		hipRb.transform.position = position + Vector3.up * 3;
+	}
+
+	public void SetActive(bool value) => hipRb.gameObject.SetActive(value);
+
 	private void Start()
 	{
 		sqrHorizontalSpeedThreshold = horizontalSpeedThreshold * horizontalSpeedThreshold;
@@ -312,6 +321,9 @@ public class RagdollRig : MonoBehaviour
 	// moveDirection and lookDirection should be normalized
 	public void MoveWithVelocity(Vector3 moveDirection, Vector3 lookDirection, float amount)
 	{
+		if (enabled == false)
+			return;
+
 		// Walk if we are grounded or our velocity is smaller than walk speed.
 		// This way explosions etc. can apply force through regular physics,
 		// And we can still manouver slightly in air
@@ -347,6 +359,9 @@ public class RagdollRig : MonoBehaviour
 
 	public void Jump()
 	{
+		if (enabled == false)
+			return;
+
 		if (isControlled && Grounded)
 		{
 			float jumpBonus = Mathf.Max(leftFoot.JumpBonusValue, rightFoot.JumpBonusValue);
@@ -463,7 +478,6 @@ public class RagdollRig : MonoBehaviour
 		Gizmos.DrawWireSphere(rightFootPosition, 0.05f);
 	}
 
-	// todo: Not used anymore here, can be moved to some utility class
 	public static Transform [] GetRecursiveChildren(Transform parent)
 	{
 		var children = new List<Transform>();

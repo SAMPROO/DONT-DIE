@@ -27,6 +27,11 @@ public class StatusController : MonoBehaviour
         ApplyStatus();
     }
 
+    public void ResetStatus()
+    {
+        // TODO implement
+    }
+
     public void OnStatusHeal(int ticks, float amount, bool isReset)
     {
         StatusEffect status = new StatusEffect(Effects.Type.Heal, ticks, amount, pc, rr);
