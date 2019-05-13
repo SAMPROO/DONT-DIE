@@ -6,7 +6,10 @@ Leo Tamminen
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(DamageController), typeof(StatusController))]
+[RequireComponent(
+	typeof(RagdollRig),
+	typeof(DamageController),
+	typeof(StatusController))]
 public class PlayerController : MonoBehaviour
 {
     // These are set on Inititialize()
@@ -46,11 +49,16 @@ public class PlayerController : MonoBehaviour
 	public float maxHandsAngle = 45f;
 
 	public bool Grounded => ragdoll.Grounded;
+	private Vector3 lastMoveDirection = Vector3.forward;
 
     //by irtsa
     private bool controlRightHand;
-    public void SetImmortal(bool value) 
-        => immortalDamageMultiplier = value ? 0 : 1;
+    public bool isImmortal { get; private set; }
+    public void SetImmortal(bool value)
+    {
+    	isImmortal = value;
+        immortalDamageMultiplier = value ? 0 : 1;
+    }
 
     // 0 is immortal 1 is mortal, this float is a damage multiplier
     private float immortalDamageMultiplier = 1;
@@ -58,9 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
 	{
-		ragdoll = GetComponentInChildren<RagdollRig>();
-		ragdoll.transform.position = transform.position;
-
+		ragdoll = GetComponent<RagdollRig>();
 		damageController = GetComponent<DamageController>();
 		statusController = GetComponent<StatusController>();
 	}
@@ -103,16 +109,22 @@ public class PlayerController : MonoBehaviour
 	public void ResetPlayer()
 	{
 		hitpoints = maxHitpoints;
-		// TODO also reset damagecontroller 
+		// TODO also reset damagecontroller propbably
 		statusController.ResetStatus();
 	}
 
-	public void Spawn(Vector3 position)
+	public void Spawn(Vector3 position, Vector3 lookDirection)
 	{
-		ragdoll.SetPosition (position);
+		ragdoll.SetPosition (position);	
+		ragdoll.SetDirection(lookDirection);
+		// this needs to be set since stupid complications in move system
+		lastMoveDirection = lookDirection;
+		ragdoll.ResetPose();
 
 		characterRenderer.enabled = true;
 		ragdoll.SetActive(true);
+
+		cameraRig.SetLookDirection (lookDirection);
 	}
 
 	public void UnSpawn()
@@ -138,7 +150,6 @@ public class PlayerController : MonoBehaviour
         ragdoll.CanGrab = gun == null;
 	}
 
-	private Vector3 lastMoveDirection = Vector3.forward;
 
 	private void FixedUpdate()
 	{
@@ -165,6 +176,10 @@ public class PlayerController : MonoBehaviour
 
 		float handsAngle = Mathf.Clamp(cameraRig.AimAngle * handAimMultiplier, minHandsAngle, maxHandsAngle);
 		ragdoll.SetHandsAimAngle(handsAngle);
+
+		// Ragdoll is moved in
+        transform.position =
+        	Vector3.Lerp(transform.position, ragdoll.CurrentPosition, 0.5f);
 	}
 
 	private void Fire()

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerSpawnPoint : MonoBehaviour
 {
 	public Vector3 Position => transform.position;
+	public Vector3 Forward => transform.forward;
 	public Quaternion Orientation {
 		get {
 			Vector3 forward = transform.forward;

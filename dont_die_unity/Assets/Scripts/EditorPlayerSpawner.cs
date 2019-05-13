@@ -52,6 +52,7 @@ public class EditorPlayerSpawner : MonoBehaviour
 		hud.Rebuild();
 		
 		player.Initialize(new PlayerHandle(0), cameraRig, controller, Color.clear, hud);
+		player.Spawn(transform.position, transform.forward);
 
 		displayObject.SetActive(false);
 	}	

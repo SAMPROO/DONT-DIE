@@ -89,8 +89,8 @@ public class RagdollRig : MonoBehaviour
 		Vector3 leftFootTarget = new Vector3(-feetWidth, 0f, stepLength * footLerp);
 		Vector3 rightFootTarget = new Vector3(feetWidth, 0f, -stepLength * footLerp);
 
-		leftFootPosition  = rotation * leftFootTarget + hipHitPosition;
-		rightFootPosition  = rotation * rightFootTarget + hipHitPosition;
+		leftFootPosition = rotation * leftFootTarget + hipRayHitPosition;
+		rightFootPosition = rotation * rightFootTarget + hipRayHitPosition;
 	}
 
 
@@ -139,7 +139,9 @@ public class RagdollRig : MonoBehaviour
 
 	public bool Grounded { get; private set; }
 	public float hipRbHorizontalDrag = 10f;
-	private Vector3 hipHitPosition;
+	private Vector3 hipRayHitPosition;
+	public Vector3 CurrentPosition => hipRayHitPosition;
+
 
 	[Header("Neck")]
 	public Rigidbody neckRb;
@@ -163,6 +165,8 @@ public class RagdollRig : MonoBehaviour
 
 
 	private Rigidbody [] allRigidbodies = null;
+	private Vector3 [] startPositions = null;
+	private Quaternion [] startRotations = null;
 
     [Header("Other Status things")]
     public ParticleSystem healVFX;
@@ -193,8 +197,15 @@ public class RagdollRig : MonoBehaviour
 	// and hip (and other parts) are positioned accordinlgy
 	public void SetPosition(Vector3 position)
 	{
-		hipRb.transform.position = position + Vector3.up * 3;
 		ResetVelocity();
+		Debug.Log($"Set ragdoll position to {position}");
+		hipRb.transform.position = position + Vector3.up * hipHeight;
+	}
+
+	public void SetDirection(Vector3 lookDirection)
+	{
+		ResetVelocity();
+		hipRb.transform.rotation = Quaternion.LookRotation(lookDirection);
 	}
 
 	// Reset velocities for all rigidbodies in ragdoll
@@ -207,17 +218,39 @@ public class RagdollRig : MonoBehaviour
 		}
 	}
 
+	// Reset pose of all bones to starting poses.
+	// Does not affect hip since it is root bone.
+	public void ResetPose()
+	{
+		ResetVelocity();
+		int count = allRigidbodies.Length;
+		for (int i = 1; i < count; i ++)
+		{
+			allRigidbodies[i].transform.localRotation = startRotations[i];
+		}
+	}
+
 	public void SetActive(bool value)
 		=> hipRb.gameObject.SetActive(value);
 
 	private void Awake()
 	{
 		var rigidbodiesInChildren = GetComponentsInChildren<Rigidbody>();
-		allRigidbodies = new Rigidbody[rigidbodiesInChildren.Length + 1];
+		int childCount = rigidbodiesInChildren.Length;
+
+		allRigidbodies = new Rigidbody 	[childCount + 1];
+		startPositions = new Vector3 	[childCount + 1];
+		startRotations = new Quaternion	[childCount + 1];
+
 		allRigidbodies [0] = hipRb;
-		for (int i = 0; i < rigidbodiesInChildren.Length; i++)
+		startPositions [0] = hipRb.transform.position;
+		startRotations [0] = hipRb.transform.rotation;
+		
+		for (int i = 0; i < childCount; i++)
 		{
 			allRigidbodies [i + 1] = rigidbodiesInChildren[i];
+			startPositions [i + 1] = rigidbodiesInChildren[i].transform.localPosition;
+			startRotations [i + 1] = rigidbodiesInChildren[i].transform.localRotation;
 		}
 	}
 
@@ -261,12 +294,12 @@ public class RagdollRig : MonoBehaviour
 		if (Physics.Raycast(hipRayOrigin, Vector3.down, out hit, hipHeight, hitRayMask, QueryTriggerInteraction.UseGlobal))
 		{	
 			Grounded = true;
-			hipHitPosition = hit.point;
+			hipRayHitPosition = hit.point;
 		}
 		else
 		{
 			Grounded = false;
-			hipHitPosition = hipRayOrigin + Vector3.down * hipHeight;
+			hipRayHitPosition = hipRayOrigin + Vector3.down * hipHeight;
 		}
 
 		if (isControlled)
@@ -310,7 +343,7 @@ public class RagdollRig : MonoBehaviour
 			else
 			{
 				// Set this to ray's end.
-				hipHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
+				hipRayHitPosition = hipRb.position + Vector3.down* hipHeight + hipOffsetVector;
 			}
 
 			// Control feet ----------------------------------------------------------
@@ -330,7 +363,7 @@ public class RagdollRig : MonoBehaviour
 
 		// follow hipRb, it is different transform
 		// Hack, should be done in camera. Or should it?
-		transform.position = Vector3.Lerp (transform.position, hipHitPosition, 0.5f);
+		// transform.position = Vector3.Lerp (transform.position, hipRayHitPosition, 0.5f);
 	}
 
 
@@ -465,7 +498,7 @@ public class RagdollRig : MonoBehaviour
 	public void OnDrawGizmosSelected()
 	{
 		Gizmos.color = Color.magenta;
-		Gizmos.DrawWireSphere(hipHitPosition, 0.05f);
+		Gizmos.DrawWireSphere(hipRayHitPosition, 0.05f);
 
 		Gizmos.color = Color.cyan;
 		Gizmos.DrawWireSphere(hipRb.position - hipHeight * Vector3.up, 0.07f);

@@ -35,6 +35,18 @@ public class OrbitCameraTP : MonoBehaviour
 
     public Camera GetCamera() => GetComponent<Camera>();
 
+    // Set camera rig to look given.
+    // Currently only sets horizontal rotation
+    public void SetLookDirection(Vector3 direction)
+    {
+        xAngle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up);
+    
+        // This would be implemented something like this, but due to lack of time it is left out
+        // Vector3 yAxis = Vector3.Cross(Vector3.up, direction);
+        // yAngle = Vector3.SignedAngle(Vector3.forward, direction, yAxis);
+        yAngle = 0;
+    }
+
     private void LateUpdate()
     {
         // Input stuff --------------------------------------------------------
@@ -91,15 +103,19 @@ public class OrbitCameraTP : MonoBehaviour
         hit = Physics.SphereCast(rightPoint, cameraColliderRadius, backDir, out hitInfo, zLocalPos, clippingRayMask);
         var backPoint = rightPoint + backDir * (hit ? hitInfo.distance : zLocalPos);
 
+        #if UNITY_EDITOR
         DEBUGRayPoints[0] = upPoint;
         DEBUGRayPoints[1] = rightPoint;
         DEBUGRayPoints[2] = backPoint;
+        #endif
 
         // Translate and rotate
         // TODO: smooth movement here
         transform.position = backPoint;
         transform.rotation = rotation;
     }
+
+    #if UNITY_EDITOR
 
     private Vector3 [] DEBUGRayPoints = new Vector3[3];
     private void OnDrawGizmos()
@@ -115,4 +131,6 @@ public class OrbitCameraTP : MonoBehaviour
         Gizmos.color = new Color(1, 0, 1);
         Gizmos.DrawWireSphere(DEBUGRayPoints[2], 0.15f);    
     }
+
+    #endif
 }
