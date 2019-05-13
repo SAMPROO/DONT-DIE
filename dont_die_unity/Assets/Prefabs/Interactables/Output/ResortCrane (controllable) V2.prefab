@@ -1250,7 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2794144617669987107}
   m_Layer: 0
-  m_Name: ResortCrane (controllable)
+  m_Name: ResortCrane (controllable) V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
