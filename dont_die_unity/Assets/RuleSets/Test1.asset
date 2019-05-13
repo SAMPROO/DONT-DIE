@@ -17,5 +17,5 @@ MonoBehaviour:
   deathMultiplier: 0
   damageMultiplier: 1
   areaMultiplier: 0
-  immortalPlayers: 1
+  immortalPlayers: 0
   playerRespawn: 0
