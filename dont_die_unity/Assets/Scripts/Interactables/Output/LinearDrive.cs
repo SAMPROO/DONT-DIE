@@ -15,7 +15,7 @@ public class LinearDrive : MonoBehaviour
     public Mode mode;
 
     [Header("In SpeedControl mode:")]
-    [Range(0, .5f)] public float deathSpot = .05f;
+    [Range(0, .5f)] public float deathZone = .1f;
 
     private float minRange, maxRange;
 
@@ -27,8 +27,8 @@ public class LinearDrive : MonoBehaviour
 
     private void Start()
     {
-        minRange = .5f - deathSpot;
-        maxRange = .5f + deathSpot;
+        minRange = .5f - deathZone;
+        maxRange = .5f + deathZone;
 
         iSwitch = switchGameObject.GetComponent<ISwitch>();
         joint = GetComponent<ConfigurableJoint>();
