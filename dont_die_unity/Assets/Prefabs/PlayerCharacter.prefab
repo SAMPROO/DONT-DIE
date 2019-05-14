@@ -299,6 +299,7 @@ MonoBehaviour:
   handAimMultiplier: 2.5
   minHandsAngle: -45
   maxHandsAngle: 45
+  isAlive: 1
 --- !u!114 &8743616907954168792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,9 +470,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rr: {fileID: 732699078302934972}
+  pc: {fileID: 8246959185096119745}
   joints: []
   rbs: []
-  forceLimit: 20000
+  forceLimit: 40000
 --- !u!114 &1464772373398460042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}
       propertyPath: jumpVelocity
-      value: 35
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4533184863676682614, guid: 9d83ac040f350ed46932fae2a64c4d51,
         type: 3}

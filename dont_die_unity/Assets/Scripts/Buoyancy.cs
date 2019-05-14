@@ -12,5 +12,9 @@ public class Buoyancy : MonoBehaviour
         {
             other.GetComponent<Rigidbody>().AddForce(-Physics.gravity * buoyancy, ForceMode.Acceleration);
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponentInParent<Rigidbody>().AddForce(-Physics.gravity * buoyancy * 2.5f, ForceMode.Acceleration);
+        }
     }
 }

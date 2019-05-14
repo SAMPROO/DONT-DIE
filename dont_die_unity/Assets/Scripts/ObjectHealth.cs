@@ -10,6 +10,7 @@ public class ObjectHealth : MonoBehaviour
     public float health;
     public float damageThreshold;
     public GameObject effect;
+    public float explosionDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,18 @@ public class ObjectHealth : MonoBehaviour
                 rb.AddExplosionForce(blastForce, transform.position, blastRadius, upwardsModifier, ForceMode.VelocityChange);
                 //Play Explosion SFX
             }
+            
         }
+        foreach (Collider nearbyObject in colliders)
+        {
+            if (nearbyObject.CompareTag("Player"))
+            {
+                Debug.Log("FOUND IT!!");
+                nearbyObject.GetComponentInParent<StatusHelper>().pc.Hurt(explosionDamage);
+            }
+            break;
+        }
+        
         Destroy(Instantiate(effect, transform.position, Quaternion.identity),3);
         Destroy(this.gameObject,0);
     }

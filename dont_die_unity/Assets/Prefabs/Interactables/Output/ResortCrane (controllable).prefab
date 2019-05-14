@@ -164,7 +164,7 @@ MonoBehaviour:
   leftLimit: 0
   rightLimit: 5
   mode: 1
-  deathSpot: 0.1
+  deathZone: 0.1
 --- !u!1 &2341384792667772064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4208,15 +4208,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4956938408937859970, guid: 71d6aeb6b73c73346ae1090c40c621cf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8388702248912571092, guid: 71d6aeb6b73c73346ae1090c40c621cf,
         type: 3}
       propertyPath: m_LinearLimit.limit
       value: 0.04900015
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956938408937859970, guid: 71d6aeb6b73c73346ae1090c40c621cf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3613941142538521153, guid: 71d6aeb6b73c73346ae1090c40c621cf,
         type: 3}

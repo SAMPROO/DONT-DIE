@@ -150,9 +150,6 @@ public class PlayerController : MonoBehaviour
         ragdoll.ControlRightHand = false;
         ragdoll.ControlLeftHand = false;
         
-        //yield return new WaitForSeconds(2);
-        //UnSpawn();
-
         yield return new WaitForSeconds(2);
         ResetPlayer();
         Spawn(mySpawnPoint, mySpawnRot);
@@ -161,7 +158,6 @@ public class PlayerController : MonoBehaviour
         ragdoll.ControlRightHand = true;
         ragdoll.ControlLeftHand = true;
 
-        
         isAlive = true;
         yield break;
     }

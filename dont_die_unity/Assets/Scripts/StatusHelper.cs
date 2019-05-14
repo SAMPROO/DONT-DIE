@@ -5,6 +5,7 @@ using UnityEngine;
 public class StatusHelper : MonoBehaviour
 {
     public StatusController rr;
+    public PlayerController pc;
 
     //BETA STUFF
     public CharacterJoint[] joints;
