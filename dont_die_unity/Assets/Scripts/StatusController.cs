@@ -30,6 +30,10 @@ public class StatusController : MonoBehaviour
     public void ResetStatus()
     {
         // TODO implement
+        foreach(StatusEffect effect in statusEffects)
+        {
+            effect.myTicks = 0;
+        }
     }
 
     public void OnStatusHeal(int ticks, float amount, bool isReset)

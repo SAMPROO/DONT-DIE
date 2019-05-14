@@ -4,6 +4,7 @@ Leo Tamminen
 */
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
 	private Vector3 lastMoveDirection = Vector3.forward;
 
     //by irtsa
+    public bool isAlive = true;
     private bool controlRightHand;
     public bool isImmortal { get; private set; }
     public void SetImmortal(bool value)
@@ -112,8 +114,9 @@ public class PlayerController : MonoBehaviour
 	public void ResetPlayer()
 	{
 		hitpoints = maxHitpoints;
-		// TODO also reset damagecontroller propbably
-		statusController.ResetStatus();
+        hud.SetHp(hitpoints);
+        // TODO also reset damagecontroller propbably
+        statusController.ResetStatus();
 	}
 
 	public void Spawn(Vector3 position, Vector3 lookDirection)
@@ -141,7 +144,30 @@ public class PlayerController : MonoBehaviour
 		ragdoll.SetActive(false);
 	}
 
-	private void Update() 
+    private IEnumerator RespawnRoutine()
+    {
+        ragdoll.hasControl = false;
+        ragdoll.ControlRightHand = false;
+        ragdoll.ControlLeftHand = false;
+        
+        //yield return new WaitForSeconds(2);
+        //UnSpawn();
+
+        yield return new WaitForSeconds(2);
+        ResetPlayer();
+        Spawn(mySpawnPoint, mySpawnRot);
+        yield return new WaitForSeconds(1);
+        ragdoll.hasControl = true;
+        ragdoll.ControlRightHand = true;
+        ragdoll.ControlLeftHand = true;
+
+        
+        isAlive = true;
+        yield break;
+    }
+    
+
+    private void Update() 
 	{   
         input.UpdateController();
 
@@ -207,12 +233,15 @@ public class PlayerController : MonoBehaviour
 
         OnChangeHealth?.Invoke(handle, Mathf.RoundToInt(damage));
 
-		if (hitpoints <= 0)
+		if (hitpoints <= 0 && isAlive)
 		{
+            isAlive = false;
 			OnDie?.Invoke(handle);
-            Spawn(mySpawnPoint, mySpawnRot);
-            ResetPlayer();
+            StartCoroutine(RespawnRoutine());
+
             /*
+            Spawn(mySpawnPoint, mySpawnRot);
+            ResetPlayer();      
 			ragdoll.hasControl = false;
 			ragdoll.ControlRightHand = false;
 			ragdoll.ControlLeftHand = false;

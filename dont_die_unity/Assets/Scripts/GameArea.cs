@@ -44,8 +44,12 @@ public class GameArea : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            playersOutOfBounds.Add(other.transform.parent.transform);
-            playersOutOfBoundsTime.Add(timeAllowed);
+            if (other.transform.parent.GetComponent<StatusHelper>().rr.gameObject.GetComponent<PlayerController>().isAlive)
+            {
+                playersOutOfBounds.Add(other.transform.parent.transform);
+                playersOutOfBoundsTime.Add(timeAllowed);
+            }
+            
         }
     }
     private void OnTriggerEnter(Collider other)

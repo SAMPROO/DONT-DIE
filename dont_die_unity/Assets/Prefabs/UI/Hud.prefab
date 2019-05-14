@@ -364,6 +364,8 @@ MonoBehaviour:
   scorePanel: {fileID: 7505566845373054172}
   scoreText: {fileID: 1144967469513580537}
   scoreImage: {fileID: 9164850386094301225}
+  gamemodeName: {fileID: 0}
+  gamemodeDesc: {fileID: 0}
   bigTextInMiddle: {fileID: 3668268609737108347}
   emptyGunHudIcon: {fileID: 21300000, guid: fb1efcc1d83f26c478627408502ca694, type: 3}
   viewportRect:

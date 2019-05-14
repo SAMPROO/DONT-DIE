@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +30,8 @@ public class GameManager : MonoBehaviour
 
     private Judge judge;
     public RuleSet rules;
-
+    [SerializeField] private Text gamemodeName;
+    [SerializeField] private Text gamemodeDesc;
 
     private void Awake()
     {
@@ -45,6 +47,13 @@ public class GameManager : MonoBehaviour
         menuSystem.SetMainMenu();
         SceneManager.LoadScene(menuSceneName);
         musicManager.PlayMenu();
+    }
+
+    private void GameStart()
+    {
+        GetComponentInChildren<FadeEffect>().DoEffect();
+        gamemodeName.text = rules.modeName;
+        gamemodeDesc.text = rules.description;
     }
 
     // Use this from menu system to start correct level etc.
@@ -120,6 +129,7 @@ public class GameManager : MonoBehaviour
 
       
         judge = new Judge(players, rules, StartPlayerWinRoutine);
+        GameStart();
     }
 
     // Start routine in method so we can also unsubscribe this

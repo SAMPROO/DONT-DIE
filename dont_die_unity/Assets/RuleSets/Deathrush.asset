@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47a51d0d69e961048b5a96ca7792f7a7, type: 3}
-  m_Name: Test1
+  m_Name: Deathrush
   m_EditorClassIdentifier: 
-  modeName: 
+  modeName: Deathrush
+  description: First to die 5 times wins
   scoreLimit: 5
   deathMultiplier: 1
   damageMultiplier: 0

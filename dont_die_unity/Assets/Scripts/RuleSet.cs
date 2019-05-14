@@ -3,18 +3,21 @@
 [CreateAssetMenu]
 public class RuleSet : ScriptableObject
 {
-    //Mode Name
+    // Mode Name
     public string modeName;
 
-    //Win Condition
+    // Mode Description
+    public string description;
+
+    // Win Condition
     public int scoreLimit;
 
-    //ScoreMultipliers
+    // ScoreMultipliers
     public int deathMultiplier;
     public int damageMultiplier;
     public int areaMultiplier;
 
-    //Others
+    // Others
     public bool immortalPlayers;
     public bool playerRespawn;
 
