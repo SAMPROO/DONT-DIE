@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeName: King of The Tower
   description: Reach the tower
-  scoreLimit: 60
+  scoreLimit: 45
   deathMultiplier: 0
   damageMultiplier: 0
   areaMultiplier: 1

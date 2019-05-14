@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
     private void GameStart()
     {
         GetComponentInChildren<FadeEffect>().DoEffect();
-        gamemodeName.text = rules.modeName;
-        gamemodeDesc.text = rules.description;
+        gamemodeName.text = configuration.rules.modeName;
+        gamemodeDesc.text = configuration.rules.description;
     }
 
     // Use this from menu system to start correct level etc.
@@ -129,6 +129,7 @@ public class GameManager : MonoBehaviour
 
       
         judge = new Judge(players, rules, StartPlayerWinRoutine);
+        judge.rules = configuration.rules;
         GameStart();
     }
 
@@ -300,6 +301,7 @@ public class GameConfiguration
 {
     public int playerCount;
     public string mapSceneName;
+    public RuleSet rules;
 }
 
 public class GameEndStatus

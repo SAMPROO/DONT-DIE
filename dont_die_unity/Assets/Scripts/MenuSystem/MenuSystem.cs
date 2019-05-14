@@ -26,6 +26,12 @@ public class MenuSystem : MonoBehaviour
 	[SerializeField] private Text 				mapSelectPlayerCountText;
     [SerializeField] private int                defaultSelectedMapIndex;
 
+    [Header("Mode Select View")]
+    [SerializeField] private GameObject modeSelectViewObject;
+    [SerializeField] private ModeButtonInfo[] modeButtonInfos;
+    [SerializeField] private int defaultSelectedModeIndex;
+    [SerializeField] private Button modeBackButton;
+
     [System.Serializable]
 	private class MapButtonInfo
 	{
@@ -33,6 +39,14 @@ public class MenuSystem : MonoBehaviour
 	    public string   mapSceneName;
 	    public bool     locked = false;
 	}
+
+    [System.Serializable]
+    private class ModeButtonInfo
+    {
+        public Button button;
+        public RuleSet mode;
+        public bool locked = false;
+    }
 
 	[Header("End View")]
 	[SerializeField] private GameObject endViewObject;
@@ -43,7 +57,7 @@ public class MenuSystem : MonoBehaviour
 	[SerializeField] private GameObject creditsViewObject;
 	[SerializeField] private Button 	creditsBackButton;
 
-	private GameManager gameManager;
+    private GameManager gameManager;
 	private EventSystem eventSystem;
 
 	private GameObject [] allViews;
@@ -82,6 +96,14 @@ public class MenuSystem : MonoBehaviour
             info.button.transform.GetChild(0).gameObject.SetActive(info.locked);
         }
         mapSelectViewObject.GetComponent<CancelEvent>().OnCancel.AddListener(StartConfigureGame);
+
+        // Mode Select viw
+        foreach(var info in modeButtonInfos)
+        {
+            if (info.locked == false)
+                info.button.onClick.AddListener(() => SetRuleSet(info.mode));
+            info.button.transform.GetChild(0).gameObject.SetActive(info.locked);
+        }
 
         // End view
         endGoToMainButton.onClick.AddListener(SetMainMenu);
@@ -129,7 +151,8 @@ public class MenuSystem : MonoBehaviour
 			playerCountViewObject,
 			mapSelectViewObject,
 			endViewObject,
-			creditsViewObject
+			creditsViewObject,
+            modeSelectViewObject
 		};
 	}
 
@@ -168,7 +191,13 @@ public class MenuSystem : MonoBehaviour
 	private void SetMapSceneName(string mapSceneName)
 	{
 		configuration.mapSceneName = mapSceneName;
-		gameManager.StartGame(configuration);
+        SetView(modeSelectViewObject);
+        eventSystem.SetSelectedGameObject(modeButtonInfos[defaultSelectedModeIndex].button.gameObject);
+    }
+    private void SetRuleSet(RuleSet ruleSet)
+    {
+        configuration.rules = ruleSet;
+        gameManager.StartGame(configuration);
     }
 
 	///////////////////////////////////////
