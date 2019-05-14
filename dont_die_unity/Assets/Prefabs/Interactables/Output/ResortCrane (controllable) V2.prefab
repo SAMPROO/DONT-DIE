@@ -3085,16 +3085,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 8388702248912571095, guid: 71d6aeb6b73c73346ae1090c40c621cf,
-        type: 3}
-      propertyPath: isToggle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388702248912571095, guid: 71d6aeb6b73c73346ae1090c40c621cf,
-        type: 3}
-      propertyPath: triggerForce
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8388702248912571092, guid: 71d6aeb6b73c73346ae1090c40c621cf,
         type: 3}
       propertyPath: m_YDrive.maximumForce
@@ -3104,6 +3094,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LinearLimit.limit
       value: 0.049000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388702248912571095, guid: 71d6aeb6b73c73346ae1090c40c621cf,
+        type: 3}
+      propertyPath: isToggle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388702248912571095, guid: 71d6aeb6b73c73346ae1090c40c621cf,
+        type: 3}
+      propertyPath: triggerForce
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d6aeb6b73c73346ae1090c40c621cf, type: 3}
